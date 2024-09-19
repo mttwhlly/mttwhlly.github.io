@@ -1,14 +1,3 @@
-theme: "default"
-title: "Matt Whalley"
-description: "Design Engineer"
-author: "Matt Whalley"
-
----
-
-# Matt Whalley
-
-## Design Engineer
-
 ### Experience
 
 #### Lead UX/UI Developer, CAQH – 2022-Present
