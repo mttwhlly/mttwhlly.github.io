@@ -1,3 +1,10 @@
+theme: "default"
+title: "Matt Whalley"
+description: "Design Engineer"
+author: "Matt Whalley"
+
+---
+
 # Matt Whalley
 
 ## Design Engineer
