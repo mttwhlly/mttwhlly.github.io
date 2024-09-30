@@ -63,6 +63,7 @@
     />
     <!-- Scripts -->
     <!-- <script src="script.js" defer></script> -->
+    <script type="module" src="./components/random-image-placer.js"></script>
   </head>
   <body>
     <noscript
@@ -299,6 +300,17 @@
     <footer>
       Copyright &copy; 2024 Matt Whalley. It's alright to be reserved.
     </footer>
-    <!-- <script type="module" src="index.js"></script> -->
+    <random-image-placer id="randomImagePlacer"></random-image-placer>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const placer = document.getElementById("randomImagePlacer");
+        placer.imageUrls = [
+          "https://placehold.it/100/100",
+          "https://placehold.it/100/100",
+          "https://placehold.it/100/100",
+        ];
+        placer.placementInterval = 10000; // Optional: set interval to 3 seconds
+      });
+    </script>
   </body>
 </html>
