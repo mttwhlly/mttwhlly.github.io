@@ -11,6 +11,7 @@ class RandomImagePlacer extends HTMLElement {
     this.setupStyles();
     this.setupContainer();
     this.setupToggleButton();
+    this.setupClickListener();
     this.startPlacingImages();
   }
 
@@ -69,6 +70,14 @@ class RandomImagePlacer extends HTMLElement {
     this.shadowRoot.appendChild(this.toggleButton);
   }
 
+  setupClickListener() {
+    document.addEventListener("click", (e) => {
+      if (this.isOverlayActive) {
+        this.addImageAtPosition(e.clientX, e.clientY);
+      }
+    });
+  }
+
   toggleOverlay() {
     this.isOverlayActive = !this.isOverlayActive;
     this.container.style.display = this.isOverlayActive ? "block" : "none";
@@ -86,9 +95,13 @@ class RandomImagePlacer extends HTMLElement {
   }
 
   addRandomImage() {
+    const { x, y } = this.getRandomPosition();
+    this.addImageAtPosition(x, y);
+  }
+
+  addImageAtPosition(x, y) {
     const randomImage =
       this.images[Math.floor(Math.random() * this.images.length)];
-    const { x, y } = this.getRandomPosition();
     const imgElement = this.createDraggableImageElement(randomImage, x, y);
     this.container.appendChild(imgElement);
   }
@@ -103,8 +116,8 @@ class RandomImagePlacer extends HTMLElement {
     const img = document.createElement("img");
     img.src = src;
     img.alt = "Random Image";
-    img.style.left = `${x}px`;
-    img.style.top = `${y}px`;
+    img.style.left = `${x - 50}px`; // Center the image on the click position
+    img.style.top = `${y - 50}px`; // Center the image on the click position
 
     let isDragging = false;
     let startX, startY;
@@ -114,6 +127,7 @@ class RandomImagePlacer extends HTMLElement {
       startX = e.clientX - img.offsetLeft;
       startY = e.clientY - img.offsetTop;
       img.style.zIndex = String(parseInt(img.style.zIndex || "0") + 1);
+      e.stopPropagation(); // Prevent click from adding a new image
     });
 
     document.addEventListener("mousemove", (e) => {

@@ -63,7 +63,8 @@
     />
     <!-- Scripts -->
     <!-- <script src="script.js" defer></script> -->
-    <!-- <script type="module" src="./components/random-image-placer.js"></script> -->
+    <!-- <script type="module" src="./components/typing-effect.js"></script>
+    <script type="module" src="./components/random-image-placer.js"></script> -->
   </head>
   <body>
     <noscript
@@ -306,10 +307,26 @@
         const placer = document.getElementById("randomImagePlacer");
         placer.imageUrls = [
           "https://placehold.it/100/100",
-          "https://placehold.it/100/100",
-          "https://placehold.it/100/100",
+          "https://placehold.it/200/200",
+          "https://placehold.it/400/400",
         ];
         placer.placementInterval = 10000; // Optional: set interval to 3 seconds
+      });
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const demo1 = document.getElementById("demo1");
+        const demo2 = document.getElementById("demo2");
+
+        demo1.addEventListener("typingcomplete", () => {
+          console.log("First demo completed typing");
+          demo2.startTyping();
+        });
+
+        // Example of changing text dynamically
+        setTimeout(() => {
+          demo2.setAttribute("text", "New text, who dis?");
+        }, 5000);
       });
     </script> -->
   </body>
