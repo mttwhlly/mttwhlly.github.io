@@ -125,9 +125,9 @@ header {
 }
 
 .logo {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
+  position: fixed;
+  z-index: 1000;
+  transition: opacity 0.5s ease-in-out;
 }
 
 main {
