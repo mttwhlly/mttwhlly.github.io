@@ -287,6 +287,37 @@
     <footer>
       Copyright &copy; 2024 Matt Whalley. It's alright to be reserved.
     </footer>
+    <script>
+      const logo = document.querySelector('.logo');
+      let x = 0, y = 0;
+      let dx = 1, dy = 1;
+      const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff'];
+      let colorIndex = 0;
+      
+      function animate() {
+        const bounds = document.body.getBoundingClientRect();
+        
+        x += dx * 0.5;
+        y += dy * 0.5;
+      
+        if (x <= 0 || x >= bounds.width - 34) {
+          dx *= -1;
+          logo.querySelector('path').style.fill = colors[colorIndex];
+          colorIndex = (colorIndex + 1) % colors.length;
+        }
+        
+        if (y <= 0 || y >= bounds.height - 32) {
+          dy *= -1;
+          logo.querySelector('path').style.fill = colors[colorIndex];
+          colorIndex = (colorIndex + 1) % colors.length;
+        }
+      
+        logo.style.transform = `translate(${x}px, ${y}px)`;
+        requestAnimationFrame(animate);
+      }
+      
+      animate();
+    </script>
     <!-- <random-image-placer id="randomImagePlacer"></random-image-placer>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
