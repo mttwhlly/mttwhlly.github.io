@@ -93,6 +93,7 @@ p {
 a {
   color: #eaeaea;
   font-style: italic;
+  font-weight: 300;
   text-decoration: none;
   padding: 0px;
   &:hover {
