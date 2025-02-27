@@ -99,7 +99,7 @@ a {
   font-weight: 400;
   text-decoration: none;
   padding: 0px;
-  font-size: .95rem;
+  font-size: .9rem;
   letter-spacing: .5px;
   transition: color 0.3s ease-in-out;
   &:hover {
