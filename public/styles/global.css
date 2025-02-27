@@ -104,7 +104,7 @@ a {
   transition: color 0.3s ease-in-out;
   &:hover {
     color: #999999;
-    text-decoration: dotted underline;
+    text-decoration: underline;
   }
 }
 
