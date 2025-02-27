@@ -124,8 +124,9 @@ li > span {
 }
 
 header {
-  padding: 1rem;
+  padding: 1.4rem;
   display: flex;
+  border-bottom: 1px dotted rgba(255, 255, 255, .4);
 }
 
 /* Light Mode */
@@ -150,9 +151,10 @@ header {
 }
 
 main {
-  padding: 1rem;
+  padding: 6rem 1rem 0;
+  display: flex;
   max-width: 800px;
-  margin: 80px auto;
+  margin: 0 auto;
 }
 
 section {
