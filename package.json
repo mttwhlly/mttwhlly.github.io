@@ -1,34 +1,35 @@
 {
-  "name": "evergreen",
-  "type": "module",
-  "version": "0.0.1",
+  "name": "mttwhlly.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "start": "npm-run-all -p dev:*",
+    "build": "npm-run-all build:*",
+    "dev:11ty": "eleventy --serve",
+    "dev:css": "npx @tailwindcss/cli -i ./src/_includes/css/tailwind.css -o ./_site/style.css --watch",
+    "build:11ty": "eleventy",
+    "build:css": "npx @tailwindcss/cli -i ./src/_includes/css/tailwind.css -o ./_site/style.css --minify"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mttwhlly/mttwhlly.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/mttwhlly/mttwhlly.github.io/issues"
+  },
+  "homepage": "https://github.com/mttwhlly/mttwhlly.github.io#readme",
   "dependencies": {
-    "@astrojs/react": "^4.2.3",
-    "@tailwindcss/vite": "^4.1.3",
-    "@types/matter-js": "^0.19.8",
-    "@types/react": "^19.1.0",
-    "@types/react-dom": "^19.1.1",
-    "astro": "^5.6.1",
-    "clsx": "^2.1.1",
-    "lodash": "^4.17.21",
-    "matter-js": "^0.20.0",
-    "motion": "^12.6.3",
-    "poly-decomp": "^0.3.0",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "svg-path-commander": "^2.1.10",
-    "tailwind-merge": "^3.1.0",
-    "tailwindcss": "^4.1.3"
+    "@11ty/eleventy": "^3.0.0",
+    "@tailwindcss/cli": "^4.1.4",
+    "cssnano": "^7.0.6",
+    "tailwindcss": "^4.1.4"
   },
   "devDependencies": {
-    "@types/lodash": "^4.17.16",
-    "@types/node": "^22.14.0"
-  },
-  "packageManager": "pnpm@10.3.0"
+    "npm-run-all": "^4.1.5"
+  }
 }
