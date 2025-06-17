@@ -1,5 +1,6 @@
 ---                               
 import '../styles/global.css';
+import Footer from '../components/Footer';
 --- 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,7 +9,7 @@ import '../styles/global.css';
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Matt Whalley - Software Engineer</title>
+    <title>Matt Whalley - Frontend Developer</title>
 
     <!-- SEO -->
     <meta
@@ -54,19 +55,9 @@ import '../styles/global.css';
     <meta name="msapplication-TileColor" content="#2d89ef" />
     <meta name="theme-color" content="#ffffff" />
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="index.css" />
-
-    <!-- Scripts -->
-    <!-- <script src="index.js" defer></script>
-    <script src="./components/spotify-now-playing.js" type="module"></script> -->
   </head>
-  <body>
+  <body class="flex flex-col min-h-screen">
     <slot />
+    <Footer client:load />
   </body>
 </html>

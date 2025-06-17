@@ -1,1 +1,7 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Boldonse&family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Host Grotesk', sans-serif;
+  --font-heading: 'Boldonse', sans-serif;
+}
