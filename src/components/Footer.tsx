@@ -9,23 +9,32 @@ export default function Footer() {
             <li className="h-[42px]">
               <SpotifyNowPlaying />
             </li>
-            <li className="h-[42px]">Current Book: Anxious Generation by Jonathan Haidt</li>
-            <li className="h-[42px]">Current Project: Red V5 on Prow Wall at Stone Climbing</li>
+            <li className="h-[42px]">
+              <i className="ph-fill ph-book-bookmark"></i> "Anxious Generation" <i>by</i> Jonathan
+              Haidt
+            </li>
+            <li className="h-[42px]">
+              <i className="ph-fill ph-mountains"></i> Red V5 on Prow Wall <i>at</i>{' '}
+              <a href="https://stoneclimbing.com/" target="_blank">
+                Stone Climbing
+              </a>
+            </li>
           </ul>
         </div>
         <div className="flex flex-col gap-4">
           <ul>
             <li className="h-[42px]">
               <a href="https://github.com/mttwhlly" target="_blank">
-                Github
+                <i className="ph-fill ph-github-logo"></i> Github
               </a>
             </li>
             <li className="h-[42px]">
               <a href="https://linkedin.com/in/mttwhlly" target="_blank">
-                Linkedin
+                <i className="ph-fill ph-linkedin-logo"></i> Linkedin
               </a>
             </li>
             <li className="h-[42px]">
+              <i className="ph-fill ph-envelope"></i>{' '}
               <a href="mailto:&#109;&#97;&#116;&#116;&#64;&#109;&#97;&#116;&#116;&#119;&#104;&#97;&#108;&#108;&#101;&#121;&#46;&#99;&#111;&#109;">
                 &#109;&#97;&#116;&#116;&#64;&#109;&#97;&#116;&#116;&#119;&#104;&#97;&#108;&#108;&#101;&#121;&#46;&#99;&#111;&#109;
               </a>

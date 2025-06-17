@@ -1,17 +1,21 @@
 ---
-
+import Testimonials from '../components/Testimonials';
+import RecentProjects from '../components/RecentProjects';
+import FAQ from '../components/FAQ';
 ---
 <header>
  
 </header>
-<main class="container max-w-6xl mx-auto px-4 py-12 flex-auto">    
-  <section class="flex flex-col gap-8 mt-12">
-    <h1 class="text-8xl mb-8 font-heading">Hi I'm Matt Whalley</h1>
+<main class="">    
+  <section class="container px-4 py-12 flex-auto flex flex-col gap-8 mt-12 max-w-6xl mx-auto">
+    <h1 class="text-8xl mb-8 font-heading leading-tight">Hi I'm Matt&nbsp;Whalley</h1>
     <p class="text-5xl leading-tight mb-4">I'm a frontend developer with a background in visual design, focused on building inclusive, scalable UI and design systems.
     </p><p class="text-5xl leading-tight mb-4">I work best at the intersection of design and engineering—translating visual clarity into clean, durable, accessible interfaces. I’ve led design system efforts, modernized legacy platforms, and championed quality in complex, resource-constrained environments.
     </p><p class="text-5xl leading-tight mb-4">
       I value calm, focused collaboration and long-term product thinking. I’m currently looking for a remote-friendly team that shares those values—and is building something meaningful.</p>
-
   </section>
+  <RecentProjects />
+  <FAQ client:load/>
+  <Testimonials />
 </main>
 
