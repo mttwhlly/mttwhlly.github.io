@@ -1,0 +1,204 @@
+// index.html - A simple HTML file to help generate a Spotify refresh token
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spotify Refresh Token Generator</title>
+    <style>
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+          'Open Sans', 'Helvetica Neue', sans-serif;
+        line-height: 1.6;
+        color: #333;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      h1 {
+        color: #1db954;
+      }
+      .step {
+        margin-bottom: 30px;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 5px;
+      }
+      .step h2 {
+        margin-top: 0;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+      input[type='text'] {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+      button {
+        background-color: #1db954;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+      button:hover {
+        background-color: #1ed760;
+      }
+      .code-block {
+        background-color: #f4f4f4;
+        padding: 15px;
+        border-radius: 4px;
+        overflow-x: auto;
+        font-family: monospace;
+      }
+      .output {
+        margin-top: 20px;
+        padding: 15px;
+        background-color: #e8f5e9;
+        border-radius: 4px;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Spotify Refresh Token Generator</h1>
+    <p>
+      Follow these steps to generate a refresh token for Spotify API without setting up a server.
+    </p>
+
+    <div class="step">
+      <h2>Step 1: Set Up Your Spotify App</h2>
+      <ol>
+        <li>
+          Go to the
+          <a href="https://developer.spotify.com/dashboard/" target="_blank"
+            >Spotify Developer Dashboard</a
+          >
+          and log in.
+        </li>
+        <li>Create a new app or select an existing one.</li>
+        <li>
+          Add <code>http://127.0.0.1:4321/callback</code> to your app's Redirect URIs in the
+          settings.
+        </li>
+        <li>Save your changes.</li>
+      </ol>
+    </div>
+
+    <div class="step">
+      <h2>Step 2: Enter Your App Credentials</h2>
+      <div>
+        <label for="clientId">Client ID:</label>
+        <input type="text" id="clientId" placeholder="Enter your Spotify Client ID" />
+      </div>
+      <div>
+        <label for="clientSecret">Client Secret:</label>
+        <input type="text" id="clientSecret" placeholder="Enter your Spotify Client Secret" />
+      </div>
+    </div>
+
+    <div class="step">
+      <h2>Step 3: Generate Authorization URL</h2>
+      <p>Click the button below to generate the authorization URL:</p>
+      <button id="generateAuthUrl">Generate Authorization URL</button>
+      <div id="authUrlOutput" class="output"></div>
+    </div>
+
+    <div class="step">
+      <h2>Step 4: Get Authorization Code</h2>
+      <p>
+        After you've opened the URL above and authorized your app, you'll be redirected to a URL
+        that contains the authorization code. Copy the code from the URL (it's the value after
+        <code>code=</code> and before any <code>&</code> character).
+      </p>
+      <div>
+        <label for="authCode">Authorization Code:</label>
+        <input type="text" id="authCode" placeholder="Paste your authorization code here" />
+      </div>
+    </div>
+
+    <div class="step">
+      <h2>Step 5: Generate Refresh Token</h2>
+      <p>
+        Click the button below to generate the code you need to run in your terminal to get the
+        refresh token:
+      </p>
+      <button id="generateTokenCommand">Generate Token Command</button>
+      <div id="tokenCommandOutput" class="output"></div>
+    </div>
+
+    <div class="step">
+      <h2>Step 6: Get Your Refresh Token</h2>
+      <p>
+        Copy the command from above and run it in your terminal. Look for the
+        <code>refresh_token</code> value in the response. This is the refresh token you'll need for
+        your Astro application.
+      </p>
+    </div>
+
+    <script>
+      document.getElementById('generateAuthUrl').addEventListener('click', function () {
+        const clientId = document.getElementById('clientId').value.trim();
+        if (!clientId) {
+          alert('Please enter your Client ID');
+          return;
+        }
+
+        // Define scopes needed
+        const scopes = 'user-read-currently-playing user-read-recently-played';
+        const redirectUri = 'http://127.0.0.1:4321/callback';
+
+        // Construct auth URL
+        const authUrl = `https://accounts.spotify.com/authorize?response_type=code&client_id=${clientId}&scope=${encodeURIComponent(scopes)}&redirect_uri=${encodeURIComponent(redirectUri)}`;
+
+        // Display the URL
+        const output = document.getElementById('authUrlOutput');
+        output.innerHTML = `
+        <p>Open this URL in your browser:</p>
+        <div class="code-block">${authUrl}</div>
+        <p><a href="${authUrl}" target="_blank">Click here to open</a></p>
+      `;
+        output.style.display = 'block';
+      });
+
+      document.getElementById('generateTokenCommand').addEventListener('click', function () {
+        const clientId = document.getElementById('clientId').value.trim();
+        const clientSecret = document.getElementById('clientSecret').value.trim();
+        const authCode = document.getElementById('authCode').value.trim();
+
+        if (!clientId || !clientSecret || !authCode) {
+          alert('Please enter all required information');
+          return;
+        }
+
+        const redirectUri = 'http://127.0.0.1:4321/callback';
+
+        // Construct curl command
+        const curlCommand = `curl -X POST https://accounts.spotify.com/api/token \
+-H "Content-Type: application/x-www-form-urlencoded" \
+-d "grant_type=authorization_code" \
+-d "code=AQCAImsc4ueEgLI15cT9XW7MaLyQ01jyLnpwgr8ZiV8F3Y5DdILCeOj2xA1j-OPFEhCFt7n1lGL3g9GWSt41hkY1h3PUdVxF7wR9tyk1mvEsNOjols7oAeAlNr_6GDtNMaJwABrS-0TSAIKjXbkT1wyYIOYNT0JXJw1HVXzLKiywtAG2D3IQdMqkfFYL-6RD9zsDko13l0uD1b3gHRkaCjiO6wS70kJ91Q8UJf5670eUqIN6uss0Jw2e" \
+-d "redirect_uri=http://127.0.0.1:4321/callback" \
+-d "client_id=a385f63458f54b75acd2f9e935ddd708" \
+-d "client_secret=a408b5969c204b7f8019a918f1261641"`;
+
+        // Display the command
+        const output = document.getElementById('tokenCommandOutput');
+        output.innerHTML = `
+        <p>Run this command in your terminal:</p>
+        <div class="code-block">${curlCommand}</div>
+        <p>Look for the <code>refresh_token</code> value in the response.</p>
+      `;
+        output.style.display = 'block';
+      });
+    </script>
+  </body>
+</html>
