@@ -112,20 +112,20 @@ const SpotifyNowPlaying: React.FC = () => {
         <div className="flex">
           <div className="flex space-x-1">
             {nowPlaying.isCurrentlyPlaying ? (
-              <span className="playing">Current Track:</span>
+              <span className="playing animate-spin">
+                <i className="ph-fill ph-vinyl-record"></i>
+              </span>
             ) : (
-              <span className="recently-played">Recent Track:</span>
+              <span className="recently-played">
+                <i className="ph-fill ph-vinyl-record"></i>
+              </span>
             )}
             <h3 className="">
-              <a href={nowPlaying.trackLink} className="underline underline-offset-2">
-                {nowPlaying.name}
-              </a>
+              <a href={nowPlaying.trackLink}>"{nowPlaying.name}"</a>
             </h3>
             <p className="">
               <span className="italic">by</span>{' '}
-              <a href={nowPlaying.artistLink} className="underline underline-offset-2">
-                {nowPlaying.artist}
-              </a>
+              <a href={nowPlaying.artistLink}>{nowPlaying.artist}</a>
             </p>
             {/* <p className="">from <a href={nowPlaying.albumLink}>{nowPlaying.album}</a></p> */}
             <div className="status"></div>
