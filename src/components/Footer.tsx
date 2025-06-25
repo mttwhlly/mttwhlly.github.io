@@ -3,7 +3,7 @@ import SpotifyNowPlaying from './SpotifyNowPlaying';
 export default function Footer() {
   return (
     <footer className="shrink bg-black text-white py-12">
-      <div className="flex max-w-6xl mx-auto px-4 justify-between">
+      <div className="flex mx-auto px-16 justify-between">
         <div className="flex flex-col gap-4">
           <p className="text-sm text-gray-400 font-mono uppercase py-4">_Offline</p>
           <ul>
@@ -11,8 +11,8 @@ export default function Footer() {
               <SpotifyNowPlaying />
             </li>
             <li className="h-[42px]">
-              <span className="text-gray-400">Reading</span> "Anxious Generation" <i>by</i> Jonathan
-              Haidt
+              <span className="text-gray-400 font-extralight">Reading</span> "Anxious Generation"{' '}
+              <i>by</i> Jonathan Haidt
             </li>
             <li className="h-[42px] ">
               <span className="text-gray-400">Climbing</span> Red V5 on Prow Wall <i>at</i>{' '}

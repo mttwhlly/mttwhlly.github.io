@@ -1,7 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Boldonse&family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap');
 @import 'tailwindcss';
 
 @theme {
   --font-sans: 'Host Grotesk', sans-serif;
-  --font-heading: 'Boldonse', sans-serif;
+  --font-mono: 'Geist Mono', monospaced;
+  --color-lemonlime-50: #ffffeb;
+  --color-lemonlime-100: #ffffc7;
+  --color-lemonlime-200: #ffff61;
+  --color-lemonlime-300: #f5f500;
+  --color-lemonlime-400: #c7c700;
+  --color-lemonlime-500: #949400;
+  --color-lemonlime-600: #6b6b00;
+  --color-lemonlime-700: #52520d;
+  --color-lemonlime-800: oklch(0.279 0.041 260.031);
+  --color-lemonlime-900: oklch(0.208 0.042 265.755);
+  --color-lemonlime-950: oklch(0.129 0.042 264.695);
 }
