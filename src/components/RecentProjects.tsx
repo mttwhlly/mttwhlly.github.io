@@ -5,9 +5,9 @@ const RecentProjects = () => {
   const projects = [
     {
       id: 1,
-      title: 'Hang Lab',
+      title: 'Hangtime',
       description:
-        'A minimalist training app for climbers, built to guide hangboard routines using haptics, visual cues, and progressive timers. I designed and developed this to work seamlessly on Apple Watch and iPhone, optimizing for glanceability, low-distraction UI, and performance under physical stress.',
+        'A minimalist training app for climbers, designed to guide hangboard routines through haptics, visual cues, and progressive timers. I built it for Apple Watch and iPhone with a focus on glanceability, low-distraction UI, and reliable performance under physical stress. The design emphasizes flow and focus—making workouts easier to start, sustain, and finish.',
       image:
         'https://images.unsplash.com/photo-1558655146-d09347e92766?w=600&h=400&fit=crop&auto=format',
       tags: ['Figma', 'Swift', 'HealthKit', 'WatchKit'],
@@ -17,12 +17,12 @@ const RecentProjects = () => {
     },
     {
       id: 2,
-      title: 'Surf Report App',
+      title: 'Surf Lab',
       description:
-        'A clean, fast surf conditions app tailored for East Coast breaks. I built this as a personal tool to help gauge surfability at a glance—prioritizing clarity, calm UI, and quick load times over data density.',
+        'A focused surf conditions app built for St. Augustine, FL, designed to quickly answer a simple question: is it surfable right now? I prioritized speed, clarity, and a calm UI over data overload—making it ideal for real-life, time-sensitive checks. Future iterations will expand to other East Coast spots and include Apple Watch support for even faster, glanceable insights.',
       image:
         'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop&auto=format',
-      tags: ['PWA', 'HTML', 'CSS', 'JavaScript', 'Express', 'Service Worker', 'Canvas API'],
+      tags: ['HTML', 'CSS', 'JavaScript', 'Express'],
       liveUrl: '#',
       githubUrl: '#',
       type: 'Progressive Web App',
@@ -42,12 +42,15 @@ const RecentProjects = () => {
   ];
 
   return (
-    <section className="container px-4 py-20 max-w-6xl mx-auto">
+    <section className="container px-4 py-20 max-w-4xl mx-auto">
       <div className="mb-16">
-        <h2 className="text-4xl font-heading leading-tight mb-6 uppercase">Recent Work</h2>
-        <p className="text-2xl text-gray-600 leading-relaxed max-w-3xl">
-          Selected projects that showcase my approach to thoughtful, accessible frontend development
-          and design system thinking.
+        <h2 className="text-2xl font-mono tracking-loose leading-tight uppercase">_Projects</h2>
+      </div>
+
+      <div className="max-w-3xl mx-auto">
+        <p className="text-md text-gray-700 p-6 bg-gray-50 rounded-lg mb-20">
+          While I can’t share work from my current role, these personal projects represent my
+          approach: thoughtful, user-focused, and built with care.
         </p>
       </div>
 

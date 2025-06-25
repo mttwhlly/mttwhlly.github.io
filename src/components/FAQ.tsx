@@ -7,28 +7,28 @@ const FAQ = () => {
   const faqs = [
     {
       id: 1,
-      question: 'Why Side Projects?',
+      question: 'Why all side projects and no work case studies here?',
       answer:
         'My day job work (healthcare + internal systems) is mostly NDA-bound or not visually shareable. These personal projects reflect how I think, design, and build when I have full autonomy—and where my interests and skills intersect.',
     },
     {
       id: 2,
-      question: 'Why Lab?',
+      question: 'What\'s with multiple projects with "Lab" in the title?',
       answer:
-        "I treat personal projects as experiments—places to explore new techniques, test ideas, and push boundaries without the constraints of production timelines or stakeholder approval. It's where I can be most creative and technically curious.",
+        "Naming is hard. I like the simplicity of the word 'Lab' and the fact that it's a common term for experimentation and learning. Also, my wife's maiden initials are L.A.B.",
     },
-    {
-      id: 3,
-      question: "What's your design process?",
-      answer:
-        'I start with user needs and business goals, then move through research, wireframing, and prototyping. I believe in designing with real content and constraints in mind, and I always consider accessibility and performance from the beginning, not as an afterthought.',
-    },
-    {
-      id: 4,
-      question: 'How do you approach design systems?',
-      answer:
-        "I focus on scalable, maintainable systems that serve both designers and developers. This means clear documentation, consistent patterns, and components that work across different contexts. I've found success in starting small and evolving based on real usage.",
-    },
+    // {
+    //   id: 3,
+    //   question: "What's your design process?",
+    //   answer:
+    //     'I start with user needs and business goals, then move through research, wireframing, and prototyping. I believe in designing with real content and constraints in mind, and I always consider accessibility and performance from the beginning, not as an afterthought.',
+    // },
+    // {
+    //   id: 4,
+    //   question: 'How do you approach design systems?',
+    //   answer:
+    //     "I focus on scalable, maintainable systems that serve both designers and developers. This means clear documentation, consistent patterns, and components that work across different contexts. I've found success in starting small and evolving based on real usage.",
+    // },
   ];
 
   const toggleItem = (id) => {
@@ -44,10 +44,10 @@ const FAQ = () => {
   return (
     <section className="container px-4 py-20 max-w-4xl mx-auto">
       <div className="mb-12">
-        <h2 className="text-3xl font-heading leading-tight mb-6">Common Questions</h2>
-        <p className="text-xl text-gray-600 leading-relaxed">
+        <h2 className="text-3xl font-heading leading-tight mb-6">In case you were wondering...</h2>
+        {/* <p className="text-xl text-gray-600 leading-relaxed">
           A few things people often ask about my work and approach.
-        </p>
+        </p> */}
       </div>
 
       <div className="space-y-4">
@@ -57,7 +57,7 @@ const FAQ = () => {
           return (
             <div
               key={faq.id}
-              className="border border-gray-200 rounded-lg overflow-hidden transition-all duration-200 hover:border-gray-300"
+              className="border border-gray-200 rounded-xl overflow-hidden transition-all duration-200 hover:border-gray-300"
             >
               <button
                 onClick={() => toggleItem(faq.id)}
