@@ -12,7 +12,7 @@ const Testimonials = () => {
       name: "Ben Stafford",
       title: "Co-owner and Designer",
       organization: "Foxmeadow Creative",
-      avatar: "/public/images/ben.png",
+      avatar: "/images/ben.png",
       content: "Matt has a wonderful ability to tackle complex challenges with simple creative solutions. He's trustworthy, reliable, and a smart designer. You may regret some things in life, but you'll never regret hiring Matt.",
       link: "https://BenIllustrated.com"
     },
@@ -21,7 +21,7 @@ const Testimonials = () => {
       name: "Dan Draper",
       title: "Designer",
       organization: "Dan Draper Design",
-      avatar: "/public/images/dan-d.png",
+      avatar: "/images/dan-d.png",
       content: "Matt has a skill set which can be hard to find in a creative team member — he's a graphic designer, UX designer, and a developer. This background and mix of talents makes him a thoughtful resource and an asset to any organization or client he works for.",
       link: "https://dandraperdesign.com/"
     },
@@ -30,7 +30,7 @@ const Testimonials = () => {
       name: "Titus Smith",
       title: "IXD Program Director",
       organization: "University of Kansas",
-      avatar: "/public/images/titus.jpg",
+      avatar: "/images/titus.jpg",
       content: "Matt cares deeply.",
       link: "https://thehideout.design/"
     }
