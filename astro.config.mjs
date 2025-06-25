@@ -1,13 +1,13 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-
+import vercel from '@astrojs/vercel/serverless';
 import react from '@astrojs/react';
-
 import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  output: 'static', // Changed from 'server' to 'static' to deploy as a static site
+  output: 'server',
+  adapter: vercel(),
   server: {
     host: '127.0.0.1',
     port: 4321,
