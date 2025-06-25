@@ -48,7 +48,7 @@ const RecentProjects = () => {
       </div>
 
       <div className="max-w-3xl mx-auto">
-        <p className="text-md text-gray-700 p-6 bg-gray-50 rounded-lg mb-20">
+        <p className="text-md text-gray-700 p-6 bg-gray-50 rounded-xl border border-dashed border-gray-400 mb-16">
           While I can’t share work from my current role, these personal projects represent my
           approach: thoughtful, user-focused, and built with care.
         </p>
@@ -78,7 +78,7 @@ const RecentProjects = () => {
             <div className="flex-1 space-y-6">
               <div>
                 <div className="flex items-center gap-3 mb-3">
-                  <span className="text-sm font-medium text-blue-600 bg-blue-50 px-3 py-1 rounded-full">
+                  <span className="text-sm font-medium border border-gray-300 text-gray-500 px-3 py-1 rounded-full">
                     {project.type}
                   </span>
                 </div>
@@ -99,7 +99,7 @@ const RecentProjects = () => {
               </div>
 
               {/* Links */}
-              <div className="flex items-center gap-4 pt-2">
+              {/* <div className="flex items-center gap-4 pt-2">
                 <a
                   href={project.liveUrl}
                   className="inline-flex items-center gap-2 text-lg font-medium text-gray-900 hover:text-blue-600 transition-colors group"
@@ -120,7 +120,7 @@ const RecentProjects = () => {
                     className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
                   />
                 </a>
-              </div>
+              </div> */}
             </div>
           </article>
         ))}
