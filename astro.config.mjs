@@ -4,9 +4,9 @@ import vercel from '@astrojs/vercel';
 import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
 
-// https://astro.build/config
+// Production config for Vercel
 export default defineConfig({
-  output: 'server',
+  output: 'server', // This is correct for your setup
   adapter: vercel(),
   server: {
     host: '127.0.0.1',
