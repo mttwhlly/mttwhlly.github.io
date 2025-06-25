@@ -35,20 +35,22 @@ const Testimonials = () => {
   ];
 
   // Duplicate testimonials for seamless infinite scroll
-  const duplicatedTestimonials = [...testimonials, ...testimonials];
+  // const duplicatedTestimonials = [...testimonials, ...testimonials];
 
   return (
     <section className="py-16 overflow-hidden">
-      <div className="mb-12 text-center">
-        <h2 className="text-3xl font-heading uppercase text-gray-900 mb-2">Testimonials</h2>
+      <div className="mb-12 max-w-4xl mx-auto">
+        <h2 className="text-2xl font-mono tracking-loose uppercase text-gray-900 mb-2">
+          _Testimonials
+        </h2>
       </div>
 
-      <div className="relative">
-        <div className="flex space-x-6 animate-scroll hover:animate-pause">
-          {duplicatedTestimonials.map((testimonial, index) => (
+      <div className="max-w-4xl mx-auto">
+        <div className="flex space-x-2">
+          {testimonials.map((testimonial, index) => (
             <div
               key={`${testimonial.id}-${index}`}
-              className="flex flex-col justify-between flex-shrink-0 w-80 bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300"
+              className="flex flex-col justify-between flex-shrink-0 w-80 bg-white rounded-xl p-6 border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-300"
             >
               <blockquote className="text-gray-700 text-lg">"{testimonial.content}"</blockquote>
 
@@ -70,25 +72,6 @@ const Testimonials = () => {
           ))}
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes scroll {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-
-        .animate-scroll {
-          animation: scroll 20s linear infinite;
-        }
-
-        .animate-pause:hover {
-          animation-play-state: paused;
-        }
-      `}</style>
     </section>
   );
 };
