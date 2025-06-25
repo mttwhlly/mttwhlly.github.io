@@ -8,7 +8,7 @@ import FAQ from '../components/FAQ';
 </header>
 <main class="">    
   <section class="container px-4 py-12 flex-auto flex flex-col gap-8 mt-12 max-w-4xl mx-auto">
-    <h1 class="text-6xl mb-8 font-mono tracking-tighter leading-tight">Building calm, thoughtful interfaces in a noisy world</h1>
+    <h1 class="mb-8 font-mono leading-tight md:text-6xl text-5xl md:tracking-tighter tracking-loose">Building calm, thoughtful interfaces in a noisy world</h1>
     <p class="text-xl text-gray-600 leading-relaxed">I'm a senior frontend developer with a foundation in visual design, focused on building useful products and scaling durable design systems.
 </p><p class="text-xl text-gray-600 leading-relaxed">
 I work best at the intersection of design and engineering—translating visual clarity into accessible, maintainable interfaces. I’ve led design system initiatives, modernized legacy codebases, and advocated for quality in fast-paced, resource-constrained environments.
@@ -17,19 +17,62 @@ I work best at the intersection of design and engineering—translating visual c
 I value calm collaboration, thoughtful execution, and long-term product thinking. I’m currently looking for a remote-friendly team that shares those values—and is building something that matters.</p>
   </section>
   <section class="container px-4 flex-auto flex flex-col gap-8 mt-12 max-w-4xl mx-auto">
-    <h2 class="text-2xl mb-8 font-mono leading-tight uppercase">_About</h2>
+    <h2 class="text-2xl mb-8 font-mono leading-tight uppercase text-gray-500">_About</h2>
     <p class="text-xl text-gray-600 leading-relaxed">Based in St Augustine, Florida, I'm a dad, climber, and surfer always looking for ways to combine tech with real life.
 Offline, you’ll often find me chasing waves or toddlers.</p>
   </section>
   <RecentProjects />
+  <section class="container px-4 flex-auto flex flex-col gap-8 mt-12 max-w-4xl mx-auto">
+    <h2 class="text-2xl mb-8 font-mono leading-tight uppercase text-gray-500">_Tools</h2>
+    <div id="tools">
+     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-base leading-relaxed">
+      <div>
+        <h3 class="font-semibold mb-1">Development</h3>
+        <ul class="text-gray-700">
+          <li>React (Next.js, Remix), Svelte</li>
+          <li>TypeScript, JavaScript, HTML5, CSS3</li>
+          <li>React Native (Expo), SwiftUI</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="font-semibold mb-1">Design</h3>
+        <ul class="text-gray-700">
+          <li>Figma, Adobe Creative Suite</li>
+          <li>Design systems (Storybook)</li>
+          <li>Typography, Iconography, Illustration</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="font-semibold mb-1">Tooling & Infrastructure</h3>
+        <ul class="text-gray-700">
+          <li>Git, CI/CD, Docker, Vite, VS Code, Xcode</li>
+          <li>Node.js, REST/GraphQL APIs</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="font-semibold mb-1">AI & Experiments</h3>
+        <ul class="text-gray-700">
+          <li>Azure AI Services, OpenAI, Anthropic</li>
+          <li>Ollama (local LLMs), prompt engineering, UX for AI</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="mt-6 text-gray-600">
+      I care more about what tools enable than the tools themselves—but I’m always experimenting and refining my workflow to build better software.
+    </p>
+
+
+    </div>
+  </section>
   <!-- <FAQ client:load/> -->
   <Testimonials />
   <section class="container px-4 pb-20 flex-auto flex flex-col gap-8 mt-12 max-w-4xl mx-auto">
     <p class="text-xl text-gray-600 leading-relaxed">Looking for a thoughtful frontend lead or collaborator?
 I’m open to remote roles or interesting side projects. Let’s talk.</p>
 <div class="my-12 flex justify-center">
-    <a href="mailto:&#109;&#97;&#116;&#116;&#64;&#109;&#97;&#116;&#116;&#119;&#104;&#97;&#108;&#108;&#101;&#121;&#46;&#99;&#111;&#109;" class="text-2xl bg-lemonlime-200 py-4 px-8 hover:text-blue-800 transition-colors duration-300 rounded-full hover:bg-lemonlime-100 font-mono">
-                Get in touch
+    <a href="mailto:&#109;&#97;&#116;&#116;&#64;&#109;&#97;&#116;&#116;&#119;&#104;&#97;&#108;&#108;&#101;&#121;&#46;&#99;&#111;&#109;" class="text-2xl bg-blue-100 py-3 px-8 pl-4 hover:text-blue-800 transition-colors duration-300 rounded-full hover:bg-lemonlime-100 font-mono">
+                <img src="/images/me.png" width="54" height="54" class="rounded-full inline"> Get in Touch
     </a>
     </div>
   </section>
