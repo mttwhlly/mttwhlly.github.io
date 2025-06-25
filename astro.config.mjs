@@ -1,6 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-import vercel from '@astrojs/vercel/serverless';
+import vercel from '@astrojs/vercel';
 import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
 
@@ -14,7 +14,6 @@ export default defineConfig({
   },
   integrations: [react()],
   site: 'https://mattwhalley.com',
-
   vite: {
     plugins: [tailwindcss()],
   },
