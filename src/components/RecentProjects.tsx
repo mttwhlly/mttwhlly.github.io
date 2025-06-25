@@ -44,7 +44,9 @@ const RecentProjects = () => {
   return (
     <section className="container px-4 py-20 max-w-4xl mx-auto">
       <div className="mb-16">
-        <h2 className="text-2xl font-mono tracking-loose leading-tight uppercase">_Projects</h2>
+        <h2 className="text-2xl font-mono tracking-loose leading-tight uppercase text-gray-500">
+          _Projects
+        </h2>
       </div>
 
       <div className="max-w-3xl mx-auto">
