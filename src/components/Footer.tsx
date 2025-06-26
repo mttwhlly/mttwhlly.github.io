@@ -15,7 +15,7 @@ export default function Footer() {
         <div className="flex flex-col gap-4 my-8 md:my-0">
           <p className="text-sm text-gray-400 font-mono uppercase py-4">_Offline</p>
           <ul>
-            <li className="h-[42px]">
+            <li className="h-[42px] text-sm md:text-md flex items-center space-x-2">
               <SpotifyNowPlaying />
             </li>
             <li className="h-[42px] text-sm md:text-md flex items-center space-x-2">
@@ -42,7 +42,7 @@ export default function Footer() {
         <div className="flex flex-col gap-4">
           <p className="text-sm text-gray-400 font-mono uppercase py-4">_Online</p>
           <ul>
-            <li className="h-[42px] text-sm md:text-md">
+            <li className="h-[42px] text-sm md:text-md flex items-center space-x-2">
               <a href="https://github.com/mttwhlly" target="_blank">
                 <GithubLogo
                   className="text-gray-400 text-sm md:text-md inline-block mr-1"
@@ -51,7 +51,7 @@ export default function Footer() {
                 Github
               </a>
             </li>
-            <li className="h-[42px] text-sm md:text-md">
+            <li className="h-[42px] text-sm md:text-md flex items-center space-x-2">
               <a href="https://linkedin.com/in/mttwhlly" target="_blank">
                 <LinkedinLogo
                   className="text-gray-400 text-sm md:text-md inline-block mr-1"
@@ -60,7 +60,7 @@ export default function Footer() {
                 Linkedin
               </a>
             </li>
-            <li className="h-[42px] text-sm md:text-md">
+            <li className="h-[42px] text-sm md:text-md flex items-center space-x-2">
               <PaperPlaneTilt
                 className="text-gray-400 text-sm md:text-md inline-block mr-1"
                 size={16}
