@@ -2,36 +2,56 @@
 import Testimonials from '../components/Testimonials';
 import RecentProjects from '../components/RecentProjects';
 import Tools from '../components/Tools';
+import AnimatedHeading from '../components/AnimatedHeading';
+import ScrollFadeIn from '../components/ScrollFadeIn';
 ---
 <header>
  
 </header>
 <main class="">    
   <section class="container px-4 pt-20 pb-12 flex-auto flex flex-col gap-8 max-w-4xl mx-auto border-x border-dashed border-gray-200">
-    <h1 class="mb-8 font-mono font-medium leading-tight md:text-6xl text-5xl md:tracking-tightest tracking-loose">Building calm, thoughtful interfaces in a noisy world</h1>
-    <p class="text-xl text-gray-600 leading-relaxed">I'm a senior frontend developer with a foundation in visual design, focused on building useful products and scaling durable design systems.
-</p><p class="text-xl text-gray-600 leading-relaxed">
-I work best at the intersection of design and engineering—translating visual clarity into accessible, maintainable interfaces. I’ve led design system initiatives, modernized legacy codebases, and advocated for quality in fast-paced, resource-constrained environments.
-</p><p class="text-xl text-gray-600 leading-relaxed">
-    I’m passionate about building products that are not just functional, but also delightful to use. I believe in the power of thoughtful design and clean code to create experiences that resonate with users. My approach is user-centered, focusing on solving real problems with empathy and precision.
-I value calm collaboration, thoughtful execution, and long-term product thinking. I’m currently looking for a remote-friendly team that shares those values—and is building something that matters.</p>
+    <AnimatedHeading client:load />
+    
+    <ScrollFadeIn client:load delay={100}>
+      <p class="text-xl text-gray-600 leading-relaxed">I'm a senior frontend developer with a foundation in visual design, focused on building useful products and scaling durable design systems.</p>
+    </ScrollFadeIn>
+    
+    <ScrollFadeIn client:load delay={200}>
+      <p class="text-xl text-gray-600 leading-relaxed">I work best at the intersection of design and engineering—translating visual clarity into accessible, maintainable interfaces. I've led design system initiatives, modernized legacy codebases, and advocated for quality in fast-paced, resource-constrained environments.</p>
+    </ScrollFadeIn>
+    
+    <ScrollFadeIn client:load delay={300}>
+      <p class="text-xl text-gray-600 leading-relaxed">I'm passionate about building products that are not just functional, but also delightful to use. I believe in the power of thoughtful design and clean code to create experiences that resonate with users. My approach is user-centered, focusing on solving real problems with empathy and precision. I value calm collaboration, thoughtful execution, and long-term product thinking. I'm currently looking for a remote-friendly team that shares those values—and is building something that matters.</p>
+    </ScrollFadeIn>
   </section>
-  <section class="container px-4 flex-auto flex flex-col gap-8 mt-12 max-w-4xl mx-auto">
-    <h2 class="text-2xl mb-8 font-mono leading-tight uppercase text-gray-500">_About</h2>
-    <p class="text-xl text-gray-600 leading-relaxed">Based in St Augustine, Florida, I'm a dad, climber, and surfer always looking for ways to combine tech with real life.
-Offline, you’ll often find me chasing waves or toddlers.</p>
-  </section>
-  <RecentProjects />
-  <Tools client:load />
-  <Testimonials />
-  <section class="container px-4 pb-20 flex-auto flex flex-col gap-8 mt-12 max-w-4xl mx-auto">
-    <p class="text-xl text-gray-600 leading-relaxed">Looking for a thoughtful frontend lead or collaborator?
-I’m open to remote roles or interesting side projects. Let’s talk.</p>
-<div class="my-12 flex justify-center">
-    <a href="mailto:&#109;&#97;&#116;&#116;&#64;&#109;&#97;&#116;&#116;&#119;&#104;&#97;&#108;&#108;&#101;&#121;&#46;&#99;&#111;&#109;" class="text-2xl bg-gray-200 py-3 px-8 pl-4 transition-colors duration-500 rounded-full hover:bg-blue-200 font-mono">
-                <img src="/images/me.png" width="54" height="54" class="rounded-full inline"> Get in Touch
-    </a>
-    </div>
-  </section>
+  
+  <ScrollFadeIn client:load delay={50}>
+    <section class="container px-4 flex-auto flex flex-col gap-8 mt-12 max-w-4xl mx-auto">
+      <h2 class="text-2xl mb-8 font-mono leading-tight uppercase text-gray-500">_About</h2>
+      <p class="text-xl text-gray-600 leading-relaxed">Based in St Augustine, Florida, I'm a dad, climber, and surfer always looking for ways to combine tech with real life. Offline, you'll often find me chasing waves or toddlers.</p>
+    </section>
+  </ScrollFadeIn>
+  
+  <ScrollFadeIn client:load delay={100}>
+    <RecentProjects />
+  </ScrollFadeIn>
+  
+  <ScrollFadeIn client:load delay={150}>
+    <Tools client:load />
+  </ScrollFadeIn>
+  
+  <ScrollFadeIn client:load delay={200}>
+    <Testimonials />
+  </ScrollFadeIn>
+  
+  <ScrollFadeIn client:load delay={250}>
+    <section class="container px-4 pb-20 flex-auto flex flex-col gap-8 mt-12 max-w-4xl mx-auto">
+      <p class="text-xl text-gray-600 leading-relaxed">Looking for a thoughtful frontend lead or collaborator? I'm open to remote roles or interesting side projects. Let's talk.</p>
+      <div class="my-12 flex justify-center">
+        <a href="mailto:&#109;&#97;&#116;&#116;&#64;&#109;&#97;&#116;&#116;&#119;&#104;&#97;&#108;&#108;&#101;&#121;&#46;&#99;&#111;&#109;" class="text-2xl bg-gray-200 py-3 px-8 pl-4 transition-colors duration-500 rounded-full hover:bg-orange-300 font-mono">
+          <img src="/images/me.png" width="54" height="54" class="rounded-full inline"> Get in Touch
+        </a>
+      </div>
+    </section>
+  </ScrollFadeIn>
 </main>
-

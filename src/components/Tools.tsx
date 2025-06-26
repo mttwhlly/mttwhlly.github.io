@@ -173,6 +173,24 @@ const Tools: React.FC = () => {
       alt: 'GraphQL logo',
       category: 'cloud',
     },
+    {
+      name: 'Wordpress',
+      image: '/images/wordpress.png',
+      alt: 'Wordpress logo',
+      category: 'cloud',
+    },
+    {
+      name: 'Sanity',
+      image: '/images/sanity.png',
+      alt: 'Sanity logo',
+      category: 'cloud',
+    },
+    {
+      name: 'Shopify',
+      image: '/images/shopify.png',
+      alt: 'Shopify logo',
+      category: 'cloud',
+    },
 
     // AI & Experiments
     {
@@ -227,10 +245,12 @@ const Tools: React.FC = () => {
           src={item.image}
           alt={item.alt}
           title={item.name}
-          className="w-12 h-12 object-contain"
+          className="w-12 h-12 object-contain grayscale group-hover:grayscale-0 transition-all duration-300 ease-in-out"
         />
       </div>
-      <span className="text-xs text-gray-400 text-center font-medium">{item.name}</span>
+      {/* <span className="text-xs text-gray-400 text-center font-medium group-hover:text-gray-600 transition-colors duration-300">
+        {item.name}
+      </span> */}
     </div>
   );
 
@@ -241,7 +261,7 @@ const Tools: React.FC = () => {
     >
       <h2 className="text-2xl mb-8 font-mono leading-tight uppercase text-gray-500">_Tools</h2>
 
-      <div className="overflow-hidden space-y-8">
+      <div className="overflow-hidden space-y-4">
         {/* Row 1 - Left to Right */}
         <div className="tech-row tech-row-ltr relative">
           <div className="flex gap-4 animate-scroll-ltr">
