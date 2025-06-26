@@ -96,11 +96,11 @@ const AnimatedHeading = () => {
       >
         {displayText}
         {showCursor && (
-          <span class="inline-block ml-2 mb-2 w-12 h-12 md:w-16 md:h-16 bg-orange-500 rounded-full animate-pulse opacity-80 align-middle"></span>
+          <span className="inline-block ml-2 mb-2 w-12 h-12 md:w-16 md:h-16 bg-orange-500 rounded-full animate-pulse opacity-80 align-middle"></span>
         )}
       </h1>
 
-      <style jsx>{`
+      <style>{`
         @keyframes gentle-pulse {
           0%,
           100% {

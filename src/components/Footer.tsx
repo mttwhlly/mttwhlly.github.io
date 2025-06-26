@@ -1,4 +1,11 @@
 import SpotifyNowPlaying from './SpotifyNowPlaying';
+import {
+  BookBookmark,
+  Mountains,
+  GithubLogo,
+  LinkedinLogo,
+  PaperPlaneTilt,
+} from '@phosphor-icons/react';
 
 export default function Footer() {
   return (
@@ -11,12 +18,16 @@ export default function Footer() {
               <SpotifyNowPlaying />
             </li>
             <li className="h-[42px] text-sm md:text-md">
-              <span className="text-gray-400 font-extralight text-sm md:text-md">Reading</span>{' '}
-              "Anxious Generation" <i>by</i> Jonathan Haidt
+              <span className="text-gray-400 text-sm md:text-md inline-block mr-1">
+                <BookBookmark size={16} />
+              </span>
+              "Anxious Generation" – Jonathan Haidt
             </li>
             <li className="h-[42px] text-sm md:text-md">
-              <span className="text-gray-400 text-sm md:text-md">Climbing</span> Red V5 on Prow Wall{' '}
-              <i>at</i>{' '}
+              <span className="text-gray-400 text-sm md:text-md inline-block mr-1">
+                <Mountains size={16} />
+              </span>{' '}
+              Red V5 on Prow Wall –{' '}
               <a href="https://stoneclimbing.com/" target="_blank">
                 Stone Climbing Co.
               </a>
@@ -28,17 +39,27 @@ export default function Footer() {
           <ul>
             <li className="h-[42px] text-sm md:text-md">
               <a href="https://github.com/mttwhlly" target="_blank">
-                <i className="ph-fill ph-github-logo text-gray-400 text-sm md:text-md"></i> Github
+                <GithubLogo
+                  className="text-gray-400 text-sm md:text-md inline-block mr-1"
+                  size={16}
+                />
+                Github
               </a>
             </li>
             <li className="h-[42px] text-sm md:text-md">
               <a href="https://linkedin.com/in/mttwhlly" target="_blank">
-                <i className="ph-fill ph-linkedin-logo text-gray-400 text-sm md:text-md"></i>{' '}
+                <LinkedinLogo
+                  className="text-gray-400 text-sm md:text-md inline-block mr-1"
+                  size={16}
+                />
                 Linkedin
               </a>
             </li>
             <li className="h-[42px] text-sm md:text-md">
-              <i className="ph-fill ph-envelope text-gray-400 text-sm md:text-md"></i>{' '}
+              <PaperPlaneTilt
+                className="text-gray-400 text-sm md:text-md inline-block mr-1"
+                size={16}
+              />{' '}
               <a href="mailto:&#109;&#97;&#116;&#116;&#64;&#109;&#97;&#116;&#116;&#119;&#104;&#97;&#108;&#108;&#101;&#121;&#46;&#99;&#111;&#109;">
                 Email
               </a>

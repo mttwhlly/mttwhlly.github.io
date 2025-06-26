@@ -295,7 +295,7 @@ const Tools: React.FC = () => {
         and refining my workflow to build better software.
       </p>
 
-      <style jsx>{`
+      <style>{`
         .tech-row {
           opacity: 0;
           transform: translateY(20px);
