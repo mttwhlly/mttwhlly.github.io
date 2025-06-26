@@ -1,7 +1,7 @@
 ---
 import Testimonials from '../components/Testimonials';
 import RecentProjects from '../components/RecentProjects';
-import FAQ from '../components/FAQ';
+import Tools from '../components/Tools';
 ---
 <header>
  
@@ -22,56 +22,13 @@ I value calm collaboration, thoughtful execution, and long-term product thinking
 Offline, you’ll often find me chasing waves or toddlers.</p>
   </section>
   <RecentProjects />
-  <section class="container px-4 flex-auto flex flex-col gap-8 mt-12 max-w-4xl mx-auto">
-    <h2 class="text-2xl mb-8 font-mono leading-tight uppercase text-gray-500">_Tools</h2>
-    <div id="tools">
-     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-base leading-relaxed">
-      <div>
-        <h3 class="font-semibold mb-1">Development</h3>
-        <ul class="text-gray-700">
-          <li>React (Next.js, Remix), Svelte</li>
-          <li>TypeScript, JavaScript, HTML5, CSS3</li>
-          <li>React Native (Expo), SwiftUI</li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="font-semibold mb-1">Design</h3>
-        <ul class="text-gray-700">
-          <li>Figma, Adobe Creative Suite</li>
-          <li>Design systems (Storybook)</li>
-          <li>Typography, Iconography, Illustration</li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="font-semibold mb-1">Tooling & Infrastructure</h3>
-        <ul class="text-gray-700">
-          <li>Git, CI/CD, Docker, Vite, VS Code, Xcode</li>
-          <li>Node.js, REST/GraphQL APIs</li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="font-semibold mb-1">AI & Experiments</h3>
-        <ul class="text-gray-700">
-          <li>Azure AI Services, OpenAI, Anthropic</li>
-          <li>Ollama (local LLMs), prompt engineering, UX for AI</li>
-        </ul>
-      </div>
-    </div>
-
-    <p class="mt-6 text-gray-600">
-      I care more about what tools enable than the tools themselves—but I’m always experimenting and refining my workflow to build better software.
-    </p>
-
-
-    </div>
-  </section>
-  <!-- <FAQ client:load/> -->
+  <Tools client:load />
   <Testimonials />
   <section class="container px-4 pb-20 flex-auto flex flex-col gap-8 mt-12 max-w-4xl mx-auto">
     <p class="text-xl text-gray-600 leading-relaxed">Looking for a thoughtful frontend lead or collaborator?
 I’m open to remote roles or interesting side projects. Let’s talk.</p>
 <div class="my-12 flex justify-center">
-    <a href="mailto:&#109;&#97;&#116;&#116;&#64;&#109;&#97;&#116;&#116;&#119;&#104;&#97;&#108;&#108;&#101;&#121;&#46;&#99;&#111;&#109;" class="text-2xl bg-blue-100 py-3 px-8 pl-4  transition-colors duration-300 rounded-full hover:bg-blue-200 font-mono">
+    <a href="mailto:&#109;&#97;&#116;&#116;&#64;&#109;&#97;&#116;&#116;&#119;&#104;&#97;&#108;&#108;&#101;&#121;&#46;&#99;&#111;&#109;" class="text-2xl bg-black text-white py-3 px-8 pl-4  transition-colors duration-500 rounded-full hover:bg-blue-200 hover:text-black font-mono">
                 <img src="/images/me.png" width="54" height="54" class="rounded-full inline"> Get in Touch
     </a>
     </div>
