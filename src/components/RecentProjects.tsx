@@ -49,7 +49,7 @@ const RecentProjects = () => {
         </h2>
       </div>
 
-      <div className="max-w-3xl mx-auto">
+      <div className="max-w-4xl mx-auto">
         <p className="text-md text-gray-700 p-6 bg-gray-50 rounded-xl border border-dashed border-gray-400 mb-16">
           While I can’t share work from my current role, these personal projects represent my
           approach: thoughtful, user-focused, and built with care.
@@ -60,7 +60,7 @@ const RecentProjects = () => {
         {projects.map((project, index) => (
           <article
             key={project.id}
-            className={`flex flex-col lg:flex-row gap-8 lg:gap-12 items-start ${
+            className={`flex flex-col lg:flex-row gap-8 lg:gap-12 items-start p-8 border border-gray-200 rounded-2xl ${
               index % 2 === 1 ? 'lg:flex-row-reverse' : ''
             }`}
           >
