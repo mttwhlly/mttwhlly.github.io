@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import type { NowPlayingData } from '../types/spotify';
 import { SpotifyLogo } from '@phosphor-icons/react';
 
@@ -6,6 +6,9 @@ const SpotifyNowPlaying: React.FC = () => {
   const [nowPlaying, setNowPlaying] = useState<NowPlayingData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [shouldScroll, setShouldScroll] = useState<boolean>(false);
+  const textRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const fetchAccessToken = async (): Promise<string | null> => {
     try {
@@ -83,6 +86,21 @@ const SpotifyNowPlaying: React.FC = () => {
     }
   };
 
+  // Check if text overflows and needs scrolling
+  useEffect(() => {
+    if (textRef.current && containerRef.current && nowPlaying) {
+      const textWidth = textRef.current.scrollWidth;
+      const containerWidth = containerRef.current.clientWidth;
+      setShouldScroll(textWidth > containerWidth);
+
+      // Set CSS custom property for animation distance
+      if (textWidth > containerWidth) {
+        const distance = textWidth - containerWidth;
+        containerRef.current.style.setProperty('--marquee-distance', `${distance}px`);
+      }
+    }
+  }, [nowPlaying]);
+
   useEffect(() => {
     const initializeSpotify = async (): Promise<void> => {
       const token = await fetchAccessToken();
@@ -105,34 +123,66 @@ const SpotifyNowPlaying: React.FC = () => {
   }, []);
 
   return (
-    <div className="flex">
-      {loading && <p>Loading...</p>}
+    <div className="flex items-center max-w-full">
+      {loading && <p className="text-sm text-gray-400">Loading...</p>}
 
-      {error && <p className="error">{error}</p>}
+      {error && <p className="text-sm text-red-400">{error}</p>}
 
       {nowPlaying && (
-        <div className="flex">
-          <div className="flex space-x-1">
-            {nowPlaying.isCurrentlyPlaying ? (
-              <span className="text-gray-400 text-sm md:text-md">
-                <SpotifyLogo size={16} />
-              </span>
-            ) : (
-              <span className="text-gray-400 text-sm md:text-md">
-                <SpotifyLogo size={16} />
-              </span>
-            )}
-            <h3 className=" text-sm md:text-md">
-              <a href={nowPlaying.trackLink}>"{nowPlaying.name}"</a>
-            </h3>
-            <p className=" text-sm md:text-md">
-              – <a href={nowPlaying.artistLink}>{nowPlaying.artist}</a>
-            </p>
-            {/* <p className="">from <a href={nowPlaying.albumLink}>{nowPlaying.album}</a></p> */}
-            <div className="status text-sm md:text-md"></div>
+        <div className="flex items-center space-x-2 min-w-0 flex-1">
+          <span className="text-gray-400 flex-shrink-0">
+            <SpotifyLogo size={16} />
+          </span>
+
+          <div ref={containerRef} className="overflow-hidden min-w-0 flex-1 relative">
+            <div
+              ref={textRef}
+              className={`whitespace-nowrap text-sm md:text-md ${
+                shouldScroll ? 'animate-marquee' : ''
+              }`}
+            >
+              <a href={nowPlaying.trackLink} className="hover:underline">
+                "{nowPlaying.name}"
+              </a>
+              <span className="mx-1">–</span>
+              <a href={nowPlaying.artistLink} className="hover:underline">
+                {nowPlaying.artist}
+              </a>
+            </div>
           </div>
         </div>
       )}
+
+      <style jsx>{`
+        @keyframes marquee {
+          0% {
+            transform: translateX(0);
+          }
+          20% {
+            transform: translateX(0);
+          }
+          40% {
+            transform: translateX(calc(-1 * var(--marquee-distance, 0px)));
+          }
+          60% {
+            transform: translateX(calc(-1 * var(--marquee-distance, 0px)));
+          }
+          80% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(0);
+          }
+        }
+
+        .animate-marquee {
+          animation: marquee 10s ease-in-out infinite;
+        }
+
+        .animate-marquee:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
     </div>
   );
 };

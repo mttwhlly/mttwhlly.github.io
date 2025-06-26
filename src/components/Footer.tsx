@@ -1,4 +1,5 @@
 import SpotifyNowPlaying from './SpotifyNowPlaying';
+import Marquee from './Marquee';
 import {
   BookBookmark,
   Mountains,
@@ -17,20 +18,24 @@ export default function Footer() {
             <li className="h-[42px]">
               <SpotifyNowPlaying />
             </li>
-            <li className="h-[42px] text-sm md:text-md">
-              <span className="text-gray-400 text-sm md:text-md inline-block mr-1">
+            <li className="h-[42px] text-sm md:text-md flex items-center space-x-2">
+              <span className="text-gray-400 text-sm md:text-md flex-shrink-0">
                 <BookBookmark size={16} />
               </span>
-              "Anxious Generation" – Jonathan Haidt
+              <Marquee className="text-sm md:text-md">
+                "Anxious Generation" – Jonathan Haidt
+              </Marquee>
             </li>
-            <li className="h-[42px] text-sm md:text-md">
-              <span className="text-gray-400 text-sm md:text-md inline-block mr-1">
+            <li className="h-[42px] text-sm md:text-md flex items-center space-x-2">
+              <span className="text-gray-400 text-sm md:text-md flex-shrink-0">
                 <Mountains size={16} />
-              </span>{' '}
-              Red V5 on Prow Wall –{' '}
-              <a href="https://stoneclimbing.com/" target="_blank">
-                Stone Climbing Co.
-              </a>
+              </span>
+              <Marquee className="text-sm md:text-md">
+                Red V5 on Prow Wall –{' '}
+                <a href="https://stoneclimbing.com/" target="_blank" className="hover:underline">
+                  Stone Climbing Co.
+                </a>
+              </Marquee>
             </li>
           </ul>
         </div>
