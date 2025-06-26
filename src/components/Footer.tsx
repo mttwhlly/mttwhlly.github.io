@@ -10,8 +10,8 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="shrink bg-black text-white py-12 md:flex-row flex-col">
-      <div className="flex md:flex-row flex-col mx-auto px-4 md:px-16 justify-between">
+    <footer className="shrink bg-black text-white md:flex-row flex-col">
+      <div className="flex md:flex-row flex-col mx-auto px-4 md:px-16 justify-between py-12">
         <div className="flex flex-col gap-4 my-8 md:my-0">
           <p className="text-sm text-gray-400 font-mono uppercase py-4">_Offline</p>
           <ul>
@@ -71,6 +71,12 @@ export default function Footer() {
             </li>
           </ul>
         </div>
+      </div>
+      <div className="w-full h-[42] text-center text-xs pb-2 text-gray-400">
+        © Matt Whalley, 2025 –{' '}
+        <a href="https://github.com/mttwhlly/mttwhlly.github.io" className="hover:underline">
+          View Source
+        </a>
       </div>
     </footer>
   );
