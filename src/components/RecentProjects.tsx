@@ -27,18 +27,6 @@ const RecentProjects = () => {
       githubUrl: '#',
       type: 'Progressive Web App',
     },
-    // {
-    //   id: 3,
-    //   title: 'Legacy Platform Migration',
-    //   description:
-    //     'Migrated a complex legacy application to modern React architecture while maintaining 99.9% uptime and improving performance by 60%.',
-    //   image:
-    //     'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop&auto=format',
-    //   tags: ['React', 'Performance', 'Migration', 'Node.js'],
-    //   liveUrl: '#',
-    //   githubUrl: '#',
-    //   type: 'Modernization',
-    // },
   ];
 
   return (
