@@ -236,7 +236,7 @@ const Tools: React.FC = () => {
 
   return (
     <section
-      className="container px-4 flex-auto flex flex-col gap-4 mt-12 max-w-4xl mx-auto"
+      className="container px-4 flex-auto flex flex-col gap-4 mt-12 max-w-4xl mx-auto border-x border-dashed border-gray-200"
       ref={containerRef}
     >
       <h2 className="text-2xl mb-8 font-mono leading-tight uppercase text-gray-500">_Tools</h2>
