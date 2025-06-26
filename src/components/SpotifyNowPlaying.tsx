@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import type { NowPlayingData } from '../types/spotify';
+import { SpotifyLogo } from '@phosphor-icons/react';
 
 const SpotifyNowPlaying: React.FC = () => {
   const [nowPlaying, setNowPlaying] = useState<NowPlayingData | null>(null);
@@ -113,16 +114,19 @@ const SpotifyNowPlaying: React.FC = () => {
         <div className="flex">
           <div className="flex space-x-1">
             {nowPlaying.isCurrentlyPlaying ? (
-              <span className="text-gray-400 text-sm md:text-md">Current Track</span>
+              <span className="text-gray-400 text-sm md:text-md">
+                <SpotifyLogo size={16} />
+              </span>
             ) : (
-              <span className="text-gray-400 text-sm md:text-md">Recent Track</span>
+              <span className="text-gray-400 text-sm md:text-md">
+                <SpotifyLogo size={16} />
+              </span>
             )}
             <h3 className=" text-sm md:text-md">
               <a href={nowPlaying.trackLink}>"{nowPlaying.name}"</a>
             </h3>
             <p className=" text-sm md:text-md">
-              <span className="italic text-sm md:text-md">by</span>{' '}
-              <a href={nowPlaying.artistLink}>{nowPlaying.artist}</a>
+              – <a href={nowPlaying.artistLink}>{nowPlaying.artist}</a>
             </p>
             {/* <p className="">from <a href={nowPlaying.albumLink}>{nowPlaying.album}</a></p> */}
             <div className="status text-sm md:text-md"></div>
