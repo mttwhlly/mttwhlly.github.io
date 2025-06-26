@@ -8,7 +8,8 @@ const SpotifyNowPlaying: React.FC = () => {
 
   const fetchAccessToken = async (): Promise<string | null> => {
     try {
-      const response = await fetch('/api/spotify', {
+      // Updated to use external API
+      const response = await fetch('https://spotify-api-silk-nine.vercel.app/api/spotify', {
         method: 'POST',
       });
 
