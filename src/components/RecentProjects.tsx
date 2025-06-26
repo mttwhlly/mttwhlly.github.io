@@ -50,7 +50,7 @@ const RecentProjects = () => {
       </div>
 
       <div className="max-w-4xl mx-auto">
-        <p className="text-md text-gray-700 p-6 bg-gray-50 rounded-xl border border-dashed border-gray-400 mb-16">
+        <p className="text-md text-gray-700 p-6 bg-gray-50 rounded-xl border border-dashed border-gray-300 mb-16">
           While I can’t share work from my current role, these personal projects represent my
           approach: thoughtful, user-focused, and built with care.
         </p>
