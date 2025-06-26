@@ -5,64 +5,41 @@ import Footer from '../components/Footer';
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Matt Whalley - Frontend Developer</title>
+  <title>Matt Whalley – Calm, Intentional Interfaces</title>
 
-    <!-- SEO -->
-    <meta
-      name="description"
-      content="Crafting modern digital experiences with curiosity & sincerity. Pursuing timeless quality with agility."
-    />
-    <meta
-      name="keywords"
-      content="Frontend Developer Portfolio
-    Web Development Projects,
-    HTML/CSS Projects,
-    JavaScript Portfolio Examples,
-    Responsive Web Design Portfolio,
-    UI/UX Design Projects,
-    Interactive Web Applications,
-    Frontend Coding Samples,
-    Frontend Developer Skills Showcase,
-    Portfolio for Web Developers,
-    Creative Web Design Portfolio,
-    Personal Website for Developers,
-    Best Frontend Developer Portfolios,
-    Frontend Development Case Studies"
-    />
-    <meta name="author" content="Matt Whalley" />
+  <!-- SEO -->
+  <meta name="description" content="Frontend engineer crafting calm, thoughtful interfaces. Focused on clarity, accessibility, and long-term value." />
+  <meta name="keywords" content="Matt Whalley, Frontend Developer, UI Engineer, React, TypeScript, Design Systems, Accessibility, UX Engineering, Thoughtful Interfaces, Web Developer Portfolio" />
+  <meta name="author" content="Matt Whalley" />
 
-    <!-- Open Graph Tags -->
-    <meta property="og:title" content="Matt Whalley - Software Engineer" />
-    <meta
-      property="og:description"
-      content="Crafting modern digital experiences with curiosity & sincerity. Pursuing timeless quality with agility."
-    />
-    <!-- TODO: add og:image -->
-    <!-- <meta property="og:image" content="image-url.jpg" /> -->
-    <meta property="og:url" content="https://mattwhalley.com" />
+  <!-- Open Graph Tags -->
+  <meta property="og:title" content="Matt Whalley – Frontend Developer & Interface Engineer" />
+  <meta property="og:description" content="Building calm, thoughtful interfaces in a noisy world. Explore my work and values." />
+  <meta property="og:url" content="https://mattwhalley.com" />
+  <!-- Optional: Uncomment when image is ready -->
+  <!-- <meta property="og:image" content="https://mattwhalley.com/og-image.jpg" /> -->
+  <meta property="og:type" content="website" />
 
-    <!-- Favicon -->
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="manifest" href="/site.webmanifest" />
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#171717" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/fill/style.css"
-    />
-    <meta name="msapplication-TileColor" content="#2d89ef" />
-    <meta name="theme-color" content="#000000" />
+  <!-- Favicon and Icons -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#171717" />
+  <meta name="msapplication-TileColor" content="#2d89ef" />
+  <meta name="theme-color" content="#000000" />
 
-  </head>
-  <body class="flex flex-col min-h-screen">
-    <slot />
-    <Footer client:load />
-  </body>
+  <!-- Icon Library -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/fill/style.css" />
+</head>
+
+<body class="flex flex-col min-h-screen antialiased text-gray-900 bg-white">
+  <slot />
+  <Footer client:load />
+</body>
 </html>
