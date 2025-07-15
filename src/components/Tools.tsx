@@ -256,10 +256,10 @@ const Tools: React.FC = () => {
 
   return (
     <section
-      className="container px-4 flex-auto flex flex-col gap-4 mt-12 max-w-4xl mx-auto border-x border-dashed border-gray-200"
+      className="container px-4 flex-auto flex flex-col gap-4 mt-12 max-w-4xl mx-auto border-gray-200"
       ref={containerRef}
     >
-      <h2 className="text-2xl mb-8 font-mono leading-tight uppercase text-gray-500">_Tools</h2>
+      <h2 className="text-xl mb-8 font-mono leading-tight uppercase text-gray-500">Tools</h2>
 
       <div className="overflow-hidden space-y-4">
         {/* Row 1 - Left to Right */}
@@ -281,13 +281,13 @@ const Tools: React.FC = () => {
         </div>
 
         {/* Row 3 - Left to Right */}
-        <div className="tech-row tech-row-ltr relative">
+        {/* <div className="tech-row tech-row-ltr relative">
           <div className="flex gap-4 animate-scroll-ltr">
             {[...row3, ...row3].map((item, index) => (
               <TechItem key={`row3-${index}`} item={item} />
             ))}
           </div>
-        </div>
+        </div> */}
       </div>
 
       <p className="mt-6 text-gray-600 leading-relaxed">
