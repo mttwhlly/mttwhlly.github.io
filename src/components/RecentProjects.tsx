@@ -7,10 +7,10 @@ const RecentProjects = () => {
       id: 1,
       title: 'Hangtime',
       description:
-        'A minimalist training app for climbers, designed to guide hangboard routines through haptics, visual cues, and progressive timers. I built it for Apple Watch and iPhone with a focus on glanceability, low-distraction UI, and reliable performance under physical stress. The design emphasizes flow and focus—making workouts easier to start, sustain, and finish.',
+        'I designed and built Hangtime to guide climbers through training routines using progressive timers, haptics, and simple visual cues. The UI is intentionally distraction-free, optimized for glanceability during intense physical use. Focus: accessibility, timer accuracy, and real-world use in sweaty, fast-paced training sessions.',
       image:
         'https://images.unsplash.com/photo-1558655146-d09347e92766?w=600&h=400&fit=crop&auto=format',
-      tags: ['Figma', 'Swift', 'HealthKit', 'WatchKit'],
+      tags: ['Swift', 'HealthKit', 'WatchKit', 'Figma'],
       liveUrl: '#',
       githubUrl: '#',
       type: 'WatchOS/iOS App',
@@ -19,7 +19,7 @@ const RecentProjects = () => {
       id: 2,
       title: 'Surf Lab',
       description:
-        'A focused surf conditions app built for St. Augustine, FL, designed to quickly answer a simple question: is it surfable right now? I prioritized speed, clarity, and a calm UI over data overload—making it ideal for real-life, time-sensitive checks. Future iterations will expand to other East Coast spots and include Apple Watch support for even faster, glanceable insights.',
+        'Surf Lab answers the only question that matters to East Coast surfers: should I grab my board? I prioritized quick load times, a simple interface, and minimal cognitive load—ideal for sunrise sessions or parenting pauses. Future versions will include Apple Watch support and expansion to other surf spots.',
       image:
         'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop&auto=format',
       tags: ['HTML', 'CSS', 'JavaScript', 'Express'],
@@ -32,17 +32,17 @@ const RecentProjects = () => {
   return (
     <section className="container px-4 py-20 max-w-4xl mx-auto">
       <div className="mb-16">
-        <h2 className="text-2xl font-mono tracking-loose leading-tight uppercase text-gray-500">
-          _Projects
+        <h2 className="text-xl font-mono tracking-loose leading-tight uppercase text-gray-500">
+          Projects
         </h2>
       </div>
 
-      <div className="max-w-4xl mx-auto">
+      {/* <div className="max-w-4xl mx-auto">
         <p className="text-md text-gray-700 p-6 bg-gray-50 rounded-xl border border-dashed border-gray-300 mb-16">
           While I can’t share work from my current role, these personal projects represent my
           approach: thoughtful, user-focused, and built with care.
         </p>
-      </div>
+      </div> */}
 
       <div className="grid gap-12 lg:gap-16">
         {projects.map((project, index) => (
@@ -67,11 +67,11 @@ const RecentProjects = () => {
             {/* Project Content */}
             <div className="flex-1 space-y-6">
               <div>
-                <div className="flex items-center gap-3 mb-3">
+                {/* <div className="flex items-center gap-3 mb-3">
                   <span className="text-sm font-medium border border-gray-300 text-gray-500 px-3 py-1 rounded-full">
                     {project.type}
                   </span>
-                </div>
+                </div> */}
                 <h3 className="text-3xl font-sans font-bold leading-tight mb-4">{project.title}</h3>
                 <p className="text-xl text-gray-600 leading-relaxed">{project.description}</p>
               </div>

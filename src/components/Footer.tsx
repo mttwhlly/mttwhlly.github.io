@@ -1,7 +1,7 @@
 import SpotifyNowPlaying from './SpotifyNowPlaying';
 import Marquee from './Marquee';
 import {
-  BookBookmark,
+  BookmarkSimple,
   Mountains,
   GithubLogo,
   LinkedinLogo,
@@ -13,14 +13,14 @@ export default function Footer() {
     <footer className="shrink bg-black text-white md:flex-row flex-col">
       <div className="flex md:flex-row flex-col mx-auto px-4 md:px-16 justify-between py-12">
         <div className="flex flex-col gap-4 my-8 md:my-0">
-          <p className="text-sm text-gray-400 font-mono uppercase py-4">_Offline</p>
+          <p className="text-sm text-gray-400 font-mono uppercase py-4">Offline</p>
           <ul>
             <li className="h-[42px] text-sm md:text-md flex items-center space-x-2">
               <SpotifyNowPlaying />
             </li>
             <li className="h-[42px] text-sm md:text-md flex items-center space-x-2">
               <span className="text-gray-400 text-sm md:text-md flex-shrink-0">
-                <BookBookmark size={16} />
+                <BookmarkSimple size={16} />
               </span>
               <Marquee className="text-sm md:text-md">
                 "Anxious Generation" – Jonathan Haidt
@@ -40,7 +40,7 @@ export default function Footer() {
           </ul>
         </div>
         <div className="flex flex-col gap-4">
-          <p className="text-sm text-gray-400 font-mono uppercase py-4">_Online</p>
+          <p className="text-sm text-gray-400 font-mono uppercase py-4">Online</p>
           <ul>
             <li className="h-[42px] text-sm md:text-md flex items-center space-x-2">
               <a href="https://github.com/mttwhlly" target="_blank">

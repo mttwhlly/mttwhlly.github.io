@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import type { NowPlayingData } from '../types/spotify';
-import { SpotifyLogo } from '@phosphor-icons/react';
+import { MusicNotesSimple } from '@phosphor-icons/react';
 
 const SpotifyNowPlaying: React.FC = () => {
   const [nowPlaying, setNowPlaying] = useState<NowPlayingData | null>(null);
@@ -131,7 +131,7 @@ const SpotifyNowPlaying: React.FC = () => {
       {nowPlaying && (
         <div className="flex items-center space-x-2 min-w-0 flex-1">
           <span className="text-gray-400 flex-shrink-0">
-            <SpotifyLogo size={16} />
+            <MusicNotesSimple size={16} />
           </span>
 
           <div ref={containerRef} className="overflow-hidden min-w-0 flex-1 relative">
@@ -153,7 +153,7 @@ const SpotifyNowPlaying: React.FC = () => {
         </div>
       )}
 
-      <style jsx>{`
+      <style>{`
         @keyframes marquee {
           0% {
             transform: translateX(0);

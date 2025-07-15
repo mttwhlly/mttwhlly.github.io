@@ -32,6 +32,16 @@ const Testimonials = () => {
       content: 'Matt cares deeply.',
       link: 'https://thehideout.design/',
     },
+    // {
+    //   id: 4,
+    //   name: 'Corinne Beyer',
+    //   title: 'UX ',
+    //   organization: 'CAQH',
+    //   avatar: '/images/titus.jpg',
+    //   content:
+    //     'Working with Matt makes me excited to push my own performance—his great attitude and communication are contagious.',
+    //   link: 'https://thehideout.design/',
+    // },
   ];
 
   // Duplicate testimonials for seamless infinite scroll
@@ -40,8 +50,8 @@ const Testimonials = () => {
   return (
     <section className="py-16 px-4 overflow-hidden">
       <div className="mb-12 max-w-4xl mx-auto">
-        <h2 className="text-2xl font-mono tracking-loose uppercase text-gray-500 mb-2">
-          _Testimonials
+        <h2 className="text-xl font-mono tracking-loose uppercase text-gray-500 mb-2">
+          Testimonials
         </h2>
       </div>
 

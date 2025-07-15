@@ -62,7 +62,7 @@ const Marquee: React.FC<MarqueeProps> = ({
         {children}
       </div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes marquee {
           0% {
             transform: translateX(0);
