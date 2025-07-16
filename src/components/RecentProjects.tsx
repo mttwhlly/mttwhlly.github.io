@@ -32,7 +32,7 @@ const RecentProjects = () => {
   return (
     <section className="container px-4 py-16 max-w-4xl mx-auto">
       <div className="mb-12">
-        <h2 className="text-xl font-mono tracking-loose leading-tight uppercase text-gray-500">
+        <h2 className="text-lg font-mono tracking-loose leading-tight uppercase text-gray-500">
           Projects
         </h2>
       </div>
