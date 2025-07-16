@@ -1,7 +1,31 @@
-import React from 'react';
-import { Quotes } from '@phosphor-icons/react';
+import React, { useRef, useEffect, useState } from 'react';
 
 const Testimonials = () => {
+  const scrollRef = useRef(null);
+  const [showGradient, setShowGradient] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (scrollRef.current) {
+        const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+        const isScrolledToEnd = scrollLeft + clientWidth >= scrollWidth - 10; // 10px tolerance
+        setShowGradient(!isScrolledToEnd);
+      }
+    };
+
+    const scrollElement = scrollRef.current;
+    if (scrollElement) {
+      scrollElement.addEventListener('scroll', handleScroll);
+      handleScroll(); // Check initial state
+    }
+
+    return () => {
+      if (scrollElement) {
+        scrollElement.removeEventListener('scroll', handleScroll);
+      }
+    };
+  }, []);
+
   const testimonials = [
     {
       id: 1,
@@ -15,6 +39,16 @@ const Testimonials = () => {
     },
     {
       id: 2,
+      name: 'Corinne Beyer',
+      title: 'UX Design Manager',
+      organization: 'CAQH',
+      avatar: '/images/corinne.jpeg',
+      content:
+        'Working with Matt makes me excited to push my own performance—his great attitude and communication are contagious.',
+      link: 'https://thehideout.design/',
+    },
+    {
+      id: 3,
       name: 'Dan Draper',
       title: 'Designer',
       organization: 'Dan Draper Design',
@@ -24,7 +58,7 @@ const Testimonials = () => {
       link: 'https://dandraperdesign.com/',
     },
     {
-      id: 3,
+      id: 4,
       name: 'Titus Smith',
       title: 'IXD Program Director',
       organization: 'University of Kansas',
@@ -32,20 +66,7 @@ const Testimonials = () => {
       content: 'Matt cares deeply.',
       link: 'https://thehideout.design/',
     },
-    // {
-    //   id: 4,
-    //   name: 'Corinne Beyer',
-    //   title: 'UX ',
-    //   organization: 'CAQH',
-    //   avatar: '/images/titus.jpg',
-    //   content:
-    //     'Working with Matt makes me excited to push my own performance—his great attitude and communication are contagious.',
-    //   link: 'https://thehideout.design/',
-    // },
   ];
-
-  // Duplicate testimonials for seamless infinite scroll
-  // const duplicatedTestimonials = [...testimonials, ...testimonials];
 
   return (
     <section className="py-16 px-4 overflow-hidden">
@@ -55,45 +76,52 @@ const Testimonials = () => {
         </h2>
       </div>
 
-      <div className="max-w-4xl mx-auto">
-        <div className="flex flex-col md:flex-row space-x-2 items-start">
-          {testimonials.map((testimonial, index) => (
-            <div
-              key={`${testimonial.id}-${index}`}
-              className="flex flex-col justify-start w-full md:w-80 mb-4 md:mb-0 bg-white rounded-xl p-6 border border-gray-200"
-            >
-              <blockquote className="text-gray-700 text-lg">"{testimonial.content}"</blockquote>
+      <div className="max-w-4xl mx-auto relative">
+        {/* Scroll affordance - only visible on desktop and when not scrolled to end */}
+        {showGradient && (
+          <div className="hidden md:block absolute right-0 top-0 w-12 h-full bg-gradient-to-l from-white via-white/80 to-transparent z-10 pointer-events-none"></div>
+        )}
 
-              <div className="flex items-start space-x-4 mt-4">
-                <a
-                  href={testimonial.link}
-                  className="hover:underline"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    src={testimonial.avatar}
-                    alt={testimonial.name}
-                    className="w-12 h-12 mt-4 rounded-full object-cover flex-shrink-0"
-                  />
-                </a>
-                <div className="min-w-0 flex-1">
-                  <div className="flex flex-col space-x-2 mt-2">
-                    <a
-                      href={testimonial.link}
-                      className="hover:underline"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <h4 className="font-semibold text-gray-900">{testimonial.name}</h4>
-                    </a>
-                    <p className="text-sm text-gray-600">{testimonial.title}</p>
-                    <p className="text-sm text-gray-600">{testimonial.organization}</p>
+        <div ref={scrollRef} className="overflow-x-scroll">
+          <div className="flex flex-col md:flex-row space-x-2 items-start md:pr-16">
+            {testimonials.map((testimonial, index) => (
+              <div
+                key={`${testimonial.id}-${index}`}
+                className="flex flex-col justify-start w-full md:w-80 md:min-w-80 mb-4 md:mb-0 bg-white rounded-xl p-6 border border-gray-200"
+              >
+                <blockquote className="text-gray-700 text-lg">"{testimonial.content}"</blockquote>
+
+                <div className="flex items-start space-x-4 mt-4">
+                  <a
+                    href={testimonial.link}
+                    className="hover:underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src={testimonial.avatar}
+                      alt={testimonial.name}
+                      className="w-12 h-12 mt-4 rounded-full object-cover flex-shrink-0"
+                    />
+                  </a>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex flex-col space-x-2 mt-2">
+                      <a
+                        href={testimonial.link}
+                        className="hover:underline"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <h4 className="font-semibold text-gray-900">{testimonial.name}</h4>
+                      </a>
+                      <p className="text-sm text-gray-600">{testimonial.title}</p>
+                      <p className="text-sm text-gray-600">{testimonial.organization}</p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

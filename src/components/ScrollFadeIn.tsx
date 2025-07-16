@@ -11,7 +11,7 @@ interface ScrollFadeInProps {
 const ScrollFadeIn: React.FC<ScrollFadeInProps> = ({
   children,
   delay = 0,
-  duration = 600,
+  duration = 200,
   distance = 30,
   className = '',
 }) => {

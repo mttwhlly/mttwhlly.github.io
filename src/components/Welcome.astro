@@ -10,31 +10,35 @@ import ScrollFadeIn from '../components/ScrollFadeIn';
 </header>
 <main class="">    
   <section class="container px-4 pt-20 pb-12 flex-auto flex flex-col gap-8 max-w-4xl mx-auto border-gray-200">
-    <AnimatedHeading client:load />
+    <!-- <AnimatedHeading client:load /> -->
+    <h1 class="mb-8 font-mono leading-tight md:text-6xl text-4xl md:tracking-tighter tracking-loose min-h-[1.2em]">
+      Design-oriented frontend engineer. Calm interfaces. Scalable systems.
+    </h1>
     
-    <ScrollFadeIn client:load delay={100}>
-      <p class="text-xl text-gray-600 leading-relaxed">I’m a senior frontend developer with a background in visual design and a focus on accessible, durable, and user-friendly products.
+    <!-- <ScrollFadeIn client:load delay={100}> -->
+      <p class="text-xl text-gray-600 leading-relaxed">I’m an experienced frontend developer with a background in visual design and a focus on accessible, durable, and user-friendly products.
 I work best at the intersection of design and engineering—where clean code meets clear UI.</p>
-    </ScrollFadeIn>
+    <!-- </ScrollFadeIn> -->
     
-    <ScrollFadeIn client:load delay={200}>
+    <!-- <ScrollFadeIn client:load delay={20}> -->
       <p class="text-xl text-gray-600 leading-relaxed">I've:
-<ul class="list-disc p-8 font-mono">
-      <li class="text-lg text-gray-600 leading-relaxed py-2">
-        Led design system initiatives across teams
-      </li>
-      <li class="text-lg text-gray-600 leading-relaxed py-2">
-        Modernized complex legacy codebases
-      </li>
-      <li class="text-lg text-gray-600 leading-relaxed py-2">
-        Advocated for accessibility and performance in resource-constrained orgs
-      </li></ul>
+      <ul class="list-disc px-8 font-mono">
+        <li class="text-lg text-gray-600 leading-relaxed py-2">
+          Led design system initiatives across teams
+        </li>
+        <li class="text-lg text-gray-600 leading-relaxed py-2">
+          Modernized complex legacy codebases
+        </li>
+        <li class="text-lg text-gray-600 leading-relaxed py-2">
+          Advocated for accessibility and performance in resource-constrained orgs
+        </li>
+      </ul>
 </p>
-    </ScrollFadeIn>
+    <!-- </ScrollFadeIn> -->
     
-    <ScrollFadeIn client:load delay={300}>
+    <!-- <ScrollFadeIn client:load delay={30}> -->
       <p class="text-xl text-gray-600 leading-relaxed">My approach is quiet but intentional: thoughtful collaboration, system-level thinking, and real-world usability. I’m looking for a remote-friendly team that values depth, clarity, and long-term product health.</p>
-    </ScrollFadeIn>
+    <!-- </ScrollFadeIn> -->
   </section>
   
   <!-- <ScrollFadeIn client:load delay={50}>
@@ -44,21 +48,21 @@ I work best at the intersection of design and engineering—where clean code mee
     </section>
   </ScrollFadeIn> -->
   
-  <ScrollFadeIn client:load delay={100}>
+  <!-- <ScrollFadeIn client:load delay={10}> -->
     <RecentProjects />
-  </ScrollFadeIn>
+  <!-- </ScrollFadeIn> -->
   
-  <ScrollFadeIn client:load delay={150}>
+  <!-- <ScrollFadeIn client:load delay={150}> -->
     <Tools client:load />
-  </ScrollFadeIn>
+  <!-- </ScrollFadeIn> -->
   
-  <ScrollFadeIn client:load delay={200}>
-    <Testimonials />
-  </ScrollFadeIn>
+  <!-- <ScrollFadeIn client:load delay={200}> -->
+    <Testimonials client:load />
+  <!-- </ScrollFadeIn> -->
   
-  <ScrollFadeIn client:load delay={250}>
-    <section class="container px-4 pb-20 flex-auto flex flex-col gap-8 mt-12 max-w-4xl mx-auto">
-      <p class="text-xl text-gray-600 leading-relaxed">Open to remote work or well-scoped side projects. If you value deep work and long-term thinking, let’s chat.</p>
+  <!-- <ScrollFadeIn client:load delay={250}> -->
+    <section class="container px-4 pb-20 flex-auto flex flex-col gap-8 mt-12 max-w-4xl mx-auto text-center">
+      <p class="text-xl text-gray-600 leading-relaxed">Open to full-time remote roles or well-scoped side projects.<br/>If you value deep work and long-term thinking, let’s chat.</p>
       <div class="my-12 flex justify-center">
         <a href="mailto:&#109;&#97;&#116;&#116;&#64;&#109;&#97;&#116;&#116;&#119;&#104;&#97;&#108;&#108;&#101;&#121;&#46;&#99;&#111;&#109;" class="text-2xl font-medium py-3 px-8 transition-colors duration-500 rounded-full bg-[#D4FC52] font-mono">
           <!-- <img src="/images/me.png" width="54" height="54" class="rounded-full inline"> -->
@@ -66,5 +70,5 @@ I work best at the intersection of design and engineering—where clean code mee
         </a>
       </div>
     </section>
-  </ScrollFadeIn>
+  <!-- </ScrollFadeIn> -->
 </main>

@@ -10,7 +10,7 @@ const RecentProjects = () => {
         'I designed and built Hangtime to guide climbers through training routines using progressive timers, haptics, and simple visual cues. The UI is intentionally distraction-free, optimized for glanceability during intense physical use. Focus: accessibility, timer accuracy, and real-world use in sweaty, fast-paced training sessions.',
       image:
         'https://images.unsplash.com/photo-1558655146-d09347e92766?w=600&h=400&fit=crop&auto=format',
-      tags: ['Swift', 'HealthKit', 'WatchKit', 'Figma'],
+      tags: ['Swift', 'HealthKit', 'WatchKit'],
       liveUrl: '#',
       githubUrl: '#',
       type: 'WatchOS/iOS App',
@@ -22,7 +22,7 @@ const RecentProjects = () => {
         'Surf Lab answers the only question that matters to East Coast surfers: should I grab my board? I prioritized quick load times, a simple interface, and minimal cognitive load—ideal for sunrise sessions or parenting pauses. Future versions will include Apple Watch support and expansion to other surf spots.',
       image:
         'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop&auto=format',
-      tags: ['HTML', 'CSS', 'JavaScript', 'Express'],
+      tags: ['React', 'Next.js', 'PWA'],
       liveUrl: '#',
       githubUrl: '#',
       type: 'Progressive Web App',
@@ -30,8 +30,8 @@ const RecentProjects = () => {
   ];
 
   return (
-    <section className="container px-4 py-20 max-w-4xl mx-auto">
-      <div className="mb-16">
+    <section className="container px-4 py-16 max-w-4xl mx-auto">
+      <div className="mb-12">
         <h2 className="text-xl font-mono tracking-loose leading-tight uppercase text-gray-500">
           Projects
         </h2>
@@ -44,7 +44,7 @@ const RecentProjects = () => {
         </p>
       </div> */}
 
-      <div className="grid gap-12 lg:gap-16">
+      <div className="grid gap-8 lg:gap-12">
         {projects.map((project, index) => (
           <article
             key={project.id}
