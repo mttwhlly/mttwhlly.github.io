@@ -77,6 +77,8 @@ const Experiments = () => {
         {experiments.map((experiment) => (
           <a
             href={experiment.url}
+            target="_blank"
+            rel="noopener noreferrer"
             key={experiment.id}
             className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 p-4 border border-gray-200 rounded-xl hover:border-gray-300 transition-colors duration-200"
           >
