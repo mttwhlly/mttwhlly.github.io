@@ -37,12 +37,12 @@ const Tools: React.FC = () => {
       alt: 'Astro logo',
       category: 'frontend',
     },
-    {
-      name: 'Lit',
-      image: '/images/lit.svg',
-      alt: 'Lit logo',
-      category: 'frontend',
-    },
+    // {
+    //   name: 'Lit',
+    //   image: '/images/lit.svg',
+    //   alt: 'Lit logo',
+    //   category: 'frontend',
+    // },
     {
       name: 'Remix',
       image: '/images/remix.png',
@@ -83,32 +83,32 @@ const Tools: React.FC = () => {
       alt: 'Figma logo',
       category: 'design',
     },
-    {
-      name: 'Adobe',
-      image: '/images/adobe.png',
-      alt: 'Adobe logo',
-      category: 'design',
-    },
+    // {
+    //   name: 'Adobe',
+    //   image: '/images/adobe.png',
+    //   alt: 'Adobe logo',
+    //   category: 'design',
+    // },
 
     // Development Tools
-    {
-      name: 'VS Code',
-      image: '/images/vscode.png',
-      alt: 'VS Code logo',
-      category: 'tools',
-    },
-    {
-      name: 'Git',
-      image: '/images/git.png',
-      alt: 'Git logo',
-      category: 'tools',
-    },
-    {
-      name: 'Node.js',
-      image: '/images/node.png',
-      alt: 'Node.js logo',
-      category: 'tools',
-    },
+    // {
+    //   name: 'VS Code',
+    //   image: '/images/vscode.png',
+    //   alt: 'VS Code logo',
+    //   category: 'tools',
+    // },
+    // {
+    //   name: 'Git',
+    //   image: '/images/git.png',
+    //   alt: 'Git logo',
+    //   category: 'tools',
+    // },
+    // {
+    //   name: 'Node.js',
+    //   image: '/images/node.png',
+    //   alt: 'Node.js logo',
+    //   category: 'tools',
+    // },
     {
       name: 'Vite',
       image: '/images/vite.png',
@@ -121,12 +121,12 @@ const Tools: React.FC = () => {
       alt: 'Storybook logo',
       category: 'tools',
     },
-    {
-      name: 'NPM',
-      image: '/images/npm.png',
-      alt: 'Npm logo',
-      category: 'tools',
-    },
+    // {
+    //   name: 'NPM',
+    //   image: '/images/npm.png',
+    //   alt: 'Npm logo',
+    //   category: 'tools',
+    // },
     {
       name: 'Expo',
       image: '/images/expo.svg',
@@ -179,32 +179,32 @@ const Tools: React.FC = () => {
     //   alt: 'Wordpress logo',
     //   category: 'cloud',
     // },
-    {
-      name: 'Sanity',
-      image: '/images/sanity.png',
-      alt: 'Sanity logo',
-      category: 'cloud',
-    },
-    {
-      name: 'Shopify',
-      image: '/images/shopify.png',
-      alt: 'Shopify logo',
-      category: 'cloud',
-    },
+    // {
+    //   name: 'Sanity',
+    //   image: '/images/sanity.png',
+    //   alt: 'Sanity logo',
+    //   category: 'cloud',
+    // },
+    // {
+    //   name: 'Shopify',
+    //   image: '/images/shopify.png',
+    //   alt: 'Shopify logo',
+    //   category: 'cloud',
+    // },
 
     // AI & Experiments
-    {
-      name: 'OpenAI',
-      image: '/images/openai.png',
-      alt: 'OpenAI logo',
-      category: 'ai',
-    },
-    {
-      name: 'Anthropic',
-      image: '/images/anthropic.png',
-      alt: 'Anthropic logo',
-      category: 'ai',
-    },
+    // {
+    //   name: 'OpenAI',
+    //   image: '/images/openai.png',
+    //   alt: 'OpenAI logo',
+    //   category: 'ai',
+    // },
+    // {
+    //   name: 'Anthropic',
+    //   image: '/images/anthropic.png',
+    //   alt: 'Anthropic logo',
+    //   category: 'ai',
+    // },
   ];
 
   // Split tech stack into rows
@@ -216,8 +216,8 @@ const Tools: React.FC = () => {
     return items;
   };
 
-  const row1 = getRowItems(0, 15);
-  const row2 = getRowItems(15, 30);
+  const row1 = getRowItems(0, 10);
+  const row2 = getRowItems(10, 20);
   // const row3 = getRowItems(16, 24);
 
   useEffect(() => {
@@ -255,45 +255,54 @@ const Tools: React.FC = () => {
   );
 
   return (
-    <section
-      className="container px-4 flex-auto flex flex-col gap-4 mt-12 max-w-4xl mx-auto border-gray-200"
-      ref={containerRef}
-    >
-      <h2 className="text-xl mb-8 font-mono leading-tight uppercase text-gray-500">Tools</h2>
+    <section className="px-4 flex-auto flex flex-col gap-4 mt-12 overflow-hidden">
+      <div className="max-w-4xl mx-auto" ref={containerRef}>
+        <h2 className="text-lg mb-8 font-mono leading-tight uppercase text-gray-500">Tools</h2>
 
-      <div className="overflow-hidden space-y-4">
-        {/* Row 1 - Left to Right */}
-        <div className="tech-row tech-row-ltr relative">
-          <div className="flex gap-4 animate-scroll-ltr">
-            {[...row1, ...row1].map((item, index) => (
-              <TechItem key={`row1-${index}`} item={item} />
-            ))}
+        <div className="overflow-hidden space-y-4 relative">
+          {/* Left gradient */}
+          <div className="absolute left-0 top-0 w-12 h-full bg-gradient-to-r from-white via-white/80 to-transparent z-10 pointer-events-none"></div>
+
+          {/* Right gradient */}
+          <div className="absolute right-0 top-0 w-12 h-full bg-gradient-to-l from-white via-white/80 to-transparent z-10 pointer-events-none"></div>
+          {/* Left gradient */}
+          <div className="absolute left-0 top-0 w-12 h-full bg-gradient-to-r from-white via-white/80 to-transparent z-10 pointer-events-none"></div>
+
+          {/* Right gradient */}
+          <div className="absolute right-0 top-0 w-12 h-full bg-gradient-to-l from-white via-white/80 to-transparent z-10 pointer-events-none"></div>
+          {/* Row 1 - Left to Right */}
+          <div className="tech-row tech-row-ltr relative">
+            <div className="flex gap-4 animate-scroll-ltr">
+              {[...row1, ...row1].map((item, index) => (
+                <TechItem key={`row1-${index}`} item={item} />
+              ))}
+            </div>
           </div>
+
+          {/* Row 2 - Right to Left */}
+          <div className="tech-row tech-row-rtl relative">
+            <div className="flex gap-4 animate-scroll-rtl">
+              {[...row2, ...row2].map((item, index) => (
+                <TechItem key={`row2-${index}`} item={item} />
+              ))}
+            </div>
+          </div>
+
+          {/* Row 3 - Left to Right */}
+          {/* <div className="tech-row tech-row-ltr relative">
+            <div className="flex gap-4 animate-scroll-ltr">
+              {[...row3, ...row3].map((item, index) => (
+                <TechItem key={`row3-${index}`} item={item} />
+              ))}
+            </div>
+          </div> */}
         </div>
 
-        {/* Row 2 - Right to Left */}
-        <div className="tech-row tech-row-rtl relative">
-          <div className="flex gap-4 animate-scroll-rtl">
-            {[...row2, ...row2].map((item, index) => (
-              <TechItem key={`row2-${index}`} item={item} />
-            ))}
-          </div>
-        </div>
-
-        {/* Row 3 - Left to Right */}
-        {/* <div className="tech-row tech-row-ltr relative">
-          <div className="flex gap-4 animate-scroll-ltr">
-            {[...row3, ...row3].map((item, index) => (
-              <TechItem key={`row3-${index}`} item={item} />
-            ))}
-          </div>
-        </div> */}
+        <p className="mt-6 text-gray-600 leading-relaxed">
+          I care more about what tools enable than the tools themselves—but I'm always experimenting
+          and refining my workflow to build better software.
+        </p>
       </div>
-
-      <p className="mt-6 text-gray-600 leading-relaxed">
-        I care more about what tools enable than the tools themselves—but I'm always experimenting
-        and refining my workflow to build better software.
-      </p>
 
       <style>{`
         .tech-row {
