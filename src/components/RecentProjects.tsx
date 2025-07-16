@@ -6,10 +6,10 @@ const RecentProjects = () => {
     {
       id: 1,
       title: 'Hangtime',
+      tagline: 'A distraction-free Apple Watch and iPhone app for hangboard training',
       description:
         'I designed and built Hangtime to guide climbers through training routines using progressive timers, haptics, and simple visual cues. The UI is intentionally distraction-free, optimized for glanceability during intense physical use. Focus: accessibility, timer accuracy, and real-world use in sweaty, fast-paced training sessions.',
-      image:
-        'https://images.unsplash.com/photo-1558655146-d09347e92766?w=600&h=400&fit=crop&auto=format',
+      image: '/images/hangtime-icon.svg',
       tags: ['Swift', 'HealthKit', 'WatchKit'],
       liveUrl: '#',
       githubUrl: '#',
@@ -18,10 +18,10 @@ const RecentProjects = () => {
     {
       id: 2,
       title: 'Surf Lab',
+      tagline: 'A minimalist hyper-local surf-check progressive web app & API',
       description:
         'Surf Lab answers the only question that matters to East Coast surfers: should I grab my board? I prioritized quick load times, a simple interface, and minimal cognitive load—ideal for sunrise sessions or parenting pauses. Future versions will include Apple Watch support and expansion to other surf spots.',
-      image:
-        'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop&auto=format',
+      image: '/images/wave-logo.svg',
       tags: ['React', 'Next.js', 'PWA'],
       liveUrl: '#',
       githubUrl: '#',
@@ -72,7 +72,21 @@ const RecentProjects = () => {
                     {project.type}
                   </span>
                 </div> */}
-                <h3 className="text-2xl font-sans font-bold leading-tight mb-4">{project.title}</h3>
+                <div className="flex flex-col md:flex-row mb-4 md:gap-6">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-16 h-16 mb-4 rounded-2xl"
+                  />
+                  <div className="flex flex-col">
+                    <h3 className="text-2xl font-sans font-bold leading-tight pt-1">
+                      {project.title}
+                    </h3>
+                    <h4 className="text-lg text-gray-600 font-semibold tracking-wide leading-relaxed mb-2">
+                      {project.tagline}
+                    </h4>
+                  </div>
+                </div>
                 <p className="text-xl text-gray-600 leading-relaxed">{project.description}</p>
               </div>
 
