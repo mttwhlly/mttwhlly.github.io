@@ -70,13 +70,13 @@ const Testimonials = () => {
 
   return (
     <section className="py-16 px-4 overflow-hidden">
-      <div className="mb-12 max-w-4xl mx-auto">
-        <h2 className="text-lg font-mono tracking-loose uppercase text-gray-500 mb-2">
+      <div className="mb-8 max-w-4xl mx-auto">
+        <h2 className="text-lg font-mono tracking-loose uppercase text-gray-500 mb-2 px-4">
           Testimonials
         </h2>
       </div>
 
-      <div className="max-w-4xl mx-auto relative">
+      <div className="max-w-4xl mx-auto relative px-4">
         {/* Scroll affordance - only visible on desktop and when not scrolled to end */}
         {showGradient && (
           <div className="hidden md:block absolute right-0 top-0 w-12 h-full bg-gradient-to-l from-white via-white/80 to-transparent z-10 pointer-events-none"></div>

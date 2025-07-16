@@ -31,7 +31,7 @@ const RecentProjects = () => {
 
   return (
     <section className="container px-4 py-16 max-w-4xl mx-auto">
-      <div className="mb-12">
+      <div className="mb-8">
         <h2 className="text-lg font-mono tracking-loose leading-tight uppercase text-gray-500">
           Projects
         </h2>
@@ -44,7 +44,7 @@ const RecentProjects = () => {
         </p>
       </div> */}
 
-      <div className="grid gap-8 lg:gap-12">
+      <div className="grid gap-6 lg:gap-8">
         {projects.map((project, index) => (
           <article
             key={project.id}
