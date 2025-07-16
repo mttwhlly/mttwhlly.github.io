@@ -173,12 +173,12 @@ const Tools: React.FC = () => {
       alt: 'GraphQL logo',
       category: 'cloud',
     },
-    {
-      name: 'Wordpress',
-      image: '/images/wordpress.png',
-      alt: 'Wordpress logo',
-      category: 'cloud',
-    },
+    // {
+    //   name: 'Wordpress',
+    //   image: '/images/wordpress.png',
+    //   alt: 'Wordpress logo',
+    //   category: 'cloud',
+    // },
     {
       name: 'Sanity',
       image: '/images/sanity.png',
@@ -216,9 +216,9 @@ const Tools: React.FC = () => {
     return items;
   };
 
-  const row1 = getRowItems(0, 8);
-  const row2 = getRowItems(8, 8);
-  const row3 = getRowItems(16, 8);
+  const row1 = getRowItems(0, 15);
+  const row2 = getRowItems(15, 30);
+  // const row3 = getRowItems(16, 24);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -310,11 +310,11 @@ const Tools: React.FC = () => {
         }
 
         .animate-scroll-ltr {
-          animation: scrollLeft 30s linear infinite;
+          animation: scrollLeft 20s linear infinite;
         }
 
         .animate-scroll-rtl {
-          animation: scrollRight 30s linear infinite;
+          animation: scrollRight 20s linear infinite;
         }
 
         .tech-row:hover .animate-scroll-ltr,
