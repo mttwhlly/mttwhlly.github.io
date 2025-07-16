@@ -36,7 +36,7 @@ const Experiments = () => {
     {
       id: 5,
       title: 'Sui Sans Font',
-      url: '#',
+      url: 'https://github.com/mttwhlly/sui-sans',
       tags: ['Type Design', 'Figma'],
     },
     {
