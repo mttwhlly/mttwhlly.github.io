@@ -257,7 +257,7 @@ const Tools: React.FC = () => {
   return (
     <section className="px-4 flex-auto flex flex-col gap-4 mt-12 overflow-hidden">
       <div className="max-w-4xl mx-auto" ref={containerRef}>
-        <h2 className="text-lg mb-8 px-4 font-mono leading-tight uppercase text-gray-500">Tools</h2>
+        <h2 className="text-lg mb-6 px-4 font-mono leading-tight uppercase text-gray-500">Tools</h2>
 
         <div className="overflow-hidden space-y-4 relative">
           {/* Left gradient */}
