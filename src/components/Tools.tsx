@@ -257,7 +257,7 @@ const Tools: React.FC = () => {
   return (
     <section className="px-4 flex-auto flex flex-col gap-4 mt-12 overflow-hidden">
       <div className="max-w-4xl mx-auto" ref={containerRef}>
-        <h2 className="text-lg mb-8 font-mono leading-tight uppercase text-gray-500">Tools</h2>
+        <h2 className="text-lg mb-8 px-4 font-mono leading-tight uppercase text-gray-500">Tools</h2>
 
         <div className="overflow-hidden space-y-4 relative">
           {/* Left gradient */}
@@ -298,7 +298,7 @@ const Tools: React.FC = () => {
           </div> */}
         </div>
 
-        <p className="mt-6 text-gray-600 leading-relaxed">
+        <p className="mt-6 px-4 text-gray-600 leading-relaxed">
           I care more about what tools enable than the tools themselves—but I'm always experimenting
           and refining my workflow to build better software.
         </p>

@@ -72,7 +72,7 @@ const RecentProjects = () => {
                     {project.type}
                   </span>
                 </div> */}
-                <h3 className="text-3xl font-sans font-bold leading-tight mb-4">{project.title}</h3>
+                <h3 className="text-2xl font-sans font-bold leading-tight mb-4">{project.title}</h3>
                 <p className="text-xl text-gray-600 leading-relaxed">{project.description}</p>
               </div>
 
