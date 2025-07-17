@@ -142,7 +142,7 @@ const SpotifyNowPlaying: React.FC = () => {
               }`}
             >
               <a href={nowPlaying.trackLink} className="hover:underline">
-                "{nowPlaying.name}"
+                {nowPlaying.name}
               </a>{' '}
               <i className="font-serif tracking-wider text-gray-400">by</i>{' '}
               <a href={nowPlaying.artistLink} className="hover:underline">
