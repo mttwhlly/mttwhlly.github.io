@@ -23,7 +23,8 @@ export default function Footer() {
                 <BookmarkSimple size={16} />
               </span>
               <Marquee className="text-sm md:text-md">
-                "Anxious Generation" – Jonathan Haidt
+                Anxious Generation <i className="font-serif tracking-wider text-gray-400">by</i>{' '}
+                Jonathan Haidt
               </Marquee>
             </li>
             <li className="h-[42px] text-sm md:text-md flex items-center space-x-2">
@@ -31,7 +32,7 @@ export default function Footer() {
                 <Mountains size={16} />
               </span>
               <Marquee className="text-sm md:text-md">
-                Red V5 on Prow Wall –{' '}
+                Red V5 on Prow Wall <i className="font-serif tracking-wider text-gray-400">at</i>{' '}
                 <a href="https://stoneclimbing.com/" target="_blank" className="hover:underline">
                   Stone Climbing Co.
                 </a>
@@ -74,7 +75,10 @@ export default function Footer() {
       </div>
       <div className="w-full h-[42] text-center text-xs pb-2 text-gray-400">
         © Matt Whalley, 2025 –{' '}
-        <a href="https://github.com/mttwhlly/mttwhlly.github.io" className="hover:underline">
+        <a
+          href="https://github.com/mttwhlly/mttwhlly.github.io"
+          className="hover:underline font-mono"
+        >
           View Source
         </a>
       </div>
