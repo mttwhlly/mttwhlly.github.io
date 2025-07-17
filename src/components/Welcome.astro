@@ -3,8 +3,6 @@ import Testimonials from '../components/Testimonials';
 import RecentProjects from '../components/RecentProjects';
 import Experiments from '../components/Experiments';
 import Tools from '../components/Tools';
-import AnimatedHeading from '../components/AnimatedHeading';
-import ScrollFadeIn from '../components/ScrollFadeIn';
 ---
 <header>
  
@@ -16,62 +14,21 @@ import ScrollFadeIn from '../components/ScrollFadeIn';
     <h1 class="mb-8 font-serif leading-tight md:text-6xl text-4xl md:tracking-tight tracking-loose min-h-[1.2em]">
       Frontend designer<span class="text-[#D4FC52] font-mono font-regular">/</span>developer crafting calm interfaces <i class="px-1">&</i> scalable, accessible systems.
     </h1>
-    
-    <!-- <ScrollFadeIn client:load delay={100}> -->
-      <!-- <p class="text-xl text-gray-600 leading-relaxed">Crafting accessible, scalable UI rooted in strong design fundamentals.</p> -->
-    <!-- </ScrollFadeIn> -->
-    
-    <!-- <ScrollFadeIn client:load delay={20}> -->
-      <!-- <p class="text-xl text-gray-600 leading-relaxed">I've:
-      <ul class="list-disc px-8 font-mono">
-        <li class="text-lg text-gray-600 leading-relaxed py-2">
-          Led design system initiatives across teams
-        </li>
-        <li class="text-lg text-gray-600 leading-relaxed py-2">
-          Modernized complex legacy codebases
-        </li>
-        <li class="text-lg text-gray-600 leading-relaxed py-2">
-          Advocated for accessibility and performance in resource-constrained orgs
-        </li>
-      </ul>
-</p> -->
-    <!-- </ScrollFadeIn> -->
-    
-    <!-- <ScrollFadeIn client:load delay={30}> -->
       <p class="text-xl text-gray-600 leading-relaxed">My approach is quiet but intentional: collaborative, systems-minded, and grounded in real-world usability. I'm looking for a remote-friendly team that values depth, quality, and long-term product health.</p>
-    <!-- </ScrollFadeIn> -->
   </section>
-  
-  <!-- <ScrollFadeIn client:load delay={50}>
-    <section class="container px-4 flex-auto flex flex-col gap-8 mt-12 max-w-4xl mx-auto">
-      <h2 class="text-2xl mb-8 font-mono leading-tight uppercase text-gray-500">_About</h2>
-      <p class="text-xl text-gray-600 leading-relaxed">Based in St Augustine, Florida, I'm a dad, climber, and surfer always looking for ways to combine tech with real life. Offline, you'll often find me chasing waves or toddlers.</p>
-    </section>
-  </ScrollFadeIn> -->
-  
-  <!-- <ScrollFadeIn client:load delay={10}> -->
     <RecentProjects />
-  <!-- </ScrollFadeIn> -->
-
   <Experiments client:load />
-  
-  <!-- <ScrollFadeIn client:load delay={150}> -->
     <Tools client:load />
-  <!-- </ScrollFadeIn> -->
-  
-  <!-- <ScrollFadeIn client:load delay={200}> -->
     <Testimonials client:load />
-  <!-- </ScrollFadeIn> -->
-  
-  <!-- <ScrollFadeIn client:load delay={250}> -->
     <section class="container px-4 pb-20 flex-auto flex flex-col gap-8 mt-12 max-w-4xl mx-auto text-center">
       <p class="text-2xl text-gray-600 leading-relaxed"><span class="underline underline-offset-4 decoration-[#D4FC52] decoration-3px text-pretty">Open</span> to full-time remote roles or well-scoped side projects.<br/>If you value deep work and long-term thinking, <i class="font-serif text-black tracking-wide">let’s chat</i>.</p>
-      <div class="my-12 flex justify-center">
-        <a href="mailto:&#109;&#97;&#116;&#116;&#64;&#109;&#97;&#116;&#116;&#119;&#104;&#97;&#108;&#108;&#101;&#121;&#46;&#99;&#111;&#109;" class="text-2xl font-medium py-3 px-8 transition-colors duration-500 rounded-full bg-[#D4FC52] font-mono">
-          <!-- <img src="/images/me.png" width="54" height="54" class="rounded-full inline"> -->
+      <div class="my-12 flex justify-center gap-4">
+        <a href="/matt-whalley-resume-20250717.pdf" target="_blank" rel="noopener noreferrer" class="text-2xl font-medium py-3 px-8 transition-colors duration-500 rounded-full bg-gray-100 font-mono">
+           View Resume
+        </a>
+        <a href="mailto:&#109;&#97;&#116;&#116;&#64;&#109;&#97;&#116;&#116;&#119;&#104;&#97;&#108;&#108;&#101;&#121;&#46;&#99;&#111;&#109;" class="flex gap-2 text-2xl font-medium py-3 px-8 transition-colors duration-500 rounded-full bg-[#D4FC52] font-mono">
            Get in Touch
         </a>
       </div>
     </section>
-  <!-- </ScrollFadeIn> -->
 </main>
