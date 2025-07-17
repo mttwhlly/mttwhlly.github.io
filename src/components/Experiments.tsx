@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  ArrowSquareOut,
+  ArrowUpRight,
   MusicNote,
   GridFour,
   PenNib,
@@ -107,7 +107,11 @@ const Experiments = () => {
             <div className="flex-1">
               <div className="inline-flex items-center gap-3 text-xl font-medium text-gray-900 transition-colors group">
                 <experiment.icon size={20} className="text-gray-500 flex-shrink-0" />
-                {experiment.title}
+                {experiment.title}{' '}
+                <ArrowUpRight
+                  size={16}
+                  className="text-gray-400 group-hover:text-gray-600 transition-colors"
+                />
               </div>
             </div>
 
