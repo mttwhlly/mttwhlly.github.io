@@ -19,7 +19,7 @@ const Experiments = () => {
       id: 1,
       title: 'Short Scories',
       url: 'https://shortscories.com/',
-      tags: ['Next.js', 'Strapi CMS', 'Spotify API'],
+      tags: ['Next.js', 'Strapi CMS'],
       icon: MusicNote,
     },
     {
@@ -33,7 +33,7 @@ const Experiments = () => {
       id: 3,
       title: 'D U S T',
       url: 'https://dustwriting.space',
-      tags: ['Offline First', 'PWA'],
+      tags: ['PWA', 'Service Worker', 'GSAP'],
       icon: PenNib,
     },
     {
@@ -54,14 +54,14 @@ const Experiments = () => {
       id: 6,
       title: 'Sui Sans Font',
       url: 'https://github.com/mttwhlly/sui-sans',
-      tags: ['Type Design', 'Figma'],
+      tags: ['Figma', 'Type Design'],
       icon: TextT,
     },
     {
       id: 7,
       title: 'Chart Generator Plugin',
       url: 'https://github.com/mttwhlly/figma-charter',
-      tags: ['Figma', 'Dataviz'],
+      tags: ['Figma', 'Data Visualization'],
       icon: ChartBar,
     },
     {
