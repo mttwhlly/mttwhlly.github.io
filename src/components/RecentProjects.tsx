@@ -8,7 +8,7 @@ const RecentProjects = () => {
       title: 'Hangtime',
       tagline: 'A distraction-free Apple Watch and iPhone app for hangboard training',
       description:
-        'I designed and built Hangtime to guide climbers through training routines using progressive timers, haptics, and simple visual cues. The UI is intentionally distraction-free, optimized for glanceability during intense physical use. Focus: accessibility, timer accuracy, and real-world use in sweaty, fast-paced training sessions.',
+        'I designed and built Hangtime to guide climbers through hangboard training routines using interval timers, haptics, and simple visual cues. The UI is intentionally distraction-free, optimized for glanceability during intense physical use.',
       image: '/images/hangtime-icon.svg',
       tags: ['Swift', 'HealthKit', 'WatchKit'],
       liveUrl: '#',
@@ -17,15 +17,15 @@ const RecentProjects = () => {
     },
     {
       id: 2,
-      title: 'Surf Lab',
-      tagline: 'A minimalist hyper-local surf-check progressive web app & API',
+      title: 'Dutch',
+      tagline: 'Your digital surf shop call—honest conditions, local wisdom',
       description:
-        'Surf Lab answers the only question that matters to East Coast surfers: should I grab my board? I prioritized quick load times, a simple interface, and minimal cognitive load—ideal for sunrise sessions or parenting pauses. Future versions will include Apple Watch support and expansion to other surf spots.',
+        'As a South Florida kid in the 90s, I\'d call the local surf shop every morning to hear local legend "Dutch" share the daily forecast. This is my digital homage to that ritual: combining buoy data, marine forecasts, and AI-generated surf reports to recreate the stoke.',
       image: '/images/wave-logo.svg',
-      tags: ['React', 'Next.js', 'PWA'],
-      liveUrl: '#',
+      tags: ['Next.js', 'Vercel AI SDK', 'NOAA/Open-Meteo APIs'],
+      liveUrl: 'https://surf-report-rouge.vercel.app/',
       githubUrl: '#',
-      type: 'Progressive Web App',
+      type: 'Web App & API',
     },
   ];
 

@@ -47,8 +47,18 @@ const Testimonials = () => {
         'Working with Matt makes me excited to push my own performance—his great attitude and communication are contagious.',
       link: '#',
     },
+    // {
+    //   id: 3,
+    //   name: 'Todd Johnson',
+    //   title: 'Solutions Architect',
+    //   organization: 'Snowflake',
+    //   avatar: '/images/todd.jpeg',
+    //   content:
+    //     'Working with Matt makes me excited to push my own performance—his great attitude and communication are contagious.',
+    //   link: 'https://www.linkedin.com/in/mtoddjohnson/',
+    // },
     {
-      id: 3,
+      id: 4,
       name: 'Dan Draper',
       title: 'Designer',
       organization: 'Dan Draper Design',
@@ -58,7 +68,7 @@ const Testimonials = () => {
       link: 'https://dandraperdesign.com/',
     },
     {
-      id: 4,
+      id: 5,
       name: 'Titus Smith',
       title: 'IXD Program Director',
       organization: 'University of Kansas',
@@ -89,7 +99,7 @@ const Testimonials = () => {
                 key={`${testimonial.id}-${index}`}
                 className="flex flex-col justify-start w-full md:w-80 md:min-w-80 mb-4 md:mb-0 bg-white rounded-xl p-6 border border-gray-200"
               >
-                <blockquote className="text-gray-700 text-lg">"{testimonial.content}"</blockquote>
+                <blockquote className="text-gray-700 text-lg">{testimonial.content}</blockquote>
 
                 <div className="flex items-start space-x-4 mt-4">
                   <a
