@@ -37,18 +37,18 @@ const Tools: React.FC = () => {
       alt: 'Astro logo',
       category: 'frontend',
     },
-    // {
-    //   name: 'Lit',
-    //   image: '/images/lit.svg',
-    //   alt: 'Lit logo',
-    //   category: 'frontend',
-    // },
     {
-      name: 'Remix',
-      image: '/images/remix.png',
-      alt: 'Remix logo',
+      name: 'Lit',
+      image: '/images/lit.svg',
+      alt: 'Lit logo',
       category: 'frontend',
     },
+    // {
+    //   name: 'Remix',
+    //   image: '/images/remix.png',
+    //   alt: 'Remix logo',
+    //   category: 'frontend',
+    // },
 
     // Languages
     {
@@ -64,15 +64,15 @@ const Tools: React.FC = () => {
       category: 'languages',
     },
     {
-      name: 'Swift',
-      image: '/images/swift.png',
-      alt: 'Swift logo',
-      category: 'languages',
-    },
-    {
       name: 'HTML5',
       image: '/images/html5.png',
       alt: 'HTML5 logo',
+      category: 'languages',
+    },
+    {
+      name: 'Swift',
+      image: '/images/swift.png',
+      alt: 'Swift logo',
       category: 'languages',
     },
 
@@ -103,12 +103,12 @@ const Tools: React.FC = () => {
     //   alt: 'Git logo',
     //   category: 'tools',
     // },
-    // {
-    //   name: 'Node.js',
-    //   image: '/images/node.png',
-    //   alt: 'Node.js logo',
-    //   category: 'tools',
-    // },
+    {
+      name: 'Node.js',
+      image: '/images/node.png',
+      alt: 'Node.js logo',
+      category: 'tools',
+    },
     {
       name: 'Vite',
       image: '/images/vite.png',
@@ -121,18 +121,18 @@ const Tools: React.FC = () => {
       alt: 'Storybook logo',
       category: 'tools',
     },
-    // {
-    //   name: 'NPM',
-    //   image: '/images/npm.png',
-    //   alt: 'Npm logo',
-    //   category: 'tools',
-    // },
     {
-      name: 'Expo',
-      image: '/images/expo.svg',
-      alt: 'Expo logo',
+      name: 'NPM',
+      image: '/images/npm.png',
+      alt: 'Npm logo',
       category: 'tools',
     },
+    // {
+    //   name: 'Expo',
+    //   image: '/images/expo.svg',
+    //   alt: 'Expo logo',
+    //   category: 'tools',
+    // },
 
     // Styling & Build
     {
@@ -256,7 +256,7 @@ const Tools: React.FC = () => {
 
   return (
     <section className="px-4 flex-auto flex flex-col gap-4 mt-12 mb-8 overflow-hidden">
-      <div className="max-w-4xl mx-auto" ref={containerRef}>
+      <div className="max-w-4xl mx-auto w-full" ref={containerRef}>
         <h2 className="text-lg mb-6 px-4 font-mono leading-tight uppercase text-gray-500">Tools</h2>
 
         <div className="overflow-hidden space-y-4 relative">
@@ -297,12 +297,11 @@ const Tools: React.FC = () => {
             </div>
           </div> */}
         </div>
-
-        <p className="mt-6 px-4 text-gray-600 leading-relaxed">
-          I care more about what tools enable than the tools themselves—but I'm always experimenting
-          and refining my workflow to build better software.
-        </p>
       </div>
+      <p className="mt-6 px-4 text-gray-600 leading-relaxed max-w-4xl mx-auto">
+        I care more about what tools enable than the tools themselves—but I'm always experimenting
+        and refining my workflow to build better software.
+      </p>
 
       <style>{`
         .tech-row {
@@ -319,11 +318,11 @@ const Tools: React.FC = () => {
         }
 
         .animate-scroll-ltr {
-          animation: scrollLeft 20s linear infinite;
+          animation: scrollLeft 16s linear infinite;
         }
 
         .animate-scroll-rtl {
-          animation: scrollRight 20s linear infinite;
+          animation: scrollRight 16s linear infinite;
         }
 
         .tech-row:hover .animate-scroll-ltr,
