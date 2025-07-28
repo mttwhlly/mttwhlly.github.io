@@ -17,10 +17,10 @@ const RecentProjects = () => {
     },
     {
       id: 2,
-      title: 'Dutch',
+      title: 'Surf Lab',
       tagline: 'AI-generated surf report app based on local buoy and forecast data',
       description:
-        'As a South Florida kid in the 90s, I\'d call the local surf shop every morning to hear local legend "Dutch" share the daily forecast. This is my digital homage to that ritual: combining buoy data, marine forecasts, and AI-generated surf reports to recreate the stoke.',
+        "As a South Florida kid in the 90s, I'd call the local surf shop every morning to hear the daily forecast. This is my digital homage to that ritual: combining buoy data, marine forecasts, and AI-generated surf reports to recreate the stoke.",
       image: '/images/wave-logo.svg',
       tags: ['Next.js', 'Vercel AI SDK', 'NOAA/Open-Meteo APIs'],
       liveUrl: 'https://surf-report-rouge.vercel.app/',
