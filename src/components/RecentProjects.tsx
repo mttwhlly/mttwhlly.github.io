@@ -8,7 +8,7 @@ const RecentProjects = () => {
       title: 'Hangtime',
       tagline: 'A distraction-free Apple Watch and iPhone app for hangboard training',
       description:
-        'I designed and built Hangtime to guide climbers through hangboard training routines using interval timers, haptics, and simple visual cues. The UI is intentionally distraction-free, optimized for glanceability during intense physical use. Coming Soon to the App Store.',
+        'A focused tool for climbers training on hangboards. I crafted Hangtime to guide users through progressive routines with interval timers, haptics, and subtle visual cues. The interface is intentionally minimal—designed for clarity and glanceability under physical strain. Coming soon to the App Store.',
       image: '/images/hangtime-icon.svg',
       tags: ['Swift', 'HealthKit', 'WatchKit'],
       liveUrl: '#',
@@ -20,7 +20,7 @@ const RecentProjects = () => {
       title: 'Surf Lab',
       tagline: 'AI-generated surf report app based on local buoy and forecast data',
       description:
-        "As a South Florida kid in the 90s, I'd call the local surf shop every morning to hear the daily forecast. This is my digital homage to that ritual: combining buoy data, marine forecasts, and AI-generated surf reports to recreate the stoke.",
+        "A modern take on calling the local shop's answering machine to get a surf report from a local legend, this tool gathers hyperlocal buoy data, tide forecasts, and produces a stoke-filled surf report written by a friendly AI surfer. Built to enable quick decisions - without a PhD in meteorology.",
       image: '/images/wave-logo.svg',
       tags: ['Next.js', 'Vercel AI SDK', 'NOAA/Open-Meteo APIs'],
       liveUrl: 'https://surf-report-rouge.vercel.app/',

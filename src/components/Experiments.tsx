@@ -17,72 +17,62 @@ const Experiments = () => {
   const experiments = [
     {
       id: 1,
-      title: 'Business Bingo',
+      title: 'Business Bingo Game',
       url: 'https://businessbingo.lol',
-      tags: ['Supabase', '98.css'],
       icon: GridFour,
     },
     {
       id: 2,
-      title: 'D U S T',
+      title: 'D U S T Writing App',
       url: 'https://dustwriting.space',
-      tags: ['PWA', 'Service Worker', 'GSAP'],
       icon: PenNib,
     },
     {
       id: 3,
-      title: 'Vinyly',
+      title: 'Vinyly App',
       url: 'https://github.com/mttwhlly/vinyly',
-      tags: ['Sveltekit', 'Spotify API', 'Discogs API'],
       icon: Disc,
     },
     {
       id: 4,
-      title: 'Grounded',
+      title: 'Grounded App',
       url: 'https://t0ccko4o0sc0cc0wowsw4w04.mttwhlly.cc',
-      tags: ['GSAP'],
       icon: Tree,
     },
     {
       id: 5,
-      title: 'Sui Sans Font',
+      title: 'Sui Sans Typeface',
       url: 'https://github.com/mttwhlly/sui-sans',
-      tags: ['Figma', 'Type Design'],
       icon: TextT,
     },
     {
       id: 6,
-      title: 'Chart Generator Plugin',
+      title: 'Chart Generator Figma Plugin',
       url: 'https://github.com/mttwhlly/figma-charter',
-      tags: ['Figma', 'Data Visualization'],
       icon: ChartBar,
     },
     {
       id: 7,
-      title: 'Standards Checker Plugin',
+      title: 'Standards Checker Figma Plugin',
       url: 'https://github.com/mttwhlly/design-standards-checker',
-      tags: ['Figma', 'Design Systems'],
       icon: CheckSquare,
     },
     {
       id: 8,
-      title: 'Get Layer Text Plugin',
+      title: 'Get Layer Text Figma Plugin',
       url: 'https://github.com/mttwhlly/get-figma-text',
-      tags: ['Figma', 'Text Extraction'],
       icon: FileText,
     },
     {
       id: 9,
-      title: 'Short Scories',
+      title: 'Short Scories Microsite',
       url: 'https://shortscories.com/',
-      tags: ['Next.js', 'Strapi CMS'],
       icon: MusicNote,
     },
     {
       id: 10,
-      title: 'Photobooth',
+      title: 'Photobooth App',
       url: 'https://github.com/mttwhlly/photobooth',
-      tags: ['Express', 'Cloudinary'],
       icon: Camera,
     },
   ];
@@ -95,36 +85,21 @@ const Experiments = () => {
         </h2>
       </div>
 
-      <div className="space-y-4">
+      <div className="flex flex-wrap gap-3">
         {experiments.map((experiment) => (
           <a
             href={experiment.url}
             target="_blank"
             rel="noopener noreferrer"
             key={experiment.id}
-            className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 p-4 border border-gray-200 rounded-xl hover:border-gray-300 transition-colors duration-200"
+            className="inline-flex items-center gap-3 p-4 border border-gray-200 rounded-xl hover:border-gray-300 transition-colors duration-200 group"
           >
-            <div className="flex-1">
-              <div className="inline-flex items-center gap-3 text-xl font-medium text-gray-900 transition-colors group">
-                <experiment.icon size={20} className="text-gray-500 flex-shrink-0" />
-                {experiment.title}{' '}
-                <ArrowUpRight
-                  size={16}
-                  className="text-gray-400 group-hover:text-gray-600 transition-colors"
-                />
-              </div>
-            </div>
-
-            <div className="flex flex-wrap gap-2">
-              {experiment.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="text-sm text-gray-600 bg-gray-100 px-3 py-1 rounded-full"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
+            <experiment.icon size={20} className="text-gray-500 flex-shrink-0" />
+            <span className="text-xl font-medium text-gray-900">{experiment.title}</span>
+            <ArrowUpRight
+              size={16}
+              className="text-gray-400 group-hover:text-gray-600 transition-colors"
+            />
           </a>
         ))}
       </div>
