@@ -20,7 +20,7 @@ const RecentProjects = () => {
       title: 'Surf Lab',
       tagline: 'AI-generated surf report app based on local buoy and forecast data',
       description:
-        "A modern take on calling the local shop's answering machine to get a surf report from a local legend, this tool gathers hyperlocal buoy data, tide forecasts, and produces a stoke-filled surf report written by a friendly AI surfer. Built to enable quick decisions - without a PhD in meteorology.",
+        "A modern take on calling the local shop's answering machine to find out if it's worth paddling out, this tool gathers hyperlocal buoy data, tide forecasts, and produces a stoke-filled surf report written by a friendly AI surfer. Built to enable quick informed decisions – without a PhD in meteorology.",
       image: '/images/wave-logo.svg',
       tags: ['Next.js', 'Vercel AI SDK', 'NOAA/Open-Meteo APIs'],
       liveUrl: 'https://surf-report-rouge.vercel.app/',
