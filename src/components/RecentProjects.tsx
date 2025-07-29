@@ -73,7 +73,7 @@ const RecentProjects = () => {
                     {project.type}
                   </span>
                 </div> */}
-                  <div className="flex flex-col md:flex-row mb-4 md:gap-6">
+                  <div className="flex flex-col md:flex-row mb-3 md:gap-4">
                     <img
                       src={project.image}
                       alt={project.title}
@@ -83,12 +83,12 @@ const RecentProjects = () => {
                       <h3 className="text-2xl font-sans font-bold leading-tight pt-1">
                         {project.title}
                       </h3>
-                      <h4 className="text-lg text-gray-600 font-semibold tracking-wide leading-relaxed mb-2">
+                      <h4 className="text-md text-gray-600 font-semibold tracking-wide leading-relaxed mb-1">
                         {project.tagline}
                       </h4>
                     </div>
                   </div>
-                  <p className="text-xl text-gray-600 leading-relaxed">{project.description}</p>
+                  <p className="text-md text-gray-600 leading-relaxed">{project.description}</p>
                 </div>
 
                 {/* Tags */}
