@@ -1,6 +1,7 @@
 ---                               
 import '../styles/global.css';
 import Footer from '../components/Footer';
+import Header from '../components/Header';
 --- 
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +37,10 @@ import Footer from '../components/Footer';
 </head>
 
 <body class="flex flex-col min-h-screen antialiased text-gray-900 bg-white">
-  <slot />
+  <Header client:load />
+  <div class="pt-20"> <!-- Add padding-top to account for fixed header -->
+    <slot />
+  </div>
   <Footer client:load />
 </body>
 </html>
