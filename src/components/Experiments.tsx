@@ -92,14 +92,14 @@ const Experiments = () => {
             target="_blank"
             rel="noopener noreferrer"
             key={experiment.id}
-            className="inline-flex items-center gap-3 p-4 border border-gray-200 rounded-xl hover:border-gray-300 transition-colors duration-200 group"
+            className="inline-flex items-center gap-3 py-2 px-3 border border-gray-200 rounded-xl hover:border-gray-300 transition-colors duration-200 group"
           >
             <experiment.icon size={20} className="text-gray-500 flex-shrink-0" />
-            <span className="text-xl font-medium text-gray-900">{experiment.title}</span>
-            <ArrowUpRight
+            <span className="text-lg font-medium text-gray-900">{experiment.title}</span>
+            {/* <ArrowUpRight
               size={16}
               className="text-gray-400 group-hover:text-gray-600 transition-colors"
-            />
+            /> */}
           </a>
         ))}
       </div>
