@@ -88,7 +88,12 @@ const Header: React.FC = () => {
           </a>
           <div className="flex justify-between">
             <div className="text-gray-400 font-mono uppercase tracking-wider text-sm flex items-center gap-3 mr-4">
-              <div className="w-2 h-2 bg-[#D4FC52] rounded-full inline-block animate-pulse"></div>{' '}
+              <div className="relative inline-block">
+                {/* Inner solid circle */}
+                <div className="w-2 h-2 bg-[#D4FC52] rounded-full"></div>
+                {/* Outer pulsing circle */}
+                <div className="absolute inset-0 w-3 h-3 bg-[#D4FC52] rounded-full opacity-30 animate-pulse -translate-x-0.5 -translate-y-0.5"></div>
+              </div>
               Open to Work
             </div>
 
