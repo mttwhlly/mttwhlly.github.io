@@ -76,7 +76,7 @@ const Header: React.FC = () => {
           {/* Logo/Title */}
           <a
             href="/"
-            className="flex items-center text-xl font-sans font-medium text-gray-900 hover:text-gray-700 transition-colors"
+            className="flex items-center text-md md:text-xl font-sans font-medium text-gray-900 hover:text-gray-700 transition-colors"
             onClick={closeMenu}
           >
             <img
