@@ -76,22 +76,33 @@ const Header: React.FC = () => {
           {/* Logo/Title */}
           <a
             href="/"
-            className="text-xl font-sans font-medium text-gray-900 hover:text-gray-700 transition-colors"
+            className="flex items-center text-xl font-sans font-medium text-gray-900 hover:text-gray-700 transition-colors"
             onClick={closeMenu}
           >
+            <img
+              src="/images/profile.jpeg"
+              alt="Matt Whalley"
+              className="rounded-full w-8 h-8 mr-2"
+            />
             Matt Whalley
           </a>
+          <div className="flex justify-between">
+            <div className="text-gray-400 font-mono uppercase tracking-wider text-sm flex items-center gap-3 mr-4">
+              <div className="w-2 h-2 bg-[#D4FC52] rounded-full inline-block animate-pulse"></div>{' '}
+              Open to Work
+            </div>
 
-          {/* Hamburger Menu Button */}
-          <button
-            onClick={toggleMenu}
-            className="p-2 text-gray-600 hover:text-gray-900 transition-colors focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 rounded-md"
-            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={isMenuOpen}
-            aria-controls="mobile-menu"
-          >
-            {isMenuOpen ? <X size={24} /> : <List size={24} />}
-          </button>
+            {/* Hamburger Menu Button */}
+            <button
+              onClick={toggleMenu}
+              className="p-2 text-gray-600 hover:text-gray-900 transition-colors focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 rounded-md"
+              aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-menu"
+            >
+              {isMenuOpen ? <X size={24} /> : <List size={24} />}
+            </button>
+          </div>
         </div>
       </header>
 
