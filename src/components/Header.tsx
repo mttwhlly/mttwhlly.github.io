@@ -62,11 +62,11 @@ const Header: React.FC = () => {
       href: 'https://linkedin.com/in/mttwhlly',
       icon: LinkedinLogo,
     },
-    {
-      label: 'Email',
-      href: 'mailto:&#109;&#97;&#116;&#116;&#64;&#109;&#97;&#116;&#116;&#119;&#104;&#97;&#108;&#108;&#101;&#121;&#46;&#99;&#111;&#109;',
-      icon: PaperPlaneTilt,
-    },
+    // {
+    //   label: 'Email',
+    //   href: 'mailto:&#109;&#97;&#116;&#116;&#64;&#109;&#97;&#116;&#116;&#119;&#104;&#97;&#108;&#108;&#101;&#121;&#46;&#99;&#111;&#109;',
+    //   icon: PaperPlaneTilt,
+    // },
   ];
 
   return (
