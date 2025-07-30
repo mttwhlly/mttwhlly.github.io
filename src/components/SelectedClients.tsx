@@ -57,9 +57,9 @@ const SelectedClients: React.FC = () => {
   ];
 
   return (
-    <section className="container px-4 pt-12 pb-2 max-w-4xl mx-auto">
+    <section className="container px-4 lg:px-0 pt-12 pb-2 max-w-4xl mx-auto">
       <div className="mb-8">
-        <h2 className="text-lg font-mono tracking-loose leading-tight uppercase text-gray-500">
+        <h2 className="text-lg font-mono tracking-loose leading-tight uppercase text-gray-500 px-4">
           Selected Clients
         </h2>
       </div>
@@ -73,7 +73,7 @@ const SelectedClients: React.FC = () => {
 
       {/* Mobile Horizontal Scroll */}
       <div className="md:hidden overflow-x-auto">
-        <div className="flex gap-8 pb-4" style={{ width: 'max-content' }}>
+        <div className="flex gap-8 pb-4 px-2" style={{ width: 'max-content' }}>
           {clients.map((client) => (
             <div key={client.id} className="flex-shrink-0">
               <ClientLogo client={client} />
@@ -88,7 +88,7 @@ const SelectedClients: React.FC = () => {
         </div> */}
       </div>
 
-      <p className="mt-6 text-gray-600 leading-relaxed max-w-4xl mx-auto">
+      <p className="mt-6 px-4 text-gray-600 leading-relaxed max-w-4xl mx-auto">
         I've had the privilege of working with organizations ranging from healthcare innovators to
         local businesses, always focusing on thoughtful solutions that serve real user needs.
       </p>

@@ -47,7 +47,7 @@ const Header: React.FC = () => {
   const navigationLinks = [
     // { label: 'About', href: '/about', icon: UserFocus },
     { label: 'Resume', href: '/matt-whalley-resume-20250718.pdf', icon: File },
-    { label: 'User Manual', href: '/matt-whalley-user-manual-20250729v2.pdf', icon: AddressBook },
+    { label: 'User Manual', href: '/matt-whalley-user-manual-20250729v3.pdf', icon: AddressBook },
     // { label: 'Workspace', href: '' },
   ];
 
