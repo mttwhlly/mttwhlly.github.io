@@ -32,7 +32,8 @@ export default function Footer() {
                 <Mountains size={16} />
               </span>
               <Marquee className="text-sm md:text-md">
-                Red V5 on Prow Wall <i className="font-serif tracking-wider text-gray-400">at</i>{' '}
+                Green V5 <i className="font-serif tracking-wider text-gray-400">on</i> Prow Wall{' '}
+                <i className="font-serif tracking-wider text-gray-400">at</i>{' '}
                 <a href="https://stoneclimbing.com/" target="_blank" className="hover:underline">
                   Stone Climbing Co.
                 </a>
