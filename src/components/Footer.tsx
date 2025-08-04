@@ -11,7 +11,7 @@ import {
 export default function Footer() {
   return (
     <footer className="shrink bg-black text-white md:flex-row flex-col">
-      <div className="flex md:flex-row flex-col mx-auto px-4 md:px-16 justify-between py-12">
+      <div className="flex md:flex-row flex-col mx-auto px-6 justify-between py-12">
         <div className="flex flex-col gap-4 my-8 md:my-0">
           <p className="text-sm text-gray-400 font-mono uppercase py-4">Offline</p>
           <ul>
