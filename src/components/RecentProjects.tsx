@@ -8,11 +8,10 @@ const RecentProjects = () => {
       title: 'Hang Lab',
       tagline: 'A distraction-free Apple Watch and iPhone app for hangboard training',
       description:
-        'A focused tool for climbers training on hangboards. I crafted Hang Lab to guide users through progressive routines with interval timers, haptics, and subtle visual cues. The interface is intentionally minimal—designed for clarity and glanceability under physical strain. Reach out to join the beta.',
+        'A focused tool for climbers training on hangboards. I crafted Hang Lab to guide users through progressive routines with interval timers, haptics, and subtle visual cues. The interface is intentionally minimal—designed for clarity and glanceability under physical strain. Join the beta!',
       image: '/images/hangtime-icon.svg',
       tags: ['Swift', 'HealthKit', 'WatchKit'],
-      liveUrl:
-        "mailto:matt@mattwhalley.com?subject=Hang%20Lab%20Beta%20Test%20Request&body=Hi%20Matt,%0A%0AI'd%20like%20to%20beta%20test%20the%20Hang%20Lab%20hangboard%20training%20app.%0A%0AName:%20%0AEmail:%20%0AClimbing%20experience:%20%0ADevices%20(iPhone/Apple%20Watch%20models):%20%0A%0AThanks!",
+      liveUrl: 'https://testflight.apple.com/join/FTcb21dX',
       githubUrl: '#',
       type: 'WatchOS/iOS App',
     },
