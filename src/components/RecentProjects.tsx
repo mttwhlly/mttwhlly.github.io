@@ -8,7 +8,7 @@ const RecentProjects = () => {
       title: 'Hang Lab',
       tagline: 'A distraction-free Apple Watch and iPhone app for hangboard training',
       description:
-        'A focused tool for climbers training on hangboards. I crafted Hang Lab to guide users through progressive routines with interval timers, haptics, and subtle visual cues. The interface is intentionally minimal—designed for clarity and glanceability under physical strain. Join the beta!',
+        'A focused tool for climbers training on hangboards. I am building Hang Lab to guide users through progressive routines with interval timers, haptics, and subtle visual cues. The interface is intentionally minimal—designed for clarity and glanceability under physical strain. Join the beta today!',
       image: '/images/hangtime-icon.svg',
       tags: ['Swift', 'HealthKit', 'WatchKit'],
       liveUrl: 'https://testflight.apple.com/join/FTcb21dX',
@@ -33,7 +33,7 @@ const RecentProjects = () => {
     <section className="container px-4 py-16 max-w-4xl mx-auto">
       <div className="mb-8">
         <h2 className="text-lg font-mono tracking-loose leading-tight uppercase text-gray-500">
-          Projects
+          Featured Projects
         </h2>
       </div>
 

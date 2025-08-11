@@ -11,31 +11,32 @@ import {
   CheckSquare,
   FileText,
   Camera,
+  PaintBrushIcon,
 } from '@phosphor-icons/react';
 
 const Experiments = () => {
   const experiments = [
     {
       id: 1,
-      title: 'Business Bingo Game',
+      title: 'Business Bingo',
       url: 'https://businessbingo.lol',
       icon: GridFour,
     },
     {
       id: 2,
-      title: 'D U S T Writing App',
+      title: 'D U S T',
       url: 'https://dustwriting.space',
       icon: PenNib,
     },
     {
       id: 3,
-      title: 'Vinyly App',
+      title: 'Vinyly',
       url: 'https://github.com/mttwhlly/vinyly',
       icon: Disc,
     },
     {
       id: 4,
-      title: 'Grounded App',
+      title: 'Grounded',
       url: 'https://t0ccko4o0sc0cc0wowsw4w04.mttwhlly.cc',
       icon: Tree,
     },
@@ -47,41 +48,47 @@ const Experiments = () => {
     },
     {
       id: 6,
-      title: 'Chart Generator Figma Plugin',
+      title: 'Figma Chart Generator',
       url: 'https://github.com/mttwhlly/figma-charter',
       icon: ChartBar,
     },
     {
       id: 7,
-      title: 'Standards Checker Figma Plugin',
+      title: 'Figma Standards Checker',
       url: 'https://github.com/mttwhlly/design-standards-checker',
       icon: CheckSquare,
     },
     {
       id: 8,
-      title: 'Get Layer Text Figma Plugin',
+      title: 'Figma Get Layer Text',
       url: 'https://github.com/mttwhlly/get-figma-text',
       icon: FileText,
     },
     {
       id: 9,
-      title: 'Short Scories Microsite',
+      title: 'Short Scories',
       url: 'https://shortscories.com/',
       icon: MusicNote,
     },
     {
       id: 10,
-      title: 'Photobooth App',
+      title: 'Photobooth',
       url: 'https://github.com/mttwhlly/photobooth',
       icon: Camera,
     },
+    // {
+    //   id: 11,
+    //   title: 'John Whalley Studio',
+    //   url: 'https://johnwhalley.com',
+    //   icon: PaintBrushIcon,
+    // },
   ];
 
   return (
     <section className="container px-4 py-12 max-w-4xl mx-auto">
       <div className="mb-8">
         <h2 className="text-lg font-mono tracking-loose leading-tight uppercase text-gray-500">
-          Experiments
+          Other Projects & Experiments
         </h2>
       </div>
 
