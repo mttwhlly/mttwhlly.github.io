@@ -5,27 +5,27 @@ const RecentProjects = () => {
   const projects = [
     {
       id: 1,
-      title: 'Hang Lab',
-      tagline: 'A distraction-free Apple Watch and iPhone app for hangboard training',
+      title: 'canisurf.today',
+      tagline: 'AI-generated surf report app based on local buoy and forecast data',
       description:
-        'A focused tool for climbers training on hangboards. I am building Hang Lab to guide users through progressive routines with interval timers, haptics, and subtle visual cues. The interface is intentionally minimal—designed for clarity and glanceability under physical strain. Join the beta today!',
-      image: '/images/hangtime-icon.svg',
-      tags: ['Swift', 'HealthKit', 'WatchKit'],
-      liveUrl: 'https://testflight.apple.com/join/FTcb21dX',
+        "A modern take on calling the local surf shop's answering machine to find out if it's worth paddling out, this tool gathers hyperlocal buoy data, tide forecasts, and produces a stoke-filled surf report written by a friendly AI surfer. Built to enable quick informed decisions – without a PhD in meteorology.",
+      image: '/images/wave-logo.svg',
+      tags: ['Next.js', 'Vercel AI SDK', 'NOAA/Open-Meteo APIs', 'Neon', 'Bun'],
+      liveUrl: 'https://canisurf.today',
       githubUrl: '#',
-      type: 'WatchOS/iOS App',
+      type: 'Web App & API',
     },
     {
       id: 2,
-      title: 'Surf Lab',
-      tagline: 'AI-generated surf report app based on local buoy and forecast data',
+      title: 'HANG LAB',
+      tagline: 'A distraction-free Apple Watch and iPhone app for hangboard training',
       description:
-        "A modern take on calling the local shop's answering machine to find out if it's worth paddling out, this tool gathers hyperlocal buoy data, tide forecasts, and produces a stoke-filled surf report written by a friendly AI surfer. Built to enable quick informed decisions – without a PhD in meteorology.",
-      image: '/images/wave-logo.svg',
-      tags: ['Next.js', 'Vercel AI SDK', 'NOAA/Open-Meteo APIs'],
-      liveUrl: 'https://surf-report-rouge.vercel.app/',
+        'A focused tool for climbers training on hangboards. designed and built a mobile and Apple Watch training experience, emphasizing clarity under physical strain. Though implemented in Swift, the same design principles I apply to web were pushed to their limits in this project. Join the beta today!',
+      image: '/images/hangtime-icon.svg',
+      tags: ['Swift', 'SwiftUI', 'HealthKit', 'WatchKit', 'SiriKit', 'Haptics'],
+      liveUrl: 'https://testflight.apple.com/join/FTcb21dX',
       githubUrl: '#',
-      type: 'Web App & API',
+      type: 'WatchOS/iOS App',
     },
   ];
 
