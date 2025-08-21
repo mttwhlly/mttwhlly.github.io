@@ -15,6 +15,18 @@ const RecentProjects = () => {
       githubUrl: '#',
       type: 'Web App & API',
     },
+    // {
+    //   id: 1,
+    //   title: 'Should Design Systems Code?',
+    //   tagline: 'An evaluation of design systems, AI and pancakes',
+    //   description:
+    //     "A modern take on calling the local surf shop's answering machine to find out if it's worth paddling out, this tool gathers hyperlocal buoy data, tide forecasts, and produces a stoke-filled surf report written by a friendly AI surfer. Built to enable quick informed decisions – without a PhD in meteorology.",
+    //   image: '',
+    //   tags: ['Figma', 'Design Tokens', 'MCP'],
+    //   liveUrl: '#',
+    //   githubUrl: '#',
+    //   type: 'Design Systems',
+    // },
     {
       id: 2,
       title: 'HANG LAB',
