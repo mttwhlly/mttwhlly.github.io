@@ -36,7 +36,7 @@ const SelectedClients: React.FC = () => {
       name: 'Wells Coffee Co.',
       logo: '/images/wells-coffee.webp',
       alt: 'Wells Coffee Co. logo',
-      url: 'https://wellscoffee.com',
+      url: 'https://wellscoffees.com',
     },
     {
       id: 5,
