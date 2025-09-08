@@ -47,6 +47,16 @@ const Testimonials = () => {
         'Working with Matt makes me excited to push my own performance—his great attitude and communication are contagious.',
       link: '#',
     },
+    {
+      id: 3,
+      name: 'Andrew Hochradel',
+      title: 'Career Center Content Manager @ Adobe',
+      organization: 'Adobe',
+      avatar: '/images/hoch.jpg',
+      content:
+        'Matt is an innovator and problem solver. Working with him was seamless and his input enhanced our project technically and creatively.',
+      link: 'https://hoch.co',
+    },
     // {
     //   id: 3,
     //   name: 'Todd Johnson',
