@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 
 const Testimonials = () => {
-  const scrollRef = useRef(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
   const [showGradient, setShowGradient] = useState(true);
 
   useEffect(() => {
@@ -50,7 +50,7 @@ const Testimonials = () => {
     {
       id: 3,
       name: 'Andrew Hochradel',
-      title: 'Career Center Content Manager @ Adobe',
+      title: 'Career Center Content Manager',
       organization: 'Adobe',
       avatar: '/images/hoch.jpg',
       content:
