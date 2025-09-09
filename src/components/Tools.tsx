@@ -25,12 +25,12 @@ const Tools: React.FC = () => {
       alt: 'Next.js logo',
       category: 'frontend',
     },
-    {
-      name: 'Svelte',
-      image: '/images/svelte.png',
-      alt: 'Svelte logo',
-      category: 'frontend',
-    },
+    // {
+    //   name: 'Svelte',
+    //   image: '/images/svelte.png',
+    //   alt: 'Svelte logo',
+    //   category: 'frontend',
+    // },
     {
       name: 'Astro',
       image: '/images/astro.png',
