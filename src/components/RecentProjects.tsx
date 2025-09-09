@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowSquareOut, GithubLogo, ArrowRight } from '@phosphor-icons/react';
+import { ArrowSquareOut, GithubLogo, ArrowRight, ArrowUpRight } from '@phosphor-icons/react';
 
 const RecentProjects = () => {
   const projects = [
@@ -85,19 +85,27 @@ const RecentProjects = () => {
                     {project.type}
                   </span>
                 </div> */}
-                  <div className="flex flex-col md:flex-row mb-3 md:gap-4">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-16 h-16 mb-4 rounded-2xl"
-                    />
-                    <div className="flex flex-col">
-                      <h3 className="text-2xl font-sans font-bold leading-tight pt-1">
-                        {project.title}
-                      </h3>
-                      <h4 className="text-md text-gray-600 font-semibold tracking-wide leading-relaxed mb-1">
-                        {project.tagline}
-                      </h4>
+                  <div className="flex justify-between">
+                    <div className="flex flex-col md:flex-row mb-3 md:gap-4">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-16 h-16 mb-4 rounded-2xl"
+                      />
+                      <div className="flex flex-col">
+                        <h3 className="text-2xl font-sans font-bold leading-tight pt-1">
+                          {project.title}
+                        </h3>
+                        <h4 className="text-md text-gray-600 font-semibold tracking-wide leading-relaxed mb-1">
+                          {project.tagline}
+                        </h4>
+                      </div>
+                    </div>
+                    <div>
+                      <ArrowUpRight
+                        className="text-gray-300 hover:text-gray-400 transition-colors duration-200"
+                        size={24}
+                      />
                     </div>
                   </div>
                   <p className="text-md text-gray-600 leading-relaxed">{project.description}</p>
