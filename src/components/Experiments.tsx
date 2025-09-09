@@ -11,6 +11,7 @@ import {
   CheckSquare,
   FileText,
   Camera,
+  FigmaLogo,
   PaintBrushIcon,
 } from '@phosphor-icons/react';
 
@@ -42,21 +43,21 @@ const Experiments = () => {
     },
     {
       id: 5,
-      title: 'Figma Chart Generator',
+      title: 'Chart Generator Plugin',
       url: 'https://github.com/mttwhlly/figma-charter',
-      icon: ChartBar,
+      icon: FigmaLogo,
     },
     {
       id: 6,
-      title: 'Figma Standards Checker',
+      title: 'Design Standards Plugin',
       url: 'https://github.com/mttwhlly/design-standards-checker',
-      icon: CheckSquare,
+      icon: FigmaLogo,
     },
     {
       id: 7,
-      title: 'Figma Get Layer Text',
+      title: 'Get Layer Text Plugin',
       url: 'https://github.com/mttwhlly/get-figma-text',
-      icon: FileText,
+      icon: FigmaLogo,
     },
     {
       id: 8,
@@ -103,10 +104,10 @@ const Experiments = () => {
           >
             <experiment.icon size={20} className="text-gray-500 flex-shrink-0" />
             <span className="text-lg font-medium text-gray-900">{experiment.title}</span>
-            {/* <ArrowUpRight
+            <ArrowUpRight
               size={16}
               className="text-gray-400 group-hover:text-gray-600 transition-colors"
-            /> */}
+            />
           </a>
         ))}
       </div>
