@@ -45,7 +45,7 @@ const Testimonials = () => {
       avatar: '/images/corinne.jpeg',
       content:
         'Working with Matt makes me excited to push my own performance—his great attitude and communication are contagious.',
-      link: '#',
+      link: 'https://www.linkedin.com/in/corinne-romano-64b15563',
     },
     {
       id: 3,
