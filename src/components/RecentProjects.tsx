@@ -8,7 +8,7 @@ const RecentProjects = () => {
       title: 'HANG LAB',
       tagline: 'iOS/WatchOS hangboard training app',
       description:
-        'A focused tool for climbers training on hangboards. I designed and built a mobile and Apple Watch training experience, emphasizing clarity under physical strain. Though implemented in Swift, the same design principles I apply to web were pushed to their limits in this project. Join the beta today!',
+        'A focused tool for climbers to increase their finger strength. I designed and built a mobile and Apple Watch training experience, emphasizing clarity under physical strain. Currently built in Swift as a personal challenge but possible a cross-platform React Native rewrite is on the horizon.',
       icon: '/images/hangtime-icon.svg',
       image: '/images/hanglab.webp',
       tags: ['Swift', 'SwiftUI', 'HealthKit', 'WatchKit', 'SiriKit', 'Haptics'],
@@ -22,7 +22,7 @@ const RecentProjects = () => {
       title: 'Can I Surf Today?',
       tagline: 'Hyperlocal AI-powered surf report',
       description:
-        "A modern take on calling the local surf shop's answering machine daily report, this tool gathers realtime local buoy, tide and weather data and produces a stoke-filled surf report written by a friendly AI surfer. Built to enable quick informed decisions – without a PhD in meteorology.",
+        "A modern take on calling the local surf shop's answering machine daily report, this tool gathers realtime local buoy, tide and weather data and produces a stoke-filled surf report written by a friendly AI surfer. Built to enable quick, fun informed decisions – without a PhD in meteorology.",
       icon: '/images/wave-logo.svg',
       tags: ['Next.js', 'Vercel AI SDK', 'NOAA/Open-Meteo APIs', 'Neon', 'Bun'],
       liveUrl: 'https://canisurf.today',
