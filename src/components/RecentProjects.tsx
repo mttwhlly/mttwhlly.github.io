@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowSquareOut, GithubLogo, ArrowRight, ArrowUpRight } from '@phosphor-icons/react';
+import { ArrowUpRight } from '@phosphor-icons/react';
 
 const RecentProjects = () => {
   const projects = [
@@ -30,18 +30,6 @@ const RecentProjects = () => {
       githubUrl: '#',
       type: 'Web App & API',
     },
-    // {
-    //   id: 1,
-    //   title: 'Should Design Systems Code?',
-    //   tagline: 'An evaluation of design systems, AI and pancakes',
-    //   description:
-    //     "A modern take on calling the local surf shop's answering machine to find out if it's worth paddling out, this tool gathers hyperlocal buoy data, tide forecasts, and produces a stoke-filled surf report written by a friendly AI surfer. Built to enable quick informed decisions – without a PhD in meteorology.",
-    //   image: '',
-    //   tags: ['Figma', 'Design Tokens', 'MCP'],
-    //   liveUrl: '#',
-    //   githubUrl: '#',
-    //   type: 'Design Systems',
-    // },
   ];
 
   return (
@@ -52,13 +40,6 @@ const RecentProjects = () => {
         </h2>
       </div>
 
-      {/* <div className="max-w-4xl mx-auto">
-        <p className="text-md text-gray-700 p-6 bg-gray-50 rounded-xl border border-dashed border-gray-300 mb-16">
-          While I can’t share work from my current role, these personal projects represent my
-          approach: thoughtful, user-focused, and built with care.
-        </p>
-      </div> */}
-
       <div className="grid gap-6 lg:gap-8">
         {projects.map((project, index) => (
           <article
@@ -67,27 +48,8 @@ const RecentProjects = () => {
               index % 2 === 1 ? 'lg:flex-row-reverse' : ''
             }`}
           >
-            {/* Project Image */}
-            {/* <div className="flex-1 group">
-              <div className="relative overflow-hidden rounded-lg bg-gray-100">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
-            </div> */}
-
-            {/* Project Content */}
-            {/* <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="flex-1"> */}
             <div className="flex-1 space-y-6">
               <div>
-                {/* <div className="flex items-center gap-3 mb-3">
-                  <span className="text-sm font-medium border border-gray-300 text-gray-500 px-3 py-1 rounded-full">
-                  {project.type}
-                  </span>
-                  </div> */}
                 <div className="flex flex-col md:flex-row justify-between">
                   {project.image && (
                     <img
@@ -97,7 +59,7 @@ const RecentProjects = () => {
                     />
                   )}
                   <div className="flex flex-col md:gap-4">
-                    <div className="flex mt-3">
+                    <div className="flex mt-4">
                       <img
                         src={project.icon}
                         alt={project.title}
@@ -113,10 +75,6 @@ const RecentProjects = () => {
                       </div>
                     </div>
 
-                    {/* <ArrowUpRight
-                        className="text-gray-300 hover:text-gray-400 transition-colors duration-200"
-                        size={24}
-                      /> */}
                     <p className="my-4 text-md text-gray-600 leading-relaxed">
                       {project.description}
                     </p>
@@ -145,34 +103,7 @@ const RecentProjects = () => {
                   </div>
                 </div>
               </div>
-
-              {/* Links */}
-              {/* <div className="flex items-center gap-4 pt-2">
-                <a
-                  href={project.liveUrl}
-                  className="inline-flex items-center gap-2 text-lg font-medium text-gray-900 hover:text-blue-600 transition-colors group"
-                >
-                  View Project
-                  <ArrowSquareOut
-                    size={18}
-                    className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
-                  />
-                </a>
-                <a
-                  href={project.githubUrl}
-                  className="inline-flex items-center gap-2 text-lg text-gray-600 hover:text-gray-900 transition-colors"
-                >
-                  Code
-                  <ArrowSquareOut
-                    size={18}
-                    className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
-                  />
-                </a>
-              </div> */}
             </div>
-            {/* </a> */}
-
-            {/* Project Links */}
           </article>
         ))}
       </div>
