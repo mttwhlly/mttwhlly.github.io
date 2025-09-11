@@ -8,7 +8,7 @@ const RecentProjects = () => {
       title: 'HANG LAB',
       tagline: 'iOS/WatchOS hangboard training app',
       description:
-        'A focused tool for climbers to increase their finger strength. I designed and built a mobile and Apple Watch training experience, emphasizing clarity under physical strain. Currently built in Swift as a personal challenge. A cross-platform React Native rewrite is on the horizon.',
+        'A tool for climbers to break through plateaus by increasing finger strength through scientifically proven hangboard routines. Currently built in Swift - fully integrated with Healthkit with precise haptics - with a cross-platform rewrite in React Native is on the horizon.',
       icon: '/images/hangtime-icon.svg',
       image: '/images/hanglab.webp',
       tags: ['Swift', 'SwiftUI', 'HealthKit', 'WatchKit', 'SiriKit', 'Haptics'],
