@@ -6,24 +6,27 @@ const RecentProjects = () => {
     {
       id: 1,
       title: 'HANG LAB',
-      tagline: 'A distraction-free Apple Watch and iPhone app for hangboard training',
+      tagline: 'iOS/WatchOS hangboard training app',
       description:
         'A focused tool for climbers training on hangboards. I designed and built a mobile and Apple Watch training experience, emphasizing clarity under physical strain. Though implemented in Swift, the same design principles I apply to web were pushed to their limits in this project. Join the beta today!',
-      image: '/images/hangtime-icon.svg',
+      icon: '/images/hangtime-icon.svg',
+      image: '/images/hanglab.webp',
       tags: ['Swift', 'SwiftUI', 'HealthKit', 'WatchKit', 'SiriKit', 'Haptics'],
       liveUrl: 'https://testflight.apple.com/join/FTcb21dX',
+      linkText: 'Join the TestFlight Beta',
       githubUrl: '#',
       type: 'WatchOS/iOS App',
     },
     {
       id: 2,
-      title: 'canisurf.today',
-      tagline: 'AI-generated surf report app based on local buoy and forecast data',
+      title: 'Can I Surf Today?',
+      tagline: 'Hyperlocal AI-powered surf report',
       description:
         "A modern take on calling the local surf shop's answering machine to find out if it's worth paddling out, this tool gathers hyperlocal buoy data, tide forecasts, and produces a stoke-filled surf report written by a friendly AI surfer. Built to enable quick informed decisions – without a PhD in meteorology.",
-      image: '/images/wave-logo.svg',
+      icon: '/images/wave-logo.svg',
       tags: ['Next.js', 'Vercel AI SDK', 'NOAA/Open-Meteo APIs', 'Neon', 'Bun'],
       liveUrl: 'https://canisurf.today',
+      linkText: 'See the latest report',
       githubUrl: '#',
       type: 'Web App & API',
     },
@@ -77,22 +80,30 @@ const RecentProjects = () => {
             </div> */}
 
             {/* Project Content */}
-            <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="flex-1">
-              <div className="flex-1 space-y-6">
-                <div>
-                  {/* <div className="flex items-center gap-3 mb-3">
+            {/* <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="flex-1"> */}
+            <div className="flex-1 space-y-6">
+              <div>
+                {/* <div className="flex items-center gap-3 mb-3">
                   <span className="text-sm font-medium border border-gray-300 text-gray-500 px-3 py-1 rounded-full">
-                    {project.type}
+                  {project.type}
                   </span>
-                </div> */}
-                  <div className="flex justify-between">
-                    <div className="flex flex-col md:flex-row mb-3 md:gap-4">
+                  </div> */}
+                <div className="flex flex-col md:flex-row justify-between">
+                  {project.image && (
+                    <img
+                      src={project.image}
+                      alt={`${project.title} mockup`}
+                      className="max-h-[400px] mr-8 object-contain"
+                    />
+                  )}
+                  <div className="flex flex-col md:gap-4">
+                    <div className="flex mt-3">
                       <img
-                        src={project.image}
+                        src={project.icon}
                         alt={project.title}
-                        className="w-16 h-16 mb-4 rounded-2xl"
+                        className="w-16 h-16 rounded-2xl"
                       />
-                      <div className="flex flex-col">
+                      <div className="flex flex-col gap-0.5 ml-4">
                         <h3 className="text-2xl font-sans font-bold leading-tight pt-1">
                           {project.title}
                         </h3>
@@ -101,30 +112,42 @@ const RecentProjects = () => {
                         </h4>
                       </div>
                     </div>
-                    <div>
-                      <ArrowUpRight
+
+                    {/* <ArrowUpRight
                         className="text-gray-300 hover:text-gray-400 transition-colors duration-200"
                         size={24}
-                      />
+                      /> */}
+                    <p className="my-4 text-md text-gray-600 leading-relaxed">
+                      {project.description}
+                    </p>
+                    {project.linkText && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mb-6"
+                      >
+                        {project.linkText}{' '}
+                        <ArrowUpRight className="inline-block ml-1" size={16} weight="bold" />
+                      </a>
+                    )}
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-2">
+                      {project.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="text-sm text-gray-600 bg-gray-100 px-3 py-1 rounded-full"
+                        >
+                          {tag}
+                        </span>
+                      ))}
                     </div>
                   </div>
-                  <p className="text-md text-gray-600 leading-relaxed">{project.description}</p>
                 </div>
+              </div>
 
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-sm text-gray-600 bg-gray-100 px-3 py-1 rounded-full"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Links */}
-                {/* <div className="flex items-center gap-4 pt-2">
+              {/* Links */}
+              {/* <div className="flex items-center gap-4 pt-2">
                 <a
                   href={project.liveUrl}
                   className="inline-flex items-center gap-2 text-lg font-medium text-gray-900 hover:text-blue-600 transition-colors group"
@@ -146,8 +169,8 @@ const RecentProjects = () => {
                   />
                 </a>
               </div> */}
-              </div>
-            </a>
+            </div>
+            {/* </a> */}
 
             {/* Project Links */}
           </article>
