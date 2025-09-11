@@ -22,7 +22,7 @@ const RecentProjects = () => {
       title: 'Can I Surf Today?',
       tagline: 'Hyperlocal AI-powered surf report',
       description:
-        "A modern take on calling the local surf shop's answering machine to find out if it's worth paddling out, this tool gathers hyperlocal buoy data, tide forecasts, and produces a stoke-filled surf report written by a friendly AI surfer. Built to enable quick informed decisions – without a PhD in meteorology.",
+        "A modern take on calling the local surf shop's answering machine daily report, this tool gathers realtime local buoy, tide and weather data and produces a stoke-filled surf report written by a friendly AI surfer. Built to enable quick informed decisions – without a PhD in meteorology.",
       icon: '/images/wave-logo.svg',
       tags: ['Next.js', 'Vercel AI SDK', 'NOAA/Open-Meteo APIs', 'Neon', 'Bun'],
       liveUrl: 'https://canisurf.today',
