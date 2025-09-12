@@ -62,7 +62,7 @@ const RecentProjects = () => {
                     />
                   )}
                   <div className="flex flex-col justify-between md:gap-4">
-                    <div>
+                    <div className="mb-12 md:mb-auto">
                       <div className="flex mt-6 md:mt-1">
                         <img
                           src={project.icon}
