@@ -22,11 +22,12 @@ const RecentProjects = () => {
       title: 'Can I Surf Today?',
       tagline: 'Hyperlocal AI-powered surf report',
       description:
-        "A modern take on calling the local surf shop's answering machine daily report, this tool gathers realtime local buoy, tide and weather data and produces a stoke-filled surf report written by a friendly AI surfer. Built to enable quick, fun informed decisions – without a PhD in meteorology.",
+        'A modern take on local surf reports, this tool gathers realtime buoy, tide and weather data and produces a stoke-filled surf report written by a friendly, knowledgeable AI surfer for quick, fun and informed decisions – without needing a PhD in meteorology.',
       icon: '/images/wave-logo.svg',
+      image: '/images/canisurftoday.webp',
       tags: ['Next.js', 'Vercel AI SDK', 'NOAA/Open-Meteo APIs', 'Neon', 'Bun'],
       liveUrl: 'https://canisurf.today',
-      linkText: 'See the latest report',
+      linkText: "Read today's report",
       githubUrl: '#',
       type: 'Web App & API',
     },
@@ -50,45 +51,50 @@ const RecentProjects = () => {
           >
             <div className="flex-1 space-y-6">
               <div>
-                <div className="flex flex-col md:flex-row justify-between">
+                <div
+                  className={`flex flex-col ${index % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'} gap-8 justify-between`}
+                >
                   {project.image && (
                     <img
                       src={project.image}
                       alt={`${project.title} mockup`}
-                      className="max-h-[400px] mr-8 object-contain"
+                      className="max-h-[400px] object-contain"
                     />
                   )}
-                  <div className="flex flex-col md:gap-4">
-                    <div className="flex mt-4">
-                      <img
-                        src={project.icon}
-                        alt={project.title}
-                        className="w-16 h-16 rounded-2xl"
-                      />
-                      <div className="flex flex-col gap-0.5 ml-4">
-                        <h3 className="text-2xl font-sans font-bold leading-tight pt-1">
-                          {project.title}
-                        </h3>
-                        <h4 className="text-md text-gray-600 font-semibold tracking-wide leading-relaxed mb-1">
-                          {project.tagline}
-                        </h4>
+                  <div className="flex flex-col justify-between md:gap-4">
+                    <div>
+                      <div className="flex mt-6 md:mt-1">
+                        <img
+                          src={project.icon}
+                          alt={project.title}
+                          className="w-16 h-16 rounded-2xl"
+                        />
+                        <div className="flex flex-col gap-0.5 ml-4">
+                          <h3 className="text-2xl font-sans font-bold leading-tight pt-1">
+                            {project.title}
+                          </h3>
+                          <h4 className="text-md text-gray-600 font-semibold tracking-wide leading-relaxed mb-1">
+                            {project.tagline}
+                          </h4>
+                        </div>
                       </div>
+
+                      <p className="my-4 text-md text-gray-600 leading-relaxed">
+                        {project.description}
+                      </p>
+                      {project.linkText && (
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mb-6"
+                        >
+                          {project.linkText}{' '}
+                          <ArrowUpRight className="inline-block ml-1" size={16} weight="bold" />
+                        </a>
+                      )}
                     </div>
 
-                    <p className="my-4 text-md text-gray-600 leading-relaxed">
-                      {project.description}
-                    </p>
-                    {project.linkText && (
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mb-6"
-                      >
-                        {project.linkText}{' '}
-                        <ArrowUpRight className="inline-block ml-1" size={16} weight="bold" />
-                      </a>
-                    )}
                     {/* Tags */}
                     <div className="flex flex-wrap gap-2">
                       {project.tags.map((tag) => (
