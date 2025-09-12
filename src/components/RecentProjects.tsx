@@ -34,7 +34,7 @@ const RecentProjects = () => {
   ];
 
   return (
-    <section className="container px-4 py-16 max-w-4xl mx-auto">
+    <section className="container px-4 pb-16 pt-12 max-w-4xl mx-auto">
       <div className="mb-8">
         <h2 className="text-lg font-mono tracking-loose leading-tight uppercase text-gray-500">
           Projects
