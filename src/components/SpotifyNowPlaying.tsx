@@ -9,10 +9,11 @@ const SpotifyNowPlaying: React.FC = () => {
   const [shouldScroll, setShouldScroll] = useState<boolean>(false);
   const textRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const tokenExpiryRef = useRef<number>(0);
+  const currentTokenRef = useRef<string | null>(null);
 
   const fetchAccessToken = async (): Promise<string | null> => {
     try {
-      // Updated to use external API
       const response = await fetch('https://spotify-api-silk-nine.vercel.app/api/spotify', {
         method: 'POST',
       });
@@ -22,6 +23,11 @@ const SpotifyNowPlaying: React.FC = () => {
       }
 
       const data = await response.json();
+
+      // Store token and expiry time
+      currentTokenRef.current = data.access_token;
+      tokenExpiryRef.current = Date.now() + data.expires_in * 1000 - 60000; // Refresh 1 minute early
+
       return data.access_token;
     } catch (err) {
       setError('Authentication error');
@@ -30,8 +36,21 @@ const SpotifyNowPlaying: React.FC = () => {
     }
   };
 
-  const fetchNowPlaying = async (token: string): Promise<void> => {
+  const getValidToken = async (): Promise<string | null> => {
+    // Check if current token is still valid
+    if (currentTokenRef.current && Date.now() < tokenExpiryRef.current) {
+      return currentTokenRef.current;
+    }
+
+    // Token expired or doesn't exist, fetch new one
+    return await fetchAccessToken();
+  };
+
+  const fetchNowPlaying = async (): Promise<void> => {
     try {
+      const token = await getValidToken();
+      if (!token) return;
+
       // First try to get currently playing
       let response = await fetch('https://api.spotify.com/v1/me/player/currently-playing', {
         headers: {
@@ -39,11 +58,24 @@ const SpotifyNowPlaying: React.FC = () => {
         },
       });
 
+      // Handle token expiry
+      if (response.status === 401) {
+        // Token expired, get new one and retry
+        const newToken = await fetchAccessToken();
+        if (newToken) {
+          response = await fetch('https://api.spotify.com/v1/me/player/currently-playing', {
+            headers: {
+              Authorization: `Bearer ${newToken}`,
+            },
+          });
+        }
+      }
+
       // If no track is currently playing, get the most recently played
       if (response.status === 204) {
         response = await fetch('https://api.spotify.com/v1/me/player/recently-played?limit=1', {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${currentTokenRef.current}`,
           },
         });
 
@@ -74,10 +106,11 @@ const SpotifyNowPlaying: React.FC = () => {
             albumLink: data.item.album.external_urls.spotify,
           });
         }
-      } else {
+      } else if (response.status !== 401) {
         console.error('Error fetching data:', response.status);
       }
 
+      setError(null); // Clear any previous errors
       setLoading(false);
     } catch (err) {
       setError('Error fetching data from Spotify');
@@ -93,7 +126,6 @@ const SpotifyNowPlaying: React.FC = () => {
       const containerWidth = containerRef.current.clientWidth;
       setShouldScroll(textWidth > containerWidth);
 
-      // Set CSS custom property for animation distance
       if (textWidth > containerWidth) {
         const distance = textWidth - containerWidth;
         containerRef.current.style.setProperty('--marquee-distance', `${distance}px`);
@@ -103,20 +135,14 @@ const SpotifyNowPlaying: React.FC = () => {
 
   useEffect(() => {
     const initializeSpotify = async (): Promise<void> => {
-      const token = await fetchAccessToken();
-      if (token) {
-        fetchNowPlaying(token);
+      await fetchNowPlaying();
 
-        // Set up auto-refresh every 30 seconds
-        const interval = setInterval(async () => {
-          const refreshedToken = await fetchAccessToken();
-          if (refreshedToken) {
-            fetchNowPlaying(refreshedToken);
-          }
-        }, 30000);
+      // Set up auto-refresh every 30 seconds
+      const interval = setInterval(() => {
+        fetchNowPlaying();
+      }, 30000);
 
-        return () => clearInterval(interval);
-      }
+      return () => clearInterval(interval);
     };
 
     initializeSpotify();
