@@ -134,18 +134,20 @@ const SpotifyNowPlaying: React.FC = () => {
   }, [nowPlaying]);
 
   useEffect(() => {
+    let interval: NodeJS.Timeout;
+
     const initializeSpotify = async (): Promise<void> => {
       await fetchNowPlaying();
 
       // Set up auto-refresh every 30 seconds
-      const interval = setInterval(() => {
+      interval = setInterval(() => {
         fetchNowPlaying();
       }, 30000);
-
-      return () => clearInterval(interval);
     };
 
     initializeSpotify();
+
+    return () => clearInterval(interval);
   }, []);
 
   return (
