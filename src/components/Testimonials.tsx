@@ -89,7 +89,7 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="py-16 px-4 overflow-hidden">
+    <section className="pt-16 px-4 overflow-hidden">
       <div className="mb-8 max-w-4xl mx-auto">
         <h2 className="text-lg font-mono tracking-loose uppercase text-gray-500 mb-2 px-4">
           Testimonials
