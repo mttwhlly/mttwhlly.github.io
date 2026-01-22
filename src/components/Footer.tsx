@@ -23,8 +23,8 @@ export default function Footer() {
                 <BookmarkSimple size={16} />
               </span>
               <Marquee className="text-sm md:text-md">
-                Anxious Generation <i className="font-serif tracking-wider text-gray-400">by</i>{' '}
-                Jonathan Haidt
+                The Brothers Karamazov <i className="font-serif tracking-wider text-gray-400">by</i>{' '}
+                Fyodor Dostoevsky
               </Marquee>
             </li>
             <li className="h-[42px] text-sm md:text-md flex items-center space-x-2">
@@ -32,7 +32,7 @@ export default function Footer() {
                 <Mountains size={16} />
               </span>
               <Marquee className="text-sm md:text-md">
-                Pink V5 <i className="font-serif tracking-wider text-gray-400">on</i> Timo Wall{' '}
+                Green V6 <i className="font-serif tracking-wider text-gray-400">on</i> Outer Wave{' '}
                 <i className="font-serif tracking-wider text-gray-400">at</i>{' '}
                 <a href="https://stoneclimbing.com/" target="_blank" className="hover:underline">
                   Stone Climbing Co.
