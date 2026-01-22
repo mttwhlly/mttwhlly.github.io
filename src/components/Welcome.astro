@@ -4,6 +4,7 @@ import RecentProjects from '../components/RecentProjects';
 import Experiments from '../components/Experiments';
 import Tools from '../components/Tools';
 import SelectedClients from '../components/SelectedClients';
+import Newsletter from '../components/Newsletter';
 import Skills from '../components/Skills';
 ---
 <header>
@@ -28,15 +29,13 @@ import Skills from '../components/Skills';
   <Tools client:load />
   <SelectedClients client:load />
     <Testimonials client:load />
-    <section class="container lg:mb-20 px-4 pt-20 pb-12 flex-auto flex flex-col gap-8 lg:mt-12 w-full max-w-4xl mx-auto text-center bg-gray-100 lg:rounded-2xl">
+    <Newsletter client:load />
+    <!-- <section class="container lg:mb-20 px-4 pt-20 pb-12 flex-auto flex flex-col gap-8 lg:mt-12 w-full max-w-4xl mx-auto text-center bg-gray-100 lg:rounded-2xl">
       <p class="text-2xl text-gray-600 leading-relaxed"><span class="underline underline-offset-4 decoration-[#D4FC52] decoration-3px text-pretty">Open</span> to full-time remote roles, well-scoped side projects, and teaching or mentoring opportunities.<br/>If you value deep work and long-term thinking, <i class="font-serif text-black tracking-wide">let's chat</i>.</p>
       <div class="my-12 flex justify-center gap-4">
-        <!-- <a href="/matt-whalley-resume-20250718.pdf" target="_blank" rel="noopener noreferrer" class="text-lg md:text-2xl font-medium py-3 px-8 transition-colors duration-500 rounded-full bg-gray-100 font-mono">
-           View Resume
-        </a> -->
         <a href="mailto:&#109;&#97;&#116;&#116;&#64;&#109;&#97;&#116;&#116;&#119;&#104;&#97;&#108;&#108;&#101;&#121;&#46;&#99;&#111;&#109;" class="flex gap-2 text-lg md:text-2xl font-medium py-3 px-8 rounded-full shadow-[#D4FC52]/20 bg-[#D4FC52] shadow-sm hover:shadow-[#D4FC52]/40 hover:shadow-lg transition-all duration-700 font-mono">
            Get in Touch
         </a>
       </div>
-    </section>
+    </section> -->
 </main>
