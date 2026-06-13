@@ -3,7 +3,28 @@ import { ArrowUpRight } from '@phosphor-icons/react';
 
 const RecentProjects = () => {
   const projects = [
+    
     {
+  id: 0,
+  title: 'AI Product Development at Dataspring',
+  tagline: 'AI product engineering, frontend architecture, and team enablement',
+  description:
+    'Leading UX engineering and frontend architecture for AI-enabled web and mobile initiatives. Work includes production React interfaces, AI-assisted development workflows, design system standards, secure authentication patterns, and guidance for engineers and vendor teams adopting emerging AI tooling.',
+  icon: '/images/dataspring-icon.svg',
+  image: '',
+  tags: [
+    'React',
+    'AI Product Development',
+    'Design Systems',
+    'UX Engineering',
+    'Technical Leadership',
+    'React Native',
+  ],
+  liveUrl: '',
+  linkText: '',
+  githubUrl: '#',
+  type: 'Professional Experience',
+},{
       id: 1,
       title: 'HANG LAB',
       tagline: 'iOS/WatchOS hangboard training app',
