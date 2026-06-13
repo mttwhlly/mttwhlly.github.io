@@ -85,11 +85,11 @@ const RecentProjects = () => {
                   <div className="flex flex-col justify-between md:gap-4">
                     <div className="mb-12 md:mb-auto">
                       <div className="flex mt-6 md:mt-1">
-                        <img
+                        {(project.image && project.icon) && (<img
                           src={project.icon}
                           alt={project.title}
                           className="w-16 h-16 rounded-2xl"
-                        />
+                        />)}
                         <div className="flex flex-col gap-0.5 ml-4">
                           <h3 className="text-2xl font-sans font-bold leading-tight pt-1">
                             {project.title}
