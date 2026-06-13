@@ -34,7 +34,7 @@ const Skills: React.FC = () => {
       id: 'ai-engineering',
       title: 'Applied AI Engineering',
       description:
-        'Shipping production AI features: retrieval, orchestration, evals, and on-device/edge.',
+        'Shipping production AI features: Building usable AI-enabled interfaces, workflows, and development patterns for product teams.',
       icon: Brain,
       highlight: true,
       skills: [
