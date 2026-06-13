@@ -3,7 +3,6 @@ import { ArrowUpRight } from '@phosphor-icons/react';
 
 const RecentProjects = () => {
   const projects = [
-    
     {
   id: 0,
   title: 'AI Product Development at Dataspring',
@@ -24,20 +23,7 @@ const RecentProjects = () => {
   linkText: '',
   githubUrl: '#',
   type: 'Professional Experience',
-},{
-      id: 2,
-      title: 'HANG LAB',
-      tagline: 'iOS/WatchOS hangboard training app',
-      description:
-        'A tool for climbers to break through plateaus by increasing finger strength through scientifically proven hangboard routines. Currently built in Swift - fully integrated with Healthkit with precise haptics - with a cross-platform rewrite in React Native on the horizon.',
-      icon: '/images/hangtime-icon.svg',
-      image: '/images/hanglab.webp',
-      tags: ['Swift', 'SwiftUI', 'HealthKit', 'WatchKit', 'SiriKit', 'Haptics'],
-      liveUrl: 'https://testflight.apple.com/join/FTcb21dX',
-      linkText: 'Join the TestFlight Beta',
-      githubUrl: '#',
-      type: 'WatchOS/iOS App',
-    },
+},
     {
       id: 3,
       title: 'Can I Surf Today?',
@@ -50,7 +36,20 @@ const RecentProjects = () => {
       liveUrl: 'https://canisurf.today',
       linkText: "Read today's report",
       githubUrl: '#',
-      type: 'Web App & API',
+      type: 'Web App & API',},
+    {
+      id: 2,
+      title: 'HANG LAB',
+      tagline: 'iOS/WatchOS hangboard training app',
+      description:
+        'A tool for climbers to break through plateaus by increasing finger strength through scientifically proven hangboard routines. Currently built in Swift - fully integrated with Healthkit with precise haptics - with a cross-platform rewrite in React Native on the horizon.',
+      icon: '/images/hangtime-icon.svg',
+      image: '/images/hanglab.webp',
+      tags: ['Swift', 'SwiftUI', 'HealthKit', 'WatchKit', 'SiriKit', 'Haptics'],
+      liveUrl: 'https://testflight.apple.com/join/FTcb21dX',
+      linkText: 'Join the TestFlight Beta',
+      githubUrl: '#',
+      type: 'WatchOS/iOS App',
     },
   ];
 
