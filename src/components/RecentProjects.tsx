@@ -25,7 +25,7 @@ const RecentProjects = () => {
   githubUrl: '#',
   type: 'Professional Experience',
 },{
-      id: 1,
+      id: 2,
       title: 'HANG LAB',
       tagline: 'iOS/WatchOS hangboard training app',
       description:
@@ -39,7 +39,7 @@ const RecentProjects = () => {
       type: 'WatchOS/iOS App',
     },
     {
-      id: 2,
+      id: 3,
       title: 'Can I Surf Today?',
       tagline: 'Hyperlocal AI-powered surf report',
       description:
