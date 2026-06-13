@@ -102,7 +102,7 @@ const Skills: React.FC = () => {
     {
       id: 'tooling',
       title: 'Tooling & Ops',
-      description: 'Devex, observability, and delivery tuned for AI features and fast iteration.',
+      description: 'Developer experience, observability, and delivery tuned for AI features and fast iteration.',
       icon: Wrench,
       skills: [
         { name: 'Git & Branching', description: 'Reviews, trunk/PR hygiene' },
@@ -117,7 +117,7 @@ const Skills: React.FC = () => {
     {
       id: 'testing',
       title: 'Testing & Quality',
-      description: 'From unit and E2E to model evals, red‑teaming, and regression protection.',
+      description: 'AI evaluation frameworks, AI testing strategies, accessibility validation, frontend quality practices, architecture reviews, and production readiness.',
       icon: TestTube,
       skills: [
         { name: 'Unit & Component', description: 'Jest + React Testing Library' },
@@ -148,7 +148,7 @@ const Skills: React.FC = () => {
       id: 'process',
       title: 'Process & Collaboration',
       description:
-        'Product-minded delivery: discovery, ethics reviews, and crisp cross‑functional comms.',
+        'Engineering enablement, AI governance, security review preparation, vendor collaboration, technical leadership, and process design.',
       icon: Users,
       skills: [
         { name: 'Product Discovery', description: 'Problem framing, rapid protos' },
