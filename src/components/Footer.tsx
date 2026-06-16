@@ -75,7 +75,8 @@ export default function Footer() {
         </div>
       </div>
       <div className="w-full h-[42] text-center text-xs pb-2 text-gray-400">
-        © Matt Whalley, 2025 –{' '}
+        © Matt Whalley, {new Date().getFullYear()}
+        {' - '}
         <a
           href="https://github.com/mttwhlly/mttwhlly.github.io"
           className="hover:underline font-mono"
