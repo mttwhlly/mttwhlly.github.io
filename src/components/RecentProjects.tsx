@@ -19,8 +19,8 @@ const RecentProjects = () => {
     'Technical Leadership',
     'React Native',
   ],
-  liveUrl: '',
-  linkText: '',
+  liveUrl: 'https://dataspring.com',
+  linkText: 'Visit DataSpring',
   githubUrl: '#',
   type: 'Professional Experience',
 },
@@ -84,7 +84,7 @@ const RecentProjects = () => {
                   <div className="flex flex-col justify-between md:gap-4">
                     <div className="mb-12 md:mb-auto">
                       <div className="flex mt-6 md:mt-1">
-                        {(project.image && project.icon) && (<img
+                        {project.icon && (<img
                           src={project.icon}
                           alt={project.title}
                           className="w-16 h-16 rounded-2xl"
