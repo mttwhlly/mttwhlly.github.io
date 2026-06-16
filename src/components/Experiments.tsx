@@ -20,19 +20,19 @@ const Experiments = () => {
     {
       id: 1,
       title: 'Business Bingo',
-      url: 'https://businessbingo.lol',
+      url: 'https://github.com/mttwhlly/business-bingo',
       icon: GridFour,
     },
     {
       id: 2,
       title: 'D U S T',
-      url: 'https://dustwriting.space',
+      url: 'https://github.com/mttwhlly/dust',
       icon: PenNib,
     },
     {
       id: 3,
       title: 'Grounded',
-      url: 'https://t0ccko4o0sc0cc0wowsw4w04.mttwhlly.cc',
+      url: 'https://github.com/mttwhlly/grounded',
       icon: Tree,
     },
     {
