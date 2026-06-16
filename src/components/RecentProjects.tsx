@@ -51,6 +51,20 @@ const RecentProjects = () => {
       githubUrl: '#',
       type: 'WatchOS/iOS App',
     },
+    {
+      id: 4,
+      title: 'RFD Checker',
+      tagline: 'Figma plugin for Ready-for-Dev audits',
+      description:
+        'Audits a selected frame against a Ready-for-Dev checklist and tells you, in seconds, whether it\'s actually ready to hand to engineering — or where it\'ll break when translated to code. Checks design tokens, component mapping, layout & responsiveness, handoff hygiene, and accessibility. Built for teams shipping from Figma to a component-based codebase, with first-class support for Material UI and design tokens/variables. Private by design — everything runs locally on your selection.',
+      icon: '/images/figma-icon.svg',
+      image: '',
+      tags: ['Figma Plugin', 'Design Systems', 'Material UI', 'Design Tokens', 'Handoff'],
+      liveUrl: 'https://www.figma.com/community/plugin/1621901729405123866',
+      linkText: 'View on Figma Community',
+      githubUrl: '#',
+      type: 'Figma Plugin',
+    },
   ];
 
   return (
