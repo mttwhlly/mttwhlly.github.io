@@ -8,7 +8,7 @@ const RecentProjects = () => {
       title: 'AI Product Development at DataSpring',
       tagline: 'AI product engineering, frontend architecture, and team enablement',
       description:
-        'Leading UX engineering and frontend architecture for AI-enabled web and mobile initiatives. Work includes production React interfaces, AI-assisted development workflows, design system standards, secure authentication patterns, and guidance for engineers and vendor teams adopting emerging AI tooling.',
+        'Shipped production AI-powered provider search for enterprise health-plan customers, including RAG-based specialty matching, enriched provider data, Azure AI Foundry, Azure AI Search, and interactive mapping. Built agentic development workflows with Claude Code, Azure DevOps, Jira, and Figma MCP; supported enterprise AI tooling adoption, React Native mobile delivery, design systems, accessibility, and secure platform modernization.',
       icon: '/images/ds.svg',
       image: '',
       tags: [
