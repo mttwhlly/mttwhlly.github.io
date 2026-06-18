@@ -29,7 +29,7 @@ const RecentProjects = () => {
       title: 'RFD Checker',
       tagline: 'Figma plugin for Ready-for-Dev audits',
       description:
-        'Audits a selected frame against a Ready-for-Dev checklist and tells you, in seconds, whether it\'s actually ready to hand to engineering — or where it\'ll break when translated to code. Checks design tokens, component mapping, layout & responsiveness, handoff hygiene, and accessibility. Built for teams shipping from Figma to a component-based codebase, with first-class support for Material UI and design tokens/variables. Private by design — everything runs locally on your selection.',
+        'Built as part of an agentic design-to-development workflow at DataSpring, RFD Checker audits a selected Figma frame against a Ready-for-Dev checklist and tells you, in seconds, whether it\'s actually ready to hand to engineering — or where it\'ll break when translated to code. Checks design tokens, component mapping, layout & responsiveness, handoff hygiene, and accessibility. First-class support for Material UI and design tokens/variables. Private by design — everything runs locally on your selection.',
       icon: '/images/figma-icon.svg',
       image: '',
       tags: ['Figma Plugin', 'Design Systems', 'Material UI', 'Design Tokens', 'Handoff'],
