@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 
 interface TechItem {
   name: string;
@@ -8,7 +8,6 @@ interface TechItem {
 }
 
 const Tools: React.FC = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
 
   // Tech stack data
   const techStack: TechItem[] = [
@@ -31,24 +30,38 @@ const Tools: React.FC = () => {
     //   alt: 'Svelte logo',
     //   category: 'frontend',
     // },
-    {
-      name: 'Astro',
-      image: '/images/astro.png',
-      alt: 'Astro logo',
-      category: 'frontend',
-    },
-    {
-      name: 'Lit',
-      image: '/images/lit.svg',
-      alt: 'Lit logo',
-      category: 'frontend',
-    },
     // {
     //   name: 'Remix',
     //   image: '/images/remix.png',
     //   alt: 'Remix logo',
     //   category: 'frontend',
     // },
+
+    // AI
+    {
+      name: 'Anthropic',
+      image: '/images/anthropic.png',
+      alt: 'Anthropic logo',
+      category: 'ai',
+    },
+    {
+      name: 'OpenAI',
+      image: '/images/openai.png',
+      alt: 'OpenAI logo',
+      category: 'ai',
+    },
+    {
+      name: 'Azure AI Foundry',
+      image: '/images/ai-foundry.png',
+      alt: 'Azure AI Foundry logo',
+      category: 'ai',
+    },
+    {
+      name: 'Azure',
+      image: '/images/azure.png',
+      alt: 'Azure logo',
+      category: 'ai',
+    },
 
     // Languages
     {
@@ -61,12 +74,6 @@ const Tools: React.FC = () => {
       name: 'JavaScript',
       image: '/images/js.png',
       alt: 'JavaScript logo',
-      category: 'languages',
-    },
-    {
-      name: 'HTML5',
-      image: '/images/html5.png',
-      alt: 'HTML5 logo',
       category: 'languages',
     },
     {
@@ -104,6 +111,18 @@ const Tools: React.FC = () => {
     //   category: 'tools',
     // },
     {
+      name: 'Vercel',
+      image: '/images/vercel.svg',
+      alt: 'Vercel logo',
+      category: 'tools',
+    },
+    {
+      name: 'Bun',
+      image: '/images/bun.svg',
+      alt: 'Bun logo',
+      category: 'tools',
+    },
+    {
       name: 'Node.js',
       image: '/images/node.png',
       alt: 'Node.js logo',
@@ -121,18 +140,6 @@ const Tools: React.FC = () => {
       alt: 'Storybook logo',
       category: 'tools',
     },
-    {
-      name: 'NPM',
-      image: '/images/npm.png',
-      alt: 'Npm logo',
-      category: 'tools',
-    },
-    // {
-    //   name: 'Expo',
-    //   image: '/images/expo.svg',
-    //   alt: 'Expo logo',
-    //   category: 'tools',
-    // },
 
     // Styling & Build
     {
@@ -140,24 +147,6 @@ const Tools: React.FC = () => {
       image: '/images/tailwind.png',
       alt: 'Tailwind CSS logo',
       category: 'styling',
-    },
-    {
-      name: 'CSS3',
-      image: '/images/css3.png',
-      alt: 'CSS3 logo',
-      category: 'styling',
-    },
-    {
-      name: 'GSAP',
-      image: '/images/gsap.webp',
-      alt: 'GSAP logo',
-      category: 'tools',
-    },
-    {
-      name: 'PWA',
-      image: '/images/pwa.png',
-      alt: 'PWA logo',
-      category: 'tools',
     },
 
     // Cloud & Deployment
@@ -207,36 +196,7 @@ const Tools: React.FC = () => {
     // },
   ];
 
-  // Split tech stack into rows
-  const getRowItems = (startIndex: number, count: number): TechItem[] => {
-    const items = [];
-    for (let i = 0; i < count; i++) {
-      items.push(techStack[(startIndex + i) % techStack.length]);
-    }
-    return items;
-  };
-
-  const row1 = getRowItems(0, 10);
-  const row2 = getRowItems(10, 20);
-  // const row3 = getRowItems(16, 24);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate');
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    const rows = containerRef.current?.querySelectorAll('.tech-row');
-    rows?.forEach((row) => observer.observe(row));
-
-    return () => observer.disconnect();
-  }, []);
+  const duration = `${techStack.length * 1.25}s`;
 
   const TechItem: React.FC<{ item: TechItem }> = ({ item }) => (
     <div className="flex-shrink-0 flex flex-col items-center p-4 group">
@@ -256,46 +216,18 @@ const Tools: React.FC = () => {
 
   return (
     <section className="px-4 flex-auto flex flex-col gap-4 mt-12 mb-8 overflow-hidden">
-      <div className="max-w-4xl mx-auto w-full" ref={containerRef}>
+      <div className="max-w-4xl mx-auto w-full">
         <h2 className="text-lg mb-6 px-4 font-mono leading-tight uppercase text-gray-500">Tools</h2>
 
-        <div className="overflow-hidden space-y-4 relative">
-          {/* Left gradient */}
+        <div className="overflow-hidden relative">
           <div className="absolute left-0 top-0 w-12 h-full bg-gradient-to-r from-white via-white/80 to-transparent z-10 pointer-events-none"></div>
-
-          {/* Right gradient */}
           <div className="absolute right-0 top-0 w-12 h-full bg-gradient-to-l from-white via-white/80 to-transparent z-10 pointer-events-none"></div>
-          {/* Left gradient */}
-          <div className="absolute left-0 top-0 w-12 h-full bg-gradient-to-r from-white via-white/80 to-transparent z-10 pointer-events-none"></div>
 
-          {/* Right gradient */}
-          <div className="absolute right-0 top-0 w-12 h-full bg-gradient-to-l from-white via-white/80 to-transparent z-10 pointer-events-none"></div>
-          {/* Row 1 - Left to Right */}
-          <div className="tech-row tech-row-ltr relative">
-            <div className="flex gap-4 animate-scroll-ltr">
-              {[...row1, ...row1].map((item, index) => (
-                <TechItem key={`row1-${index}`} item={item} />
-              ))}
-            </div>
+          <div style={{ display: 'flex', width: 'max-content', willChange: 'transform', animation: `scrollLeft ${duration} linear infinite` }}>
+            {[...techStack, ...techStack, ...techStack, ...techStack].map((item, index) => (
+              <TechItem key={index} item={item} />
+            ))}
           </div>
-
-          {/* Row 2 - Right to Left */}
-          <div className="tech-row tech-row-rtl relative">
-            <div className="flex gap-4 animate-scroll-rtl">
-              {[...row2, ...row2].map((item, index) => (
-                <TechItem key={`row2-${index}`} item={item} />
-              ))}
-            </div>
-          </div>
-
-          {/* Row 3 - Left to Right */}
-          {/* <div className="tech-row tech-row-ltr relative">
-            <div className="flex gap-4 animate-scroll-ltr">
-              {[...row3, ...row3].map((item, index) => (
-                <TechItem key={`row3-${index}`} item={item} />
-              ))}
-            </div>
-          </div> */}
         </div>
       </div>
       <p className="mt-6 px-4 text-gray-600 leading-relaxed max-w-4xl mx-auto">
@@ -304,48 +236,9 @@ const Tools: React.FC = () => {
       </p>
 
       <style>{`
-        .tech-row {
-          opacity: 0;
-          transform: translateY(20px);
-          transition:
-            opacity 0.6s ease,
-            transform 0.6s ease;
-        }
-
-        .tech-row.animate {
-          opacity: 1;
-          transform: translateY(0);
-        }
-
-        .animate-scroll-ltr {
-          animation: scrollLeft 16s linear infinite;
-        }
-
-        .animate-scroll-rtl {
-          animation: scrollRight 16s linear infinite;
-        }
-
-        .tech-row:hover .animate-scroll-ltr,
-        .tech-row:hover .animate-scroll-rtl {
-          animation-play-state: paused;
-        }
-
         @keyframes scrollLeft {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-
-        @keyframes scrollRight {
-          0% {
-            transform: translateX(-50%);
-          }
-          100% {
-            transform: translateX(0);
-          }
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-25%); }
         }
       `}</style>
     </section>
