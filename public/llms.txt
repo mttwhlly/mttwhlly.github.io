@@ -1,0 +1,32 @@
+# Matt Whalley
+
+> AI Product Engineer bridging AI, product, design, and engineering to turn emerging technology into products people can actually use.
+
+Matt Whalley is an AI Product Engineer based in St. Augustine, Florida. He leads UX engineering and frontend architecture for AI-enabled web and mobile products, with a focus on making AI useful, usable, and sustainable. He works across the full product stack — from design systems and component architecture to agentic workflows and AI-assisted development tooling.
+
+## Focus Areas
+
+- AI product engineering and agentic development workflows
+- Frontend architecture (React, React Native, Next.js)
+- Design systems and design-to-code handoff
+- UX engineering and user-centered product development
+- Technical leadership and team enablement
+
+## Selected Work
+
+- [AI Product Development at DataSpring](https://dataspring.com) — Leading UX engineering and frontend architecture for AI-enabled web and mobile initiatives. React interfaces, AI-assisted development workflows, design system standards, and secure authentication patterns.
+- [Can I Surf Today?](https://canisurf.today) — Hyperlocal AI-powered surf report. Gathers realtime buoy, tide, and weather data and produces a surf report via AI. Built with Next.js, Vercel AI SDK, NOAA/Open-Meteo APIs, Neon, and Bun.
+- [HANG LAB](https://testflight.apple.com/join/FTcb21dX) — iOS/WatchOS hangboard training app for climbers, built in Swift with HealthKit, WatchKit, SiriKit, and haptics.
+- [RFD Checker](https://www.figma.com/community/plugin/1621901729405123866) — Figma plugin that audits a selected frame against a Ready-for-Dev checklist. Checks design tokens, component mapping, layout, handoff hygiene, and accessibility. Built for teams shipping from Figma to component-based codebases, with first-class Material UI support.
+
+## Experiments & Open Source
+
+Business Bingo, D U S T (writing tool), Grounded, Sui Sans (typeface), Vinyly, Photobooth, Short Scories, and several Figma plugins (Chart Generator, Design Standards Checker, Get Layer Text).
+
+GitHub: https://github.com/mttwhlly
+
+## Contact
+
+- Email: matt@mattwhalley.com
+- Site: https://mattwhalley.com
+- LinkedIn: https://linkedin.com/in/mttwhlly
