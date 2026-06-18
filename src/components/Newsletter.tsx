@@ -4,7 +4,7 @@ export default function Newsletter() {
       <div className="bg-gray-100 rounded-2xl p-8 lg:p-12">
         <h2 className="text-4xl lg:text-5xl font-serif mb-5 text-center">Stay in the loop</h2>
         <p className="text-lg text-gray-600 text-center mb-8">
-          Occasional updates on new projects, experiments, and thoughts on design systems.
+          Occasional updates on AI product engineering, experiments, and building things worth shipping.
           <br />
           Good vibes. No spam.
         </p>

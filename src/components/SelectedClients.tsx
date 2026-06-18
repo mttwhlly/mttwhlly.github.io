@@ -89,8 +89,7 @@ const SelectedClients: React.FC = () => {
       </div>
 
       <p className="mt-6 px-4 text-gray-600 leading-relaxed max-w-4xl mx-auto">
-        I've had the privilege of working with organizations ranging from healthcare innovators to
-        local businesses, always focusing on thoughtful solutions that serve real user needs.
+        A range of organizations I've helped ship better products — from enterprise platforms to early-stage tools.
       </p>
     </section>
   );
