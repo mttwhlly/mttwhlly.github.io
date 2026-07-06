@@ -41,7 +41,7 @@ const Testimonials = () => {
       id: 2,
       name: 'Corinne Beyer',
       title: 'UX Design Manager',
-      organization: 'CAQH',
+      organization: 'DataSpring',
       avatar: '/images/corinne.jpeg',
       content:
         'Working with Matt makes me excited to push my own performance—his great attitude and communication are contagious.',
