@@ -185,10 +185,10 @@
         const curlCommand = `curl -X POST https://accounts.spotify.com/api/token \
 -H "Content-Type: application/x-www-form-urlencoded" \
 -d "grant_type=authorization_code" \
--d "code=***REMOVED***" \
--d "redirect_uri=http://127.0.0.1:4321/callback" \
--d "client_id=***REMOVED***" \
--d "client_secret=***REMOVED***"`;
+-d "code=${authCode}" \
+-d "redirect_uri=${redirectUri}" \
+-d "client_id=${clientId}" \
+-d "client_secret=${clientSecret}"`;
 
         // Display the command
         const output = document.getElementById('tokenCommandOutput');
