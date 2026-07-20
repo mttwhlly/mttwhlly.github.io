@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import { ArrowUpRight } from '@phosphor-icons/react/dist/ssr';
 
-const entries = await getCollection('caseStudies');
+const entries = await getCollection('caseStudies', ({ data }) => !data.draft);
 const studies = entries
   .map((entry) => ({
     slug: entry.id.replace(/\.(mdx?)$/, ''),
