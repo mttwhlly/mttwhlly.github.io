@@ -177,7 +177,9 @@ const Header: React.FC = () => {
           {/* Footer */}
           <div className="p-4 border-t border-gray-200">
             <div className="max-w-4xl mx-auto">
-              <p className="text-sm text-gray-500 text-center">© Matt Whalley, {new Date().getFullYear()}</p>
+              <p className="text-sm text-gray-500 text-center">
+                © Matt Whalley, {new Date().getFullYear()}
+              </p>
             </div>
           </div>
         </div>

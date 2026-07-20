@@ -8,7 +8,6 @@ interface TechItem {
 }
 
 const Tools: React.FC = () => {
-
   // Tech stack data
   const techStack: TechItem[] = [
     // Frontend Frameworks
@@ -223,7 +222,14 @@ const Tools: React.FC = () => {
           <div className="absolute left-0 top-0 w-12 h-full bg-gradient-to-r from-white via-white/80 to-transparent z-10 pointer-events-none"></div>
           <div className="absolute right-0 top-0 w-12 h-full bg-gradient-to-l from-white via-white/80 to-transparent z-10 pointer-events-none"></div>
 
-          <div style={{ display: 'flex', width: 'max-content', willChange: 'transform', animation: `scrollLeft ${duration} linear infinite` }}>
+          <div
+            style={{
+              display: 'flex',
+              width: 'max-content',
+              willChange: 'transform',
+              animation: `scrollLeft ${duration} linear infinite`,
+            }}
+          >
             {[...techStack, ...techStack, ...techStack, ...techStack].map((item, index) => (
               <TechItem key={index} item={item} />
             ))}

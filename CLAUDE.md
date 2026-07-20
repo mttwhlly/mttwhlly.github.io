@@ -18,6 +18,7 @@ No test suite is configured.
 Single-page portfolio site: **Astro 5 (static output) + React 19 + Tailwind CSS 4**.
 
 Page rendering chain:
+
 ```
 pages/index.astro → layouts/Layout.astro → components/Welcome.astro
 ```
@@ -27,6 +28,7 @@ pages/index.astro → layouts/Layout.astro → components/Welcome.astro
 **Content is hard-coded in components** — no CMS, no Astro content collections. To update copy, projects, skills, or experiments, edit the relevant `.tsx` file directly.
 
 Section components and what they own:
+
 - `RecentProjects.tsx` — Experience and Projects cards (data arrays in the file)
 - `Skills.tsx` — Skill categories grid (data array in the file)
 - `Tools.tsx` — Infinite-scroll tech logo marquee (data array in the file)
@@ -38,6 +40,7 @@ Section components and what they own:
 ## Styling
 
 Tailwind 4 is loaded via the `@tailwindcss/vite` plugin — there is no `tailwind.config.js`. All theme customisation is in `src/styles/global.css` under `@theme`:
+
 - Custom `lemonlime` color scale; brand accent is `#D4FC52`
 - Fonts: `Host Grotesk` (sans), `Geist Mono` (mono), `Instrument Serif` (serif) — all from Google Fonts
 - Icons: `@phosphor-icons/react`

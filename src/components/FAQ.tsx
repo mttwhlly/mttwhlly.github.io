@@ -9,7 +9,7 @@ const FAQ = () => {
       id: 1,
       question: 'Why all side projects and no work case studies here?',
       answer:
-        'Most of my professional work is NDA-bound or lives inside products I can\'t screenshot. The projects here reflect how I think and build when I have full autonomy—and where my interests and skills intersect.',
+        "Most of my professional work is NDA-bound or lives inside products I can't screenshot. The projects here reflect how I think and build when I have full autonomy—and where my interests and skills intersect.",
     },
     {
       id: 2,

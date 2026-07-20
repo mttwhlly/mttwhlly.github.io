@@ -17,7 +17,9 @@ function Node({
       }
     >
       <div className="text-xs font-semibold text-gray-800 leading-snug">{label}</div>
-      {detail && <div className="text-[10px] font-mono text-gray-400 mt-0.5 leading-snug">{detail}</div>}
+      {detail && (
+        <div className="text-[10px] font-mono text-gray-400 mt-0.5 leading-snug">{detail}</div>
+      )}
     </div>
   );
 }
@@ -91,7 +93,9 @@ export default function SystemFlowDiagram() {
                   >
                     {cls}
                   </div>
-                  <div className="text-[9px] font-mono text-gray-400 mt-0.5 leading-snug">{note}</div>
+                  <div className="text-[9px] font-mono text-gray-400 mt-0.5 leading-snug">
+                    {note}
+                  </div>
                 </div>
               ))}
             </div>
@@ -114,7 +118,8 @@ export default function SystemFlowDiagram() {
         </div>
       </div>
       <figcaption className="text-xs text-gray-400 text-center mt-3 font-mono italic">
-        The work was less about one mapping and more about creating a trustworthy design-to-code system of record.
+        The work was less about one mapping and more about creating a trustworthy design-to-code
+        system of record.
       </figcaption>
     </figure>
   );
