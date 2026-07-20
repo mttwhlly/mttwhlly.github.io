@@ -13,11 +13,12 @@
         "description": {
           "type": "string"
         },
-        "client": {
-          "type": "string"
-        },
         "publishedDate": {
           "type": "string"
+        },
+        "order": {
+          "type": "number",
+          "default": 0
         },
         "tags": {
           "type": "array",
@@ -55,7 +56,6 @@
         "title",
         "subtitle",
         "description",
-        "client",
         "publishedDate",
         "tags"
       ],

@@ -7,8 +7,8 @@ const caseStudies = defineCollection({
     title: z.string(),
     subtitle: z.string(),
     description: z.string(),
-    client: z.string(),
     publishedDate: z.string(),
+    order: z.number().default(0),
     tags: z.array(z.string()),
     coverImage: z.string().optional(),
     atAGlance: z

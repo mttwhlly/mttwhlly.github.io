@@ -85,4 +85,17 @@
   & strong {
     @apply font-bold;
   }
+
+  & .footnotes {
+    @apply mt-12;
+
+    & h2 {
+      @apply text-xs font-mono uppercase tracking-widest text-gray-500 font-normal mb-4 mt-0;
+    }
+
+    & li,
+    & li p {
+      @apply text-sm text-gray-500 leading-relaxed mb-0;
+    }
+  }
 }

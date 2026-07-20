@@ -9,7 +9,7 @@ const studies = entries
     slug: entry.id.replace(/\.(mdx?)$/, ''),
     ...entry.data,
   }))
-  .sort((a, b) => b.publishedDate.localeCompare(a.publishedDate));
+  .sort((a, b) => a.order - b.order || b.publishedDate.localeCompare(a.publishedDate));
 ---
 
 <Layout>
@@ -45,13 +45,6 @@ const studies = entries
             <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
 
               <div class="flex-1 space-y-4">
-                <!-- Client + date -->
-                <div class="flex items-center gap-3 text-sm font-mono text-gray-400">
-                  <span>{study.client}</span>
-                  <span>·</span>
-                  <span>{study.publishedDate}</span>
-                </div>
-
                 <!-- Title -->
                 <h2 class="text-xl font-sans font-bold text-gray-900 leading-snug">
                   {study.title}

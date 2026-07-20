@@ -8,8 +8,8 @@ description: >
   system of record for which instances resolved to real code — and AI agents were being asked to
   generate UI against it. I built the measurement, classification, and distribution infrastructure
   to make it trustworthy.
-client: Large enterprise healthcare organization
 publishedDate: '2026'
+order: 0
 tags:
   - Design Systems
   - Figma
@@ -293,7 +293,9 @@ if (setNode.key === entry.key) {
     className="w-full rounded-2xl border border-gray-200"
   />
   <figcaption className="text-[10px] text-gray-400 text-center mt-3 font-mono">
-    The fork-relink plugin after a dry-run scan — each row shows how many instances are already on the library main vs. still forked. Badge: 82 already linked, 0 forks. Button: 80 already linked, 0 forks.
+    The fork-relink plugin after a dry-run scan — each row shows how many instances are already on
+    the library main vs. still forked. Badge: 82 already linked, 0 forks. Button: 80 already linked,
+    0 forks.
   </figcaption>
 </figure>
 
@@ -351,7 +353,8 @@ import { AppProviders } from '@org/design-system/providers';
     className="w-full rounded-2xl border border-gray-200"
   />
   <figcaption className="text-[10px] text-gray-400 text-center mt-3 font-mono">
-    Installing the published design system from the internal package feed — clean audit, zero vulnerabilities. Package and project names redacted.
+    Installing the published design system from the internal package feed — clean audit, zero
+    vulnerabilities. Package and project names redacted.
   </figcaption>
 </figure>
 
@@ -390,7 +393,8 @@ _Generated 2026-06-25T20:45:54.938Z against baseline 2026-06-25T20:45:37.267Z._
     className="w-full rounded-2xl border border-gray-200"
   />
   <figcaption className="text-[10px] text-gray-400 text-center mt-3 font-mono">
-    The drift scanner surfacing 19 actionable items across the full file set — each line shows instance count and mapped percentage. Product and team names redacted.
+    The drift scanner surfacing 19 actionable items across the full file set — each line shows
+    instance count and mapped percentage. Product and team names redacted.
   </figcaption>
 </figure>
 
@@ -426,4 +430,3 @@ In all cases, the same rule applies: if the system of record is wrong, everythin
 Bringing order, in practice, was not one clever fix. It was refusing to let an unreliable number stand in for a fact. It was building a taxonomy precise enough to tell different problems apart. It was mapping what was genuinely mappable, excluding what was not, and giving each category a maintenance path. It was turning a Figma library from a large, ambiguous design artifact into infrastructure that engineers, designers, and AI agents could depend on.
 
 That is the work I keep finding myself drawn to: taking systems that have become too large to trust, making their state visible, and building the tools that let teams act on that truth without having to rediscover it every time.
-

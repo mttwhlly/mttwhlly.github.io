@@ -13,7 +13,7 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
-const { title, subtitle, client, publishedDate, tags, atAGlance, coverImage } = entry.data;
+const { title, subtitle, tags, atAGlance, coverImage } = entry.data;
 ---
 
 <Layout>
@@ -48,11 +48,6 @@ const { title, subtitle, client, publishedDate, tags, atAGlance, coverImage } = 
       <p class="text-xl font-serif italic text-gray-600 leading-relaxed mb-6">
         {subtitle}
       </p>
-      <div class="flex items-center gap-4 text-sm font-mono text-gray-400 border-t border-gray-100 pt-6">
-        <span>{client}</span>
-        <span>·</span>
-        <span>{publishedDate}</span>
-      </div>
     </header>
 
     <!-- At a glance -->

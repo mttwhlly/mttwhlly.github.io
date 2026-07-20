@@ -1,0 +1,97 @@
+---
+title: The Metric That Actually Matters for AI Code Review Isn't Catch Rate
+subtitle: >
+  Most AI review tools get muted within a few weeks because nobody measured how often they're
+  wrong. Here's what it took to build one that measured its own false-positive rate before
+  asking anyone to trust it — and shipped only after it earned that trust.
+description: >
+  An AI-assisted code review system for a healthcare-provider data platform — a .NET API behind
+  React/TypeScript micro-frontends, HIPAA data — needed a measured false-positive rate before it
+  could be trusted, not just a plausible architecture. I backtested it against real merged PRs,
+  calibrated a falsification pass until noise suppression and defect detection both held up, and
+  shipped it as an advisory-only CI reviewer only after the numbers earned it.
+publishedDate: '2026'
+order: 1
+tags:
+  - AI Code Review
+  - LLM Evaluation
+  - CI/CD
+  - Azure DevOps
+  - Claude
+atAGlance:
+  - label: The number that matters
+    value: '74% of first-pass findings suppressed by falsification — before a human saw any of them'
+  - label: On real defects
+    value: 'Caught a production-escaped bug at 88–90% confidence; zero noise on clean code'
+  - label: Real catch
+    value: A live security issue found on a report-only audit, at zero infrastructure cost
+  - label: Shipped
+    value: Headless CI pipeline, advisory-only, running on every pull request
+  - label: My role
+    value: Designed, backtested, calibrated, and shipped the system end-to-end
+---
+
+import FalsificationFunnel from '../../components/FalsificationFunnel';
+import ConfidenceSeparationChart from '../../components/ConfidenceSeparationChart';
+
+Most teams that try AI-assisted code review go through the same arc: it's exciting for two weeks, then it starts flagging things that don't matter, then people stop reading its comments, then it's quietly uninstalled. The tool didn't get worse. Nobody ever measured how often it was wrong, so nobody knew it was already too noisy to trust — until the team had already voted with their attention.
+
+The number that predicts whether that happens isn't catch rate. It's the false-positive rate — specifically, whether the system can suppress its own bad findings before a human ever sees them. That number is what this project was actually built and measured around, and it's the reason the result is worth writing about: **74% of first-pass candidate findings were suppressed by the system itself, before any of it reached a person** — and on the run's one confirmed production-escaped defect, the survivors still caught it at 88–90% confidence.
+
+The setting: a healthcare-provider data platform on Azure DevOps, not GitHub — a .NET API behind React/TypeScript micro-frontends, HIPAA data, a mixed in-house and vendor team, and existing gates (static analysis, a security scanner, linting, coverage thresholds) that were already solid but structurally couldn't catch the platform's actual failure modes: contract drift between frontend and backend, design-token infidelity, exceptions swallowed silently, tests that pass without asserting anything real. The starting point was Anthropic's own published [multi-agent Code Review architecture](https://claude.com/blog/code-review)[^1] — parallel specialized reviewers, a falsification pass that tries to disprove each finding, a confidence threshold, severity ranking. That core design isn't something I built; it's the correct foundation this project stood on. But a reference pattern doesn't ship with a false-positive rate for _your_ codebase. That had to be measured, on real code, before the system earned the right to run unattended — and that measurement, along with everything downstream of it, is the actual subject of this piece.
+
+---
+
+## Why calibration is the whole game
+
+An LLM reviewer that flags everything is worthless in a specific, well-understood way: it costs the team the same attention as a careful reviewer while teaching them, correctly, to stop reading. The fix isn't a smarter prompt. It's structural — a falsification pass that tries to disprove every candidate finding before it's allowed to count, and a confidence threshold that only lets survivors through.
+
+That mechanism is only as good as its calibration, and calibration is an empirical claim, not a design one. So before this system touched a single live pull request, it was backtested against five already-merged PRs with known outcomes — one of which carried a defect that had already escaped to production.
+
+- **27 candidate findings → 7 survived falsification and the confidence threshold.** That's the 74% suppression number — the system discarding three-quarters of its own output as noise, on its own judgment, before a human was ever involved.
+- **Zero findings on the two genuinely clean PRs.** The system didn't invent work to justify the run — a null result stayed a null result.
+- **The defective PR was caught at 88–90% confidence** on the surviving findings — high enough that a human reviewer would not have rubber-stamped it. One of three specific defects in that PR was missed, for a documented, traceable reason (a diff-only test harness hid it from the reviewer), not silently or unaccountably.
+- **Confidence separated cleanly by ground truth:** real defects scored 88–92; noise and duplicates were dropped well below the threshold, with no overlap.
+
+<FalsificationFunnel />
+
+<ConfidenceSeparationChart />
+
+That clean separation is the actual finding. A system that suppresses three-quarters of its own noise while still catching a real, previously-shipped defect at high confidence has passed the only test that predicts whether a team keeps reading it a month later.
+
+## The near-miss that proves the tuning was earned, not assumed
+
+Backtesting produces tuning proposals, and tuning proposals are exactly where a system like this can quietly get worse instead of better — which is why every proposed change goes through a human before it's applied, not after.
+
+One proposal looked reasonable on its face: stop flagging design-token literals in files that were obviously style-related, based on filename. Reading the platform's actual lint plugin showed it doesn't work that way at all — it detects violations by code shape, not filename. The proposal was backwards: a named constant sitting in an ordinary constants file is exactly what the linter can't see and the reviewer should keep catching, not the case to exempt. Because curation only happens through a reviewed commit, the wrong version never touched the ruleset — it was caught and corrected before it shipped.
+
+That's a small thing to hang a case study on, but it's calibration in miniature: a tuning proposal that sounds plausible still has to survive being checked against the actual mechanism it's tuning. A system that applied proposals automatically would have shipped the backwards rule and had no way to notice.
+
+## What good calibration buys you: a report that changed nothing and still found something real
+
+Once the pre-merge reviewer had a measured, trusted false-positive rate at the diff level, the same reviewers were pointed statically at an entire micro-frontend — a risk-sampled read of the majority of its code, with an explicit "not covered" section so the run was never mistaken for exhaustive. This mode writes nothing and posts nothing; it produces a report. Findings were classified into act-now, gate-new-work, and pre-existing-debt, so the output read as a prioritized backlog instead of an undifferentiated list. Among those findings was a real, actionable security issue that had gotten into source control undetected by existing tooling — surfaced by a run that cost nothing but compute, before it became an actual incident.
+
+_(The specific nature of that finding and its remediation status are intentionally left out of this piece pending confirmation from the relevant security and compliance stakeholders — disclosure of even a resolved control gap in a regulated environment isn't a call to make unilaterally. What's relevant here is the mechanism: a report-only audit mode, backed by the same calibrated reviewers, catching something real at zero infrastructure cost.)_
+
+The same report stated its own cost honestly — roughly how many tokens and minutes the sampled run took, an estimate for what full, exhaustive coverage would cost instead, and a judgment that exhaustive coverage wasn't worth it for backlog prioritization. A calibrated system doesn't just suppress noise; it's also honest about what it didn't check. That restraint isn't something a reference architecture specifies. It has to be built in on purpose, the same way the false-positive suppression does.
+
+## Shipping only after the number earned it
+
+The rollout was sequenced so cost only rose after calibration was proven, in this order: confirm the scaffolding loads and resolves, at zero cost. Backtest the reviewer against known-outcome history, still at zero infrastructure cost — this is where the 74% suppression number came from. Drive one real feature end-to-end to prove the verification half works. Wire ticket-filing against a sandbox. Only then, on an explicit go/no-go using the numbers from the earlier steps, wire it into a pipeline that runs unattended. Each step had to clear before the next was allowed to start — the backtest wasn't a nice-to-have preamble, it was the gate the rest of the rollout depended on.
+
+The reviewer now runs headless, wired into CI as a build-validation step on every pull request:
+
+- **No standing credentials leave the pipeline.** The model call goes through an enterprise AI gateway via a workload-identity token; posting back to the PR uses the pipeline's own short-lived job token.
+- **It shipped advisory-only.** It comments; it cannot block a merge yet. The calibration discipline that governed the whole rollout doesn't expire once the automation exists — it's encoded as a single switch that isn't flipped until the live numbers earn it.
+- **Every repo is reviewed by one named, pinned ruleset version**, not whatever's sitting on a branch that morning.
+- **The pipeline job can't touch its own rulebook.** It can write scratch output and nothing else — the human-gated tuning loop from the section above isn't a policy someone has to remember to enforce, it's a permission the job doesn't have.
+
+## Where it landed
+
+In five weeks, a published architecture became a system with a measured, earned false-positive rate: 74% of its own noise suppressed before ever reaching a human, a real production defect still caught at high confidence, a bad tuning proposal caught before it shipped, a genuine security issue surfaced on its first whole-repo pass, and a CI pipeline now running unattended on every pull request in the one mode that can't yet do any damage.
+
+The architecture was never the hard part — it's a good idea, and [Anthropic's write-up of it](https://claude.com/blog/code-review) is honest about what it does. Credit for the core pattern belongs there, not here; my part was proving, on this platform's own code, that the idea actually held: that the system could tell the difference between real signal and noise often enough that a team would keep reading it. That's the number every AI review tool should be able to show and mostly can't. This one can.
+
+---
+
+[^1]: The core review architecture — parallel specialized reviewer agents, a falsification pass, a confidence threshold, and severity-ranked output — is Anthropic's own design, described in Anthropic's [Code Review announcement](https://claude.com/blog/code-review) and implemented as an open-source reference in the [`code-review` plugin](https://github.com/anthropics/claude-code/tree/main/plugins/code-review) in the `anthropic/claude-code` repository. This project adapted that pattern to a specific enterprise stack; it did not invent it.
