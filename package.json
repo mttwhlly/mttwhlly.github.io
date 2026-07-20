@@ -10,6 +10,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/mdx": "^4.3.14",
     "@astrojs/react": "^4.2.3",
     "@phosphor-icons/react": "^2.1.10",
     "@tailwindcss/vite": "^4.1.4",

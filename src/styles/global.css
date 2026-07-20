@@ -17,3 +17,72 @@
   --color-lemonlime-900: oklch(0.208 0.042 265.755);
   --color-lemonlime-950: oklch(0.129 0.042 264.695);
 }
+
+.prose-case-study {
+  & p {
+    @apply text-lg text-gray-700 leading-relaxed mb-6;
+  }
+
+  & h2 {
+    @apply text-3xl font-sans font-bold text-gray-900 mb-4 mt-12;
+  }
+
+  & h3 {
+    @apply text-xl font-sans font-semibold text-gray-800 mb-3 mt-8;
+  }
+
+  & blockquote {
+    border-left: 4px solid #d4fc52;
+    @apply pl-6 my-10;
+
+    & p {
+      @apply text-2xl font-serif italic text-gray-700 leading-relaxed mb-0;
+    }
+  }
+
+  & pre {
+    @apply my-8 rounded-xl overflow-hidden border border-gray-800 p-6 text-sm overflow-x-auto;
+  }
+
+  & .code-caption + pre {
+    margin-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  & :not(pre) > code {
+    @apply bg-gray-100 text-gray-800 px-1.5 py-0.5 rounded text-sm font-mono;
+  }
+
+  & ul {
+    @apply list-disc pl-6 mb-6 space-y-2;
+  }
+
+  & ol {
+    @apply list-decimal pl-6 mb-6 space-y-2;
+  }
+
+  & li {
+    @apply text-lg text-gray-700 leading-relaxed;
+  }
+
+  & a {
+    @apply text-gray-900 underline underline-offset-2 decoration-lemonlime-300 hover:decoration-lemonlime-400 transition-colors;
+  }
+
+  & figcaption,
+  & figcaption p {
+    @apply text-xs text-gray-500 text-center mt-3 font-mono font-medium not-italic;
+    text-wrap: pretty;
+    orphans: 3;
+    widows: 3;
+  }
+
+  & em {
+    @apply italic;
+  }
+
+  & strong {
+    @apply font-bold;
+  }
+}

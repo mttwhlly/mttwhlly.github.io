@@ -1,0 +1,69 @@
+# Image notes — enterprise-design-system.mdx
+
+Images to add and where they go. Drop the file in `public/images/case-studies/enterprise-design-system/` and replace the relevant section in the MDX with an `<img>` or `<figure>`.
+
+---
+
+## Layer 1 — after scanner code block
+
+**What:** Scanner reliability screenshot — two mini tables side by side.
+- Left: unreliable scan showing file totals with silent page failures
+- Right: reliable scan showing per-file totals plus "0 failed pages" / "⚠ unreliable" indicator
+
+**Caption:** "The first fix was making measurement falsifiable."
+
+**To capture:** Run `node scripts/coverage-team.mjs` (needs FIGMA_ACCESS_TOKEN). A clean run prints `✓ [Project] Name: N inst, X% mapped` for all 35 files with no `⚠ UNRELIABLE` lines.
+
+---
+
+## Layer 4 — after render-parts JSON code block
+
+**What:** Mappable vs not-mappable Figma screenshot pair.
+- Left: a real top-level component (e.g. Button) that resolves to a code export
+- Right: a hidden/internal Figma sub-layer (e.g. `_Elements / Day Cell`) that should be excluded, not mapped — visible:false, nested inside a parent component
+
+**Caption:** "Not every Figma instance is a component contract."
+
+---
+
+## Layer 5 — after fork classification code block
+
+**What:** Figma plugin UI screenshot showing the fork-relink plugin panel.
+- Scope selector: Selection / Current page / All pages
+- Scan button and Re-link button
+- Per-component results table: linked / forked / nested counts per component
+
+**Caption:** "A design-side problem needed a design-side tool."
+
+**To capture:** Figma → Plugins → Development → import `figma-plugin/fork-relink/manifest.json`, run on a file with known forks.
+
+---
+
+## Layer 6 — after consumer app imports code block
+
+**What:** Package/consumer boundary diagram or screenshot.
+- Flow: source repo → published npm package (internal feed) → separate consumer app → agent-generated screens → build/rubric validation (typecheck + lint + build all pass)
+- Could be a diagram or a terminal screenshot showing `npm install @client/design-system` from the feed plus all checks passing
+
+**Caption:** "The package was not done until a real consumer could use it."
+
+---
+
+## Layer 7 — after drift detection code block
+
+**What:** Drift detection terminal screenshot.
+- Run `npm run drift:check` against a mutated Figma schema
+- Should show a detected schema change (renamed/removed prop) surfacing as a reviewable diff
+- Or screenshot `docs/DRIFT-REPORT.md` rendered with a drift entry visible
+
+**Caption:** "The system needed to fail visibly before consumers failed silently."
+
+---
+
+## Impact section — after bullet list
+
+**What:** Summary graphic with four key outcomes (optional — the bullet list covers this well on its own).
+1. Defensible measurement
+2. Accurate classification
+3. Consumable package
+4. Sustainable maintenance

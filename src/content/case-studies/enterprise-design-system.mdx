@@ -1,0 +1,429 @@
+---
+title: Making an Enterprise Design System Reliable for AI Agents
+subtitle: >
+  How I audited 1.6M+ Figma component instances, raised defensible Code Connect coverage to 98.91%,
+  and turned design-to-code mappings into infrastructure agents could trust.
+description: >
+  An enterprise Figma library spanning 35 product files and 1.6M+ component instances had no reliable
+  system of record for which instances resolved to real code — and AI agents were being asked to
+  generate UI against it. I built the measurement, classification, and distribution infrastructure
+  to make it trustworthy.
+client: Large enterprise healthcare organization
+publishedDate: '2026'
+tags:
+  - Design Systems
+  - Figma
+  - AI Agents
+  - Code Connect
+  - TypeScript
+coverImage: /images/case-studies/enterprise-design-system/figma-to-claude.png
+atAGlance:
+  - label: Scale
+    value: '35 product files, 1.6M+ Figma component instances'
+  - label: Starting point
+    value: '~55% defensible Code Connect coverage'
+  - label: Result
+    value: '98.91% defensible Code Connect coverage'
+  - label: Core problem
+    value: No reliable system of record for which design-system instances resolved to real code
+  - label: My role
+    value: >-
+      Led the measurement, classification, mapping, packaging, validation, and maintenance strategy
+  - label: Outcome
+    value: >-
+      A Figma-to-code workflow engineers, designers, and AI agents could trust as infrastructure
+---
+
+import SystemFlowDiagram from '../../components/SystemFlowDiagram';
+import TaxonomyDiagram from '../../components/TaxonomyDiagram';
+import CoverageChart from '../../components/CoverageChart';
+import CodeCaption from '../../components/CodeCaption';
+
+<SystemFlowDiagram />
+
+Every project I take on seems to converge on the same underlying job: something in the organization has grown too large and tangled to trust, and someone needs to build the missing system of record.
+
+This time, the tangled system was an enterprise Figma design library used across 35 product files and more than 1.6 million component instances. The library itself was not the only problem; the real problem was the trust boundary around all the places it had been used. Those instances fed a codebase that AI agents were now being asked to generate UI against, but nobody could say, defensibly, how much of the design system actually resolved to real code.
+
+That uncertainty — not any single broken component — was the real problem.
+
+Three weeks later, defensible Code Connect coverage reached 98.91% across the measured product files. The design-system mappings were packaged as a versioned internal npm package. A scanner could distinguish real unmapped demand from forks, render-parts, documentation boards, external icon libraries, and unreliable scans. A Figma plugin gave designers a way to repair forked components themselves. And a drift-detection job could flag schema changes before they silently broke downstream consumers.
+
+None of that happened by simply mapping more components. It happened by imposing a sequence of order on a system that had none: measurement first, then classification, then mapping, then distribution, then maintenance.
+
+That sequence is the reusable part.
+
+---
+
+## Layer 1: You can’t manage what you can only estimate
+
+The starting question sounded simple:
+
+> How much of our design system is actually connected to real code?
+
+But the first answer was not a number. It was a reliability problem.
+
+The scanner walking the Figma API would hit a transient network failure, drop a page mid-scan, and keep going without saying anything. Two runs of the “same” measurement could disagree at the file level while appearing stable in aggregate. That is the worst kind of wrong: the kind that looks like confirmation.
+
+So the first layer of work had nothing to do with Figma components or React imports. It was measurement integrity.
+
+I rebuilt the scanner so it retried transient failures, flagged any file it could not fully read, and distinguished a reliable result from an unreliable one. A coverage number could only be treated as defensible if the scan had zero failed pages behind it.
+
+That guarantee mattered more than it sounds. Without it, every later decision would have been built on a guess with a decimal point.
+
+<CodeCaption
+  filename="scripts/coverage-team.mjs"
+  description="Scanner retry and reliability pattern"
+/>
+
+```js
+// scripts/coverage-team.mjs — scanner reliability pattern
+// Retries 429 (backoff) AND transient network errors (ECONNRESET/terminated) — the Figma
+// API + corporate TLS proxy drop connections intermittently; without this the walker silently
+// swallowed dropped pages and understated whole files. Deterministic HTTP errors (404/403)
+// are marked .fatal and thrown immediately (no point retrying).
+const get = async (file, suffix) => {
+  let lastErr;
+  for (let attempt = 0; attempt < 12; attempt += 1) {
+    try {
+      const r = await fetch(`https://api.figma.com/v1/files/${file}${suffix}`, { headers: H });
+      if (r.ok) return r.json();
+      if (r.status === 429) {
+        // rate-limited: escalating backoff, retry
+        lastErr = new Error(`HTTP 429 ${file}${suffix}`);
+        await new Promise((s) => setTimeout(s, 2000 * (attempt + 1)));
+        continue;
+      }
+      throw Object.assign(new Error(`HTTP ${r.status} ${file}${suffix}`), { fatal: true }); // 404/403: give up now
+    } catch (e) {
+      if (e.fatal) throw e; // deterministic — don't retry
+      lastErr = e; // transient — back off and retry
+      await new Promise((s) => setTimeout(s, 1500 * (attempt + 1)));
+    }
+  }
+  throw lastErr || new Error(`get exhausted retries: ${file}${suffix}`);
+};
+
+// A coverage number is only defensible if zero pages failed behind it.
+const badFiles = perFile.filter((r) => r.failedPages);
+if (badFiles.length) {
+  console.error(`⚠⚠ ${badFiles.length} FILE(S) HAD FAILED PAGES — totals are UNRELIABLE`);
+  console.error(
+    '   Re-run, or re-scan those keys with scripts/verify-files.mjs, before trusting these numbers.'
+  );
+}
+```
+
+---
+
+## Layer 2: “Unmapped” was hiding five different problems
+
+Once measurement was trustworthy, the next disorder was conceptual.
+
+Everything that did not cleanly resolve to code had been collapsing into one vague bucket: “unmapped” or “external.” That made the problem look like one giant backlog of missing Code Connect mappings.
+
+It was not one problem. It was at least five.
+
+Some instances were genuinely missing a code mapping. Those represented real implementation work.
+
+Some were forked Figma components: instances that looked like known components but carried different keys because they had been detached or copied inside product files. Those were design-side repair problems, not code problems.
+
+Some were internal render-parts: calendar cells, DataGrid internals, pagination items, spacers, hidden slots, and structural pieces that had no standalone code export because the real code component rendered them internally.
+
+Some were documentation and reference boards living inside delivery files. They were never meant to ship, but the scanner had no way to know that.
+
+And some were icons — a category large enough to deserve its own strategy. Icons represented more than half a million component instances, roughly a third of the denominator. Treating them as just another row in “unmapped” hid the biggest lever in the entire system.
+
+Building that taxonomy changed the work. The problem stopped being “map more things” and became:
+
+> Which kind of unresolved instance is this, and what kind of fix does it actually deserve?
+
+That distinction prevented two bad outcomes: wasting engineering time on problems that belonged upstream in design, and inflating coverage by pretending internal implementation details were standalone components.
+
+The whole taxonomy reduces to a single classification expression — every instance lands in exactly one of five buckets by the component-set key it points at:
+
+<CodeCaption filename="scripts/coverage-team.mjs" description="Per-instance classification" />
+
+```js
+// scripts/coverage-team.mjs — per-instance classification
+const cls = renderPartKeys.has(key)
+  ? 'renderpart' // internal render-part (excluded)
+  : mappedKeys.has(key) || externalMappedKeys.has(key)
+    ? 'mapped' // has Code Connect (incl. external icon libs)
+    : libAllKeys.has(key)
+      ? isIcon(e.name)
+        ? 'icon'
+        : 'backlog' // known library component, not yet mapped
+      : externalRenderPartNames.has(e.name)
+        ? 'renderpart' // named internal fragment (excluded)
+        : 'external'; // fork / foreign / genuinely unresolved
+
+// Render-parts are excluded from the denominator (not mappable demand).
+const total = m + b + x; // mapped + backlog + external — NOT renderpart
+const pct = total ? Math.round((m / total) * 100) : 0;
+```
+
+Committed team-wide totals from a clean run (`agent/coverage-team.json`):
+
+<CodeCaption filename="agent/coverage-team.json" description="Team-wide totals from a clean run" />
+
+```json
+{
+  "totals": { "mapped": 1549228, "backlog": 557, "icon": 0, "external": 16567, "renderpart": 92262 }
+}
+```
+
+<TaxonomyDiagram />
+
+---
+
+## Layer 3: The biggest lever was invisible until the model was right
+
+Once the categories existed, the priority order stopped being guesswork.
+
+The original assumption was that the coverage gap would close by extending existing mappings: find unmapped components, add missing Code Connect files, repeat. But the numbers did not support that. The entire non-icon backlog was roughly 14,000 instances out of about 1.63 million — too small to move coverage meaningfully. Icons, on the other hand, represented 551,800 instances: about 34% of the denominator.
+
+That was the real lever.
+
+Mapping the icon layer moved coverage from 55% to roughly 90% in a single pass — and it took only 50 icon keys to cover 100% of icon demand. But even that was not as simple as “map the icons.” The instances were not all coming from our internal component kit. Many were from separate team-owned Material Icons libraries in Figma, which meant the existing internal-library mapping path could not credit them correctly.
+
+The fix was to treat external icon libraries as first-class sources. I generated Code Connect mappings against the real Figma icon libraries, verified every import against `@mui/icons-material`, handled Figma’s naming differences, and added a sidecar key mechanism so the scanner could credit those external mappings accurately.
+
+That changed the system because it changed the model. Icons were no longer noise inside an “external” bucket. They became a known, measurable, resolvable category.
+
+At the same time, the model prevented false wins. The DataGrid family looked large on paper, but most of its apparent backlog was internal decomposition: cells, headers, pagination items, and quick filters nested inside already-mapped grid components. Mapping those directly would have double-counted a component we already resolved. The right answer was not more mapping. It was honest exclusion as render-parts.
+
+This became one of the core principles of the project:
+
+> A higher coverage number is only useful if the denominator is honest.
+
+<CodeCaption
+  filename="MaterialIcon.figma.tsx"
+  description="Generated external-icon Code Connect mapping"
+/>
+
+```tsx
+// src/components/ui/MaterialIcon/MaterialIcon.figma.tsx — a generated external-icon mapping
+figma.connect(ChevronRight, 'https://www.figma.com/design/<library-file>/...?node-id=7475-54246', {
+  example: () => <ChevronRight />,
+});
+```
+
+<CodeCaption
+  filename="scripts/gen-icon-connect.mjs"
+  description='"Filled" suffix normalization rule'
+/>
+
+```js
+// scripts/gen-icon-connect.mjs — the "Filled" suffix normalization rule
+// name ending in "Filled" (the Figma default) -> strip; keep other MUI suffixes (Outlined/Sharp/Rounded/TwoTone).
+const toMuiExport = (figmaName) =>
+  figmaName.endsWith('Filled') ? figmaName.slice(0, -'Filled'.length) : figmaName;
+```
+
+<CoverageChart />
+
+---
+
+## Layer 4: Coverage had to mean “safe to act on”
+
+One of the most important parts of the project was deciding what not to count.
+
+A large portion of the remaining gap consisted of hidden layers, slots, browser chrome, placeholder structures, internal picker cells, and other implementation fragments that had no standalone equivalent in code. These were not missing components. They were artifacts of how a design library represents internal structure.
+
+I created a reason-tagged render-part classification so these could be excluded from the denominator transparently rather than silently ignored or dishonestly mapped. The distinction mattered: this was not new mapping work, and I did not treat it as such. It was a denominator correction.
+
+That reclassification moved coverage substantially, but the point was not to make the number look better. The point was to make the number mean something.
+
+A system that tells AI agents “98% of this design system is connected to code” has to be able to defend what that sentence means. It cannot hide failed pages, count documentation boards as product UI, or pretend that a hidden calendar cell should have its own React export.
+
+Agents raise the stakes because they do not naturally compensate for bad system boundaries the way experienced humans do. If the system tells them a mapping exists, they will act on it. If the system is wrong, they will be wrong at scale.
+
+So the coverage number had to become less like a dashboard metric and more like an operational contract.
+
+<CodeCaption filename="agent/render-parts.json" description="Reason-tagged render-part exclusion" />
+
+```json
+// agent/render-parts.json — a real reason-tagged render-part exclusion
+{
+  "name": "_Elements / Day Cell",
+  "reason": "Date-picker day cell — sampled inside `_Pickers / Date > Row`, within the hidden calendar popup (inherited visible:false). MUI renders day cells internally from a date lib; no standalone code export. 47,570 inst / 13 files."
+}
+```
+
+---
+
+## Layer 5: Forks were not code problems
+
+After the mapping and denominator work, one of the biggest remaining categories was forked components.
+
+These were Figma instances that visually corresponded to real library components but no longer carried the canonical library key. From the scanner’s perspective, they looked external. From the codebase’s perspective, there was nothing to fix: the correct component mapping already existed. The problem was that the design instance had drifted away from the library main.
+
+That is a different kind of problem. No amount of TypeScript can repair a detached Figma component.
+
+So I built a Figma plugin for the design team. It scanned a file, identified forked instances by comparing component-set keys, and relinked them back to the library main where it was safe to do so. It handled the realities of Figma’s plugin environment: edit mode versus Dev Mode, nested instance restrictions, dynamic-page APIs, long-running scan cancellation, and the memory cost of scanning large files.
+
+The goal was not to make engineers the permanent cleanup crew for design drift. The goal was to give the people upstream of the problem a tool built for their workflow.
+
+That changed the maintenance model. Fork cleanup became a design-side operation, measurable by the same scanner, instead of another archaeology project waiting for an engineer six months later.
+
+<CodeCaption filename="figma-plugin/fork-relink/code.js" description="Fork classification logic" />
+
+```js
+// figma-plugin/fork-relink/code.js — fork classification logic
+const setNode = main.parent && main.parent.type === 'COMPONENT_SET' ? main.parent : main; // roll up to the set
+const key = norm(setNode.name);
+const entry = TABLE_BY_NAME.get(key);
+if (!entry) { /* not a relink target; track local detached mains */ continue; }
+
+if (setNode.key === entry.key) {
+  perComp[entry.name].linked += 1;          // already on the published library main
+} else if (isInsideInstance(inst)) {
+  perComp[entry.name].nested += 1;          // fork by key, but nested — Figma can't swap; fixed via parent relink
+} else {
+  perComp[entry.name].forks += 1;           // fork we can safely swap back to main
+  forks.push({ instance: inst, entry, variantProps: instanceVariantProps(inst) });
+}
+```
+
+<figure className="my-8">
+  <img
+    src="/images/case-studies/enterprise-design-system/figmaplugin-anon.PNG"
+    alt="The Figma Fork Re-link plugin panel showing scan results: a list of component families with fork counts and already-linked instance totals, alongside scope options (selection only, current page, all pages) and a Re-link button to swap forked instances back to the published library main."
+    className="w-full rounded-2xl border border-gray-200"
+  />
+  <figcaption className="text-[10px] text-gray-400 text-center mt-3 font-mono">
+    The fork-relink plugin after a dry-run scan — each row shows how many instances are already on the library main vs. still forked. Badge: 82 already linked, 0 forks. Button: 80 already linked, 0 forks.
+  </figcaption>
+</figure>
+
+---
+
+## Layer 6: Mapping is not distribution
+
+A Figma-to-code mapping that only works inside Figma validation is not yet infrastructure.
+
+The next question was:
+
+> How does this mapping reach an engineer’s editor, or an AI agent’s generated code?
+
+To answer that, I packaged the component set as a versioned internal npm library and published it to our internal package feed. That package included the runtime components, generated manifest, agent-facing documentation, and the import surface needed by real consuming applications.
+
+I did not consider the package done when it built locally. I stood up a separate consumer app, installed the published package from the feed, and had agents generate real screens against it. Then I scored the output against a rubric: did the agent use the package imports, follow the design-system guidance, avoid hardcoded tokens, preserve accessibility, and produce code that typechecked, linted, and built?
+
+That consumer validation caught problems that did not exist from either side alone.
+
+Some imports worked inside the repo but failed once installed from the feed. One component’s documentation referenced a helper that was not exported from the package barrel. Some Figma MCP calls were flaky enough that the agent workflow needed an offline manifest fallback rather than relying on live lookup every time.
+
+Those were boundary bugs. They only appeared when the system crossed from “mapped” to “consumable.”
+
+That is why mapping was not the finish line. Distribution was.
+
+<CodeCaption
+  filename="Consumer validation"
+  description="Install from the internal feed and verify"
+/>
+
+```bash
+# Consumer validation — install the published package from the internal feed, then verify.
+npm install @org/design-system@latest
+npm run typecheck
+npm run lint
+npm run build
+```
+
+<CodeCaption
+  filename="src/index.ts"
+  description="Package barrel exports used by the consumer app"
+/>
+
+```tsx
+// Generated consumer usage — real exports from the package barrel (src/index.ts).
+import { RecordCard, ProfileNavigation, StatusChip } from '@org/design-system';
+import { theme } from '@org/design-system/theme';
+import { AppProviders } from '@org/design-system/providers';
+```
+
+<figure className="my-8">
+  <img
+    src="/images/case-studies/enterprise-design-system/npmidesignsystem-anon.PNG"
+    alt="Terminal output showing a successful npm install: 1 package added, 602 packages audited in 10 seconds, 0 vulnerabilities found."
+    className="w-full rounded-2xl border border-gray-200"
+  />
+  <figcaption className="text-[10px] text-gray-400 text-center mt-3 font-mono">
+    Installing the published design system from the internal package feed — clean audit, zero vulnerabilities. Package and project names redacted.
+  </figcaption>
+</figure>
+
+---
+
+## Layer 7: Order has to survive after you leave the room
+
+The last layer was durability.
+
+It is not enough to make a tangled system trustworthy once. The system has to stay trustworthy while designers rename components, product files evolve, package versions move, and agents continue generating UI from whatever source of truth they are given.
+
+I added drift detection to compare the live Figma schema against a committed baseline. If mapped components were renamed, removed, or changed in a way that could break consumers, the drift would surface as a reviewable change instead of a surprise failure.
+
+I also moved recurring knowledge into the system itself: docs, scanner output, reason-tagged exclusions, design-team to-do lists, package guidance, agent instructions, and validation steps.
+
+That was the final form of the work: not just a set of mappings, but a workflow that could keep itself honest.
+
+<CodeCaption filename="docs/DRIFT-REPORT.md" description="Clean run vs. drift-detected output" />
+
+```text
+# docs/DRIFT-REPORT.md — clean baseline state
+# Drift report
+_Generated 2026-06-25T20:45:54.938Z against baseline 2026-06-25T20:45:37.267Z._
+✅ **No drift.** Every mapped node matches the baseline schema and no new components appeared.
+
+# scripts/detect-drift.mjs — the format emitted when drift IS found
+## Prop / variant drift on mapped nodes
+- ➖ removed props/variants: `size` (publish would FAIL — mapping references a prop that no longer exists)
+- 🔁 `variant`: {"Primary"} → {"Default"}
+```
+
+<figure className="my-8">
+  <img
+    src="/images/case-studies/enterprise-design-system/drift-anon.PNG"
+    alt="Terminal output from the drift detection script showing 19 actionable items found across 35 product files, with per-file instance counts and coverage percentages ranging from 85% to 100%."
+    className="w-full rounded-2xl border border-gray-200"
+  />
+  <figcaption className="text-[10px] text-gray-400 text-center mt-3 font-mono">
+    The drift scanner surfacing 19 actionable items across the full file set — each line shows instance count and mapped percentage. Product and team names redacted.
+  </figcaption>
+</figure>
+
+---
+
+## Impact
+
+The work produced several concrete outcomes:
+
+- Audited design-system usage across 35 product files and 1.6M+ Figma component instances.
+- Hardened the scanner so unreliable Figma API reads could not silently corrupt coverage numbers.
+- Increased defensible Code Connect coverage from roughly 55% to 98.91%.
+- Mapped the icon layer that represented 551,800 component instances (≈34% of the denominator) with just 50 icon keys.
+- Separated true unmapped demand from forked components, render-parts, documentation boards, external libraries, and scanner artifacts.
+- Reclassified verified render-parts and reference content out of the denominator with auditable reasons instead of pretending they were standalone code components.
+- Packaged the design system as a versioned internal npm package consumable by engineers and agents.
+- Validated the package in a real downstream app using agent-generated screens.
+- Built a Figma plugin that let designers repair forked components without engineering intervention.
+- Added drift detection so schema changes could be caught before they silently broke builds or generated code.
+
+---
+
+## Why this is the throughline
+
+Design systems, frontend architecture, Figma-to-code tooling, and AI agent pipelines are often treated as separate disciplines. This project made them feel like one problem with four faces:
+
+> Can the system reliably tell you what state it is in, and can downstream users trust that answer enough to act on it?
+
+That downstream user might be a designer trying to clean up a forked component. It might be an engineer importing from a package. It might be a build process validating mappings. Or it might be an AI agent generating UI from a Figma node.
+
+In all cases, the same rule applies: if the system of record is wrong, everything downstream becomes less trustworthy.
+
+Bringing order, in practice, was not one clever fix. It was refusing to let an unreliable number stand in for a fact. It was building a taxonomy precise enough to tell different problems apart. It was mapping what was genuinely mappable, excluding what was not, and giving each category a maintenance path. It was turning a Figma library from a large, ambiguous design artifact into infrastructure that engineers, designers, and AI agents could depend on.
+
+That is the work I keep finding myself drawn to: taking systems that have become too large to trust, making their state visible, and building the tools that let teams act on that truth without having to rediscover it every time.
+

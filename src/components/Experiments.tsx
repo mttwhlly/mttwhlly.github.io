@@ -91,6 +91,7 @@ const Experiments = () => {
         <h2 className="text-lg font-mono tracking-loose leading-tight uppercase text-gray-500">
           Experiments
         </h2>
+        <p className="text-sm text-gray-400 mt-1">What I'm tinkering with and exploring</p>
       </div>
 
       <div className="flex flex-wrap gap-3">

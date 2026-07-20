@@ -1,11 +1,11 @@
 ---
 import Testimonials from '../components/Testimonials';
 import RecentProjects from '../components/RecentProjects';
+import CaseStudies from '../components/CaseStudies.astro';
 import Experiments from '../components/Experiments';
 import Tools from '../components/Tools';
 import SelectedClients from '../components/SelectedClients';
 import Newsletter from '../components/Newsletter';
-import Skills from '../components/Skills';
 ---
 <header>
  
@@ -31,21 +31,9 @@ import Skills from '../components/Skills';
 <p class="text-xl text-gray-600 leading-relaxed max-w-3xl mt-6">
 I bridge AI, design & engineering to turn emerging technology into products people can actually use.</p>
   </section>
-  <section class="container px-4 py-12 max-w-4xl mx-auto">
-    <div class="mb-8">
-      <h2 class="text-lg font-mono tracking-loose leading-tight uppercase text-gray-500">What I Do</h2>
-    </div>
-    <ul class="flex flex-col gap-3">
-      <li class="text-2xl font-serif">AI Product Engineering</li>
-      <li class="text-2xl font-serif">Agentic Workflows & Developer Experience</li>
-      <li class="text-2xl font-serif">UX Engineering & Design Systems</li>
-      <li class="text-2xl font-serif">Frontend Architecture</li>
-      <li class="text-2xl font-serif">Technical Leadership</li>
-    </ul>
-  </section>
+  <CaseStudies />
     <RecentProjects />
   <Experiments client:load />
-  <Skills client:load />
   <Tools client:load />
   <SelectedClients client:load />
     <Testimonials client:load />

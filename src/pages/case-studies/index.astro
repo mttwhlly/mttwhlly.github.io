@@ -1,0 +1,92 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import { ArrowUpRight } from '@phosphor-icons/react/dist/ssr';
+
+const entries = await getCollection('caseStudies');
+const studies = entries
+  .map((entry) => ({
+    slug: entry.id.replace(/\.(mdx?)$/, ''),
+    ...entry.data,
+  }))
+  .sort((a, b) => b.publishedDate.localeCompare(a.publishedDate));
+---
+
+<Layout>
+  <main class="max-w-4xl mx-auto px-6 py-12">
+
+    <!-- Page header -->
+    <header class="mb-12">
+      <h1 class="text-lg font-mono tracking-widest uppercase text-gray-500 mb-3">
+        Case Studies
+      </h1>
+      <p class="text-2xl font-sans font-semibold text-gray-900 max-w-xl leading-snug">
+        Deep dives into how the work actually happened.
+      </p>
+    </header>
+
+    <!-- Listing -->
+    <div class="flex flex-col gap-6">
+      {studies.map((study) => (
+        <article class="border border-gray-200 rounded-2xl overflow-hidden hover:border-gray-300 transition-colors">
+
+          <!-- Cover image (optional) -->
+          {study.coverImage && (
+            <div class="h-56 bg-gray-100 overflow-hidden">
+              <img
+                src={study.coverImage}
+                alt=""
+                class="w-full h-full object-cover"
+              />
+            </div>
+          )}
+
+          <div class="p-8">
+            <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+
+              <div class="flex-1 space-y-4">
+                <!-- Client + date -->
+                <div class="flex items-center gap-3 text-sm font-mono text-gray-400">
+                  <span>{study.client}</span>
+                  <span>·</span>
+                  <span>{study.publishedDate}</span>
+                </div>
+
+                <!-- Title -->
+                <h2 class="text-xl font-sans font-bold text-gray-900 leading-snug">
+                  {study.title}
+                </h2>
+
+                <!-- Description -->
+                <p class="text-gray-600 leading-relaxed text-sm">
+                  {study.description}
+                </p>
+
+                <!-- Tags -->
+                <div class="flex flex-wrap gap-2 pt-1">
+                  {study.tags.map((tag) => (
+                    <span class="text-xs font-mono uppercase tracking-wider text-gray-500 bg-gray-100 px-3 py-1 rounded-full">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <!-- CTA -->
+              <div class="md:pt-1 shrink-0">
+                <a
+                  href={`/case-studies/${study.slug}`}
+                  class="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-widest text-gray-900 border border-gray-900 px-4 py-2.5 rounded-lg hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap"
+                >
+                  Read case study
+                  <ArrowUpRight size={14} weight="bold" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+  </main>
+</Layout>
