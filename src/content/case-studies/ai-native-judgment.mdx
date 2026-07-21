@@ -1,0 +1,145 @@
+---
+title: 'When and When Not to Reach for MCP and RAG'
+subtitle: >
+  How the same evaluation discipline led me to adopt MCP as shared infrastructure on one system —
+  and to remove it, deliberately, from another where it didn't belong.
+description: >
+  Two AI-integration decisions I made inside the same organization, using the same evaluation
+  discipline: I adopted MCP as versioned, org-wide developer infrastructure on one system, and
+  built an MCP tool layer plus a vector-search path for a production AI search product on another
+  — then removed both once I confirmed neither had the shape the technology was built to solve. A
+  reusable framework for matching integration pattern to system shape, not to what's currently
+  trending.
+publishedDate: '2026'
+order: 2
+draft: false
+coverImage: /images/case-studies/ai-native-judgment/ai-native-judgment.png
+tags:
+  - MCP
+  - RAG
+  - AI Agents
+  - Azure AI Search
+  - Developer Tooling
+atAGlance:
+  - label: Question
+    value: When does adopting agentic-AI infrastructure actually pay for itself?
+  - label: Scope
+    value: >-
+      Two systems, same organization, same year: a shared developer-tooling layer, and a
+      production AI search product
+  - label: Result
+    value: >-
+      One dynamic tool-discovery layer adopted and scaled across dozens of developers; one MCP
+      tool layer and one vector-search path built, evaluated, and intentionally removed
+  - label: Core problem
+    value: Distinguishing genuine infrastructure needs from technology that's simply current
+  - label: My role
+    value: >-
+      Built and evaluated the AI-integration layer for both systems, including the decision to
+      remove parts of it
+  - label: Outcome
+    value: >-
+      A working framework for matching integration pattern to actual system shape, not to what's
+      trending
+---
+
+import DecisionQuadrant from '../../components/DecisionQuadrant';
+import SpecialtyTimeline from '../../components/SpecialtyTimeline';
+
+Right now, "we used RAG" and "we built an MCP server" function as a kind of credential — shorthand for _this team is current_. That's a problem, because it means the market is ~about to be~ full of case studies that adopted both uncritically, and very few that can explain, with evidence, when either one doesn't pay for itself.
+
+This is that second kind of story. Same organization, same year, two systems, two opposite decisions — made by asking the same question both times: _does this system actually have the shape that this technology is built to solve?_
+
+That question — not either technology — is the reusable part.
+
+---
+
+## Layer 1: The tools aren't the decision — the shape of the problem is
+
+MCP and RAG solve specific, narrow problems. MCP solves _dynamic tool discovery across many consumers and many systems_ — it turns an N×M integration problem (every AI client wiring up every tool by hand) into N+M (build the tool once, any compliant client can find and use it). RAG solves _grounding generated text in retrieved content_ — the retrieval step exists to feed the model something to reason over and cite from.
+
+Neither is a general-purpose "make this more AI-native" upgrade. Applied to a problem that doesn't have their shape, they add latency, surface area, and a maintenance burden with no corresponding payoff.
+
+The two systems below made this concrete. One had exactly the shape MCP is built for. The other looked, on the surface, like a RAG problem — and wasn't.
+
+## Layer 2: Where the protocol earned its keep
+
+A dozen-plus vendor pods, all writing code against the same handful of internal systems, all needed the same capabilities available inside their AI coding assistant: pull a ticket, check a pipeline, look up a component's docs, read a design file. That's a genuine multiple-consumers, multiple-systems problem — the textbook case for MCP.
+
+My answer was to build a plugin that distributed a small bundle of MCP servers, and to roll it out the way real infrastructure gets rolled out: a tagged stable baseline, a `next` branch for breaking changes, a written migration guide, and a coordinated heads-up to every pod lead before the cutover landed.
+
+```json
+// .mcp.json — servers bundled with the plugin, versioned and distributed org-wide
+{
+  "mcpServers": {
+    "issue-tracker": { "command": "npx", "args": ["-y", "@vendor/mcp-issue-tracker"] },
+    "repo-host": { "command": "npx", "args": ["-y", "@vendor/mcp-repo-host"] },
+    "component-docs": { "command": "npx", "args": ["-y", "@vendor/mcp-component-docs"] }
+  }
+}
+```
+
+By the time I shipped a 3.0 release, the bundle had already been through enough real use for me to know what to _cut_, not just what to add — I deprecated two servers outright once they stopped earning their keep.
+
+The friction was as instructive as the win. One server hit a hard response-size limit on broad queries, so I scoped it down to narrower, component-specific asks and filed the limitation upstream — the fix is better evidence of production use than a clean success story would be. I ended up installing another server through a separate channel entirely, because its auth model didn't fit the pattern the rest of the bundle used. And getting from "technically works" to "trusted enough to hand every developer a live path into a shared system" surfaced real questions I had to work through — concurrency behavior under simultaneous sessions, and connectivity errors that needed root-causing before I'd call wider rollout done.
+
+> A protocol earning its keep looks like ongoing maintenance, deprecation, and bug reports — not a flashy demo in a vacuum.
+
+That's what made it infrastructure rather than a proof of concept: it kept getting used, kept getting adjusted, and kept surviving contact with real developers on real deadlines.
+
+## Layer 3: Where the same reasoning said no — twice
+
+A different system, same organization, needed something that sounded almost identical on paper: an AI agent resolving natural-language queries against a large, unfamiliar dataset. A user searching for a "heart doctor" needed that phrase resolved to the correct clinical specialty name before any data lookup could happen.
+
+I tried two AI-native patterns here. I removed both on purpose.
+
+**The MCP tool layer.** I built and deployed a set of tools, each with rich, LLM-facing descriptions — real infrastructure, not a stub. Part of the original case for MCP here was the hope that it would eventually serve external consumers too, not just the one application in front of me. Once product direction ruled that out, I looked at who was actually calling the tools: one first-party application, one model, no other consumer left on the roadmap. I recently came across the commit message I wrote when it happened:
+
+```csharp
+// avoid the unnecessary hop through MCP. This will reduce latency and complexity.
+// The LLM will build the search request directly now.
+// At this point we don't believe MCP usage outside of this application
+// will be an option based on product direction. If that changes we can revisit.
+```
+
+Removing the tool layer let the agent emit a structured query directly, resolved straight against the database — cutting a network hop and a moving part that had no reuse to justify it. I ran the same evaluation as in Layer 2; it just landed on the opposite answer, because the underlying shape — one consumer, one model, no cross-system reuse — was the opposite too.
+
+**Vector search.** The specialty-resolution index looks, from the outside, like a natural RAG candidate — it's an Azure AI Search index sitting in front of an LLM-driven query. I pulled the actual index definition to settle it: the vector configuration exists in the schema, unused — zero bytes of vector data stored, no field referencing it. What's actually running is keyword matching with a synonym map and a semantic reranker, and the resolved value is used as an exact-match filter, not injected back into the model as context to generate from. That's retrieval for _query normalization_, not retrieval-_augmented generation_ — a real, useful pattern, just not the one the buzzword implies.
+
+The honest version of the story took three separate commits, over several months, chasing the same underlying bug — a colloquial term ("heart drs") missing the clinical taxonomy entirely because the model had started guessing specialty names from training data instead of querying the index. The fix evolved from a single similarity threshold, to a two-tier exact/related scoring model, to an explicit "never guess, always query" instruction added directly to the agent's prompt after the bug resurfaced in production. The synonym map that grew out of that work has since shipped and is live in the index today — the deterministic layer the score-based logic was always working toward.
+
+<SpecialtyTimeline />
+
+> The label on a system is a hope. The schema is the record.
+
+## Layer 4: The principle
+
+Put side by side, the two systems used the same test, not two different philosophies.
+
+<DecisionQuadrant />
+
+|                 | Shared dev-tooling layer         | AI search product                             |
+| --------------- | -------------------------------- | --------------------------------------------- |
+| Consumers       | Many developers, many AI clients | One application, one model                    |
+| Systems reached | Several, independently evolving  | One index feeding one query                   |
+| Reuse horizon   | Explicitly designed for growth   | Explicitly ruled out in writing               |
+| Decision        | Adopt MCP, scale it, prune it    | Build MCP and vector search, then remove both |
+
+Same organization, same year, same underlying question, opposite — and both correct — answers.
+
+---
+
+## Impact
+
+- Distributed a versioned MCP tool bundle to every developer across a multi-pod engineering organization, with a coordinated breaking-change release process (tagged baseline, migration guide, staged rollout)
+- Identified and filed an upstream limitation in a third-party MCP server rather than working around it silently
+- Built a five-tool MCP layer for a production AI search product, then removed it after establishing it had no cross-application reuse to justify the added hop
+- Diagnosed and fixed a real production query-resolution bug across three iterations, converging on an explicit "never guess, always query" instruction for the agent, and shipped the deterministic synonym map that followed
+- Pulled the actual Azure AI Search index definition to confirm, rather than assume, that vector search was configured but never used — zero bytes of vector data stored
+- Arrived at a reusable, evidence-based framework for matching AI-integration patterns to system shape, instead of to what's currently trending
+
+## The pattern underneath both decisions
+
+What connects these two isn't MCP or RAG — it's a willingness to keep re-asking whether the technology still fits, even after the decision felt settled. The MCP tool layer in Layer 3 wasn't removed on day one; it was removed once the assumption it was built on — that other consumers were coming — stopped being true, and I let that update the decision instead of leaving the tools in place out of momentum.
+
+That's the habit I'd want to carry into the next system, too: treat "is this still the right layer" as a question worth asking again, not a box checked once at the start.
