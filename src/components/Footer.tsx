@@ -23,7 +23,14 @@ export default function Footer() {
                 <BookmarkSimple size={16} />
               </span>
               <Marquee className="text-sm md:text-md">
-                The Reverse Centaur's Guide to Life After AI{' '}
+                <a
+                  href="https://bookshop.org/p/books/the-reverse-centaur-s-guide-to-life-after-ai-how-to-think-about-artificial-intelligence-before-it-s-too-late-cory-doctorow/ac86987834ee96c2"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline"
+                >
+                  The Reverse Centaur's Guide to Life After AI
+                </a>{' '}
                 <i className="font-serif tracking-wider text-gray-400">by</i> Cory Doctorow
               </Marquee>
             </li>
