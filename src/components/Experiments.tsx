@@ -3,38 +3,16 @@ import {
   ArrowUpRight,
   MusicNote,
   GridFour,
-  PenNib,
   Disc,
-  Tree,
   TextT,
-  ChartBar,
-  CheckSquare,
-  FileText,
   Camera,
-  FigmaLogo,
-  PaintBrushIcon,
+  CodepenLogo,
+  GithubLogo,
+  MapPin,
 } from '@phosphor-icons/react';
 
 const Experiments = () => {
   const experiments = [
-    {
-      id: 1,
-      title: 'Business Bingo',
-      url: 'https://github.com/mttwhlly/business-bingo',
-      icon: GridFour,
-    },
-    {
-      id: 2,
-      title: 'D U S T',
-      url: 'https://github.com/mttwhlly/dust',
-      icon: PenNib,
-    },
-    {
-      id: 3,
-      title: 'Grounded',
-      url: 'https://github.com/mttwhlly/grounded',
-      icon: Tree,
-    },
     {
       id: 4,
       title: 'Sui Sans Typeface',
@@ -42,22 +20,16 @@ const Experiments = () => {
       icon: TextT,
     },
     {
-      id: 5,
-      title: 'Chart Generator Plugin',
-      url: 'https://github.com/mttwhlly/figma-charter',
-      icon: FigmaLogo,
+      id: 13,
+      title: '40 Rocks',
+      url: 'https://github.com/mttwhlly/forty-rocks',
+      icon: MapPin,
     },
     {
-      id: 6,
-      title: 'Design Standards Plugin',
-      url: 'https://github.com/mttwhlly/design-standards-checker',
-      icon: FigmaLogo,
-    },
-    {
-      id: 7,
-      title: 'Get Layer Text Plugin',
-      url: 'https://github.com/mttwhlly/get-figma-text',
-      icon: FigmaLogo,
+      id: 1,
+      title: 'Business Bingo',
+      url: 'https://github.com/mttwhlly/business-bingo',
+      icon: GridFour,
     },
     {
       id: 8,
@@ -77,12 +49,18 @@ const Experiments = () => {
       url: 'https://github.com/mttwhlly/photobooth',
       icon: Camera,
     },
-    // {
-    //   id: 11,
-    //   title: 'John Whalley Studio',
-    //   url: 'https://johnwhalley.com',
-    //   icon: PaintBrushIcon,
-    // },
+    {
+      id: 11,
+      title: 'Codepen',
+      url: 'http://codepen.io/mttwhlly',
+      icon: CodepenLogo,
+    },
+    {
+      id: 12,
+      title: 'Github',
+      url: 'https://github.com/mttwhlly',
+      icon: GithubLogo,
+    },
   ];
 
   return (
