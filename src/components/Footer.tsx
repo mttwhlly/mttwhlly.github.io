@@ -39,7 +39,7 @@ export default function Footer() {
                 <Mountains size={16} />
               </span>
               <Marquee className="text-sm md:text-md">
-                Black V4 <i className="font-serif tracking-wider text-gray-400">on</i> Timo Wall{' '}
+                Purple V5 <i className="font-serif tracking-wider text-gray-400">on</i> The Prow{' '}
                 <i className="font-serif tracking-wider text-gray-400">at</i>{' '}
                 <a href="https://stoneclimbing.com/" target="_blank" className="hover:underline">
                   Stone Climbing Co.
