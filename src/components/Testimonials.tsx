@@ -32,35 +32,6 @@ const Testimonials = () => {
         'Matt is an innovator and problem solver. Working with him was seamless and his input enhanced our project technically and creatively.',
       link: 'https://hoch.co',
     },
-    // {
-    //   id: 3,
-    //   name: 'Todd Johnson',
-    //   title: 'Solutions Architect',
-    //   organization: 'Snowflake',
-    //   avatar: '/images/todd.jpeg',
-    //   content:
-    //     'Working with Matt makes me excited to push my own performance—his great attitude and communication are contagious.',
-    //   link: 'https://www.linkedin.com/in/mtoddjohnson/',
-    // },
-    {
-      id: 4,
-      name: 'Dan Draper',
-      title: 'Designer',
-      organization: 'Dan Draper Design',
-      avatar: '/images/dan-d.png',
-      content:
-        "Matt has a skill set which can be hard to find in a creative team member — he's a graphic designer, UX designer, and a developer. This background and mix of talents makes him a thoughtful resource and an asset to any organization or client he works for.",
-      link: 'https://dandraperdesign.com/',
-    },
-    {
-      id: 5,
-      name: 'Titus Smith',
-      title: 'IXD Program Director',
-      organization: 'University of Kansas',
-      avatar: '/images/titus.jpg',
-      content: 'Matt cares deeply.',
-      link: 'https://thehideout.design/',
-    },
   ];
 
   return (
@@ -71,7 +42,7 @@ const Testimonials = () => {
         </h2>
       </div>
 
-      <div className="max-w-4xl lg:max-w-none mx-auto px-4">
+      <div className="max-w-4xl mx-auto px-4">
         <div className="columns-1 md:columns-2 lg:columns-3 gap-4">
           {testimonials.map((testimonial, index) => (
             <div

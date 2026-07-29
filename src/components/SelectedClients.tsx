@@ -60,7 +60,7 @@ const SelectedClients: React.FC = () => {
     <section className="container px-4 lg:px-0 pt-12 pb-2 max-w-4xl mx-auto">
       <div className="mb-8">
         <h2 className="text-lg font-mono tracking-loose leading-tight uppercase text-gray-500 px-4">
-          Selected Clients
+          Selected Organizations
         </h2>
       </div>
 

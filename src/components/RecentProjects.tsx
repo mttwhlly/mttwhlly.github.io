@@ -27,7 +27,7 @@ const RecentProjects = () => {
             Projects
           </h2>
           <p className="text-sm text-gray-400 mt-1">
-            Things I build for myself and others, fully shipped
+            Selected products I've designed, engineered, and shipped
           </p>
         </div>
         <div className="grid gap-3">
