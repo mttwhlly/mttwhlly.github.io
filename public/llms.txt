@@ -1,8 +1,8 @@
 # Matt Whalley
 
-> AI Product Engineer bridging AI, product, design, and engineering to turn emerging technology into products people can actually use.
+> Senior/Staff Product Engineer (AI & Design Systems) bridging AI, product, design, and engineering to turn emerging technology into products people can actually use.
 
-Matt Whalley is an AI Product Engineer based in St. Augustine, Florida. He leads UX engineering and frontend architecture for AI-enabled web and mobile products, with a focus on making AI useful, usable, and sustainable. He works across the full product stack — from design systems and component architecture to agentic workflows and AI-assisted development tooling.
+Matt Whalley is a Senior/Staff Product Engineer based in St. Augustine, Florida, specializing in AI and design systems. He leads UX engineering and frontend architecture for AI-enabled web and mobile products, with a focus on making AI useful, usable, and sustainable. He works across the full product stack — from design systems and component architecture to agentic workflows and AI-assisted development tooling.
 
 ## Focus Areas
 

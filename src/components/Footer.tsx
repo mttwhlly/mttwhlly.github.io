@@ -1,12 +1,6 @@
 import SpotifyNowPlaying from './SpotifyNowPlaying';
 import Marquee from './Marquee';
-import {
-  BookmarkSimple,
-  Mountains,
-  GithubLogo,
-  LinkedinLogo,
-  PaperPlaneTilt,
-} from '@phosphor-icons/react';
+import { GithubLogo, LinkedinLogo, PaperPlaneTilt } from '@phosphor-icons/react';
 
 export default function Footer() {
   return (
@@ -19,9 +13,23 @@ export default function Footer() {
               <SpotifyNowPlaying />
             </li>
             <li className="h-[42px] text-sm md:text-md flex items-center space-x-2">
-              <span className="text-gray-400 text-sm md:text-md flex-shrink-0">
-                <BookmarkSimple size={16} />
+              <span className="flex items-center justify-center w-5 h-5 rounded-full bg-purple-500 text-white text-[9px] font-mono font-bold flex-shrink-0">
+                V5
               </span>
+              <Marquee className="text-sm md:text-md">
+                Purple V5 <i className="font-serif tracking-wider text-gray-400">on</i> The Prow{' '}
+                <i className="font-serif tracking-wider text-gray-400">at</i>{' '}
+                <a href="https://stoneclimbing.com/" target="_blank" className="hover:underline">
+                  Stone Climbing Co.
+                </a>
+              </Marquee>
+            </li>
+            <li className="h-[42px] text-sm md:text-md flex items-center space-x-2">
+              <img
+                src="/images/book-reverse-centaur.jpg"
+                alt=""
+                className="w-4 h-6 object-cover rounded-xs flex-shrink-0"
+              />
               <Marquee className="text-sm md:text-md">
                 <a
                   href="https://bookshop.org/p/books/the-reverse-centaur-s-guide-to-life-after-ai-how-to-think-about-artificial-intelligence-before-it-s-too-late-cory-doctorow/ac86987834ee96c2"
@@ -32,18 +40,6 @@ export default function Footer() {
                   The Reverse Centaur's Guide to Life After AI
                 </a>{' '}
                 <i className="font-serif tracking-wider text-gray-400">by</i> Cory Doctorow
-              </Marquee>
-            </li>
-            <li className="h-[42px] text-sm md:text-md flex items-center space-x-2">
-              <span className="text-gray-400 text-sm md:text-md flex-shrink-0">
-                <Mountains size={16} />
-              </span>
-              <Marquee className="text-sm md:text-md">
-                Purple V5 <i className="font-serif tracking-wider text-gray-400">on</i> The Prow{' '}
-                <i className="font-serif tracking-wider text-gray-400">at</i>{' '}
-                <a href="https://stoneclimbing.com/" target="_blank" className="hover:underline">
-                  Stone Climbing Co.
-                </a>
               </Marquee>
             </li>
           </ul>

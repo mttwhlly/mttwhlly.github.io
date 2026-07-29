@@ -5,8 +5,8 @@ import CaseStudies from '../components/CaseStudies.astro';
 import Experiments from '../components/Experiments';
 import Tools from '../components/Tools';
 import SelectedClients from '../components/SelectedClients';
-import Newsletter from '../components/Newsletter';
-import { Sparkle, PenNib, Code } from '@phosphor-icons/react/dist/ssr';
+// import Newsletter from '../components/Newsletter';
+import { PenNibIcon, CodeIcon, SparkleIcon } from '@phosphor-icons/react/dist/ssr';
 ---
 <header>
  
@@ -16,7 +16,7 @@ import { Sparkle, PenNib, Code } from '@phosphor-icons/react/dist/ssr';
     <!-- <AnimatedHeading client:load /> -->
    <h1 class="mb-8 font-serif leading-tight md:text-6xl text-4xl md:tracking-tight tracking-loose min-h-[1.2em]">
   <!-- <i class="px-1 underline underline-offset-6 decoration-[#D4FC52] decoration-from-font text-pretty"> -->
-    Building AI products that are <i class="px-1 underline underline-offset-6 decoration-[#D4FC52] decoration-from-font text-pretty"> useful</i>, <i class="px-1 underline underline-offset-6 decoration-[#D4FC52] decoration-from-font text-pretty"> usable</i> <i>&</i> <i class="px-1 underline underline-offset-6 decoration-[#D4FC52] decoration-from-font text-pretty"> sustainable</i>. 
+    I <i class="px-1 underline underline-offset-6 decoration-[#D4FC52] decoration-from-font text-pretty">solve complex product problems</i> <i>&</i> <i class="px-1 underline underline-offset-6 decoration-[#D4FC52] decoration-from-font text-pretty">build systems</i> that last.
 </h1>
 
 <div class="flex flex-wrap gap-2">
@@ -25,7 +25,7 @@ import { Sparkle, PenNib, Code } from '@phosphor-icons/react/dist/ssr';
   </span>
 
   <span class="text-sm text-gray-600 leading-relaxed max-w-3xl border-1 border-none bg-gray-100 px-3 py-1 rounded-lg">
-    Senior/Staff AI Product Engineer
+    Senior/Staff Product Engineer (AI & Design Systems)
   </span>
 
   <span class="text-sm text-gray-600 leading-relaxed max-w-3xl border-1 border-none bg-gray-100 px-3 py-1 rounded-lg">
@@ -34,7 +34,7 @@ import { Sparkle, PenNib, Code } from '@phosphor-icons/react/dist/ssr';
 </div>
 
 <p class="text-xl text-gray-600 leading-relaxed max-w-3xl mt-6">
-I bridge <Sparkle size={18} className="inline-block align-[-3px] text-gray-400 mr-1" />AI, <PenNib size={18} className="inline-block align-[-3px] text-gray-400 mr-1" />design and <Code size={18} className="inline-block align-[-3px] text-gray-400 mr-1" />engineering to turn emerging technology into dependable products people can actually use.</p>
+Through <PenNibIcon size={18} className="inline-block align-[-3px] text-gray-400 mr-1" />design, <CodeIcon size={18} className="inline-block align-[-3px] text-gray-400 mr-1" />engineering, and <SparkleIcon size={18} className="inline-block align-[-3px] text-gray-400 mr-1" />AI, I uncover root causes, validate practical solutions, and leave behind tools that teams can confidently use, extend, and build upon.</p>
   </section>
   <CaseStudies />
     <RecentProjects />
@@ -42,7 +42,7 @@ I bridge <Sparkle size={18} className="inline-block align-[-3px] text-gray-400 m
   <Tools client:load />
   <SelectedClients client:load />
     <Testimonials client:load />
-    <Newsletter client:load />
+    <!-- <Newsletter client:load /> -->
     <!-- <section class="container lg:mb-20 px-4 pt-20 pb-12 flex-auto flex flex-col gap-8 lg:mt-12 w-full max-w-4xl mx-auto text-center bg-gray-100 lg:rounded-2xl">
       <p class="text-2xl text-gray-600 leading-relaxed"><span class="underline underline-offset-4 decoration-[#D4FC52] decoration-3px text-pretty">Open</span> to full-time remote roles, well-scoped side projects, and teaching or mentoring opportunities.<br/>If you value deep work and long-term thinking, <i class="font-serif text-black tracking-wide">let's chat</i>.</p>
       <div class="my-12 flex justify-center gap-4">

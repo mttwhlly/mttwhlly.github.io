@@ -158,9 +158,19 @@ const SpotifyNowPlaying: React.FC = () => {
 
       {nowPlaying && (
         <div className="flex items-center space-x-2 min-w-0 flex-1">
-          <span className="text-gray-400 flex-shrink-0">
-            <MusicNotesSimple size={16} />
-          </span>
+          {nowPlaying.albumArt ? (
+            <a href={nowPlaying.albumLink} className="flex-shrink-0">
+              <img
+                src={nowPlaying.albumArt}
+                alt=""
+                className="w-6 h-6 object-cover rounded-xs"
+              />
+            </a>
+          ) : (
+            <span className="text-gray-400 flex-shrink-0">
+              <MusicNotesSimple size={16} />
+            </span>
+          )}
 
           <div ref={containerRef} className="overflow-hidden min-w-0 flex-1 relative">
             <div
@@ -169,8 +179,8 @@ const SpotifyNowPlaying: React.FC = () => {
                 shouldScroll ? 'animate-marquee' : ''
               }`}
             >
-              <a href={nowPlaying.trackLink} className="hover:underline">
-                {nowPlaying.name}
+              <a href={nowPlaying.albumLink} className="hover:underline">
+                {nowPlaying.album}
               </a>{' '}
               <i className="font-serif tracking-wider text-gray-400">by</i>{' '}
               <a href={nowPlaying.artistLink} className="hover:underline">
