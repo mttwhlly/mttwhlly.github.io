@@ -1,31 +1,6 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React from 'react';
 
 const Testimonials = () => {
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const [showGradient, setShowGradient] = useState(true);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (scrollRef.current) {
-        const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-        const isScrolledToEnd = scrollLeft + clientWidth >= scrollWidth - 10; // 10px tolerance
-        setShowGradient(!isScrolledToEnd);
-      }
-    };
-
-    const scrollElement = scrollRef.current;
-    if (scrollElement) {
-      scrollElement.addEventListener('scroll', handleScroll);
-      handleScroll(); // Check initial state
-    }
-
-    return () => {
-      if (scrollElement) {
-        scrollElement.removeEventListener('scroll', handleScroll);
-      }
-    };
-  }, []);
-
   const testimonials = [
     {
       id: 1,
@@ -89,59 +64,52 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="pt-16 pb-16 px-4 overflow-hidden">
+    <section className="pt-16 pb-16 px-4">
       <div className="mb-8 max-w-4xl mx-auto">
         <h2 className="text-lg font-mono tracking-loose uppercase text-gray-500 mb-2 px-4">
           Testimonials
         </h2>
       </div>
 
-      <div className="max-w-4xl mx-auto relative px-4">
-        {/* Scroll affordance - only visible on desktop and when not scrolled to end */}
-        {showGradient && (
-          <div className="hidden md:block absolute right-0 top-0 w-12 h-full bg-gradient-to-l from-white via-white/80 to-transparent z-10 pointer-events-none"></div>
-        )}
+      <div className="max-w-4xl lg:max-w-none mx-auto px-4">
+        <div className="columns-1 md:columns-2 lg:columns-3 gap-4">
+          {testimonials.map((testimonial, index) => (
+            <div
+              key={`${testimonial.id}-${index}`}
+              className="flex flex-col justify-start w-full mb-4 bg-white rounded-xl p-6 border border-gray-200 break-inside-avoid"
+            >
+              <blockquote className="text-gray-700 text-lg">{testimonial.content}</blockquote>
 
-        <div ref={scrollRef} className="overflow-x-scroll">
-          <div className="flex flex-col md:flex-row space-x-2 items-start md:pr-16">
-            {testimonials.map((testimonial, index) => (
-              <div
-                key={`${testimonial.id}-${index}`}
-                className="flex flex-col justify-start w-full md:w-80 md:min-w-80 mb-4 md:mb-0 bg-white rounded-xl p-6 border border-gray-200"
-              >
-                <blockquote className="text-gray-700 text-lg">{testimonial.content}</blockquote>
-
-                <div className="flex items-start space-x-4 mt-4">
-                  <a
-                    href={testimonial.link}
-                    className="hover:underline"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img
-                      src={testimonial.avatar}
-                      alt={testimonial.name}
-                      className="w-12 h-12 mt-4 rounded-full object-cover flex-shrink-0"
-                    />
-                  </a>
-                  <div className="min-w-0 flex-1">
-                    <div className="flex flex-col space-x-2 mt-2">
-                      <a
-                        href={testimonial.link}
-                        className="hover:underline"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <h4 className="font-semibold text-gray-900">{testimonial.name}</h4>
-                      </a>
-                      <p className="text-sm text-gray-600">{testimonial.title}</p>
-                      <p className="text-sm text-gray-600">{testimonial.organization}</p>
-                    </div>
+              <div className="flex items-start space-x-4 mt-4">
+                <a
+                  href={testimonial.link}
+                  className="hover:underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src={testimonial.avatar}
+                    alt={testimonial.name}
+                    className="w-12 h-12 mt-4 rounded-full object-cover flex-shrink-0"
+                  />
+                </a>
+                <div className="min-w-0 flex-1">
+                  <div className="flex flex-col space-x-2 mt-2">
+                    <a
+                      href={testimonial.link}
+                      className="hover:underline"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <h4 className="font-semibold text-gray-900">{testimonial.name}</h4>
+                    </a>
+                    <p className="text-sm text-gray-600">{testimonial.title}</p>
+                    <p className="text-sm text-gray-600">{testimonial.organization}</p>
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
