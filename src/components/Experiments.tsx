@@ -1,15 +1,5 @@
 import React from 'react';
-import {
-  ArrowUpRight,
-  MusicNote,
-  GridFour,
-  Disc,
-  TextT,
-  Camera,
-  CodepenLogo,
-  GithubLogo,
-  MapPin,
-} from '@phosphor-icons/react';
+import { ArrowUpRight, GridFour, Disc, TextT, Camera, MapPin } from '@phosphor-icons/react';
 
 const Experiments = () => {
   const experiments = [
@@ -32,12 +22,6 @@ const Experiments = () => {
       icon: GridFour,
     },
     {
-      id: 8,
-      title: 'Short Scories',
-      url: 'https://shortscories.com/',
-      icon: MusicNote,
-    },
-    {
       id: 9,
       title: 'Vinyly',
       url: 'https://github.com/mttwhlly/vinyly',
@@ -48,18 +32,6 @@ const Experiments = () => {
       title: 'Photobooth',
       url: 'https://github.com/mttwhlly/photobooth',
       icon: Camera,
-    },
-    {
-      id: 11,
-      title: 'Codepen',
-      url: 'http://codepen.io/mttwhlly',
-      icon: CodepenLogo,
-    },
-    {
-      id: 12,
-      title: 'Github',
-      url: 'https://github.com/mttwhlly',
-      icon: GithubLogo,
     },
   ];
 
