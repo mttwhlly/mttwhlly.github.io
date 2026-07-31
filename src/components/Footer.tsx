@@ -13,11 +13,11 @@ export default function Footer() {
               <SpotifyNowPlaying />
             </li>
             <li className="h-[42px] text-sm md:text-md flex items-center space-x-2">
-              <span className="flex items-center justify-center w-5 h-5 rounded-full bg-purple-500 text-white text-[9px] font-mono font-bold flex-shrink-0">
+              <span className="flex items-center justify-center w-5 h-5 rounded-full bg-blue-500 text-white text-[9px] font-mono font-bold flex-shrink-0">
                 V5
               </span>
               <Marquee className="text-sm md:text-md">
-                Purple V5 <i className="font-serif tracking-wider text-gray-400">on</i> The Prow{' '}
+                Blue V5 <i className="font-serif tracking-wider text-gray-400">on</i> The Prow{' '}
                 <i className="font-serif tracking-wider text-gray-400">at</i>{' '}
                 <a href="https://stoneclimbing.com/" target="_blank" className="hover:underline">
                   Stone Climbing Co.
