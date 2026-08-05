@@ -43,10 +43,10 @@ const RecentProjects = () => {
                 <img src={project.image} alt="" className="max-w-full max-h-full object-contain" />
               </div>
               <div className="flex-1 min-w-0">
-                <h3 className="text-sm font-sans font-semibold text-gray-900 leading-tight">
+                <h3 className="text-lg font-sans font-semibold text-gray-900 leading-tight">
                   {project.title}
                 </h3>
-                <p className="text-sm text-gray-500">{project.description}</p>
+                <p className="text-base text-gray-500">{project.description}</p>
               </div>
               <ArrowUpRight className="flex-shrink-0 text-gray-400" size={16} weight="bold" />
             </a>
