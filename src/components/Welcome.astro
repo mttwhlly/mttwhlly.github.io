@@ -3,96 +3,31 @@ import Testimonials from '../components/Testimonials';
 import RecentProjects from '../components/RecentProjects';
 import CaseStudies from '../components/CaseStudies.astro';
 import Experiments from '../components/Experiments';
-// import Tools from '../components/Tools';
-import SelectedClients from '../components/SelectedClients';
-// import Newsletter from '../components/Newsletter';
-import {
-  PenNibIcon,
-  CodeIcon,
-  SparkleIcon,
-  PaperPlaneTiltIcon,
-  FileTextIcon,
-  LinkedinLogoIcon,
-} from '@phosphor-icons/react/dist/ssr';
 ---
-<header>
- 
-</header>
-<main class="">    
-  <section class="container px-4 pt-12 lg:pt-20 lg:pb-12 flex-auto flex flex-col gap-3 md:gap-8 max-w-4xl mx-auto border-gray-200">
-    <!-- <AnimatedHeading client:load /> -->
-   <h1 class="mb-8 font-serif leading-tight md:text-6xl text-4xl md:tracking-tight tracking-loose min-h-[1.2em]">
-  <!-- <i class="px-1 underline underline-offset-6 decoration-[#D4FC52] decoration-from-font text-pretty"> -->
-    I <i class="px-1 underline underline-offset-6 decoration-[#D4FC52] decoration-from-font text-pretty">solve complex product problems</i> <i>&</i> <i class="px-1 underline underline-offset-6 decoration-[#D4FC52] decoration-from-font text-pretty">build systems</i> that last.
-</h1>
 
-<div class="flex flex-wrap gap-2">
-  <span class="text-xs font-mono font-semibold uppercase tracking-widest text-gray-900 max-w-3xl bg-[#D4FC52] px-3 py-1 rounded-lg inline-flex items-center gap-2">
-    Open to Work
-  </span>
-
-  <span class="text-sm text-gray-600 leading-relaxed max-w-3xl border-1 border-none bg-gray-100 px-3 py-1 rounded-lg">
-    Senior Product Engineer (AI & Design Systems)
-  </span>
-
-  <span class="text-sm text-gray-600 leading-relaxed max-w-3xl border-1 border-none bg-gray-100 px-3 py-1 rounded-lg">
-    Remote
-  </span>
-</div>
-
-<p class="text-xl text-gray-600 leading-relaxed max-w-3xl mt-6">
-I bring <PenNibIcon size={18} className="inline-block align-[-3px] text-gray-400 mr-1" />design, <CodeIcon size={18} className="inline-block align-[-3px] text-gray-400 mr-1" />engineering, and <SparkleIcon size={18} className="inline-block align-[-3px] text-gray-400 mr-1" />AI together to turn ambitious ideas and tangled systems into products people can trust.</p>
+<main>
+  <section class="max-w-2xl mx-auto px-6 pb-12">
+    <div class="grid grid-cols-1 sm:grid-cols-[120px_1fr] gap-x-6 gap-y-2 sm:gap-y-1">
+      <h1 class="font-mono text-sm text-gray-900 dark:text-gray-100 pt-0.5">About</h1>
+      <div class="flex flex-col gap-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+        <p>
+          I <i class="font-serif italic text-[1.1em] leading-[26px]">solve complex product problems</i> and
+          <i class="font-serif italic text-[1.1em] leading-[26px]">build systems</i> that last — bringing design, engineering,
+          and AI together to turn ambitious ideas and tangled systems into products people can
+          trust.
+        </p>
+        <p>
+          Currently open to <span class="underline underline-offset-4 decoration-lemonlime-300"
+            >Senior Product Engineering</span
+          > roles focused on AI products, design-system infrastructure, or tools that need to become
+          more dependable as they scale. Remote.
+        </p>
+      </div>
+    </div>
   </section>
-  <CaseStudies />
-    <RecentProjects />
-  <Experiments client:load />
-  <!-- <Tools client:load /> -->
-  <SelectedClients client:load />
-    <Testimonials client:load />
-    <!-- <Newsletter client:load /> -->
-    <!-- <section class="container lg:mb-20 px-4 pt-20 pb-12 flex-auto flex flex-col gap-8 lg:mt-12 w-full max-w-4xl mx-auto text-center bg-gray-100 lg:rounded-2xl">
-      <p class="text-2xl text-gray-600 leading-relaxed"><span class="underline underline-offset-4 decoration-[#D4FC52] decoration-3px text-pretty">Open</span> to full-time remote roles, well-scoped side projects, and teaching or mentoring opportunities.<br/>If you value deep work and long-term thinking, <i class="font-serif text-black tracking-wide">let's chat</i>.</p>
-      <div class="my-12 flex justify-center gap-4">
-        <a href="mailto:&#109;&#97;&#116;&#116;&#64;&#109;&#97;&#116;&#116;&#119;&#104;&#97;&#108;&#108;&#101;&#121;&#46;&#99;&#111;&#109;" class="flex gap-2 text-lg md:text-2xl font-medium py-3 px-8 rounded-full shadow-[#D4FC52]/20 bg-[#D4FC52] shadow-sm hover:shadow-[#D4FC52]/40 hover:shadow-lg transition-all duration-700 font-mono">
-           Get in Touch
-        </a>
-      </div>
-    </section> -->
 
-    <section class="mx-4 sm:mx-6 lg:mx-auto px-6 sm:px-12 py-12 lg:py-16 mb-12 flex-auto flex flex-col gap-4 max-w-4xl text-center bg-gray-100 rounded-2xl">
-      <p class="text-3xl md:text-4xl font-serif text-gray-900 text-balance">
-        Working through a complex product problem?
-      </p>
-      <p class="text-gray-600 leading-relaxed max-w-2xl mx-auto text-pretty">
-        I'm exploring Senior product engineering roles with teams building AI products,
-        design-system infrastructure, or tools that need to become more dependable as they scale.
-      </p>
-      <div class="mt-4 flex flex-wrap justify-center gap-3">
-        <a
-          href="mailto:&#109;&#97;&#116;&#116;&#64;&#109;&#97;&#116;&#116;&#119;&#104;&#97;&#108;&#108;&#101;&#121;&#46;&#99;&#111;&#109;"
-          class="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-widest text-gray-900 bg-[#D4FC52] px-4 py-2.5 rounded-lg shadow-sm hover:shadow-md transition-shadow"
-        >
-          <PaperPlaneTiltIcon size={16} />
-          Email me
-        </a>
-        <a
-          href="/matt-whalley-resume.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-widest text-gray-900 border border-gray-900 px-4 py-2.5 rounded-lg hover:bg-gray-900 hover:text-white transition-colors"
-        >
-          <FileTextIcon size={16} />
-          View resume
-        </a>
-        <a
-          href="https://linkedin.com/in/mttwhlly"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-widest text-gray-900 border border-gray-900 px-4 py-2.5 rounded-lg hover:bg-gray-900 hover:text-white transition-colors"
-        >
-          <LinkedinLogoIcon size={16} />
-          Connect on LinkedIn
-        </a>
-      </div>
-    </section>
+  <CaseStudies />
+  <RecentProjects />
+  <Experiments client:load />
+  <Testimonials client:load />
 </main>

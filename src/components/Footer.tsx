@@ -1,92 +1,96 @@
 import SpotifyNowPlaying from './SpotifyNowPlaying';
-import Marquee from './Marquee';
-import { GithubLogo, LinkedinLogo, PaperPlaneTilt } from '@phosphor-icons/react';
 
 export default function Footer() {
   return (
-    <footer className="shrink bg-black text-white md:flex-row flex-col">
-      <div className="flex md:flex-row flex-col mx-auto px-6 justify-between py-12">
-        <div className="flex flex-col gap-4 my-8 md:my-0">
-          <p className="text-sm text-gray-400 font-mono uppercase py-4">Offline</p>
-          <ul>
-            <li className="h-[42px] text-sm md:text-md flex items-center space-x-2">
-              <SpotifyNowPlaying />
-            </li>
-            <li className="h-[42px] text-sm md:text-md flex items-center space-x-2">
-              <span className="flex items-center justify-center w-5 h-5 rounded-full bg-blue-500 text-white text-[9px] font-mono font-bold flex-shrink-0">
-                V5
-              </span>
-              <Marquee className="text-sm md:text-md">
-                Blue V5 <i className="font-serif tracking-wider text-gray-400">on</i> The Prow{' '}
-                <i className="font-serif tracking-wider text-gray-400">at</i>{' '}
-                <a href="https://stoneclimbing.com/" target="_blank" className="hover:underline">
-                  Stone Climbing Co.
-                </a>
-              </Marquee>
-            </li>
-            <li className="h-[42px] text-sm md:text-md flex items-center space-x-2">
-              <img
-                src="/images/book-technological-society.jpg"
-                alt=""
-                className="w-4 h-6 object-cover rounded-xs flex-shrink-0"
-              />
-              <Marquee className="text-sm md:text-md">
-                <a
-                  href="https://bookshop.org/p/books/the-technological-society-jacques-ellul/b7e9987895bfa0cf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:underline"
-                >
-                  The Technological Society
-                </a>{' '}
-                <i className="font-serif tracking-wider text-gray-400">by</i> Jacques Ellul
-              </Marquee>
-            </li>
-          </ul>
-        </div>
-        <div className="flex flex-col gap-4">
-          <p className="text-sm text-gray-400 font-mono uppercase py-4">Online</p>
-          <ul>
-            <li className="h-[42px] text-sm md:text-md flex items-center space-x-2">
-              <a href="https://github.com/mttwhlly" target="_blank">
-                <GithubLogo
-                  className="text-gray-400 text-sm md:text-md inline-block mr-1"
-                  size={16}
-                />
-                Github
-              </a>
-            </li>
-            <li className="h-[42px] text-sm md:text-md flex items-center space-x-2">
-              <a href="https://linkedin.com/in/mttwhlly" target="_blank">
-                <LinkedinLogo
-                  className="text-gray-400 text-sm md:text-md inline-block mr-1"
-                  size={16}
-                />
-                Linkedin
-              </a>
-            </li>
-            <li className="h-[42px] text-sm md:text-md flex items-center space-x-2">
-              <PaperPlaneTilt
-                className="text-gray-400 text-sm md:text-md inline-block mr-1"
-                size={16}
-              />{' '}
-              <a href="mailto:&#109;&#97;&#116;&#116;&#64;&#109;&#97;&#116;&#116;&#119;&#104;&#97;&#108;&#108;&#101;&#121;&#46;&#99;&#111;&#109;">
-                Email
-              </a>
-            </li>
-          </ul>
+    <footer className="w-full max-w-2xl mx-auto px-6 pb-16">
+      <div className="grid grid-cols-1 sm:grid-cols-[120px_1fr] gap-x-6 gap-y-2 sm:gap-y-1 pb-12">
+        <h2 className="font-mono text-sm text-gray-900 dark:text-gray-100 pt-0.5">Lately</h2>
+        <div className="flex flex-col gap-2 text-gray-600 dark:text-gray-400 leading-relaxed">
+          <SpotifyNowPlaying />
+          <p>
+            Projecting the{' '}
+            <span className="text-gray-900 dark:text-gray-100">Blue V5</span>{' '}
+            <i className="font-serif italic text-[1.1em] text-gray-400 dark:text-gray-500">on</i>{' '}
+            <span className="text-gray-900 dark:text-gray-100">The Prow</span>{' '}
+            <i className="font-serif italic text-[1.1em] text-gray-400 dark:text-gray-500">at</i>{' '}
+            <a
+              href="https://stoneclimbing.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-900 dark:text-gray-100 hover:underline underline-offset-2"
+            >
+              Stone Climbing Co.
+            </a>
+          </p>
+          <p>
+            Reading{' '}
+            <a
+              href="https://bookshop.org/p/books/the-technological-society-jacques-ellul/b7e9987895bfa0cf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-900 dark:text-gray-100 hover:underline underline-offset-2"
+            >
+              The Technological Society
+            </a>{' '}
+            <i className="font-serif italic text-[1.1em] text-gray-400 dark:text-gray-500">by</i>{' '}
+            <a
+              href="https://en.wikipedia.org/wiki/Jacques_Ellul"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-900 dark:text-gray-100 hover:underline underline-offset-2"
+            >
+              Jacques Ellul
+            </a>
+          </p>
         </div>
       </div>
-      <div className="w-full h-[42] text-center text-xs pb-2 text-gray-400">
+
+      <div className="grid grid-cols-1 sm:grid-cols-[120px_1fr] gap-x-6 gap-y-2 sm:gap-y-1">
+        <h2 className="font-mono text-sm text-gray-900 dark:text-gray-100 pt-0.5">Connect</h2>
+        <div className="flex flex-col gap-2 text-gray-600 dark:text-gray-400">
+          <a
+            href="mailto:&#109;&#97;&#116;&#116;&#64;&#109;&#97;&#116;&#116;&#119;&#104;&#97;&#108;&#108;&#101;&#121;&#46;&#99;&#111;&#109;"
+            className="w-fit hover:underline underline-offset-2 hover:text-gray-900 dark:hover:text-gray-100"
+          >
+            Email
+          </a>
+          <a
+            href="https://github.com/mttwhlly"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-fit hover:underline underline-offset-2 hover:text-gray-900 dark:hover:text-gray-100"
+          >
+            GitHub
+          </a>
+          <a
+            href="https://linkedin.com/in/mttwhlly"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-fit hover:underline underline-offset-2 hover:text-gray-900 dark:hover:text-gray-100"
+          >
+            LinkedIn
+          </a>
+          <a
+            href="/matt-whalley-resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-fit hover:underline underline-offset-2 hover:text-gray-900 dark:hover:text-gray-100"
+          >
+            Resume
+          </a>
+        </div>
+      </div>
+
+      <p className="mt-16 text-sm text-gray-400 dark:text-gray-500">
         © Matt Whalley, {new Date().getFullYear()}
-        {' - '}
+        {' — '}
         <a
           href="https://github.com/mttwhlly/mttwhlly.github.io"
-          className="hover:underline font-mono"
+          className="hover:underline underline-offset-2 hover:text-gray-900 dark:hover:text-gray-100"
         >
-          View Source
+          View source
         </a>
-      </div>
+      </p>
     </footer>
   );
 }

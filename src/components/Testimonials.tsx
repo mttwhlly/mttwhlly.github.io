@@ -5,19 +5,15 @@ const Testimonials = () => {
     {
       id: 1,
       name: 'Ben Stafford',
-      title: 'Co-owner and Designer',
-      organization: 'Foxmeadow Creative',
-      avatar: '/images/ben.png',
+      title: 'Co-owner and Designer, Foxmeadow Creative',
       content:
-        "Matt has a wonderful ability to tackle complex challenges with simple creative solutions. He's trustworthy, reliable, and a smart designer. You may regret some things in life, but you'll never regret hiring Matt.",
+        'Matt has a wonderful ability to tackle complex challenges with simple creative solutions. He’s trustworthy, reliable, and a smart designer. You may regret some things in life, but you’ll never regret hiring Matt.',
       link: 'https://BenIllustrated.com',
     },
     {
       id: 2,
       name: 'Corinne Beyer',
-      title: 'UX Design Manager',
-      organization: 'DataSpring',
-      avatar: '/images/corinne.jpeg',
+      title: 'UX Design Manager, DataSpring',
       content:
         'Working with Matt makes me excited to push my own performance—his great attitude and communication are contagious.',
       link: 'https://www.linkedin.com/in/corinne-romano-64b15563',
@@ -25,9 +21,7 @@ const Testimonials = () => {
     {
       id: 3,
       name: 'Andrew Hochradel',
-      title: 'Career Center Content Manager',
-      organization: 'Adobe',
-      avatar: '/images/hoch.jpg',
+      title: 'Career Center Content Manager, Adobe',
       content:
         'Matt is an innovator and problem solver. Working with him was seamless and his input enhanced our project technically and creatively.',
       link: 'https://hoch.co',
@@ -35,50 +29,27 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="pt-16 pb-16 px-4">
-      <div className="mb-8 max-w-4xl mx-auto">
-        <h2 className="text-lg font-mono tracking-loose uppercase text-gray-500 mb-2 px-4">
-          Testimonials
-        </h2>
-      </div>
-
-      <div className="max-w-4xl mx-auto px-4">
-        <div className="columns-1 md:columns-2 lg:columns-3 gap-4">
-          {testimonials.map((testimonial, index) => (
-            <div
-              key={`${testimonial.id}-${index}`}
-              className="flex flex-col justify-start w-full mb-4 bg-white rounded-xl p-6 border border-gray-200 break-inside-avoid"
-            >
-              <blockquote className="text-gray-700 text-lg">{testimonial.content}</blockquote>
-
-              <div className="flex items-start space-x-4 mt-4">
+    <section className="max-w-2xl mx-auto px-6 pb-12">
+      <div className="grid grid-cols-1 sm:grid-cols-[120px_1fr] gap-x-6 gap-y-2 sm:gap-y-1">
+        <h2 className="font-mono text-sm text-gray-900 dark:text-gray-100 pt-0.5">Testimonials</h2>
+        <div className="flex flex-col gap-8">
+          {testimonials.map((testimonial) => (
+            <div key={testimonial.id}>
+              <p className="font-serif italic text-lg text-gray-700 dark:text-gray-300 leading-snug">
+                &ldquo;{testimonial.content}&rdquo;
+              </p>
+              <p className="text-sm text-gray-400 dark:text-gray-500 mt-2">
                 <a
                   href={testimonial.link}
-                  className="hover:underline"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="text-gray-600 dark:text-gray-400 hover:underline underline-offset-2"
                 >
-                  <img
-                    src={testimonial.avatar}
-                    alt={testimonial.name}
-                    className="w-12 h-12 mt-4 rounded-full object-cover flex-shrink-0"
-                  />
+                  {testimonial.name}
                 </a>
-                <div className="min-w-0 flex-1">
-                  <div className="flex flex-col space-x-2 mt-2">
-                    <a
-                      href={testimonial.link}
-                      className="hover:underline"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <h4 className="font-semibold text-gray-900">{testimonial.name}</h4>
-                    </a>
-                    <p className="text-sm text-gray-600">{testimonial.title}</p>
-                    <p className="text-sm text-gray-600">{testimonial.organization}</p>
-                  </div>
-                </div>
-              </div>
+                {', '}
+                {testimonial.title}
+              </p>
             </div>
           ))}
         </div>
