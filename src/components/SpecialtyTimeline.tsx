@@ -46,7 +46,7 @@ export default function SpecialtyTimeline() {
                   <span
                     className="block w-3 h-3 rounded-full border-2 border-white dark:border-[#181818] shrink-0"
                     style={{
-                      backgroundColor: i === stops.length - 1 ? '#3a4a00' : '#d1d5db',
+                      backgroundColor: i === stops.length - 1 ? '#0369a1' : '#d1d5db',
                       boxShadow: '0 0 0 1px #d4d4d4',
                     }}
                   />

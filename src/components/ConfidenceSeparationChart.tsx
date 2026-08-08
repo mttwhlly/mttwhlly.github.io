@@ -11,7 +11,7 @@ export default function ConfidenceSeparationChart() {
           <div className="relative h-8 bg-gray-100 dark:bg-neutral-800 rounded-full overflow-hidden">
             <div
               className="absolute top-0 h-full rounded-full"
-              style={{ left: '88%', minWidth: '16px', width: '4%', backgroundColor: '#d4fc52' }}
+              style={{ left: '88%', minWidth: '16px', width: '4%', backgroundColor: '#7dd3fc' }}
             />
           </div>
           <div className="flex justify-between text-[10px] font-mono text-gray-400 dark:text-neutral-500 mt-2">
@@ -22,7 +22,7 @@ export default function ConfidenceSeparationChart() {
           <div className="mt-4 flex items-center gap-2 text-xs font-mono text-gray-700 dark:text-neutral-300">
             <span
               className="inline-block w-2.5 h-2.5 rounded-full shrink-0"
-              style={{ backgroundColor: '#d4fc52' }}
+              style={{ backgroundColor: '#7dd3fc' }}
             />
             Real defects: 88–92% confidence
           </div>

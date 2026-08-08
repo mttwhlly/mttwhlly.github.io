@@ -45,7 +45,7 @@ export default function DecisionQuadrant() {
               <div className="relative aspect-square w-full max-w-md mx-auto">
                 {/* Shaded quadrants + gridlines, clipped to the rounded box */}
                 <div className="absolute inset-0 border border-gray-200 dark:border-neutral-800 rounded-xl overflow-hidden">
-                  <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-[#ffffeb] dark:bg-white/[0.06]" />
+                  <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-[#f0f9ff] dark:bg-white/[0.06]" />
                   <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-[#fafafa] dark:bg-transparent" />
                   <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gray-200 dark:bg-neutral-700" />
                   <div className="absolute top-1/2 left-0 right-0 h-px bg-gray-200 dark:bg-neutral-700" />
@@ -71,7 +71,7 @@ export default function DecisionQuadrant() {
                   >
                     <span
                       className="block w-2.5 h-2.5 rounded-full border-2 border-white dark:border-[#181818] shrink-0"
-                      style={{ backgroundColor: '#3a4a00', boxShadow: '0 0 0 1px #d4d4d4' }}
+                      style={{ backgroundColor: '#0369a1', boxShadow: '0 0 0 1px #d4d4d4' }}
                     />
                     <div className="mt-1.5 w-32 text-center">
                       <div className="text-[10px] font-semibold text-gray-800 dark:text-neutral-200 leading-snug">

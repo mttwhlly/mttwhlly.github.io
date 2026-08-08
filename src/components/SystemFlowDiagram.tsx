@@ -11,7 +11,7 @@ function Node({
     <div
       className={`rounded-xl px-3 py-2.5 border text-center shrink-0 w-[120px] ${
         highlight
-          ? 'bg-[#ffffeb] dark:bg-white/[0.06] border-lemonlime-300'
+          ? 'bg-[#f0f9ff] dark:bg-white/[0.06] border-sky-300'
           : 'bg-white dark:bg-neutral-900 border-gray-200 dark:border-neutral-700'
       }`}
     >
@@ -92,12 +92,12 @@ export default function SystemFlowDiagram() {
                 {buckets.map(({ cls, note, highlight }) => (
                   <div
                     key={cls}
-                    className={`px-2 py-2 text-center ${highlight ? 'bg-[#ffffeb] dark:bg-white/[0.06]' : ''}`}
+                    className={`px-2 py-2 text-center ${highlight ? 'bg-[#f0f9ff] dark:bg-white/[0.06]' : ''}`}
                   >
                     <div
                       className={`text-[10px] font-mono font-semibold ${
                         highlight
-                          ? 'text-[#3a4a00] dark:text-lemonlime-300'
+                          ? 'text-[#0369a1] dark:text-sky-300'
                           : 'text-gray-500 dark:text-neutral-400'
                       }`}
                     >

@@ -3,8 +3,8 @@ const categories = [
     label: 'Real mapping demand',
     action: 'Add Code Connect',
     detail: 'Genuinely unmapped components with a real code equivalent',
-    accent: '#d4fc52',
-    textColor: '#3a4a00',
+    accent: '#7dd3fc',
+    textColor: '#0369a1',
   },
   {
     label: 'Fork / detached',

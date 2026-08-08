@@ -27,7 +27,7 @@ export default function FalsificationFunnel() {
                   }`}
                   style={{
                     width: `${(value / maxValue) * 100}%`,
-                    ...(i !== 0 ? { backgroundColor: '#d4fc52' } : {}),
+                    ...(i !== 0 ? { backgroundColor: '#7dd3fc' } : {}),
                   }}
                 >
                   <span

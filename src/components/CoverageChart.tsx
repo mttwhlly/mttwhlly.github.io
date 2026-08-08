@@ -25,7 +25,7 @@ export default function CoverageChart() {
               <div className="flex-1 bg-gray-100 dark:bg-neutral-800 rounded-full h-6 overflow-hidden">
                 <div
                   className="h-full rounded-full flex items-center justify-end pr-2.5 transition-all"
-                  style={{ width: `${value}%`, backgroundColor: '#d4fc52' }}
+                  style={{ width: `${value}%`, backgroundColor: '#7dd3fc' }}
                 >
                   <span className="text-[10px] font-mono font-bold text-gray-900">{value}%</span>
                 </div>
