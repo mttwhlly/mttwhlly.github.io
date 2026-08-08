@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="flex flex-col gap-2 text-gray-600 dark:text-gray-400 leading-relaxed">
           <SpotifyNowPlaying />
           <p>
-            Climbing{' '}
+            Climbing the{' '}
             <span className="text-gray-900 dark:text-gray-100">Blue V5</span>{' '}
             <i className="font-serif italic text-[1.1em] text-gray-400 dark:text-gray-500">on</i>{' '}
             <span className="text-gray-900 dark:text-gray-100">The Prow</span>{' '}
