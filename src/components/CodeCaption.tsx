@@ -6,10 +6,10 @@ export default function CodeCaption({
   description?: string;
 }) {
   return (
-    <div className="code-caption mt-8 rounded-t-xl bg-gray-900 border border-b-0 border-gray-800 px-4 py-2 flex items-center gap-3">
-      <span className="text-xs font-mono text-gray-300">{filename}</span>
+    <div className="code-caption mt-8 rounded-t-xl bg-neutral-900 border border-b-0 border-neutral-800 px-4 py-2 flex items-center gap-3">
+      <span className="text-xs font-mono text-neutral-300">{filename}</span>
       {description && (
-        <span className="text-xs font-mono text-gray-600 truncate">{description}</span>
+        <span className="text-xs font-mono text-neutral-500 truncate">{description}</span>
       )}
     </div>
   );

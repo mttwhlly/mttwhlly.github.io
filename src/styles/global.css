@@ -31,8 +31,12 @@
     @apply text-lg font-sans font-medium text-gray-800 dark:text-gray-200 mb-2 mt-6;
   }
 
+  & hr {
+    @apply border-0 border-t border-gray-100 dark:border-gray-800 my-12;
+  }
+
   & blockquote {
-    @apply pl-6 my-10 border-l-2 border-gray-300 dark:border-white;
+    @apply pl-6 my-10 border-l-2 border-gray-300 dark:border-gray-700;
 
     & p {
       @apply text-2xl font-serif italic text-gray-700 dark:text-gray-300 leading-relaxed mb-0;

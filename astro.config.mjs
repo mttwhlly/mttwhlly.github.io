@@ -14,7 +14,7 @@ export default defineConfig({
   integrations: [react(), mdx()],
   markdown: {
     shikiConfig: {
-      theme: 'github-dark',
+      theme: 'github-dark-dimmed',
     },
   },
   site: 'https://mattwhalley.com',

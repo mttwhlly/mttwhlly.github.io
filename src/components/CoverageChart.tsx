@@ -10,19 +10,19 @@ const stages = [
 export default function CoverageChart() {
   return (
     <figure className="my-8">
-      <div className="border border-gray-200 rounded-2xl overflow-hidden">
-        <div className="bg-gray-50 border-b border-gray-200 px-6 py-3">
-          <span className="text-[10px] font-mono uppercase tracking-widest text-gray-500">
+      <div className="border border-gray-200 dark:border-neutral-800 rounded-2xl overflow-hidden">
+        <div className="bg-gray-50 dark:bg-neutral-900/60 border-b border-gray-200 dark:border-neutral-800 px-6 py-3">
+          <span className="text-[10px] font-mono uppercase tracking-widest text-gray-500 dark:text-neutral-400">
             Defensible Code Connect coverage
           </span>
         </div>
         <div className="px-6 py-4 space-y-2">
           {stages.map(({ label, value }) => (
             <div key={label} className="flex items-center gap-3">
-              <span className="text-[10px] font-mono text-gray-500 w-20 shrink-0 text-right leading-tight">
+              <span className="text-[10px] font-mono text-gray-500 dark:text-neutral-400 w-20 shrink-0 text-right leading-tight">
                 {label}
               </span>
-              <div className="flex-1 bg-gray-100 rounded-full h-6 overflow-hidden">
+              <div className="flex-1 bg-gray-100 dark:bg-neutral-800 rounded-full h-6 overflow-hidden">
                 <div
                   className="h-full rounded-full flex items-center justify-end pr-2.5 transition-all"
                   style={{ width: `${value}%`, backgroundColor: '#d4fc52' }}
@@ -34,7 +34,7 @@ export default function CoverageChart() {
           ))}
         </div>
       </div>
-      <figcaption className="text-xs text-gray-400 text-center mt-3 font-mono italic">
+      <figcaption className="text-xs text-gray-400 dark:text-neutral-500 text-center mt-3 font-mono italic">
         Coverage moved in jumps when the model identified the right category of problem.
       </figcaption>
     </figure>
