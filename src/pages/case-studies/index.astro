@@ -13,73 +13,43 @@ const studies = entries
 ---
 
 <Layout>
-  <main class="max-w-4xl mx-auto px-6 py-12">
+  <main>
+    <section class="max-w-2xl mx-auto px-6 pt-12 pb-12">
+      <div class="grid grid-cols-1 sm:grid-cols-[120px_1fr] gap-x-6 gap-y-2 sm:gap-y-1">
+        <h1
+          class="sticky top-6 self-start bg-white dark:bg-[#181818] font-mono text-sm text-gray-500 dark:text-gray-400 pt-0.5"
+        >
+          Case studies
+        </h1>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+          Deep dives into how the work actually happened.
+        </p>
+      </div>
+    </section>
 
-    <!-- Page header -->
-    <header class="mb-12">
-      <h1 class="text-lg font-mono tracking-widest uppercase text-gray-500 mb-3">
-        Case Studies
-      </h1>
-      <p class="text-2xl font-sans font-semibold text-gray-900 max-w-xl leading-snug">
-        Deep dives into how the work actually happened.
-      </p>
-    </header>
-
-    <!-- Listing -->
-    <div class="flex flex-col gap-6">
-      {studies.map((study) => (
-        <article class="border border-gray-200 rounded-2xl overflow-hidden hover:border-gray-300 transition-colors">
-
-          <!-- Cover image (optional) -->
-          {study.coverImage && (
-            <div class="h-56 bg-gray-100 overflow-hidden">
-              <img
-                src={study.coverImage}
-                alt=""
-                class="w-full h-full object-cover"
-              />
-            </div>
-          )}
-
-          <div class="p-8">
-            <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
-
-              <div class="flex-1 space-y-4">
-                <!-- Title -->
-                <h2 class="text-xl font-sans font-bold text-gray-900 leading-snug">
-                  {study.title}
-                </h2>
-
-                <!-- Description -->
-                <p class="text-gray-600 leading-relaxed text-sm">
-                  {study.description}
-                </p>
-
-                <!-- Tags -->
-                <div class="flex flex-wrap gap-2 pt-1">
-                  {study.tags.map((tag) => (
-                    <span class="text-xs font-mono uppercase tracking-wider text-gray-500 bg-gray-100 px-3 py-1 rounded-full">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <!-- CTA -->
-              <div class="md:pt-1 shrink-0">
+    <section class="max-w-2xl mx-auto px-6 pb-12">
+      <div class="grid grid-cols-1 sm:grid-cols-[120px_1fr] gap-x-6 gap-y-2 sm:gap-y-1">
+        <div class="hidden sm:block" aria-hidden="true"></div>
+        <div class="flex flex-col gap-8">
+          {
+            studies.map((study) => (
+              <div>
                 <a
                   href={`/case-studies/${study.slug}`}
-                  class="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-widest text-gray-900 border border-gray-900 px-4 py-2.5 rounded-lg hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap"
+                  class="inline-flex items-baseline gap-1.5 text-gray-900 dark:text-gray-100 hover:underline underline-offset-2"
                 >
-                  Read case study
-                  <ArrowUpRight size={14} weight="bold" />
+                  {study.title}
+                  <ArrowUpRight size={12} weight="bold" class="text-gray-400 dark:text-gray-500" />
                 </a>
+                <p class="text-gray-600 dark:text-gray-400 leading-relaxed mt-1">{study.description}</p>
+                {study.tags?.length > 0 && (
+                  <p class="text-sm text-gray-400 dark:text-gray-500 mt-2">{study.tags.join(', ')}</p>
+                )}
               </div>
-            </div>
-          </div>
-        </article>
-      ))}
-    </div>
-
+            ))
+          }
+        </div>
+      </div>
+    </section>
   </main>
 </Layout>

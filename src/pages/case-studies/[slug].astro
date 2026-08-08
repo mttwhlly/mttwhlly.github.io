@@ -1,7 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { getCollection, render } from 'astro:content';
-import { ArrowLeft } from '@phosphor-icons/react/dist/ssr';
 
 export async function getStaticPaths() {
   const entries = await getCollection('caseStudies', ({ data }) => !data.draft);
@@ -13,75 +12,52 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
-const { title, subtitle, tags, atAGlance, coverImage } = entry.data;
+const { title, subtitle, tags, atAGlance } = entry.data;
 ---
 
 <Layout>
-  <main class="max-w-3xl mx-auto px-6 py-12">
-
-    <!-- Back nav -->
-    <a
-      href="/case-studies"
-      class="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-widest text-gray-400 hover:text-gray-700 transition-colors mb-12"
-    >
-      <ArrowLeft size={14} weight="bold" client:load />
-      Case Studies
-    </a>
-
+  <main>
     <!-- Header -->
-    <header class="mb-12">
-      {coverImage && (
-        <div class="mb-8 rounded-2xl overflow-hidden bg-gray-100">
-          <img src={coverImage} alt="" class="w-full object-cover" />
-        </div>
-      )}
-      <div class="flex flex-wrap gap-2 mb-6">
-        {tags.map((tag) => (
-          <span class="text-xs font-mono uppercase tracking-wider text-gray-500 bg-gray-100 px-3 py-1 rounded-full">
-            {tag}
-          </span>
-        ))}
-      </div>
-      <h1 class="text-3xl md:text-4xl font-sans font-bold leading-tight text-gray-900 mb-4">
+    <header class="max-w-2xl mx-auto px-6 pt-12 pb-8">
+      {
+        tags?.length > 0 && (
+          <p class="text-sm text-gray-400 dark:text-gray-500 mb-3">{tags.join(', ')}</p>
+        )
+      }
+      <h1 class="text-xl sm:text-2xl font-sans font-semibold text-gray-900 dark:text-gray-100 leading-snug mb-4">
         {title}
       </h1>
-      <p class="text-xl font-serif italic text-gray-600 leading-relaxed mb-6">
+      <p class="font-serif italic text-base text-gray-600 dark:text-gray-400 leading-relaxed">
         {subtitle}
       </p>
     </header>
 
     <!-- At a glance -->
-    {atAGlance && (
-      <div class="mb-12 border border-gray-200 rounded-2xl overflow-hidden">
-        <div class="bg-gray-50 border-b border-gray-200 px-6 py-3">
-          <span class="text-xs font-mono uppercase tracking-widest text-gray-500">At a glance</span>
-        </div>
-        <div class="divide-y divide-gray-100">
-          {atAGlance.map(({ label, value }) => (
-            <div class="flex gap-6 px-6 py-4">
-              <span class="text-sm font-mono text-gray-400 w-36 shrink-0">{label}</span>
-              <span class="text-sm text-gray-700">{value}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-    )}
+    {
+      atAGlance && (
+        <section class="max-w-2xl mx-auto px-6 pb-12">
+          <div class="grid grid-cols-1 sm:grid-cols-[120px_1fr] gap-x-6 gap-y-3 border-y border-gray-100 dark:border-gray-800 py-6">
+            <h2 class="font-mono text-sm text-gray-900 dark:text-gray-100 pt-0.5">At a glance</h2>
+            <dl class="flex flex-col gap-3">
+              {atAGlance.map(({ label, value }) => (
+                <div>
+                  <dt class="font-mono text-xs uppercase tracking-wider text-gray-400 dark:text-gray-500">
+                    {label}
+                  </dt>
+                  <dd class="text-gray-700 dark:text-gray-300 leading-relaxed mt-0.5">{value}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </section>
+      )
+    }
 
     <!-- Body -->
-    <article class="prose-case-study">
-      <Content />
-    </article>
-
-    <!-- Footer nav -->
-    <div class="mt-16 pt-8 border-t border-gray-200">
-      <a
-        href="/case-studies"
-        class="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-widest text-gray-400 hover:text-gray-700 transition-colors"
-      >
-        <ArrowLeft size={14} weight="bold" client:load />
-        All Case Studies
-      </a>
-    </div>
-
+    <section class="max-w-2xl mx-auto px-6 pb-16">
+      <article class="prose-case-study">
+        <Content />
+      </article>
+    </section>
   </main>
 </Layout>
