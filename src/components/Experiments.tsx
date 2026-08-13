@@ -32,7 +32,7 @@ const Experiments = () => {
   return (
     <section className="max-w-2xl mx-auto px-6 pb-12">
       <div className="grid grid-cols-1 sm:grid-cols-[120px_1fr] gap-x-6 gap-y-2 sm:gap-y-1">
-        <h2 className="sticky top-6 self-start bg-white dark:bg-[#181818] font-mono text-sm text-gray-500 dark:text-gray-400 pt-0.5">Experiments</h2>
+        <h2 className="self-start font-mono text-sm text-gray-500 dark:text-gray-400 pt-0.5">Experiments</h2>
         <div className="flex flex-col gap-6">
           {experiments.map((experiment) => (
             <div key={experiment.id}>
