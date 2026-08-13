@@ -189,7 +189,9 @@ const SpotifyNowPlaying: React.FC = () => {
         <>
           <CircularProgress percent={progressPercent} muted={!nowPlaying.isCurrentlyPlaying} />
           <MarqueeText className="min-w-0 flex-1">
-            Listening to{' '}
+            <i className="font-serif italic text-[1.1em] text-gray-400 dark:text-gray-500">
+              Listening to
+            </i>{' '}
             <a
               href={nowPlaying.trackLink}
               target="_blank"

@@ -69,7 +69,7 @@ const NowSheet: React.FC = () => {
       <div className="flex items-center gap-2">
         <CircularProgress percent={data.readingPercent} />
         <MarqueeText className="min-w-0 flex-1">
-          Reading{' '}
+          <i className="font-serif italic text-[1.1em] text-gray-400 dark:text-gray-500">Reading</i>{' '}
           <a
             href={data.readingTitleLink}
             target="_blank"
@@ -92,9 +92,13 @@ const NowSheet: React.FC = () => {
       <div className="flex items-center gap-2">
         <CircularProgress percent={data.climbingPercent} />
         <MarqueeText className="min-w-0 flex-1">
-          Climbing the{' '}
+          <i className="font-serif italic text-[1.1em] text-gray-400 dark:text-gray-500">
+            Climbing the
+          </i>{' '}
           <span className="text-gray-900 dark:text-gray-100">{data.climbingGrade}</span>{' '}
-          <i className="font-serif italic text-[1.1em] text-gray-400 dark:text-gray-500">on</i>{' '}
+          <i className="font-serif italic text-[1.1em] text-gray-400 dark:text-gray-500">
+            on the
+          </i>{' '}
           <span className="text-gray-900 dark:text-gray-100">{data.climbingRoute}</span>{' '}
           <i className="font-serif italic text-[1.1em] text-gray-400 dark:text-gray-500">at</i>{' '}
           <a
