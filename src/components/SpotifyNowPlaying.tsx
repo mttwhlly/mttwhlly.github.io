@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import type { NowPlayingData } from '../types/spotify';
 import CircularProgress from './CircularProgress';
+import MarqueeText from './MarqueeText';
 
 function formatRelativeTime(iso: string): string | null {
   const minutes = Math.floor((Date.now() - new Date(iso).getTime()) / 60000);
@@ -187,7 +188,7 @@ const SpotifyNowPlaying: React.FC = () => {
       {nowPlaying && (
         <>
           <CircularProgress percent={progressPercent} muted={!nowPlaying.isCurrentlyPlaying} />
-          <p className="min-w-0">
+          <MarqueeText className="min-w-0 flex-1">
             Listening to{' '}
             <a
               href={nowPlaying.trackLink}
@@ -214,7 +215,7 @@ const SpotifyNowPlaying: React.FC = () => {
                   ({formatRelativeTime(nowPlaying.playedAt)})
                 </span>
               )}
-          </p>
+          </MarqueeText>
         </>
       )}
     </div>

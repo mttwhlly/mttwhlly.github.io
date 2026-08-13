@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import type { NowData } from '../types/now';
 import CircularProgress from './CircularProgress';
+import MarqueeText from './MarqueeText';
 
 const SHEET_ID = '14TEKZH-hV0djcEMpDcQ18KCiI7IvNapNaAgFb_IuqzU';
 const GID = '0';
@@ -66,26 +67,8 @@ const NowSheet: React.FC = () => {
   return (
     <>
       <div className="flex items-center gap-2">
-        <CircularProgress percent={data.climbingPercent} />
-        <p className="min-w-0">
-          Climbing the{' '}
-          <span className="text-gray-900 dark:text-gray-100">{data.climbingGrade}</span>{' '}
-          <i className="font-serif italic text-[1.1em] text-gray-400 dark:text-gray-500">on</i>{' '}
-          <span className="text-gray-900 dark:text-gray-100">{data.climbingRoute}</span>{' '}
-          <i className="font-serif italic text-[1.1em] text-gray-400 dark:text-gray-500">at</i>{' '}
-          <a
-            href={data.climbingGymLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-900 dark:text-gray-100 hover:underline underline-offset-2"
-          >
-            {data.climbingGym}
-          </a>
-        </p>
-      </div>
-      <div className="flex items-center gap-2">
         <CircularProgress percent={data.readingPercent} />
-        <p className="min-w-0">
+        <MarqueeText className="min-w-0 flex-1">
           Reading{' '}
           <a
             href={data.readingTitleLink}
@@ -104,7 +87,25 @@ const NowSheet: React.FC = () => {
           >
             {data.readingAuthor}
           </a>
-        </p>
+        </MarqueeText>
+      </div>
+      <div className="flex items-center gap-2">
+        <CircularProgress percent={data.climbingPercent} />
+        <MarqueeText className="min-w-0 flex-1">
+          Climbing the{' '}
+          <span className="text-gray-900 dark:text-gray-100">{data.climbingGrade}</span>{' '}
+          <i className="font-serif italic text-[1.1em] text-gray-400 dark:text-gray-500">on</i>{' '}
+          <span className="text-gray-900 dark:text-gray-100">{data.climbingRoute}</span>{' '}
+          <i className="font-serif italic text-[1.1em] text-gray-400 dark:text-gray-500">at</i>{' '}
+          <a
+            href={data.climbingGymLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-900 dark:text-gray-100 hover:underline underline-offset-2"
+          >
+            {data.climbingGym}
+          </a>
+        </MarqueeText>
       </div>
     </>
   );
