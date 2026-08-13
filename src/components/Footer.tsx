@@ -33,6 +33,12 @@ export default function Footer() {
             LinkedIn
             <ArrowUpRight size={12} weight="bold" className="text-gray-400 dark:text-gray-500" />
           </a>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-[120px_1fr] gap-x-6 gap-y-2 sm:gap-y-1 pb-12">
+        <h2 className="self-start font-mono text-sm text-gray-500 dark:text-gray-400 pt-0.5">Experience</h2>
+        <div className="flex flex-col gap-2 text-gray-600 dark:text-gray-400">
           <a
             href="/matt-whalley-resume.pdf"
             target="_blank"
@@ -46,7 +52,7 @@ export default function Footer() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-[120px_1fr] gap-x-6 gap-y-2 sm:gap-y-1">
-        <h2 className="self-start font-mono text-sm text-gray-500 dark:text-gray-400 pt-0.5">Lately</h2>
+        <h2 className="self-start font-mono text-sm text-gray-500 dark:text-gray-400 pt-0.5">Activity</h2>
         <div className="flex flex-col gap-2 text-gray-600 dark:text-gray-400 leading-relaxed min-w-0">
           <NowSheet />
           <SpotifyNowPlaying />
