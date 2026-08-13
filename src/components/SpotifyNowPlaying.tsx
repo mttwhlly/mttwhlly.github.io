@@ -1,12 +1,28 @@
 import React, { useState, useEffect, useRef } from 'react';
 import type { NowPlayingData } from '../types/spotify';
+import CircularProgress from './CircularProgress';
+import MarqueeText from './MarqueeText';
+
+function formatRelativeTime(iso: string): string | null {
+  const minutes = Math.floor((Date.now() - new Date(iso).getTime()) / 60000);
+  if (minutes < 1) return null;
+  if (minutes < 60) return `${minutes}m ago`;
+  const hours = Math.floor(minutes / 60);
+  if (hours < 24) return `${hours}h ago`;
+  const days = Math.floor(hours / 24);
+  return `${days}d ago`;
+}
 
 const SpotifyNowPlaying: React.FC = () => {
   const [nowPlaying, setNowPlaying] = useState<NowPlayingData | null>(null);
+  const [progressPercent, setProgressPercent] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const tokenExpiryRef = useRef<number>(0);
   const currentTokenRef = useRef<string | null>(null);
+  const startedAtRef = useRef<number>(0);
+  const durationRef = useRef<number>(0);
+  const trackEndedRef = useRef<boolean>(false);
 
   const fetchAccessToken = async (): Promise<string | null> => {
     try {
@@ -45,7 +61,10 @@ const SpotifyNowPlaying: React.FC = () => {
   const fetchNowPlaying = async (): Promise<void> => {
     try {
       const token = await getValidToken();
-      if (!token) return;
+      if (!token) {
+        setLoading(false);
+        return;
+      }
 
       // First try to get currently playing
       let response = await fetch('https://api.spotify.com/v1/me/player/currently-playing', {
@@ -86,7 +105,9 @@ const SpotifyNowPlaying: React.FC = () => {
             trackLink: data.items[0].track.external_urls.spotify,
             artistLink: data.items[0].track.artists[0].external_urls.spotify,
             albumLink: data.items[0].track.album.external_urls.spotify,
+            playedAt: data.items[0].played_at,
           });
+          setProgressPercent(0);
         }
       } else if (response.ok) {
         const data = await response.json();
@@ -100,7 +121,13 @@ const SpotifyNowPlaying: React.FC = () => {
             trackLink: data.item.external_urls.spotify,
             artistLink: data.item.artists[0].external_urls.spotify,
             albumLink: data.item.album.external_urls.spotify,
+            progressMs: data.progress_ms,
+            durationMs: data.item.duration_ms,
           });
+          durationRef.current = data.item.duration_ms;
+          startedAtRef.current = Date.now() - data.progress_ms;
+          trackEndedRef.current = false;
+          setProgressPercent((data.progress_ms / data.item.duration_ms) * 100);
         }
       } else if (response.status !== 401) {
         console.error('Error fetching data:', response.status);
@@ -115,13 +142,16 @@ const SpotifyNowPlaying: React.FC = () => {
     }
   };
 
+  const fetchNowPlayingRef = useRef(fetchNowPlaying);
+  fetchNowPlayingRef.current = fetchNowPlaying;
+
   useEffect(() => {
     let interval: NodeJS.Timeout;
 
     const initializeSpotify = async (): Promise<void> => {
       await fetchNowPlaying();
 
-      // Set up auto-refresh every 30 seconds
+      // Set up auto-refresh every 30 seconds, as a resync safety net
       interval = setInterval(() => {
         fetchNowPlaying();
       }, 30000);
@@ -132,6 +162,23 @@ const SpotifyNowPlaying: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
+  // Advance the progress ring locally between polls, and repoll as soon as the track ends
+  useEffect(() => {
+    if (!nowPlaying?.isCurrentlyPlaying) return;
+
+    const tick = (): void => {
+      const pct = Math.min(100, ((Date.now() - startedAtRef.current) / durationRef.current) * 100);
+      setProgressPercent(pct);
+      if (pct >= 100 && !trackEndedRef.current) {
+        trackEndedRef.current = true;
+        fetchNowPlayingRef.current();
+      }
+    };
+
+    const interval = setInterval(tick, 1000);
+    return () => clearInterval(interval);
+  }, [nowPlaying?.isCurrentlyPlaying, nowPlaying?.trackLink]);
+
   return (
     <div className="flex items-center gap-2 max-w-full">
       {loading && <p className="text-sm text-gray-400 dark:text-gray-500">Loading...</p>}
@@ -139,26 +186,37 @@ const SpotifyNowPlaying: React.FC = () => {
       {error && <p className="text-sm text-red-400">{error}</p>}
 
       {nowPlaying && (
-        <p className="min-w-0">
-          Listening to{' '}
-          <a
-            href={nowPlaying.albumLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-900 dark:text-gray-100 hover:underline underline-offset-2"
-          >
-            {nowPlaying.album}
-          </a>{' '}
-          <i className="font-serif italic text-[1.1em] text-gray-400 dark:text-gray-500">by</i>{' '}
-          <a
-            href={nowPlaying.artistLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-900 dark:text-gray-100 hover:underline underline-offset-2"
-          >
-            {nowPlaying.artist}
-          </a>
-        </p>
+        <>
+          <CircularProgress percent={progressPercent} muted={!nowPlaying.isCurrentlyPlaying} />
+          <MarqueeText className="min-w-0 flex-1">
+            Listening to{' '}
+            <a
+              href={nowPlaying.trackLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-900 dark:text-gray-100 hover:underline underline-offset-2"
+            >
+              {nowPlaying.name}
+            </a>{' '}
+            <i className="font-serif italic text-[1.1em] text-gray-400 dark:text-gray-500">by</i>{' '}
+            <a
+              href={nowPlaying.artistLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-900 dark:text-gray-100 hover:underline underline-offset-2"
+            >
+              {nowPlaying.artist}
+            </a>
+            {!nowPlaying.isCurrentlyPlaying &&
+              nowPlaying.playedAt &&
+              formatRelativeTime(nowPlaying.playedAt) && (
+                <span className="text-xs text-gray-400 dark:text-neutral-500">
+                  {' '}
+                  ({formatRelativeTime(nowPlaying.playedAt)})
+                </span>
+              )}
+          </MarqueeText>
+        </>
       )}
     </div>
   );

@@ -5,15 +5,21 @@ const RecentProjects = () => {
   const projects = [
     {
       id: 4,
-      title: 'RFD Checker Figma Plugin',
-      description: 'A Figma plugin that audits a frame against a Ready-for-Dev checklist.',
+      title: 'Figma RFD Checker',
+      description: 'Catches design handoff issues before they reach development.',
       liveUrl: 'https://www.figma.com/community/plugin/1621901729405123866',
     },
     {
       id: 3,
       title: 'Can I Surf Today?',
-      description: 'A hyperlocal surf report powered by live buoy, tide, and weather data.',
+      description: 'AI-powered surf reports from hyperlocal data, with listen mode.',
       liveUrl: 'https://canisurf.today',
+    },
+    {
+      id: 5,
+      title: 'Sui Sans Typeface',
+      description: 'Typeface inspired by the lettering of vintage stereo equipment.',
+      liveUrl: 'https://github.com/mttwhlly/sui-sans',
     },
   ];
 

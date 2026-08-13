@@ -12,18 +12,13 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
-const { title, subtitle, tags, atAGlance } = entry.data;
+const { title, subtitle, atAGlance } = entry.data;
 ---
 
 <Layout>
   <main>
     <!-- Header -->
     <header class="max-w-2xl mx-auto px-6 pt-12 pb-8">
-      {
-        tags?.length > 0 && (
-          <p class="text-sm text-gray-400 dark:text-gray-500 mb-3">{tags.join(', ')}</p>
-        )
-      }
       <h1 class="text-xl sm:text-2xl font-sans font-semibold text-gray-900 dark:text-gray-100 leading-snug mb-4">
         {title}
       </h1>

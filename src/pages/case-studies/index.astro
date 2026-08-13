@@ -42,9 +42,6 @@ const studies = entries
                   <ArrowUpRight size={12} weight="bold" class="text-gray-400 dark:text-gray-500" />
                 </a>
                 <p class="text-gray-600 dark:text-gray-400 leading-relaxed mt-1">{study.description}</p>
-                {study.tags?.length > 0 && (
-                  <p class="text-sm text-gray-400 dark:text-gray-500 mt-2">{study.tags.join(', ')}</p>
-                )}
               </div>
             ))
           }

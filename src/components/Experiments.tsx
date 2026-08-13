@@ -4,12 +4,6 @@ import { ArrowUpRight } from '@phosphor-icons/react';
 const Experiments = () => {
   const experiments = [
     {
-      id: 4,
-      title: 'Sui Sans Typeface',
-      description: 'Vintage stereo-inspired digital typeface',
-      url: 'https://github.com/mttwhlly/sui-sans',
-    },
-    {
       id: 13,
       title: '40 Rocks',
       description: 'Interactive NYC location map',
