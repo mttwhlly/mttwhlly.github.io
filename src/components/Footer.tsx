@@ -1,4 +1,5 @@
 import SpotifyNowPlaying from './SpotifyNowPlaying';
+import NowSheet from './NowSheet';
 
 export default function Footer() {
   return (
@@ -7,41 +8,7 @@ export default function Footer() {
         <h2 className="sticky top-6 self-start bg-white dark:bg-[#181818] font-mono text-sm text-gray-500 dark:text-gray-400 pt-0.5">Lately</h2>
         <div className="flex flex-col gap-2 text-gray-600 dark:text-gray-400 leading-relaxed">
           <SpotifyNowPlaying />
-          <p>
-            Climbing the{' '}
-            <span className="text-gray-900 dark:text-gray-100">Blue V5</span>{' '}
-            <i className="font-serif italic text-[1.1em] text-gray-400 dark:text-gray-500">on</i>{' '}
-            <span className="text-gray-900 dark:text-gray-100">The Prow</span>{' '}
-            <i className="font-serif italic text-[1.1em] text-gray-400 dark:text-gray-500">at</i>{' '}
-            <a
-              href="https://stoneclimbing.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-900 dark:text-gray-100 hover:underline underline-offset-2"
-            >
-              Stone
-            </a>
-          </p>
-          <p>
-            Reading{' '}
-            <a
-              href="https://bookshop.org/p/books/the-technological-society-jacques-ellul/b7e9987895bfa0cf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-900 dark:text-gray-100 hover:underline underline-offset-2"
-            >
-              The Technological Society
-            </a>{' '}
-            <i className="font-serif italic text-[1.1em] text-gray-400 dark:text-gray-500">by</i>{' '}
-            <a
-              href="https://en.wikipedia.org/wiki/Jacques_Ellul"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-900 dark:text-gray-100 hover:underline underline-offset-2"
-            >
-              Jacques Ellul
-            </a>
-          </p>
+          <NowSheet />
         </div>
       </div>
 
