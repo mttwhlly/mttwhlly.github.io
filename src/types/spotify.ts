@@ -55,4 +55,7 @@ export interface NowPlayingData {
   trackLink: string;
   artistLink: string;
   albumLink: string;
+  progressMs?: number;
+  durationMs?: number;
+  playedAt?: string;
 }

@@ -7,4 +7,6 @@ export interface NowData {
   readingTitleLink: string;
   readingAuthor: string;
   readingAuthorLink: string;
+  climbingPercent: number;
+  readingPercent: number;
 }

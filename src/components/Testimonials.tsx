@@ -9,6 +9,7 @@ const Testimonials = () => {
       content:
         'Matt has a wonderful ability to tackle complex challenges with simple creative solutions. He’s trustworthy, reliable, and a smart designer. You may regret some things in life, but you’ll never regret hiring Matt.',
       link: 'https://BenIllustrated.com',
+      avatar: '/images/ben.png',
     },
     {
       id: 2,
@@ -17,6 +18,7 @@ const Testimonials = () => {
       content:
         'Working with Matt makes me excited to push my own performance—his great attitude and communication are contagious.',
       link: 'https://www.linkedin.com/in/corinne-romano-64b15563',
+      avatar: '/images/corinne.jpeg',
     },
     {
       id: 3,
@@ -25,6 +27,7 @@ const Testimonials = () => {
       content:
         'Matt is an innovator and problem solver. Working with him was seamless and his input enhanced our project technically and creatively.',
       link: 'https://hoch.co',
+      avatar: '/images/hoch.jpg',
     },
   ];
 
@@ -38,18 +41,25 @@ const Testimonials = () => {
               <p className="font-serif italic text-lg text-gray-700 dark:text-gray-300 leading-snug">
                 &ldquo;{testimonial.content}&rdquo;
               </p>
-              <p className="text-sm text-gray-400 dark:text-gray-500 mt-2">
-                <a
-                  href={testimonial.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-600 dark:text-gray-400 hover:underline underline-offset-2"
-                >
-                  {testimonial.name}
-                </a>
-                {', '}
-                {testimonial.title}
-              </p>
+              <div className="flex items-center gap-2 mt-2">
+                <img
+                  src={testimonial.avatar}
+                  alt={testimonial.name}
+                  className="w-6 h-6 rounded-full object-cover grayscale shrink-0"
+                />
+                <p className="text-sm text-gray-400 dark:text-gray-500">
+                  <a
+                    href={testimonial.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-600 dark:text-gray-400 hover:underline underline-offset-2"
+                  >
+                    {testimonial.name}
+                  </a>
+                  {', '}
+                  {testimonial.title}
+                </p>
+              </div>
             </div>
           ))}
         </div>

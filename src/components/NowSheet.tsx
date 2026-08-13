@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import type { NowData } from '../types/now';
+import CircularProgress from './CircularProgress';
 
 const SHEET_ID = '14TEKZH-hV0djcEMpDcQ18KCiI7IvNapNaAgFb_IuqzU';
 const GID = '0';
@@ -15,6 +16,10 @@ function parseGvizResponse(text: string): NowData | null {
   if (!cells) return null;
 
   const value = (i: number): string => cells[i]?.v ?? '';
+  const percent = (i: number): number => {
+    const n = Number(cells[i]?.v);
+    return Number.isFinite(n) ? n : 0;
+  };
 
   return {
     climbingGrade: value(0),
@@ -25,6 +30,8 @@ function parseGvizResponse(text: string): NowData | null {
     readingTitleLink: value(5),
     readingAuthor: value(6),
     readingAuthorLink: value(7),
+    climbingPercent: percent(8),
+    readingPercent: percent(9),
   };
 }
 
@@ -58,41 +65,47 @@ const NowSheet: React.FC = () => {
 
   return (
     <>
-      <p>
-        Climbing the{' '}
-        <span className="text-gray-900 dark:text-gray-100">{data.climbingGrade}</span>{' '}
-        <i className="font-serif italic text-[1.1em] text-gray-400 dark:text-gray-500">on</i>{' '}
-        <span className="text-gray-900 dark:text-gray-100">{data.climbingRoute}</span>{' '}
-        <i className="font-serif italic text-[1.1em] text-gray-400 dark:text-gray-500">at</i>{' '}
-        <a
-          href={data.climbingGymLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-gray-900 dark:text-gray-100 hover:underline underline-offset-2"
-        >
-          {data.climbingGym}
-        </a>
-      </p>
-      <p>
-        Reading{' '}
-        <a
-          href={data.readingTitleLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-gray-900 dark:text-gray-100 hover:underline underline-offset-2"
-        >
-          {data.readingTitle}
-        </a>{' '}
-        <i className="font-serif italic text-[1.1em] text-gray-400 dark:text-gray-500">by</i>{' '}
-        <a
-          href={data.readingAuthorLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-gray-900 dark:text-gray-100 hover:underline underline-offset-2"
-        >
-          {data.readingAuthor}
-        </a>
-      </p>
+      <div className="flex items-center gap-2">
+        <CircularProgress percent={data.climbingPercent} />
+        <p className="min-w-0">
+          Climbing the{' '}
+          <span className="text-gray-900 dark:text-gray-100">{data.climbingGrade}</span>{' '}
+          <i className="font-serif italic text-[1.1em] text-gray-400 dark:text-gray-500">on</i>{' '}
+          <span className="text-gray-900 dark:text-gray-100">{data.climbingRoute}</span>{' '}
+          <i className="font-serif italic text-[1.1em] text-gray-400 dark:text-gray-500">at</i>{' '}
+          <a
+            href={data.climbingGymLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-900 dark:text-gray-100 hover:underline underline-offset-2"
+          >
+            {data.climbingGym}
+          </a>
+        </p>
+      </div>
+      <div className="flex items-center gap-2">
+        <CircularProgress percent={data.readingPercent} />
+        <p className="min-w-0">
+          Reading{' '}
+          <a
+            href={data.readingTitleLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-900 dark:text-gray-100 hover:underline underline-offset-2"
+          >
+            {data.readingTitle}
+          </a>{' '}
+          <i className="font-serif italic text-[1.1em] text-gray-400 dark:text-gray-500">by</i>{' '}
+          <a
+            href={data.readingAuthorLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-gray-900 dark:text-gray-100 hover:underline underline-offset-2"
+          >
+            {data.readingAuthor}
+          </a>
+        </p>
+      </div>
     </>
   );
 };
