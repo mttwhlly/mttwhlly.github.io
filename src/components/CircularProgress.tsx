@@ -23,7 +23,7 @@ export default function CircularProgress({
       width={size}
       height={size}
       viewBox={`0 0 ${size} ${size}`}
-      className={`shrink-0 -rotate-90 ${className}`}
+      className={`shrink-0 -translate-y-[1.5px] -rotate-90 ${className}`}
     >
       <circle
         cx={size / 2}
