@@ -5,8 +5,8 @@ const RecentProjects = () => {
   const projects = [
     {
       id: 4,
-      title: 'Figma RFD Checker',
-      description: 'Catches design handoff issues before they reach development.',
+      title: 'Figma RFD Plugin',
+      description: 'Catches design handoff issues before devs (or agents) code.',
       liveUrl: 'https://www.figma.com/community/plugin/1621901729405123866',
     },
     {
@@ -16,10 +16,10 @@ const RecentProjects = () => {
       liveUrl: 'https://canisurf.today',
     },
     {
-      id: 5,
-      title: 'Sui Sans Typeface',
-      description: 'Typeface inspired by the lettering of vintage stereo equipment.',
-      liveUrl: 'https://github.com/mttwhlly/sui-sans',
+      id: 2,
+      title: 'Hang Lab',
+      description: 'iOS/WatchOS hangboard training app for climbers.',
+      note: 'Currently being rebuilt in React Native for cross-platform — reach out for details.',
     },
   ];
 
@@ -30,16 +30,23 @@ const RecentProjects = () => {
         <div className="flex flex-col gap-6">
           {projects.map((project) => (
             <div key={project.id}>
-              <a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-baseline gap-1.5 text-gray-900 dark:text-gray-100 hover:underline underline-offset-2"
-              >
-                {project.title}
-                <ArrowUpRight size={12} weight="bold" className="text-gray-400 dark:text-gray-500" />
-              </a>
+              {project.liveUrl ? (
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-baseline gap-1.5 text-gray-900 dark:text-gray-100 hover:underline underline-offset-2"
+                >
+                  {project.title}
+                  <ArrowUpRight size={12} weight="bold" className="text-gray-400 dark:text-gray-500" />
+                </a>
+              ) : (
+                <span className="text-gray-900 dark:text-gray-100">{project.title}</span>
+              )}
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed mt-0.5">{project.description}</p>
+              {project.note && (
+                <p className="text-gray-400 dark:text-gray-500 text-sm italic mt-0.5">{project.note}</p>
+              )}
             </div>
           ))}
         </div>

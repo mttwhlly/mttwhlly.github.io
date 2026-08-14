@@ -16,15 +16,6 @@ export default function Footer() {
             <ArrowUpRight size={12} weight="bold" className="text-gray-400 dark:text-gray-500" />
           </a>
           <a
-            href="https://github.com/mttwhlly"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-baseline gap-1.5 w-fit hover:underline underline-offset-2 hover:text-gray-900 dark:hover:text-gray-100"
-          >
-            GitHub
-            <ArrowUpRight size={12} weight="bold" className="text-gray-400 dark:text-gray-500" />
-          </a>
-          <a
             href="https://linkedin.com/in/mttwhlly"
             target="_blank"
             rel="noopener noreferrer"
@@ -33,11 +24,20 @@ export default function Footer() {
             LinkedIn
             <ArrowUpRight size={12} weight="bold" className="text-gray-400 dark:text-gray-500" />
           </a>
+          <a
+            href="https://github.com/mttwhlly"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-baseline gap-1.5 w-fit hover:underline underline-offset-2 hover:text-gray-900 dark:hover:text-gray-100"
+          >
+            GitHub
+            <ArrowUpRight size={12} weight="bold" className="text-gray-400 dark:text-gray-500" />
+          </a>
         </div>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-[120px_1fr] gap-x-6 gap-y-2 sm:gap-y-1 pb-12">
-        <h2 className="self-start font-mono text-sm text-gray-500 dark:text-gray-400 pt-0.5">Experience</h2>
+        <h2 className="self-start font-mono text-sm text-gray-500 dark:text-gray-400 pt-0.5">Downloads</h2>
         <div className="flex flex-col gap-2 text-gray-600 dark:text-gray-400">
           <a
             href="/matt-whalley-resume.pdf"
@@ -48,6 +48,33 @@ export default function Footer() {
             Resume
             <ArrowDown size={12} weight="bold" className="text-gray-400 dark:text-gray-500" />
           </a>
+          <a
+            href="/matt-whalley-user-manual.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-baseline gap-1.5 w-fit hover:underline underline-offset-2 hover:text-gray-900 dark:hover:text-gray-100"
+          >
+            User Manual
+            <ArrowDown size={12} weight="bold" className="text-gray-400 dark:text-gray-500" />
+          </a>
+          <div className="flex items-baseline gap-2 flex-wrap">
+            <a
+              href="https://github.com/mttwhlly/sui-sans/raw/refs/heads/main/Sui-Regular.otf"
+              download
+              className="inline-flex items-baseline gap-1.5 w-fit hover:underline underline-offset-2 hover:text-gray-900 dark:hover:text-gray-100"
+            >
+              Sui Sans Typeface
+              <ArrowDown size={12} weight="bold" className="text-gray-400 dark:text-gray-500" />
+            </a>
+            <a
+              href="https://github.com/mttwhlly/sui-sans"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-fit text-sm text-gray-400 dark:text-gray-500 hover:underline underline-offset-2 hover:text-gray-900 dark:hover:text-gray-100"
+            >
+              (Source)
+            </a>
+          </div>
         </div>
       </div>
 
