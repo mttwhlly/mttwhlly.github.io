@@ -4,16 +4,16 @@ import { ArrowUpRight } from '@phosphor-icons/react';
 const RecentProjects = () => {
   const projects = [
     {
-      id: 4,
-      title: 'Figma RFD Plugin',
-      description: 'Catches design handoff issues before devs (or agents) code.',
-      liveUrl: 'https://www.figma.com/community/plugin/1621901729405123866',
-    },
-    {
       id: 3,
       title: 'Can I Surf Today?',
       description: 'AI-powered surf reports from hyperlocal data, with listen mode.',
       liveUrl: 'https://canisurf.today',
+    },
+    {
+      id: 4,
+      title: 'Figma RFD Plugin',
+      description: 'Catches design handoff issues before devs (or agents) code.',
+      liveUrl: 'https://www.figma.com/community/plugin/1621901729405123866',
     },
     {
       id: 2,
