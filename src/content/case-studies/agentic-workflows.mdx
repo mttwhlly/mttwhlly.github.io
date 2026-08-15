@@ -1,0 +1,87 @@
+---
+title: 'Agentic Development at Scale'
+subtitle: >
+  Five different shapes the same system took — a plugin, a simplified on-ramp, a shared
+  cross-repo workspace, a parallel review system — each one retired the moment it stopped
+  matching what the team could actually absorb.
+description: >
+  Claude Code and structured skills, rolled out across engineering, product, and a vendor team.
+  Five rebuilds, each retired the moment it stopped being enough.
+publishedDate: '2026'
+order: 3
+draft: false
+tags:
+  - AI Agents
+  - Claude Code
+  - Developer Tooling
+  - Engineering Leadership
+atAGlance:
+  - label: Scale
+    value: Adopted by five-plus vendor teams and every internal engineering pod, then extended to product and UX
+  - label: Starting point
+    value: A versioned plugin distributing skills, hooks, and shared MCP config to every pod repo
+  - label: Core problem
+    value: Features routinely span a database, API, and UI layer owned across different repositories
+  - label: My role
+    value: Led the rollout — designed the system through five iterations, built core tooling, taught it across and beyond engineering
+  - label: Result
+    value: A requirements-to-execution pipeline with a shared cross-repo workspace and a closed feedback loop
+  - label: Outcome
+    value: A parallel multi-agent review system and a planning process the org actually adopted, not just shipped
+---
+
+_I lead the rollout of agentic development tooling — Claude Code, structured skills, a shared plugin — across engineering, product, and a vendor team, on a platform where features routinely span a database layer, an API layer, and a UI layer in different repositories. Little of it was built alone. This is the story of what that system looked like at five different points, why each version stopped being enough, and what I'd still change about it._
+
+---
+
+## Building for scale, before proving the small version
+
+The first version was ambitious on purpose: a plugin, not a folder of scripts — versioned, distributed automatically to every repository a team worked in, carrying skills, hooks, and shared MCP server configuration as one unit. A coworker and I built it together, drawing heavily on Matt Pocock's public work on Claude Code skills — the thinking being that if agentic development was going to be real infrastructure rather than a personal habit, it needed to behave like infrastructure: install once, update centrally, version like anything else that ships to production.
+
+It worked, technically. Skills for planning, requirements analysis, and test-driven implementation existed and ran. What it didn't yet have was proof that the _team_ — not just the tooling — was ready to work this way.
+
+> Infrastructure that behaves like infrastructure still needs a team ready to use it like one.
+
+## Structure meets velocity, and loses the first round
+
+Here's the tension we didn't fully see coming: a lot of developers had already gotten fast and comfortable with unstructured, conversational AI coding. A multi-step pipeline — gather requirements, resolve open questions, produce a plan, then implement — felt slower going in, even when it produced better results coming out. Layer normal rollout friction on top — infrastructure access, permissions, environment differences between roles — and the first impression of "this is more process than value" stuck before the value had a chance to show itself.
+
+> A system this different from how people already worked needed a simpler on-ramp than it needed to be right.
+
+The honest lesson here wasn't "the critics were wrong." It was that a system this different from how people already worked needed a simpler on-ramp than we'd built, regardless of how correct the fuller version was in principle. The team moved to a deliberately simplified version of the plan — fewer steps, a shorter distance between typing something and seeing code — as the entry point, with the fuller pipeline available for anyone who wanted to go deeper.
+
+## The context problem forces a real answer
+
+The simplified plan solved adoption, but it exposed a structural gap: planning a feature well requires seeing the whole system the feature touches, and our features routinely span three or four repositories owned by different people. A plan written from inside one repo, without visibility into the others, was a plan written with blinders on.
+
+> A plan written without seeing the whole system is a plan written with blinders on.
+
+The same coworker who'd helped build the plugin saw the fix before I did: a shared workspace — one place containing all the repos a feature might touch, where planning could actually see the whole shape of the problem before any code got written. It's the single best idea in the whole system, and it wasn't mine. The plugin's role narrowed to something more honest about what it's good at: supplying shared infrastructure — MCP server connections, common configuration — while the core planning and execution skills live and run in the workspace, with full cross-repo context available the moment planning starts.
+
+## Proving structure earns its overhead
+
+None of this settled the underlying debate, and in the abstract, "just describe what you want and let the agent figure it out" sounds reasonable enough. In practice it wasn't: our acceptance criteria were rarely simple, our UI had to match precise Figma designs against an existing design system, and any feature of real size went through an in-depth architecture review before a line of code was written. Handing that to an agent as a paragraph of intent was never going to hold up — the complexity was already there whether the process acknowledged it or not. The real question wasn't whether structure was worth the overhead in principle. It was whether the specific structure we'd built matched the complexity we actually had, without asking more of people than they were ready to give.
+
+> The complexity was already there, whether the process acknowledged it or not.
+
+Proving that took real feature work, not benchmarks, and we deliberately brought other developers into that work rather than iterating in isolation — the point wasn't just a better pipeline, it was people seeing firsthand what building and using a skill could actually do. I spent a good stretch of this period teaching, too — not just engineering, but product managers, designers, and others, on how to get real leverage out of skills, MCP servers, and the rest of the toolchain, not just how to run them. That extension past engineering had a second thread. I'd originally built a skill for surfacing gaps in feature requirements by interviewing against them directly — the same instinct as the planning pipeline, aimed one step earlier, at the ticket itself. A colleague on the team took that further than I had and published a more capable version, one that product and UX could run themselves to check a feature for gaps and completeness before it ever reached a developer. The version running today came back through me again for updates — which is, in miniature, the same loop the whole pipeline runs on: an idea moves through more than one set of hands, and gets better for it. That it was worth extending to a non-engineering audience at all was, I think, the clearest evidence the structured approach was earning its keep.
+
+## Closing the loop
+
+The most mature part of the system today isn't the planning step — it's the fact that plans aren't static. When a test-driven implementation surfaces a bug or a decision that should have been made differently, that finding flows back into the plan itself: amend it, and the implementation step re-runs against the corrected version rather than treating the mistake as a one-off patch. Getting that loop to actually close — rather than staying a diagram of how it should work — took a lot of iteration on my end, even as teams across the org were the ones running it day to day. Small feedback loops like that — capturing what worked, what didn't, and closing the gap systematically — did more for output quality over time than any single addition to the pipeline.
+
+> A mistake fed back into the plan teaches the system something a one-off patch never could.
+
+---
+
+## What I'd still build, given a freer hand
+
+None of this happened with unlimited freedom — every version above was shaped as much by what a team could absorb and what the organization could support as by what I thought was technically best. I don't think that's a story of being held back so much as one of learning what "correct" actually means in a system with real constraints: not just the best architecture, but the best architecture a specific team can adopt at a specific moment.
+
+That said, if I'm honest about where I still see the largest headroom: today's pipeline is optimized around whole features — reasonably sized, coherent units of work that a person can review start to finish. That has real advantages. But a growing body of thinking on how agents actually perform well — including Pocock's — points toward something different: decomposing work into many small, well-scoped tasks, sized to fit comfortably in a model's context window, and running a larger number of them in parallel, with dependency ordering resolved by the system rather than planned by hand up front. Whole-feature planning is easier to review and reason about as a person. Small-task multiplexing is likely where the real throughput gain is sitting, and it's the direction I'd push toward next, constraints allowing.
+
+> Whole-feature planning is easier for a person to review. Small-task multiplexing is where the throughput is probably sitting.
+
+---
+
+_This work draws on ideas and public teaching from several people thinking hard about how to build software with agents well — particularly [Matt Pocock's Claude Code skills work](https://github.com/mattpocock/skills), the [superpowers](https://github.com/obra/superpowers) approach to composable agent skills, and [Addy Osmani's writing](https://addyosmani.com/) on AI-assisted engineering practice. None of what's described here is a copy of any one of these; it's what I built by taking their thinking seriously and testing it against a real, constrained, multi-team production system._
