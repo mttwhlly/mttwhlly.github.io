@@ -47,6 +47,12 @@ export default function CircularProgress({
           className="text-gray-900 dark:text-gray-100"
         />
       )}
+      {muted && (
+        <g transform={`rotate(90 ${size / 2} ${size / 2})`} className="fill-gray-400 dark:fill-neutral-500">
+          <rect x={size / 2 - 2.3} y={size / 2 - 3} width="1.6" height="6" rx="0.4" />
+          <rect x={size / 2 + 0.7} y={size / 2 - 3} width="1.6" height="6" rx="0.4" />
+        </g>
+      )}
     </svg>
   );
 }
