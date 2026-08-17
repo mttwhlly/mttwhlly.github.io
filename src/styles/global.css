@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Host+Grotesk:ital,wght@0,300..800;1,300..800&family=Newsreader:ital,wght@0,200..800;1,200..800&display=swap');
 @import 'tailwindcss';
 
 @theme {
@@ -16,6 +15,13 @@
   --color-lemonlime-800: oklch(0.279 0.041 260.031);
   --color-lemonlime-900: oklch(0.208 0.042 265.755);
   --color-lemonlime-950: oklch(0.129 0.042 264.695);
+}
+
+@media (pointer: fine) {
+  .custom-cursor,
+  .custom-cursor * {
+    cursor: none !important;
+  }
 }
 
 .prose-case-study {
