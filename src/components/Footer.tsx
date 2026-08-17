@@ -1,6 +1,6 @@
 import { ArrowUpRight, ArrowDown } from '@phosphor-icons/react';
 import SpotifyNowPlaying from './SpotifyNowPlaying';
-import NowSheet from './NowSheet';
+import NowDb from './NowDb';
 
 export default function Footer() {
   return (
@@ -81,7 +81,7 @@ export default function Footer() {
       <div className="grid grid-cols-1 sm:grid-cols-[120px_1fr] gap-x-6 gap-y-2 sm:gap-y-1">
         <h2 className="self-start font-mono text-sm text-gray-500 dark:text-gray-400 pt-0.5">Activity</h2>
         <div className="flex flex-col gap-2 text-gray-600 dark:text-gray-400 leading-relaxed min-w-0">
-          <NowSheet />
+          <NowDb />
           <SpotifyNowPlaying />
         </div>
       </div>

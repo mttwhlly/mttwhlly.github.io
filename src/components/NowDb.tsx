@@ -1,56 +1,60 @@
 import React, { useEffect, useState } from 'react';
 import type { NowData } from '../types/now';
+import { supabase } from '../lib/supabase';
 import CircularProgress from './CircularProgress';
 import MarqueeText from './MarqueeText';
 
-const SHEET_ID = '14TEKZH-hV0djcEMpDcQ18KCiI7IvNapNaAgFb_IuqzU';
-const GID = '0';
-const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&gid=${GID}&headers=1`;
 const REFRESH_INTERVAL_MS = 5 * 60 * 1000;
 
-function parseGvizResponse(text: string): NowData | null {
-  const match = text.match(/google\.visualization\.Query\.setResponse\(([\s\S]*)\);?\s*$/);
-  if (!match) return null;
+interface NowStatusRow {
+  climbing_grade: string;
+  climbing_route: string;
+  climbing_gym: string;
+  climbing_gym_link: string;
+  reading_title: string;
+  reading_title_link: string;
+  reading_author: string;
+  reading_author_link: string;
+  climbing_percent: number;
+  reading_percent: number;
+}
 
-  const json = JSON.parse(match[1]);
-  const cells = json.table?.rows?.[0]?.c;
-  if (!cells) return null;
-
-  const value = (i: number): string => cells[i]?.v ?? '';
-  const percent = (i: number): number => {
-    const n = Number(cells[i]?.v);
-    return Number.isFinite(n) ? n : 0;
-  };
-
+function toNowData(row: NowStatusRow): NowData {
   return {
-    climbingGrade: value(0),
-    climbingRoute: value(1),
-    climbingGym: value(2),
-    climbingGymLink: value(3),
-    readingTitle: value(4),
-    readingTitleLink: value(5),
-    readingAuthor: value(6),
-    readingAuthorLink: value(7),
-    climbingPercent: percent(8),
-    readingPercent: percent(9),
+    climbingGrade: row.climbing_grade,
+    climbingRoute: row.climbing_route,
+    climbingGym: row.climbing_gym,
+    climbingGymLink: row.climbing_gym_link,
+    readingTitle: row.reading_title,
+    readingTitleLink: row.reading_title_link,
+    readingAuthor: row.reading_author,
+    readingAuthorLink: row.reading_author_link,
+    climbingPercent: row.climbing_percent,
+    readingPercent: row.reading_percent,
   };
 }
 
-const NowSheet: React.FC = () => {
+const NowDb: React.FC = () => {
   const [data, setData] = useState<NowData | null>(null);
 
   useEffect(() => {
     let cancelled = false;
 
     const fetchNow = async (): Promise<void> => {
-      try {
-        const response = await fetch(SHEET_URL);
-        const text = await response.text();
-        const parsed = parseGvizResponse(text);
-        if (!cancelled && parsed) setData(parsed);
-      } catch (err) {
-        console.error('Error fetching now data from Google Sheets:', err);
+      const { data: row, error } = await supabase
+        .from('now_status')
+        .select(
+          'climbing_grade, climbing_route, climbing_gym, climbing_gym_link, reading_title, reading_title_link, reading_author, reading_author_link, climbing_percent, reading_percent'
+        )
+        .eq('id', 1)
+        .single();
+
+      if (error) {
+        console.error('Error fetching now data from Supabase:', error);
+        return;
       }
+
+      if (!cancelled && row) setData(toNowData(row));
     };
 
     fetchNow();
@@ -115,4 +119,4 @@ const NowSheet: React.FC = () => {
   );
 };
 
-export default NowSheet;
+export default NowDb;
