@@ -1,0 +1,283 @@
+---
+title: Building an AI Code Reviewer Engineers Would Actually Trust
+subtitle: >
+  A pre-merge review system built in six weeks and rolled out to every in-scope repository on an
+  enterprise platform, where the headline number is not how much it catches but how much it
+  throws away: 74% of candidate findings suppressed before a human ever sees them.
+description: >
+  An automated code reviewer has one currency: whether engineers believe it. A parallel
+  multi-agent review system built to spend every design decision on credibility, not coverage.
+client: the client
+publishedDate: '2026'
+order: 3
+draft: false
+tags:
+  - AI Agents
+  - Code Review
+  - Claude Code
+  - Azure DevOps
+  - Developer Tooling
+atAGlance:
+  - label: Scale
+    value: 'Every in-scope repository on the platform — 12 of 63 — reviewed on every pull request'
+  - label: Architecture
+    value: 'Eight parallel reviewer subagents, a cold falsifier, a scored confidence threshold'
+  - label: Headline result
+    value: '27 candidate findings reduced to 7 in backtest — 74% suppressed'
+  - label: Core constraint
+    value: 'A false-positive rate low enough that engineers keep reading the comments'
+  - label: My role
+    value: >-
+      Sole author of the system: architecture, reviewers, CI harness, governance model,
+      and rollout plan
+  - label: Status
+    value: 'Live in advisory mode across the full in-scope set; blocking deliberately deferred'
+---
+
+import ReviewPipelineDiagram from '../../components/ReviewPipelineDiagram';
+import SuppressionFunnel from '../../components/SuppressionFunnel';
+import ReviewerComparisonDiagram from '../../components/ReviewerComparisonDiagram';
+import PostingBoundaryDiagram from '../../components/PostingBoundaryDiagram';
+import RulesReleaseChannel from '../../components/RulesReleaseChannel';
+import RolloutGrid from '../../components/RolloutGrid';
+
+Automated code review has a failure mode that has nothing to do with intelligence. A reviewer that
+flags twenty things per pull request, of which four matter, does not get argued with. It gets
+ignored. Within about two weeks it becomes a step people scroll past on their way to the approve
+button, and every subsequent finding it produces, correct or not, arrives dead.
+
+So the constraint I designed around was not catch rate. It was the rate at which the system was
+allowed to be wrong in front of an engineer.
+
+That reframing decided almost everything else. Over about six weeks I built a pre-merge review
+system for the client's platform: eight specialized reviewer subagents running in parallel, a cold
+falsification pass that tries to disprove their findings, a numeric confidence threshold, and a CI
+pipeline that posts a single overview comment plus inline comments on every pull request. It runs
+today on every application repository in scope, commenting on every pull request, and it is
+deliberately not allowed to block a single one of them yet.
+
+The most useful number in the whole project is not a catch rate. It is that in backtesting, the
+system generated 27 candidate findings and published 7.
+
+<ReviewPipelineDiagram />
+
+---
+
+## The problem a linter cannot see
+
+The platform is a large Azure DevOps estate — 63 repositories in the project I was working in —
+running a .NET API in a clean-architecture style against React and TypeScript microfrontends. It
+had linting. It had typechecking. It had human review. The defects that were still reaching
+production shared a property: they were all invisible to any tool that reads one file at a time.
+
+Five recurring shapes, specifically:
+
+- A React component and a .NET endpoint silently disagreeing about a payload shape, where both
+  sides compile and neither knows the other changed.
+- Hardcoded hex and pixel values standing in for design system tokens, which typecheck perfectly
+  and quietly break theming.
+- Empty catch blocks that reset component state without logging, so a failure looks like an empty
+  result.
+- Tests that pass because they assert nothing meaningful.
+- Personally identifiable data — tax IDs, provider identifiers, addresses — persisted or logged
+  somewhere it should not be, in a regulated healthcare context where that is the expensive kind
+  of mistake.
+
+None of these are exotic. All of them require reading a change against a system rather than against
+a style guide. That is a reasonable thing to ask a language model to do, and an unreasonable thing
+to ask a linter to do, which is why the project existed.
+
+---
+
+## Built on published architecture, adapted to a specific codebase
+
+I did not invent the shape of this. Anthropic published their own
+[internal code review architecture](https://claude.com/blog/code-review)[^1], and it is a good
+design: parallel specialized reviewers, a falsification pass, per-finding confidence, a threshold,
+and a single consolidated comment rather than a scatter of them. I built against that directly and
+treated any divergence as something I needed to justify.
+
+Partway through, I ran a deliberate parity analysis — a written gap assessment of my system against
+the published one — and it found five things I had gotten wrong or skipped. I fixed all five.
+
+The largest was that I had no historical context at all. My reviewers looked at the diff and the
+files it touched, and nothing else. The published architecture includes reviewers that read the
+change against recent churn in those files, and against feedback given on earlier pull requests
+touching the same code. That second one is the more interesting idea: a reviewer whose job is to
+notice that a human already asked for this to be done differently, three PRs ago. I added both,
+taking the system from six reviewers to eight.
+
+The other four were smaller and all pointed the same direction. I had no eligibility gate, so the
+system was spending tokens reviewing draft PRs, automated commits, and one-line changes; I added a
+deterministic skip check that runs before anything expensive. I had no model tiering, so every step
+ran on the same model regardless of whether it required judgment; I moved the cheap mechanical
+steps to Haiku, kept reviewers on Sonnet, and routed large or contract-touching changes to Opus. My
+confidence scoring was prose-based, which meant it drifted; I replaced it with a discrete rubric.
+And my falsification step was written in a way that implied a reviewer could falsify its own
+finding, which is close to meaningless. I separated it.
+
+Everything I kept beyond the published design, I kept for a reason specific to this codebase. Three
+of the eight reviewers exist because of how this particular platform fails: one for React-to-.NET
+contract drift, one for design token infidelity, one for authorization and regulated-data handling.
+Those are not improvements on the general architecture. They are the part that could not have been
+downloaded.
+
+<ReviewerComparisonDiagram />
+
+---
+
+## The falsifier is the product
+
+The core mechanism is worth describing precisely, because it is where the trust gets bought.
+
+Eight reviewers run in parallel, each self-contained, each emitting findings in one shared JSON
+shape. That shared shape matters more than it sounds: because every finding from every reviewer is
+structurally identical, anything downstream can treat them interchangeably. Then a separate
+subagent — one that never saw any reviewer's reasoning, only its conclusions — takes each finding
+and actively tries to disprove it. It reads surrounding code as potential disconfirming evidence. Its
+job is not to sanity-check. Its job is to kill the finding if it can.
+
+What survives gets scored on a discrete rubric, 0 / 25 / 50 / 75 / 100, and only findings at or
+above the threshold are published.
+
+I moved that threshold from 85 down to 75 at the same time I adopted the discrete rubric, which
+sounds like loosening and was not. Prose-based confidence had no stable anchor, so 85 meant
+whatever the model felt it meant that run. The discrete rubric gave each level a written definition,
+and 75 is the "likely real" band. Pinning the number to a definition mattered more than where the
+number sat.
+
+The system is also explicitly told that a clean diff is a valid result. This is a line in the
+orchestrator, and it is there because the default behavior of a model asked to review code is to
+find something.
+
+### What the backtest actually showed
+
+I ran the system against five real merged pull requests: one known escape, a bug that had reached
+production and been fixed later by a separate PR, plus four clean PRs as a false-positive corpus.
+Print-only, no posting.
+
+It produced 27 candidate findings across those five PRs. After falsification and thresholding, 7
+were published. Of those 7: three were solid and actionable, three were low-value, and one was a
+false positive.
+
+On the escape PR, it found the real bug — a download handler that had been replaced with a no-op —
+at high confidence, plus a genuine contract risk on an API envelope that had been reshaped without a
+validation boundary. On the two genuinely clean PRs, it returned nothing at all, which was the
+result I cared most about.
+
+<SuppressionFunnel />
+
+Two honest limits. First, at the item level it caught two of the three known defects on that PR; it
+missed a silently-swallowed exception. That miss is a lower bound rather than a true measurement,
+because the backtest harness fed reviewers changed-lines-only diffs, which hid the enclosing catch
+block from view. Production reviews the whole file. I have not re-run the measurement, so I quote the
+lower bound. Second, five PRs is a small corpus and the false-positive rate it implies — one bad
+finding in four on clean code — carries wide error bars.
+
+The noisiest reviewer was the design token one, responsible for three of the seven kept findings and
+all three of the low-value ones. My first instinct for fixing it was to defer raw literals in
+constants and style files to the existing ESLint gate. Then I read that gate's source and found it
+detects literals by AST shape rather than by filename, which means constants files are exactly where
+it is weakest. My rule was backwards. I inverted it. The lesson generalizes further than the rule
+does: verify the tool you are deferring to before you defer to it.
+
+---
+
+## The incident that redrew the boundary
+
+Early on, a batch of roughly 148 review comments posted to a single pull request at once, under an
+individual engineer's personal identity, with no deduplication.
+
+The cause was structural rather than a bug in the reviewing. The interactive path authenticated as
+whoever was signed in, which meant a local run had the same posting power as the pipeline, and a
+human's name on the result. There was also nothing preventing the same finding from being written
+twice.
+
+The fix was to remove the capability rather than to constrain it. The interactive path now never
+posts. It prints. Posting is exclusively the CI pipeline's job, authenticated as the build service,
+and made idempotent with hidden markers in comment bodies so a re-run updates rather than
+duplicates. The rule is one sentence in the orchestrator: local runs review, the pipeline posts.
+
+<PostingBoundaryDiagram />
+
+I have come to think this is the more useful shape for the story than the incident itself. The
+question was not "how do we stop this happening again." It was "which component should have been
+unable to do that in the first place."
+
+---
+
+## Governance by construction
+
+The same instinct runs through the rest of the system, and it is the part I would point to first in
+an interview.
+
+The reviewer learns, but not by itself. When a confirmed defect escapes, the correct response is a
+new durable rule in a reviewer's instructions. The system is allowed to notice that and to draft the
+rule. It is not allowed to write it. Adding a rule is a reviewed human commit, and the CI job is
+hard-denied write access to its own rule files at the permission level, so it cannot mutate its own
+instructions even if something went badly wrong upstream.
+
+Rules ship on a moving branch with immutable version tags at each ratification — fourteen of them
+over the project. Every repository's thin wrapper pins the channel once rather than vendoring a
+copy, so improving a reviewer improves all twelve onboarded repositories at once, and rolling back a
+bad rule everywhere is a single git command against that branch. That property is why I was willing
+to roll out widely while the ruleset was still young: a mistake in a rule has a bounded blast radius
+and a one-command undo.
+
+<RulesReleaseChannel />
+
+The CI design principle was that the shell owns I/O and the model owns judgment. The pipeline
+computes the diff, calls the model through Azure AI Foundry over a federated service connection, and
+posts through the Azure DevOps REST API using the pipeline's own access token. No plugin, no MCP
+server, no personal access token anywhere in CI. Every repository carries a byte-identical
+forty-line wrapper; the substance lives in shared templates.
+
+One infrastructure lesson, recorded because it cost real time: Azure DevOps authorizes
+service-connection inputs before it expands variable-group macros, so a service connection name
+cannot come from a variable group. It has to be a compile-time literal. This is the sort of thing
+nobody documents until they have lost an afternoon to it.
+
+---
+
+## Where it actually stands
+
+Twelve repositories are onboarded and reviewing every pull request. That is the complete in-scope
+set: every application repository on the platform carrying the configuration file the system needs.
+The remaining fifty-one repositories in the project are out of scope until they adopt one, at which
+point onboarding is a forty-line wrapper and a branch policy.
+
+<RolloutGrid />
+
+Getting from one repository to twelve was a smaller step than getting to one. The first took most
+of the CI build-out — federated authentication, token audiences, diff-base resolution, poster
+hardening, and a set of permission grants I worked through with the platform's DevOps architect,
+which are project-scoped and therefore granted once. After that, each additional repository was the
+same wrapper, the same pipeline registration, the same policy.
+
+All twelve are advisory. The pipeline comments and always passes. No repository is blocking a merge,
+and I would rather say that plainly than let the word "rollout" imply otherwise. Flipping a
+repository to blocking is a per-repository judgment about whether its false-positive rate has earned
+the authority, made at the branch policy, and it is a decision I think should stay slow. A reviewer
+that starts blocking before people trust it does not get more influence. It gets an exemption.
+
+---
+
+## What I would tell someone building the same thing
+
+Precision is the product. Every mechanism in this system — the cold falsifier, the discrete rubric,
+the eligibility gate, the advisory-first default, the human ratification of rules — exists to make
+the system quieter and more believable rather than more thorough. A reviewer that catches
+everything and cries wolf is strictly worse than one that catches less and is right.
+
+The corollary is that the interesting engineering is not in the prompting. It is in the boundaries:
+what the system is allowed to do, whose identity it acts under, what it can write to, and what it
+must ask a human for. Those are the decisions that determine whether people are still reading its
+comments six months in.
+
+[^1]: The core review architecture — parallel specialized reviewer agents, a falsification pass, a
+  confidence threshold, and severity-ranked output — is Anthropic's own design, described in
+  Anthropic's [Code Review announcement](https://claude.com/blog/code-review) and implemented as an
+  open-source reference in the
+  [`code-review` plugin](https://github.com/anthropics/claude-code/tree/main/plugins/code-review) in
+  the `anthropic/claude-code` repository. This project adapted that pattern to a specific enterprise
+  stack; it did not invent it.
