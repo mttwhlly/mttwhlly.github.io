@@ -41,6 +41,9 @@ export default function QueryTransformationDiagram() {
             <Node label="Natural language" detail={'"heart drs in fl"'} />
           </div>
           <DownArrow />
+          <div className="text-[9px] font-mono uppercase tracking-widest text-gray-300 dark:text-neutral-600 mb-1.5">
+            3 of 7 fields — one example
+          </div>
           <div className="overflow-x-auto w-full pb-1">
             <div className="grid grid-cols-3 gap-2 min-w-[420px]">
               {fields.map(({ label, value }) => (
@@ -64,7 +67,7 @@ export default function QueryTransformationDiagram() {
           <div className="w-full max-w-sm">
             <Node
               label="Query parameters"
-              detail="SearchPractitionerRequest — specialties, states, statuses, paging"
+              detail="SearchPractitionerRequest — last names, states, counties, specialties, statuses, paging, sort"
             />
           </div>
           <DownArrow />
@@ -74,7 +77,8 @@ export default function QueryTransformationDiagram() {
         </div>
       </div>
       <figcaption className="text-xs text-gray-400 dark:text-neutral-500 text-center mt-3 font-mono italic">
-        The agent's whole job fits in that middle row — everything after it is deterministic.
+        One example, traced end to end. In practice all seven fields populate every turn, whether
+        or not the phrasing mentions them — everything after that middle row is deterministic.
       </figcaption>
     </figure>
   );

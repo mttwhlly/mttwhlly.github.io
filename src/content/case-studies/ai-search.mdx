@@ -90,7 +90,7 @@ With chat gone, the remaining architectural question shaped everything after it:
 
 It produces the query. Practitioner search runs against Azure SQL through stored procedures — the same procedures a structured search form would call. The agent's job is to turn _heart drs in fl_ into the parameters those procedures expect.
 
-Its output is a `SearchPractitionerRequest` object: arrays of last names, states, counties, specialties, statuses, plus paging and sort. That JSON goes to the stored procedure. The records come back as JSON of their own and render through React components — table, map, data-quality summary — each row clickable through to an individual provider's detail.
+Its output is a SearchPractitionerRequest object: arrays of last names, states, counties, specialties, statuses, plus paging and sort. That JSON goes to the stored procedure. The records come back as JSON of their own and render through React components — table, map, data-quality summary — each row clickable through to an individual provider's detail.
 
 <QueryTransformationDiagram />
 
