@@ -84,13 +84,11 @@ That's not an argument against MCP. In the same organization, in the same period
 
 ## The agent produces the query, not the record
 
-With chat gone, the remaining architectural question shaped everything after it:
-
-> Does the model produce the answer, or produce the query?
+With chat gone, the remaining architectural question shaped everything after it: does the model produce the answer, or produce the query?
 
 It produces the query. Practitioner search runs against Azure SQL through stored procedures — the same procedures a structured search form would call. The agent's job is to turn _heart drs in fl_ into the parameters those procedures expect.
 
-Its output is a SearchPractitionerRequest object: arrays of last names, states, counties, specialties, statuses, plus paging and sort. That JSON goes to the stored procedure. The records come back as JSON of their own and render through React components — table, map, data-quality summary — each row clickable through to an individual provider's detail.
+Its output is a `SearchPractitionerRequest` object: arrays of last names, states, counties, specialties, statuses, plus paging and sort. That JSON goes to the stored procedure. The records come back as JSON of their own and render through React components — table, map, data-quality summary — each row clickable through to an individual provider's detail.
 
 <QueryTransformationDiagram />
 
@@ -110,9 +108,7 @@ Semantic Kernel came out here too — removed in a deliberate refactor once the 
 
 ## Vector search was the obvious answer, and the wrong one
 
-The proposal on the table was the one any engineer would reach for: vector search over the provider database. Embed the records, index them, let semantic similarity handle the messy queries.
-
-> What does it actually cost to make this data semantically searchable?
+The proposal on the table was the one any engineer would reach for: vector search over the provider database. Embed the records, index them, let semantic similarity handle the messy queries. What does it actually cost to make this data semantically searchable?
 
 More than it looked like. Embedding a provider corpus means a second copy of regulated data in a second system — a new store to secure, a new access path to audit, a new thing to keep in sync, and a new place a breach can start. The privacy exposure isn't the query; it's the durable copy. And embedding a corpus that changes constantly is real recurring money for a beta product.
 
@@ -126,7 +122,7 @@ What we shipped keeps the provider data exactly where it was and moves only the 
 
 From the user's side it behaves like semantic search over the directory: colloquial queries work, related specialties surface, the map and table populate with what you meant rather than what you typed. But no provider record was copied, embedded, or exposed to make that happen. The semantic layer operates on 674 rows; the sensitive data never leaves its blast radius.
 
-What that index actually does: BM25 keyword matching against the specialty name, a synonym map (specialty-synonyms) expanding lay terms, and Microsoft's semantic reranker reordering those candidates. The index is configured to rank by keyword relevance rather than embedding distance — no vector fields, no embedding pipeline, no vector storage anywhere in the path.
+What that index actually does: BM25 keyword matching against the specialty name, a synonym map (`specialty-synonyms`) expanding lay terms, and Microsoft's semantic reranker reordering those candidates. The index is configured to rank by keyword relevance rather than embedding distance — no vector fields, no embedding pipeline, no vector storage anywhere in the path.
 
 That's the whole semantic layer: 674 rows of public vocabulary, ranked by keyword match and reordered by a reranker. A smaller and less fashionable machine than the one proposed, producing the same user-facing behavior — because resolving a colloquial phrase to one of 674 known strings is a canonicalization problem, not a similarity problem over unstructured text.
 
@@ -138,9 +134,7 @@ Worth being exact about the vocabulary, too: this is retrieval used for _query n
 
 ## Teaching an agent a vocabulary it kept getting wrong
 
-All of that only works if the resolution step is right.
-
-> How reliably does "heart doctor" become `Cardiovascular Disease`?
+All of that only works if the resolution step is right — how reliably does "heart doctor" become `Cardiovascular Disease`?
 
 Letting the model map lay terms to the taxonomy from its own knowledge fails in a specific and dangerous way: it's right most of the time, so the failures arrive as confident, plausible, wrong specialties rather than as errors. A network adequacy report built on a quietly mis-resolved specialty is worse than one that errored.
 
@@ -170,9 +164,7 @@ That turned specialty matching into a vocabulary-coverage problem the team could
 
 ## Showing the work was a trust feature, not a loading state
 
-Agent latency is real. Resolving a specialty, emitting parameters, and executing against 1.6M records is not instant, and the options were to hide that behind a spinner or to show it.
-
-> What is the user allowed to see while the system is thinking?
+Agent latency is real. Resolving a specialty, emitting parameters, and executing against 1.6M records is not instant, and the options were to hide that behind a spinner or to show it. What is the user allowed to see while the system is thinking?
 
 The whole path streams, and the intermediate steps surface as they happen — the query being interpreted, the specialty being resolved, the search executing, the results coming back. Some of that is ordinary perceived-performance work: a progress narrative feels far shorter than an identical wait behind an opaque spinner.
 
@@ -180,17 +172,13 @@ The more important part is that it makes the system legible. A network manager w
 
 It's the same property as the auditable query path at a different altitude. The query trace answers _how did this result happen_ for a compliance reviewer after the fact; the streamed steps answer it for the user in the moment.
 
-> Streaming the intermediate steps turns latency you can't remove into transparency you couldn't otherwise offer.
-
 ---
 
 ## The chat came back as a search that remembers
 
 The first version of the search was stateless: every query started from nothing.
 
-That tested badly, for an obvious reason in hindsight. Nobody searches a provider directory once. They search, look at what came back, and narrow — _now just Florida_, _massage therapists only_, _drop the retired ones_. Making each of those a fresh query meant retyping the location, the specialty, and the status every time, which is exactly the tedium a natural-language interface is supposed to remove.
-
-> How do you keep a conversation's memory without bringing back the conversation?
+That tested badly, for an obvious reason in hindsight. Nobody searches a provider directory once. They search, look at what came back, and narrow — _now just Florida_, _massage therapists only_, _drop the retired ones_. Making each of those a fresh query meant retyping the location, the specialty, and the status every time, which is exactly the tedium a natural-language interface is supposed to remove. How do you keep a conversation's memory without bringing back the conversation?
 
 By making refinement a rule of the query builder rather than a feature of a chat window. The agent reads the most recent request in the thread, carries **all** of its filters forward as the base, and modifies only the fields the new message mentions — never resetting a filter to null unless the user explicitly removes it.
 
@@ -216,15 +204,11 @@ Enriched records were something a user could explicitly ask for rather than a ba
 
 The map and table were where that data got evaluated. A conversational answer can assert that a plan has adequate coverage in a county; a choropleth lets a network manager see the gap themselves.
 
-> Making bad data conversational just produces confident bad answers faster.
-
 ---
 
 ## Agents fail differently than APIs
 
-Then the system met real usage, and a category of failure showed up that a stateless API doesn't have.
-
-> Why does the first search after login sometimes return nothing at all?
+Then the system met real usage, and a category of failure showed up that a stateless API doesn't have. Why does the first search after login sometimes return nothing at all?
 
 Foundry Persistent Agents hold conversational threads, and threads go cold. A cold thread's first invocation could return an empty response — not an error, not a timeout, just nothing — which reached the user as a search that appeared to work and found no providers. That's the worst possible failure for a directory product, because "no results" is a legitimate answer.
 
@@ -234,7 +218,7 @@ The fix was three connected pieces:
 - **Reuse threads per user** within a bounded window so the cold-start path is rare rather than constant.
 - **Prewarm on login**, so the cold start happens during a loading state the user expects, not mid-search.
 
-And instrument all of it — AI.Foundry.\* telemetry, so the empty-response rate is a number on a dashboard rather than something the team believes is fixed. The pattern, generalized:
+And instrument all of it — `AI.Foundry.*` telemetry, so the empty-response rate is a number on a dashboard rather than something the team believes is fixed. The pattern, generalized:
 
 ```
 // Illustrative — not the actual implementation.
@@ -262,9 +246,7 @@ The general principle carries to any agent-backed product: a language model in y
 
 ## Compliance is a data-path property, not a checkbox
 
-Healthcare adds constraints that shape architecture rather than sitting on top of it — the same constraint that killed vector search also governs the request path.
-
-> Can a health plan's user ever see another health plan's data?
+Healthcare adds constraints that shape architecture rather than sitting on top of it — the same constraint that killed vector search also governs the request path. Can a health plan's user ever see another health plan's data?
 
 Authentication is Okta OAuth with PKCE, validated as JWT at the API boundary through OIDC middleware. Multi-tenancy scopes on `AccountId`, and the key property is that the account identity is **derived server-side from the validated token**, never accepted as a client-supplied parameter. A user cannot request another tenant's scope, because the scope isn't something the request gets to assert.
 

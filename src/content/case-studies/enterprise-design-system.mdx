@@ -126,7 +126,7 @@ Some instances were genuinely missing a code mapping. Those represented real imp
 
 Some were forked Figma components: instances that looked like known components but carried different keys because they had been detached or copied inside product files. Those were design-side repair problems, not code problems.
 
-Some were internal render-parts: calendar cells, DataGrid internals, pagination items, spacers, hidden slots, and structural pieces that had no standalone code export because the real code component rendered them internally.
+Some were internal render-parts: calendar cells, `DataGrid` internals, pagination items, spacers, hidden slots, and structural pieces that had no standalone code export because the real code component rendered them internally.
 
 Some were documentation and reference boards living inside delivery files. They were never meant to ship, but the scanner had no way to know that.
 
@@ -189,7 +189,7 @@ The fix was to treat external icon libraries as first-class sources. I generated
 
 That changed the system because it changed the model. Icons were no longer noise inside an “external” bucket. They became a known, measurable, resolvable category.
 
-At the same time, the model prevented false wins. The DataGrid family looked large on paper, but most of its apparent backlog was internal decomposition: cells, headers, pagination items, and quick filters nested inside already-mapped grid components. Mapping those directly would have double-counted a component we already resolved. The right answer was not more mapping. It was honest exclusion as render-parts.
+At the same time, the model prevented false wins. The `DataGrid` family looked large on paper, but most of its apparent backlog was internal decomposition: cells, headers, pagination items, and quick filters nested inside already-mapped grid components. Mapping those directly would have double-counted a component we already resolved. The right answer was not more mapping. It was honest exclusion as render-parts.
 
 This became one of the core principles of the project:
 
