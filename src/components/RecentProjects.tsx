@@ -7,7 +7,7 @@ const RecentProjects = () => {
       id: 3,
       title: 'Can I Surf Today?',
       description: 'AI-powered surf reports from hyperlocal data, with listen mode.',
-      liveUrl: 'https://surf-report-git-main-mttwhllys-projects.vercel.app/',
+      liveUrl: 'https://surf-report-rouge.vercel.app/',
     },
     {
       id: 4,
