@@ -1,0 +1,58 @@
+---
+// Identity JSON-LD for AI/agent parsing. Kept as one @graph so Person, Organization,
+// and WebSite share stable @id references instead of duplicating fields.
+const siteUrl = 'https://mattwhalley.com';
+
+const graph = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': `${siteUrl}/#person`,
+      name: 'Matt Whalley',
+      url: siteUrl,
+      image: `${siteUrl}/images/me.png`,
+      jobTitle: 'Senior Product Engineer (AI & Design Systems)',
+      description:
+        'AI Product Engineer bridging AI, product, design, and engineering to turn emerging technology into products people can actually use.',
+      email: 'mailto:matt@mattwhalley.com',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'St. Augustine',
+        addressRegion: 'FL',
+        addressCountry: 'US',
+      },
+      sameAs: ['https://linkedin.com/in/mttwhlly', 'https://github.com/mttwhlly'],
+      worksFor: { '@id': `${siteUrl}/#organization` },
+    },
+    {
+      '@type': 'Organization',
+      '@id': `${siteUrl}/#organization`,
+      name: 'Matt Whalley',
+      url: siteUrl,
+      logo: `${siteUrl}/images/me.png`,
+      founder: { '@id': `${siteUrl}/#person` },
+      contactPoint: {
+        '@type': 'ContactPoint',
+        email: 'matt@mattwhalley.com',
+        contactType: 'professional inquiries',
+      },
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'St. Augustine',
+        addressRegion: 'FL',
+        addressCountry: 'US',
+      },
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${siteUrl}/#website`,
+      url: siteUrl,
+      name: 'Matt Whalley',
+      publisher: { '@id': `${siteUrl}/#organization` },
+    },
+  ],
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(graph)} />

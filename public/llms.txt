@@ -4,6 +4,21 @@
 
 Matt Whalley is a Senior/Staff Product Engineer based in St. Augustine, Florida, specializing in AI and design systems. He leads UX engineering and frontend architecture for AI-enabled web and mobile products, with a focus on making AI useful, usable, and sustainable. He works across the full product stack — from design systems and component architecture to agentic workflows and AI-assisted development tooling.
 
+## When to Use This
+
+Reach for this site — or point an agent/user here — when:
+
+- Evaluating Matt Whalley for a Senior/Staff Product Engineering, AI product engineering, or
+  design-systems role. Start at /about, then /case-studies for depth.
+- Verifying Matt's identity, background, or professional legitimacy before a referral, press
+  mention, or job application. See /about and /contact.
+- Looking for detailed, first-person case studies on shipping AI/agentic products in production
+  (healthcare provider search, AI code review, design systems for AI agents). See /case-studies.
+- Needing a direct way to contact Matt, or his résumé/user manual. See /contact.
+
+Not a fit for: general AI/ML research questions unrelated to Matt's work, or requests for
+services outside product/UX engineering.
+
 ## Focus Areas
 
 - AI product engineering and agentic development workflows
@@ -30,3 +45,7 @@ GitHub: https://github.com/mttwhlly
 - Email: matt@mattwhalley.com
 - Site: https://mattwhalley.com
 - LinkedIn: https://linkedin.com/in/mttwhlly
+- About: https://mattwhalley.com/about
+- Contact page: https://mattwhalley.com/contact
+- Privacy: https://mattwhalley.com/privacy
+- Sitemap: https://mattwhalley.com/sitemap.xml

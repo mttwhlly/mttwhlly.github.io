@@ -13,9 +13,10 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 const { title, subtitle, atAGlance } = entry.data;
+const slug = entry.id.replace(/\.(mdx?)$/, '');
 ---
 
-<Layout>
+<Layout markdownUrl={`/case-studies/${slug}.md`}>
   <main>
     <!-- Header -->
     <header class="max-w-2xl mx-auto px-6 pt-12 pb-8">

@@ -3,7 +3,18 @@ import '../styles/global.css';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import CustomCursor from '../components/CustomCursor';
---- 
+import StructuredData from '../components/StructuredData.astro';
+
+interface Props {
+  markdownUrl?: string;
+  noindex?: boolean;
+}
+
+const { markdownUrl, noindex } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImageURL = new URL('/images/me.png', Astro.site);
+---
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,6 +23,10 @@ import CustomCursor from '../components/CustomCursor';
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Matt Whalley – Senior Product Engineer (AI & Design Systems) · Remote</title>
+
+  <link rel="canonical" href={canonicalURL} />
+  {markdownUrl && <link rel="alternate" type="text/markdown" href={markdownUrl} />}
+  {noindex && <meta name="robots" content="noindex" />}
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -30,9 +45,13 @@ import CustomCursor from '../components/CustomCursor';
   <meta property="og:title" content="Matt Whalley – Senior Product Engineer (AI & Design Systems) · Remote" />
   <meta property="og:description" content="Bridging AI, product, design, and engineering to turn emerging technology into products people can actually use." />
   <meta property="og:url" content="https://mattwhalley.com" />
-  <!-- Optional: Uncomment when image is ready -->
-  <!-- <meta property="og:image" content="https://mattwhalley.com/og-image.jpg" /> -->
+  <meta property="og:image" content={ogImageURL} />
+  <meta property="og:image:width" content="724" />
+  <meta property="og:image:height" content="724" />
   <meta property="og:type" content="website" />
+
+  <!-- Structured data -->
+  <StructuredData />
 
   <!-- Favicon and Icons -->
   <link rel="icon" href="favicon.ico" type="image/x-icon" />

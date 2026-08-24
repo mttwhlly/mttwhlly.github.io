@@ -1,0 +1,65 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout noindex>
+  <main>
+    <section class="max-w-2xl mx-auto px-6 pt-12 pb-16">
+      <div class="grid grid-cols-1 sm:grid-cols-[120px_1fr] gap-x-6 gap-y-2 sm:gap-y-1">
+        <h1 class="self-start font-mono text-sm text-gray-500 dark:text-gray-400 pt-0.5">404</h1>
+        <div class="flex flex-col gap-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+          <p>
+            That page doesn't exist — it may have moved, been renamed, or never existed at this
+            URL.
+          </p>
+
+          <div>
+            <p class="text-gray-900 dark:text-gray-100 mb-2">Where to look next:</p>
+            <ul class="flex flex-col gap-1.5 list-disc list-inside">
+              <li>
+                <a href="/" class="hover:underline underline-offset-2 text-gray-900 dark:text-gray-100"
+                  >Home</a
+                > — profile, projects, and case studies
+              </li>
+              <li>
+                <a
+                  href="/case-studies"
+                  class="hover:underline underline-offset-2 text-gray-900 dark:text-gray-100"
+                  >Case studies</a
+                > — deep dives on shipped AI/product work
+              </li>
+              <li>
+                <a
+                  href="/about"
+                  class="hover:underline underline-offset-2 text-gray-900 dark:text-gray-100"
+                  >About</a
+                > — background and current focus
+              </li>
+              <li>
+                <a
+                  href="/contact"
+                  class="hover:underline underline-offset-2 text-gray-900 dark:text-gray-100"
+                  >Contact</a
+                > — how to reach me
+              </li>
+              <li>
+                <a
+                  href="/sitemap.xml"
+                  class="hover:underline underline-offset-2 text-gray-900 dark:text-gray-100"
+                  >sitemap.xml</a
+                > — full list of indexable URLs
+              </li>
+              <li>
+                <a
+                  href="/llms.txt"
+                  class="hover:underline underline-offset-2 text-gray-900 dark:text-gray-100"
+                  >llms.txt</a
+                > — a machine-readable summary of this site, for agents
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
