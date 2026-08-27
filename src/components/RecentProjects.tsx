@@ -5,13 +5,13 @@ const RecentProjects = () => {
   const projects = [
     {
       id: 3,
-      title: 'Can I Surf Today?',
+      title: 'Swells',
       description: 'AI-powered surf reports from hyperlocal data, with listen mode.',
-      liveUrl: 'https://surf-report-rouge.vercel.app/',
+      liveUrl: 'https://swells.surf',
     },
     {
       id: 4,
-      title: 'Figma RFD Plugin',
+      title: 'RFD Checker',
       description: 'Catches design handoff issues before devs (or agents) code.',
       liveUrl: 'https://www.figma.com/community/plugin/1621901729405123866',
     },

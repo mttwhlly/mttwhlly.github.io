@@ -25,8 +25,8 @@ ${studies.map((s) => `- [${s.title}](https://mattwhalley.com/case-studies/${s.sl
 
 ## Projects
 
-- [Can I Surf Today?](https://surf-report-rouge.vercel.app/) — AI-powered surf reports from hyperlocal data, with listen mode.
-- [Figma RFD Plugin](https://www.figma.com/community/plugin/1621901729405123866) — Catches design handoff issues before devs (or agents) code.
+- [Swells](https://swells.surf) — AI-powered surf reports from hyperlocal data, with listen mode.
+- [RFD Checker](https://www.figma.com/community/plugin/1621901729405123866) — Catches design handoff issues before devs (or agents) code.
 - Hang Lab — iOS/WatchOS hangboard training app for climbers.
 
 ## More
