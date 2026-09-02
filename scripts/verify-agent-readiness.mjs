@@ -32,7 +32,7 @@ function report(ok, label, detail) {
 }
 
 async function fetchRaw(path, headers = {}) {
-  return fetch(new URL(path, baseUrl), { headers, redirect: 'manual' });
+  return fetch(new URL(path, baseUrl), { headers, redirect: 'follow' });
 }
 
 async function checkRealNotFound() {

@@ -84,7 +84,14 @@ function mergeVary(existing) {
 
 function markdownCandidates(pathname) {
   if (pathname === '/') return ['/index.md'];
-  if (pathname.endsWith('/')) return [`${pathname}index.md`];
+  // GitHub Pages canonicalizes every page to a trailing slash (301 /about -> /about/), but the
+  // Astro build emits markdown siblings flat (/about.md, /case-studies/ai-search.md), not nested
+  // (/about/index.md) — except for actual directory-index routes like /case-studies/index.md.
+  // Try both shapes so either convention resolves.
+  if (pathname.endsWith('/')) {
+    const trimmed = pathname.slice(0, -1);
+    return [`${trimmed}.md`, `${pathname}index.md`];
+  }
   return [`${pathname}.md`, `${pathname}/index.md`];
 }
 
@@ -129,6 +136,16 @@ export default {
     }
 
     const origin = await fetch(request);
+
+    // Redirects (e.g. GitHub Pages' /about -> /about/ canonicalization) and other non-content
+    // statuses carry no body to negotiate — pass them through as-is, just tagged with Vary so
+    // caches don't merge them with a negotiated response for the same URL.
+    if (origin.status >= 300 && origin.status !== 404) {
+      const headers = new Headers(origin.headers);
+      headers.set('Vary', mergeVary(headers.get('Vary')));
+      return new Response(origin.body, { status: origin.status, headers });
+    }
+
     const sibling = await probeMarkdown(url.origin, markdownCandidates(pathname));
 
     if (decision.preferMarkdown) {
