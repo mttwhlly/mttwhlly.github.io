@@ -14,17 +14,25 @@ via the `*.md.ts` routes in `src/pages/`. If the client prefers markdown and a s
 serves that sibling with the right headers; otherwise it passes the original response through
 unmodified (plus `Vary`).
 
-## Redeploying
+## Deploying
+
+Automatic: `.github/workflows/deploy-cloudflare-worker.yml` runs `wrangler deploy` on every push
+to `main` that touches `cloudflare/**`, using the `CLOUDFLARE_API_TOKEN` /
+`CLOUDFLARE_ACCOUNT_ID` GitHub Actions repo secrets. It can also be triggered manually from the
+Actions tab (`workflow_dispatch`).
+
+Manual (e.g. to test a change before pushing):
 
 ```bash
 cd cloudflare
 set -a; source ../.env; set +a   # loads CLOUDFLARE_API_TOKEN / CLOUDFLARE_ACCOUNT_ID
-npx wrangler@latest deploy
+npx wrangler@4 deploy
 ```
 
 `.env` (gitignored) holds `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`. The token needs
 `Workers Scripts: Edit`, `Workers Routes: Edit`, and `Zone: Read`, scoped to the
-mattwhalley.com zone.
+mattwhalley.com zone. The same values are stored as GitHub Actions repo secrets for CI; rotate
+both places together if the token is ever rotated.
 
 ## Verifying
 
