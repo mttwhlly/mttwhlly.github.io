@@ -30,7 +30,7 @@ services outside product/UX engineering.
 ## Selected Work
 
 - [AI Product Development at DataSpring](https://dataspring.com) — Leading UX engineering and frontend architecture for AI-enabled web and mobile initiatives. React interfaces, AI-assisted development workflows, design system standards, and secure authentication patterns.
-- [Can I Surf Today?](https://canisurf.today) — Hyperlocal AI-powered surf report. Gathers realtime buoy, tide, and weather data and produces a surf report via AI. Built with Next.js, Vercel AI SDK, NOAA/Open-Meteo APIs, Neon, and Bun.
+- [Swells](https://swells.surf) — AI-powered surf reports from hyperlocal data, with listen mode. Gathers realtime buoy, tide, and weather data and produces a surf report via AI. Built with Next.js, Vercel AI SDK, NOAA/Open-Meteo APIs, Neon, and Bun.
 - [HANG LAB](https://testflight.apple.com/join/FTcb21dX) — iOS/WatchOS hangboard training app for climbers, built in Swift with HealthKit, WatchKit, SiriKit, and haptics.
 - [RFD Checker](https://www.figma.com/community/plugin/1621901729405123866) — Figma plugin that audits a selected frame against a Ready-for-Dev checklist. Checks design tokens, component mapping, layout, handoff hygiene, and accessibility. Built for teams shipping from Figma to component-based codebases, with first-class Material UI support.
 
