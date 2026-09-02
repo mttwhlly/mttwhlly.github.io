@@ -21,8 +21,6 @@ export const GET: APIRoute = async () => {
 
   const staticUrls = [
     { loc: '/', lastmod: SITE_LASTMOD, priority: '1.0' },
-    { loc: '/about', lastmod: SITE_LASTMOD, priority: '0.7' },
-    { loc: '/contact', lastmod: SITE_LASTMOD, priority: '0.6' },
     { loc: '/privacy', lastmod: SITE_LASTMOD, priority: '0.3' },
     { loc: '/case-studies', lastmod: SITE_LASTMOD, priority: '0.8' },
   ];
