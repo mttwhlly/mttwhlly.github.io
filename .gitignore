@@ -9,3 +9,5 @@ coverage
 codealike.json
 .vscode
 .DS_Store
+.vercel
+.env*
