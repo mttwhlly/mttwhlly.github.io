@@ -1,0 +1,11 @@
+name = "mattwhalley-com-markdown-negotiation"
+main = "markdown-negotiation-worker.js"
+compatibility_date = "2026-08-01"
+
+# Runs in front of the existing GitHub Pages origin for mattwhalley.com (already proxied through
+# Cloudflare). It does not change hosting or DNS — it only intercepts requests to add
+# Accept-header content negotiation and the matching Vary/406 behavior that a static host can't
+# do on its own. See ../README-cloudflare.md for what it does and how to verify it.
+routes = [
+  { pattern = "mattwhalley.com/*", zone_name = "mattwhalley.com" },
+]
