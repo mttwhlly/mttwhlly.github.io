@@ -8,6 +8,12 @@ export const GET: APIRoute = async () => {
     .sort((a, b) => a.order - b.order || b.publishedDate.localeCompare(a.publishedDate));
 
   const lines = [
+    '---',
+    'title: Case studies — Matt Whalley',
+    'description: Deep dives on shipped AI and product engineering work.',
+    'canonical: https://mattwhalley.com/case-studies',
+    '---',
+    '',
     '# Case studies',
     '',
     'Deep dives into how the work actually happened.',

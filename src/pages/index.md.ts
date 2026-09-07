@@ -7,7 +7,13 @@ export const GET: APIRoute = async () => {
     .map((entry) => ({ slug: entry.id.replace(/\.(mdx?)$/, ''), ...entry.data }))
     .sort((a, b) => a.order - b.order || b.publishedDate.localeCompare(a.publishedDate));
 
-  const markdown = `# Matt Whalley
+  const markdown = `---
+title: Matt Whalley — Senior Product Engineer (AI & Design Systems)
+description: AI Product Engineer bridging AI, product, design, and engineering to turn emerging technology into products people can actually use.
+canonical: https://mattwhalley.com/
+---
+
+# Matt Whalley
 
 Senior/Staff Product Engineer (AI & Design Systems)
 
@@ -31,8 +37,8 @@ ${studies.map((s) => `- [${s.title}](https://mattwhalley.com/case-studies/${s.sl
 
 ## More
 
-- [About](https://mattwhalley.com/about)
-- [Contact](https://mattwhalley.com/contact)
+- [Contact](mailto:matt@mattwhalley.com)
+- [LinkedIn](https://linkedin.com/in/mttwhlly)
 - [Privacy](https://mattwhalley.com/privacy)
 - [llms.txt](https://mattwhalley.com/llms.txt)
 - [sitemap.xml](https://mattwhalley.com/sitemap.xml)

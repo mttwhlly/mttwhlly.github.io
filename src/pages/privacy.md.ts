@@ -1,7 +1,13 @@
 import type { APIRoute } from 'astro';
 
 export const GET: APIRoute = async () => {
-  const markdown = `# Privacy
+  const markdown = `---
+title: Privacy — Matt Whalley
+description: What mattwhalley.com does and does not do with visitor data.
+canonical: https://mattwhalley.com/privacy
+---
+
+# Privacy
 
 This is a static personal portfolio site. There's no login, no user accounts, and no forms on
 this site that collect personal information. This page describes exactly what does happen when
@@ -25,8 +31,8 @@ you visit.
   under GitHub's own privacy statement.
 
 If this changes (for example, a newsletter signup or analytics is added later), this page will
-be updated to reflect it. Questions about this policy can go to the same address on the
-[Contact](https://mattwhalley.com/contact) page.
+be updated to reflect it. Questions about this policy can go to
+[matt@mattwhalley.com](mailto:matt@mattwhalley.com).
 `;
 
   return new Response(markdown, {

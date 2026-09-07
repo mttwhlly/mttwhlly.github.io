@@ -1,6 +1,47 @@
-# Example: Allow all bots to scan and index your site.
 # Full syntax: https://developers.google.com/search/docs/advanced/robots/create-robots-txt
+
+# Answer-engine crawlers that fetch pages on behalf of a user query — welcome.
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Bulk training-only crawlers with no answer-engine attribution back to this site — excluded.
+User-agent: CCBot
+Disallow: /
+
+User-agent: ByteSpider
+Disallow: /
+
+# Everyone else: allow.
 User-agent: *
 Allow: /
+
+Content-Signal: search=yes, ai-train=no
 
 Sitemap: https://mattwhalley.com/sitemap.xml

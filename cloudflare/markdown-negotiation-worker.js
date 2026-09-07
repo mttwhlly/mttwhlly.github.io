@@ -18,9 +18,17 @@
  *   2. Sets `Vary: Accept` (merged with `Accept-Encoding`)
  *   3. Returns 406 when neither text/html nor text/markdown is acceptable
  *   4. Honors q-values / specificity per RFC 9110
+ *   5. Serves markdown to known AI bot User-Agents even on a generic Accept header (BOT_UA_RE)
  */
 
 const ASSET_EXT_RE = /\.[a-zA-Z0-9]+$/;
+
+// Answer-engine bots that read pages to answer a user's question. They often send a generic
+// `Accept: */*` (or no Accept header at all) rather than negotiating for text/markdown
+// explicitly, so we serve them the markdown representation by User-Agent regardless — as long
+// as the Accept header doesn't affirmatively rule markdown out.
+const BOT_UA_RE =
+  /GPTBot|ChatGPT-User|OAI-SearchBot|ClaudeBot|Claude-User|Claude-SearchBot|PerplexityBot|Perplexity-User|Google-Extended|Applebot-Extended|ora-agent|DeepSeekBot/i;
 
 /** Parse an Accept header into {type, subtype, q} entries. Returns null if no header was sent. */
 function parseAccept(header) {
@@ -79,6 +87,7 @@ function mergeVary(existing) {
   );
   parts.add('Accept');
   parts.add('Accept-Encoding');
+  parts.add('User-Agent');
   return Array.from(parts).join(', ');
 }
 
@@ -122,6 +131,9 @@ export default {
     }
 
     const decision = negotiate(request.headers.get('Accept'));
+    if (decision.acceptable && BOT_UA_RE.test(request.headers.get('User-Agent') || '')) {
+      decision.preferMarkdown = true;
+    }
     if (!decision.acceptable) {
       return new Response(
         '406 Not Acceptable\n\nThis resource is available as text/html or text/markdown.\n',

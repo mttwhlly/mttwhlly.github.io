@@ -14,6 +14,11 @@ via the `*.md.ts` routes in `src/pages/`. If the client prefers markdown and a s
 serves that sibling with the right headers; otherwise it passes the original response through
 unmodified (plus `Vary`).
 
+Known AI answer-engine bots (GPTBot, ClaudeBot, ChatGPT-User, PerplexityBot, Google-Extended,
+Applebot-Extended, ora-agent, DeepSeekBot, etc.) get the markdown sibling by User-Agent match even
+when they send a generic `Accept: */*` rather than negotiating for `text/markdown` explicitly —
+see `BOT_UA_RE` in the Worker.
+
 ## Deploying
 
 Automatic: `.github/workflows/deploy-cloudflare-worker.yml` runs `wrangler deploy` on every push

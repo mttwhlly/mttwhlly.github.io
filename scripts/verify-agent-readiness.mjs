@@ -1,8 +1,10 @@
 #!/usr/bin/env node
 /**
- * Smoke-tests the two agent-readiness behaviors covered by CLAUDE.md's "Is Agentic" fixes:
+ * Smoke-tests the agent-readiness behaviors covered by CLAUDE.md's "Is Agentic" fixes:
  *   1. Nonexistent paths return a real HTTP 404 with a recoverable body.
  *   2. `Accept: text/markdown` negotiation (RFC 9110 q-values, Vary: Accept, 406) is honored.
+ *   3. Served markdown opens with a --- frontmatter block.
+ *   4. Known AI bot User-Agents get markdown on a generic Accept header.
  *
  * Usage:
  *   node scripts/verify-agent-readiness.mjs [baseUrl]
@@ -46,7 +48,7 @@ async function checkRealNotFound() {
 
 async function checkMarkdownSiblings() {
   console.log('\nMarkdown siblings exist (static, always available)');
-  for (const path of ['/index.md', '/about.md', '/contact.md', '/privacy.md', '/404.md']) {
+  for (const path of ['/index.md', '/case-studies/index.md', '/privacy.md', '/404.md']) {
     const res = await fetchRaw(path);
     const ct = res.headers.get('content-type') || '';
     report(
@@ -59,7 +61,7 @@ async function checkMarkdownSiblings() {
 
 async function checkAlternateLinks() {
   console.log('\n<link rel="alternate" type="text/markdown"> present on HTML pages');
-  for (const path of ['/', '/about', '/contact']) {
+  for (const path of ['/', '/case-studies', '/privacy']) {
     const res = await fetchRaw(path);
     const body = await res.text();
     report(
@@ -92,12 +94,30 @@ async function checkNegotiation() {
   report(rejected.status === 406, 'unsupported Accept type returns 406', `got ${rejected.status}`);
 }
 
+async function checkBotUserAgent() {
+  console.log('\nAI bot User-Agent gets markdown on a generic Accept (requires the Worker)');
+  const res = await fetchRaw('/', { 'User-Agent': 'ClaudeBot/1.0', Accept: '*/*' });
+  const ct = res.headers.get('content-type') || '';
+  report(ct.includes('text/markdown'), 'ClaudeBot UA on / returns text/markdown', `got ${ct}`);
+}
+
+async function checkMarkdownFrontmatter() {
+  console.log('\nServed markdown opens with --- frontmatter');
+  for (const path of ['/index.md', '/case-studies/index.md', '/privacy.md']) {
+    const res = await fetchRaw(path);
+    const body = await res.text();
+    report(body.startsWith('---\n'), `${path} opens with a frontmatter block`);
+  }
+}
+
 async function main() {
   console.log(`Verifying agent readiness against ${baseUrl}`);
   await checkRealNotFound();
   await checkMarkdownSiblings();
+  await checkMarkdownFrontmatter();
   await checkAlternateLinks();
   await checkNegotiation();
+  await checkBotUserAgent();
 
   console.log(`\n${passes} passed, ${failures} failed`);
   if (failures > 0) process.exitCode = 1;
