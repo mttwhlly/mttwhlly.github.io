@@ -1,6 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import ArticleStructuredData from '../../components/ArticleStructuredData.astro';
 import { getCollection, render } from 'astro:content';
+import { CASE_STUDY_LASTMOD, SITE_LASTMOD } from '../../lib/caseStudyDates';
 
 export async function getStaticPaths() {
   const entries = await getCollection('caseStudies', ({ data }) => !data.draft);
@@ -12,11 +14,36 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
-const { title, subtitle, atAGlance } = entry.data;
+const { title, subtitle, description, publishedDate, tags, atAGlance, coverImage } = entry.data;
 const slug = entry.id.replace(/\.(mdx?)$/, '');
+const dateModified = CASE_STUDY_LASTMOD[slug] ?? SITE_LASTMOD;
+const updatedLabel = new Date(`${dateModified}T00:00:00Z`).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+  timeZone: 'UTC',
+});
 ---
 
-<Layout markdownUrl={`/case-studies/${slug}.md`}>
+<Layout
+  markdownUrl={`/case-studies/${slug}.md`}
+  title={`${title} · Matt Whalley`}
+  description={description}
+  ogImage={coverImage}
+  ogImageWidth={coverImage ? 1792 : undefined}
+  ogImageHeight={coverImage ? 448 : undefined}
+>
+  <Fragment slot="head">
+    <ArticleStructuredData
+      headline={title}
+      description={description}
+      datePublished={publishedDate}
+      dateModified={dateModified}
+      slug={slug}
+      tags={tags}
+      image={coverImage}
+    />
+  </Fragment>
   <main>
     <!-- Header -->
     <header class="max-w-2xl mx-auto px-6 pt-12 pb-8">
@@ -25,6 +52,9 @@ const slug = entry.id.replace(/\.(mdx?)$/, '');
       </h1>
       <p class="font-serif italic text-base text-gray-600 dark:text-gray-400 leading-relaxed">
         {subtitle}
+      </p>
+      <p class="font-mono text-xs text-gray-400 dark:text-gray-500 mt-4">
+        Updated {updatedLabel}
       </p>
     </header>
 

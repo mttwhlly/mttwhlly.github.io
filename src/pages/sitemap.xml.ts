@@ -1,20 +1,8 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
+import { CASE_STUDY_LASTMOD, SITE_LASTMOD } from '../lib/caseStudyDates';
 
 const SITE_URL = 'https://mattwhalley.com';
-
-// Last commit date per case-study slug, from `git log -1 --format=%cs -- <file>`.
-// Update the relevant entry when a case study's content changes.
-const CASE_STUDY_LASTMOD: Record<string, string> = {
-  'agentic-workflows': '2026-08-17',
-  'ai-code-review': '2026-08-17',
-  'ai-native-judgment': '2026-07-23',
-  'ai-search': '2026-08-19',
-  'enterprise-design-system': '2026-08-19',
-  'false-positive-rates': '2026-07-20',
-};
-
-const SITE_LASTMOD = '2026-08-24';
 
 export const GET: APIRoute = async () => {
   const entries = await getCollection('caseStudies', ({ data }) => !data.draft);

@@ -8,12 +8,29 @@ import StructuredData from '../components/StructuredData.astro';
 interface Props {
   markdownUrl?: string;
   noindex?: boolean;
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  ogImageWidth?: number;
+  ogImageHeight?: number;
 }
 
-const { markdownUrl, noindex } = Astro.props;
+const DEFAULT_TITLE = 'Matt Whalley – Senior Product Engineer (AI & Design Systems) · Remote';
+const DEFAULT_DESCRIPTION =
+  'Bridging AI, product, design, and engineering to turn emerging technology into products people can actually use.';
+
+const {
+  markdownUrl,
+  noindex,
+  title = DEFAULT_TITLE,
+  description = DEFAULT_DESCRIPTION,
+  ogImage = '/images/me.png',
+  ogImageWidth = 724,
+  ogImageHeight = 724,
+} = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const ogImageURL = new URL('/images/me.png', Astro.site);
+const ogImageURL = new URL(ogImage, Astro.site);
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +39,7 @@ const ogImageURL = new URL('/images/me.png', Astro.site);
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Matt Whalley – Senior Product Engineer (AI & Design Systems) · Remote</title>
+  <title>{title}</title>
 
   <link rel="canonical" href={canonicalURL} />
   {markdownUrl && <link rel="alternate" type="text/markdown" href={markdownUrl} />}
@@ -37,21 +54,28 @@ const ogImageURL = new URL('/images/me.png', Astro.site);
   />
 
   <!-- SEO -->
-  <meta name="description" content="AI Product Engineer bridging AI, product, design, and engineering to turn emerging technology into products people can actually use." />
+  <meta name="description" content={description} />
   <meta name="keywords" content="Matt Whalley, AI Product Engineer, AI Product Development, Design Systems, Agentic Workflows, Frontend Architecture, UX Engineering" />
   <meta name="author" content="Matt Whalley" />
 
   <!-- Open Graph Tags -->
-  <meta property="og:title" content="Matt Whalley – Senior Product Engineer (AI & Design Systems) · Remote" />
-  <meta property="og:description" content="Bridging AI, product, design, and engineering to turn emerging technology into products people can actually use." />
-  <meta property="og:url" content="https://mattwhalley.com" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonicalURL} />
   <meta property="og:image" content={ogImageURL} />
-  <meta property="og:image:width" content="724" />
-  <meta property="og:image:height" content="724" />
+  <meta property="og:image:width" content={ogImageWidth} />
+  <meta property="og:image:height" content={ogImageHeight} />
   <meta property="og:type" content="website" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImageURL} />
 
   <!-- Structured data -->
   <StructuredData />
+  <slot name="head" />
 
   <!-- Favicon and Icons -->
   <link rel="icon" href="favicon.ico" type="image/x-icon" />

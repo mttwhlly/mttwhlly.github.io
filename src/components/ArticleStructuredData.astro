@@ -1,0 +1,44 @@
+---
+// Article JSON-LD for case studies, linked to the Person/Organization graph in
+// StructuredData.astro via stable @id references.
+interface Props {
+  headline: string;
+  description: string;
+  datePublished: string;
+  dateModified: string;
+  slug: string;
+  tags?: string[];
+  image?: string;
+}
+
+const {
+  headline,
+  description,
+  datePublished,
+  dateModified,
+  slug,
+  tags = [],
+  image = '/images/me.png',
+} = Astro.props;
+
+const siteUrl = 'https://mattwhalley.com';
+const url = `${siteUrl}/case-studies/${slug}`;
+
+const article = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  '@id': `${url}#article`,
+  headline,
+  description,
+  url,
+  mainEntityOfPage: url,
+  datePublished,
+  dateModified,
+  image: new URL(image, siteUrl).toString(),
+  author: { '@id': `${siteUrl}/#person` },
+  publisher: { '@id': `${siteUrl}/#organization` },
+  ...(tags.length && { keywords: tags.join(', ') }),
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(article)} />
