@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import type { NowData } from '../types/now';
-import { supabase } from '../lib/supabase';
+import { supabaseSelectSingle } from '../lib/supabase';
 import CircularProgress from './CircularProgress';
 import MarqueeText from './MarqueeText';
 
@@ -41,20 +41,17 @@ const NowDb: React.FC = () => {
     let cancelled = false;
 
     const fetchNow = async (): Promise<void> => {
-      const { data: row, error } = await supabase
-        .from('now_status')
-        .select(
-          'climbing_grade, climbing_route, climbing_gym, climbing_gym_link, reading_title, reading_title_link, reading_author, reading_author_link, climbing_percent, reading_percent'
-        )
-        .eq('id', 1)
-        .single();
+      try {
+        const row = await supabaseSelectSingle<NowStatusRow>(
+          'now_status',
+          'climbing_grade, climbing_route, climbing_gym, climbing_gym_link, reading_title, reading_title_link, reading_author, reading_author_link, climbing_percent, reading_percent',
+          { column: 'id', value: 1 }
+        );
 
-      if (error) {
+        if (!cancelled && row) setData(toNowData(row));
+      } catch (error) {
         console.error('Error fetching now data from Supabase:', error);
-        return;
       }
-
-      if (!cancelled && row) setData(toNowData(row));
     };
 
     fetchNow();
@@ -100,9 +97,7 @@ const NowDb: React.FC = () => {
             Climbing the
           </i>{' '}
           <span className="text-gray-900 dark:text-gray-100">{data.climbingGrade}</span>{' '}
-          <i className="font-serif italic text-[1.1em] text-gray-400 dark:text-gray-500">
-            on the
-          </i>{' '}
+          <i className="font-serif italic text-[1.1em] text-gray-400 dark:text-gray-500">on the</i>{' '}
           <span className="text-gray-900 dark:text-gray-100">{data.climbingRoute}</span>{' '}
           <i className="font-serif italic text-[1.1em] text-gray-400 dark:text-gray-500">at</i>{' '}
           <a
