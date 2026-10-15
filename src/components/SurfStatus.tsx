@@ -3,9 +3,9 @@ import React, { useEffect, useState } from 'react';
 const SURF_API = 'https://swells.surf/api/now';
 const TIMEOUT_MS = 3000;
 
-// Renders ", where the waves are clean and waist-high" from swells.surf. The API returns
-// { status: null } overnight; that, a failed or slow request, or bad JSON all render nothing,
-// so the surrounding sentence stands on its own.
+// Renders ", where the waves are currently clean and waist-high" from swells.surf. The API
+// returns { status: null } overnight; that, a failed or slow request, or bad JSON all render
+// nothing, so the surrounding sentence stands on its own.
 const SurfStatus: React.FC = () => {
   const [status, setStatus] = useState<string | null>(null);
 
@@ -41,7 +41,7 @@ const SurfStatus: React.FC = () => {
       >
         the waves
       </a>{' '}
-      are {status}
+      are currently {status}
     </span>
   );
 };
