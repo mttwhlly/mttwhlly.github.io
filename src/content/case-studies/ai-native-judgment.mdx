@@ -29,7 +29,7 @@ atAGlance:
   - label: Result
     value: >-
       One dynamic tool-discovery layer adopted and scaled across dozens of developers; one MCP
-      tool layer and one vector-search path built, evaluated, and intentionally removed
+      tool layer and one vector-search path built, evaluated and intentionally removed
   - label: Core problem
     value: Distinguishing genuine infrastructure needs from technology that's simply current
   - label: My role
@@ -57,7 +57,7 @@ That question — not either technology — is the reusable part.
 
 MCP and RAG solve specific, narrow problems. MCP solves _dynamic tool discovery across many consumers and many systems_ — it turns an N×M integration problem (every AI client wiring up every tool by hand) into N+M (build the tool once, any compliant client can find and use it). RAG solves _grounding generated text in retrieved content_ — the retrieval step exists to feed the model something to reason over and cite from.
 
-Neither is a general-purpose "make this more AI-native" upgrade. Applied to a problem that doesn't have their shape, they add latency, surface area, and a maintenance burden with no corresponding payoff.
+Neither is a general-purpose "make this more AI-native" upgrade. Applied to a problem that doesn't have their shape, they add latency, surface area and a maintenance burden with no corresponding payoff.
 
 The two systems below made this concrete. One had exactly the shape MCP is built for. The other looked, on the surface, like a RAG problem — and wasn't.
 
@@ -65,7 +65,7 @@ The two systems below made this concrete. One had exactly the shape MCP is built
 
 A dozen-plus vendor pods, all writing code against the same handful of internal systems, all needed the same capabilities available inside their AI coding assistant: pull a ticket, check a pipeline, look up a component's docs, read a design file. That's a genuine multiple-consumers, multiple-systems problem — the textbook case for MCP.
 
-My answer was to build a plugin that distributed a small bundle of MCP servers, and to roll it out the way real infrastructure gets rolled out: a tagged stable baseline, a `next` branch for breaking changes, a written migration guide, and a coordinated heads-up to every pod lead before the cutover landed.
+My answer was to build a plugin that distributed a small bundle of MCP servers, and to roll it out the way real infrastructure gets rolled out: a tagged stable baseline, a `next` branch for breaking changes, a written migration guide and a coordinated heads-up to every pod lead before the cutover landed.
 
 ```json
 // .mcp.json — servers bundled with the plugin, versioned and distributed org-wide
@@ -82,9 +82,9 @@ By the time I shipped a 3.0 release, the bundle had already been through enough 
 
 The friction was as instructive as the win. One server hit a hard response-size limit on broad queries, so I scoped it down to narrower, component-specific asks and filed the limitation upstream — the fix is better evidence of production use than a clean success story would be. I ended up installing another server through a separate channel entirely, because its auth model didn't fit the pattern the rest of the bundle used. And getting from "technically works" to "trusted enough to hand every developer a live path into a shared system" surfaced real questions I had to work through — concurrency behavior under simultaneous sessions, and connectivity errors that needed root-causing before I'd call wider rollout done.
 
-> A protocol earning its keep looks like ongoing maintenance, deprecation, and bug reports — not a flashy demo in a vacuum.
+> A protocol earning its keep looks like ongoing maintenance, deprecation and bug reports — not a flashy demo in a vacuum.
 
-That's what made it infrastructure rather than a proof of concept: it kept getting used, kept getting adjusted, and kept surviving contact with real developers on real deadlines.
+That's what made it infrastructure rather than a proof of concept: it kept getting used, kept getting adjusted and kept surviving contact with real developers on real deadlines.
 
 ## Layer 3: Where the same reasoning said no — twice
 
@@ -133,7 +133,7 @@ Same organization, same year, same underlying question, opposite — and both co
 - Distributed a versioned MCP tool bundle to every developer across a multi-pod engineering organization, with a coordinated breaking-change release process (tagged baseline, migration guide, staged rollout)
 - Identified and filed an upstream limitation in a third-party MCP server rather than working around it silently
 - Built a five-tool MCP layer for a production AI search product, then removed it after establishing it had no cross-application reuse to justify the added hop
-- Diagnosed and fixed a real production query-resolution bug across three iterations, converging on an explicit "never guess, always query" instruction for the agent, and shipped the deterministic synonym map that followed
+- Diagnosed and fixed a real production query-resolution bug across three iterations, converging on an explicit "never guess, always query" instruction for the agent and shipped the deterministic synonym map that followed
 - Pulled the actual Azure AI Search index definition to confirm, rather than assume, that vector search was configured but never used — zero bytes of vector data stored
 - Arrived at a reusable, evidence-based framework for matching AI-integration patterns to system shape, instead of to what's currently trending
 

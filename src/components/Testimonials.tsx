@@ -7,7 +7,7 @@ const Testimonials = () => {
       name: 'Ben Stafford',
       title: 'Co-owner and Designer, Foxmeadow Creative',
       content:
-        'Matt has a wonderful ability to tackle complex challenges with simple creative solutions. He’s trustworthy, reliable, and a smart designer. You may regret some things in life, but you’ll never regret hiring Matt.',
+        'Matt has a wonderful ability to tackle complex challenges with simple creative solutions. He’s trustworthy, reliable and a smart designer. You may regret some things in life, but you’ll never regret hiring Matt.',
       link: 'https://BenIllustrated.com',
       avatar: '/images/ben.png',
     },

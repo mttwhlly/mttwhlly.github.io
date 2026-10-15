@@ -39,7 +39,7 @@ Section components and what they own:
 
 ## Styling
 
-Tailwind 4 is loaded via the `@tailwindcss/vite` plugin — there is no `tailwind.config.js`. All theme customisation is in `src/styles/global.css` under `@theme`:
+Tailwind 4 is loaded via the `@tailwindcss/vite` plugin — there is no `tailwind.config.js`. All theme customization is in `src/styles/global.css` under `@theme`:
 
 - Custom `lemonlime` color scale; brand accent is `#D4FC52`
 - Fonts: `Host Grotesk` (sans), `Geist Mono` (mono), `Instrument Serif` (serif) — all from Google Fonts

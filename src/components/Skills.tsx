@@ -34,7 +34,7 @@ const Skills: React.FC = () => {
       id: 'ai-engineering',
       title: 'Applied AI Engineering',
       description:
-        'Shipping production AI features: Building usable AI-enabled interfaces, workflows, and development patterns for product teams.',
+        'Shipping production AI features: Building usable AI-enabled interfaces, workflows and development patterns for product teams.',
       icon: Brain,
       highlight: true,
       skills: [
@@ -54,7 +54,7 @@ const Skills: React.FC = () => {
       id: 'ai-ux',
       title: 'AI UX & Design Systems',
       description:
-        'Pattern‑driven AI interfaces: clarity, explainability, feedback loops, and accessibility.',
+        'Pattern‑driven AI interfaces: clarity, explainability, feedback loops and accessibility.',
       icon: PaintBrush,
       highlight: true,
       skills: [
@@ -71,7 +71,7 @@ const Skills: React.FC = () => {
       id: 'nextgen-frontend',
       title: 'Next‑Gen Frontend Architecture',
       description:
-        'Streaming, realtime collaboration, local‑first sync, and high‑performance visualization.',
+        'Streaming, realtime collaboration, local‑first sync and high‑performance visualization.',
       icon: Cpu,
       highlight: true,
       skills: [
@@ -103,7 +103,7 @@ const Skills: React.FC = () => {
       id: 'tooling',
       title: 'Tooling & Ops',
       description:
-        'Developer experience, observability, and delivery tuned for AI features and fast iteration.',
+        'Developer experience, observability and delivery tuned for AI features and fast iteration.',
       icon: Wrench,
       skills: [
         { name: 'Git & Branching', description: 'Reviews, trunk/PR hygiene' },
@@ -119,7 +119,7 @@ const Skills: React.FC = () => {
       id: 'testing',
       title: 'Testing & Quality',
       description:
-        'AI evaluation frameworks, AI testing strategies, accessibility validation, frontend quality practices, architecture reviews, and production readiness.',
+        'AI evaluation frameworks, AI testing strategies, accessibility validation, frontend quality practices, architecture reviews and production readiness.',
       icon: TestTube,
       skills: [
         { name: 'Unit & Component', description: 'Jest + React Testing Library' },
@@ -134,7 +134,7 @@ const Skills: React.FC = () => {
     {
       id: 'apis',
       title: 'APIs, Data & Platforms',
-      description: 'APIs and data plumbing that power retrieval, streaming, and realtime UX.',
+      description: 'APIs and data plumbing that power retrieval, streaming and realtime UX.',
       icon: Database,
       skills: [
         { name: 'Node.js/Express', description: 'Light services and gateways' },
@@ -150,7 +150,7 @@ const Skills: React.FC = () => {
       id: 'process',
       title: 'Process & Collaboration',
       description:
-        'Engineering enablement, AI governance, security review preparation, vendor collaboration, technical leadership, and process design.',
+        'Engineering enablement, AI governance, security review preparation, vendor collaboration, technical leadership and process design.',
       icon: Users,
       skills: [
         { name: 'Product Discovery', description: 'Problem framing, rapid protos' },

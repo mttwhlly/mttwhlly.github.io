@@ -5,7 +5,7 @@ subtitle: >
   cross-repo workspace, a parallel review system — each one retired the moment it stopped
   matching what the team could actually absorb.
 description: >
-  Claude Code and structured skills, rolled out across engineering, product, and a vendor team.
+  Claude Code and structured skills, rolled out across engineering, product and a vendor team.
   Five rebuilds, each retired the moment it stopped being enough.
 publishedDate: '2026'
 order: 3
@@ -19,9 +19,9 @@ atAGlance:
   - label: Scale
     value: Adopted by five-plus vendor teams and every internal engineering pod, then extended to product and UX
   - label: Starting point
-    value: A versioned plugin distributing skills, hooks, and shared MCP config to every pod repo
+    value: A versioned plugin distributing skills, hooks and shared MCP config to every pod repo
   - label: Core problem
-    value: Features routinely span a database, API, and UI layer owned across different repositories
+    value: Features routinely span a database, API and UI layer owned across different repositories
   - label: My role
     value: Led the rollout — designed the system through five iterations, built core tooling, taught it across and beyond engineering
   - label: Result
@@ -30,15 +30,15 @@ atAGlance:
     value: A parallel multi-agent review system and a planning process the org actually adopted, not just shipped
 ---
 
-_I lead the rollout of agentic development tooling — Claude Code, structured skills, a shared plugin — across engineering, product, and a vendor team, on a platform where features routinely span a database layer, an API layer, and a UI layer in different repositories. Little of it was built alone. This is the story of what that system looked like at five different points, why each version stopped being enough, and what I'd still change about it._
+_I lead the rollout of agentic development tooling — Claude Code, structured skills, a shared plugin — across engineering, product and a vendor team, on a platform where features routinely span a database layer, an API layer and a UI layer in different repositories. Little of it was built alone. This is the story of what that system looked like at five different points, why each version stopped being enough and what I'd still change about it._
 
 ---
 
 ## Building for scale, before proving the small version
 
-The first version was ambitious on purpose: a plugin, not a folder of scripts — versioned, distributed automatically to every repository a team worked in, carrying skills, hooks, and shared MCP server configuration as one unit. A coworker and I built it together, drawing heavily on Matt Pocock's public work on Claude Code skills — the thinking being that if agentic development was going to be real infrastructure rather than a personal habit, it needed to behave like infrastructure: install once, update centrally, version like anything else that ships to production.
+The first version was ambitious on purpose: a plugin, not a folder of scripts — versioned, distributed automatically to every repository a team worked in, carrying skills, hooks and shared MCP server configuration as one unit. A coworker and I built it together, drawing heavily on Matt Pocock's public work on Claude Code skills — the thinking being that if agentic development was going to be real infrastructure rather than a personal habit, it needed to behave like infrastructure: install once, update centrally, version like anything else that ships to production.
 
-It worked, technically. Skills for planning, requirements analysis, and test-driven implementation existed and ran. What it didn't yet have was proof that the _team_ — not just the tooling — was ready to work this way.
+It worked, technically. Skills for planning, requirements analysis and test-driven implementation existed and ran. What it didn't yet have was proof that the _team_ — not just the tooling — was ready to work this way.
 
 > Infrastructure that behaves like infrastructure still needs a team ready to use it like one.
 
@@ -64,7 +64,7 @@ None of this settled the underlying debate, and in the abstract, "just describe 
 
 > The complexity was already there, whether the process acknowledged it or not.
 
-Proving that took real feature work, not benchmarks, and we deliberately brought other developers into that work rather than iterating in isolation — the point wasn't just a better pipeline, it was people seeing firsthand what building and using a skill could actually do. I spent a good stretch of this period teaching, too — not just engineering, but product managers, designers, and others, on how to get real leverage out of skills, MCP servers, and the rest of the toolchain, not just how to run them. That extension past engineering had a second thread. I'd originally built a skill for surfacing gaps in feature requirements by interviewing against them directly — the same instinct as the planning pipeline, aimed one step earlier, at the ticket itself. A colleague on the team took that further than I had and published a more capable version, one that product and UX could run themselves to check a feature for gaps and completeness before it ever reached a developer. The version running today came back through me again for updates — which is, in miniature, the same loop the whole pipeline runs on: an idea moves through more than one set of hands, and gets better for it. That it was worth extending to a non-engineering audience at all was, I think, the clearest evidence the structured approach was earning its keep.
+Proving that took real feature work, not benchmarks, and we deliberately brought other developers into that work rather than iterating in isolation — the point wasn't just a better pipeline, it was people seeing firsthand what building and using a skill could actually do. I spent a good stretch of this period teaching, too — not just engineering, but product managers, designers and others, on how to get real leverage out of skills, MCP servers and the rest of the toolchain, not just how to run them. That extension past engineering had a second thread. I'd originally built a skill for surfacing gaps in feature requirements by interviewing against them directly — the same instinct as the planning pipeline, aimed one step earlier, at the ticket itself. A colleague on the team took that further than I had and published a more capable version, one that product and UX could run themselves to check a feature for gaps and completeness before it ever reached a developer. The version running today came back through me again for updates — which is, in miniature, the same loop the whole pipeline runs on: an idea moves through more than one set of hands, and gets better for it. That it was worth extending to a non-engineering audience at all was, I think, the clearest evidence the structured approach was earning its keep.
 
 ## Closing the loop
 

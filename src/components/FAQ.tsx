@@ -21,13 +21,13 @@ const FAQ = () => {
     //   id: 3,
     //   question: "What's your design process?",
     //   answer:
-    //     'I start with user needs and business goals, then move through research, wireframing, and prototyping. I believe in designing with real content and constraints in mind, and I always consider accessibility and performance from the beginning, not as an afterthought.',
+    //     'I start with user needs and business goals, then move through research, wireframing and prototyping. I believe in designing with real content and constraints in mind, and I always consider accessibility and performance from the beginning, not as an afterthought.',
     // },
     // {
     //   id: 4,
     //   question: 'How do you approach design systems?',
     //   answer:
-    //     "I focus on scalable, maintainable systems that serve both designers and developers. This means clear documentation, consistent patterns, and components that work across different contexts. I've found success in starting small and evolving based on real usage.",
+    //     "I focus on scalable, maintainable systems that serve both designers and developers. This means clear documentation, consistent patterns and components that work across different contexts. I've found success in starting small and evolving based on real usage.",
     // },
   ];
 

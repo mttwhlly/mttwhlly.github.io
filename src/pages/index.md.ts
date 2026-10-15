@@ -8,22 +8,23 @@ export const GET: APIRoute = async () => {
     .sort((a, b) => a.order - b.order || b.publishedDate.localeCompare(a.publishedDate));
 
   const markdown = `---
-title: Matt Whalley — Senior Product Engineer (AI & Design Systems)
-description: AI Product Engineer bridging AI, product, design, and engineering to turn emerging technology into products people can actually use.
+title: Matt Whalley — Senior Product Engineer · Design, Engineering & AI
+description: Bridging AI, product, design and engineering to turn emerging technology into products people can actually use.
 canonical: https://mattwhalley.com/
 ---
 
 # Matt Whalley
 
-Senior/Staff Product Engineer (AI & Design Systems)
+Senior Product Engineer
+Design · Engineering · AI
 
-I solve complex product problems and build systems that last — bringing design, engineering,
+I solve complex product problems and build systems that last — bringing design, engineering
 and AI together to turn ambitious ideas and tangled systems into products people can trust.
 
-Currently open to Senior Product Engineering roles building AI products, design-system
-infrastructure, or tools that need to hold up at scale.
+I led frontend engineering and design systems at DataSpring (formerly CAQH), built digital
+services for Broward County and spend my free time bouldering.
 
-Based in Saint Augustine, Florida.
+I'm based in Saint Augustine, Florida.
 
 ## Case studies
 

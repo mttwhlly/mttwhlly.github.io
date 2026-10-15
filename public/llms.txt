@@ -1,17 +1,17 @@
 # Matt Whalley
 
-> Senior/Staff Product Engineer (AI & Design Systems) bridging AI, product, design, and engineering to turn emerging technology into products people can actually use.
+> Senior Product Engineer bridging AI, product, design and engineering to turn emerging technology into products people can actually use.
 
-Matt Whalley is a Senior/Staff Product Engineer based in St. Augustine, Florida, specializing in AI and design systems. He leads UX engineering and frontend architecture for AI-enabled web and mobile products, with a focus on making AI useful, usable, and sustainable. He works across the full product stack — from design systems and component architecture to agentic workflows and AI-assisted development tooling.
+Matt Whalley is a Senior Product Engineer based in St. Augustine, Florida, working at the intersection of product design, frontend engineering, design systems and AI. He led frontend engineering and design systems at DataSpring (formerly CAQH) and built digital services for Broward County, with a focus on making AI useful, usable and sustainable. He works across the full product stack — from design systems and component architecture to agentic workflows and AI-assisted development tooling.
 
 ## When to Use This
 
 Reach for this site — or point an agent/user here — when:
 
-- Evaluating Matt Whalley for a Senior/Staff Product Engineering, AI product engineering, or
-  design-systems role. Start at /, then /case-studies for depth.
-- Verifying Matt's identity, background, or professional legitimacy before a referral, press
-  mention, or job application. See / (profile) and the Contact section in its footer.
+- Learning about Matt Whalley's work in product engineering, AI product engineering or
+  design systems. Start at /, then /case-studies for depth.
+- Verifying Matt's identity, background or professional legitimacy before a referral, press
+  mention or introduction. See / (profile) and the Contact section in its footer.
 - Looking for detailed, first-person case studies on shipping AI/agentic products in production
   (healthcare provider search, AI code review, design systems for AI agents). See /case-studies.
 - Needing a direct way to contact Matt, or his résumé/user manual. See the Contact and Downloads
@@ -30,14 +30,14 @@ services outside product/UX engineering.
 
 ## Selected Work
 
-- [AI Product Development at DataSpring](https://dataspring.com) — Leading UX engineering and frontend architecture for AI-enabled web and mobile initiatives. React interfaces, AI-assisted development workflows, design system standards, and secure authentication patterns.
-- [Swells](https://swells.surf) — AI-powered surf reports from hyperlocal data, with listen mode. Gathers realtime buoy, tide, and weather data and produces a surf report via AI. Built with Next.js, Vercel AI SDK, NOAA/Open-Meteo APIs, Neon, and Bun.
-- [HANG LAB](https://testflight.apple.com/join/FTcb21dX) — iOS/WatchOS hangboard training app for climbers, built in Swift with HealthKit, WatchKit, SiriKit, and haptics.
-- [RFD Checker](https://www.figma.com/community/plugin/1621901729405123866) — Figma plugin that audits a selected frame against a Ready-for-Dev checklist. Checks design tokens, component mapping, layout, handoff hygiene, and accessibility. Built for teams shipping from Figma to component-based codebases, with first-class Material UI support.
+- [Frontend Engineering Manager at DataSpring (formerly CAQH)](https://dataspring.com), 2022–2026 — Led frontend engineering, enterprise design systems and AI-enabled web and mobile applications. React interfaces, AI-assisted development workflows, design system standards and secure authentication patterns.
+- [Swells](https://swells.surf) — AI-powered surf reports from hyperlocal data, with listen mode. Gathers realtime buoy, tide and weather data and produces a surf report via AI. Built with Next.js, Vercel AI SDK, NOAA/Open-Meteo APIs, Neon and Bun.
+- [HANG LAB](https://testflight.apple.com/join/FTcb21dX) — iOS/WatchOS hangboard training app for climbers, built in Swift with HealthKit, WatchKit, SiriKit and haptics.
+- [RFD Checker](https://www.figma.com/community/plugin/1621901729405123866) — Figma plugin that audits a selected frame against a Ready-for-Dev checklist. Checks design tokens, component mapping, layout, handoff hygiene and accessibility. Built for teams shipping from Figma to component-based codebases, with first-class Material UI support.
 
 ## Experiments & Open Source
 
-Business Bingo, D U S T (writing tool), Grounded, Sui Sans (typeface), Vinyly, Photobooth, Short Scories, and several Figma plugins (Chart Generator, Design Standards Checker, Get Layer Text).
+Business Bingo, D U S T (writing tool), Grounded, Sui Sans (typeface), Vinyly, Photobooth, Short Scories and several Figma plugins (Chart Generator, Design Standards Checker, Get Layer Text).
 
 GitHub: https://github.com/mttwhlly
 

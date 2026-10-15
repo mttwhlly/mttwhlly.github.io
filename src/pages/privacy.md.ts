@@ -9,7 +9,7 @@ canonical: https://mattwhalley.com/privacy
 
 # Privacy
 
-This is a static personal portfolio site. There's no login, no user accounts, and no forms on
+This is a static personal portfolio site. There's no login, no user accounts and no forms on
 this site that collect personal information. This page describes exactly what does happen when
 you visit.
 

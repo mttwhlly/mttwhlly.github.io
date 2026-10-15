@@ -5,7 +5,7 @@ mattwhalley.com (the domain is already proxied through Cloudflare). It does not 
 or DNS — it only intercepts requests to add `Accept`-header content negotiation
 ([acceptmarkdown.com](https://acceptmarkdown.com)) that a static host can't do on its own:
 serving `text/markdown` for `Accept: text/markdown`, setting `Vary: Accept`, returning `406` for
-unsupported types, and honoring q-values. It also preserves a real `404` status when a
+unsupported types and honoring q-values. It also preserves a real `404` status when a
 nonexistent path is requested with `Accept: text/markdown`, using the site's `/404.md`.
 
 It works by probing for a markdown sibling of the requested page (e.g. `/about` → `/about.md`,

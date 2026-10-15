@@ -1,10 +1,10 @@
 # Matt Whalley - Portfolio Site
 
-A modern, minimal portfolio website built with Astro, React, and Tailwind CSS. Features a clean design showcasing projects, experience, and real-time Spotify integration.
+A modern, minimal portfolio website built with Astro, React and Tailwind CSS. Features a clean design showcasing projects, experience and real-time Spotify integration.
 
 ## ✨ Features
 
-- **Modern Tech Stack**: Built with Astro 5, React 19, and Tailwind CSS 4
+- **Modern Tech Stack**: Built with Astro 5, React 19 and Tailwind CSS 4
 - **Server-Side Rendering**: Optimized performance with Astro's hybrid rendering
 - **Spotify Integration**: Real-time display of currently playing or recently played tracks
 - **Responsive Design**: Mobile-first approach with clean, accessible UI

@@ -28,7 +28,7 @@ atAGlance:
     value: 'A false-positive rate low enough that engineers keep reading the comments'
   - label: My role
     value: >-
-      Sole author of the system: architecture, reviewers, CI harness, governance model,
+      Sole author of the system: architecture, reviewers, CI harness, governance model
       and rollout plan
   - label: Status
     value: 'Live in advisory mode across the full in-scope set; blocking deliberately deferred'
@@ -51,7 +51,7 @@ allowed to be wrong in front of an engineer.
 
 That reframing decided almost everything else. Over about six weeks I built a pre-merge review
 system for the client's platform: eight specialized reviewer subagents running in parallel, a cold
-falsification pass that tries to disprove their findings, a numeric confidence threshold, and a CI
+falsification pass that tries to disprove their findings, a numeric confidence threshold and a CI
 pipeline that posts a single overview comment plus inline comments on every pull request. It runs
 today on every application repository in scope, commenting on every pull request, and it is
 deliberately not allowed to block a single one of them yet.
@@ -93,7 +93,7 @@ to ask a linter to do, which is why the project existed.
 
 I did not invent the shape of this. Anthropic published their own
 [internal code review architecture](https://claude.com/blog/code-review)[^1], and it is a good
-design: parallel specialized reviewers, a falsification pass, per-finding confidence, a threshold,
+design: parallel specialized reviewers, a falsification pass, per-finding confidence, a threshold
 and a single consolidated comment rather than a scatter of them. I built against that directly and
 treated any divergence as something I needed to justify.
 
@@ -108,10 +108,10 @@ notice that a human already asked for this to be done differently, three PRs ago
 taking the system from six reviewers to eight.
 
 The other four were smaller and all pointed the same direction. I had no eligibility gate, so the
-system was spending tokens reviewing draft PRs, automated commits, and one-line changes; I added a
+system was spending tokens reviewing draft PRs, automated commits and one-line changes; I added a
 deterministic skip check that runs before anything expensive. I had no model tiering, so every step
 ran on the same model regardless of whether it required judgment; I moved the cheap mechanical
-steps to Haiku, kept reviewers on Sonnet, and routed large or contract-touching changes to Opus. My
+steps to Haiku, kept reviewers on Sonnet and routed large or contract-touching changes to Opus. My
 confidence scoring was prose-based, which meant it drifted; I replaced it with a discrete rubric.
 And my falsification step was written in a way that implied a reviewer could falsify its own
 finding, which is close to meaningless. I separated it.
@@ -157,7 +157,7 @@ production and been fixed later by a separate PR, plus four clean PRs as a false
 Print-only, no posting.
 
 It produced 27 candidate findings across those five PRs. After falsification and thresholding, 7
-were published. Of those 7: three were solid and actionable, three were low-value, and one was a
+were published. Of those 7: three were solid and actionable, three were low-value and one was a
 false positive.
 
 On the escape PR, it found the real bug — a download handler that had been replaced with a no-op —
@@ -194,7 +194,7 @@ human's name on the result. There was also nothing preventing the same finding f
 twice.
 
 The fix was to remove the capability rather than to constrain it. The interactive path now never
-posts. It prints. Posting is exclusively the CI pipeline's job, authenticated as the build service,
+posts. It prints. Posting is exclusively the CI pipeline's job, authenticated as the build service
 and made idempotent with hidden markers in comment bodies so a re-run updates rather than
 duplicates. The rule is one sentence in the orchestrator: local runs review, the pipeline posts.
 
@@ -227,7 +227,7 @@ and a one-command undo.
 <RulesReleaseChannel />
 
 The CI design principle was that the shell owns I/O and the model owns judgment. The pipeline
-computes the diff, calls the model through Azure AI Foundry over a federated service connection, and
+computes the diff, calls the model through Azure AI Foundry over a federated service connection and
 posts through the Azure DevOps REST API using the pipeline's own access token. No plugin, no MCP
 server, no personal access token anywhere in CI. Every repository carries a byte-identical
 forty-line wrapper; the substance lives in shared templates.
@@ -250,7 +250,7 @@ point onboarding is a forty-line wrapper and a branch policy.
 
 Getting from one repository to twelve was a smaller step than getting to one. The first took most
 of the CI build-out — federated authentication, token audiences, diff-base resolution, poster
-hardening, and a set of permission grants I worked through with the platform's DevOps architect,
+hardening and a set of permission grants I worked through with the platform's DevOps architect,
 which are project-scoped and therefore granted once. After that, each additional repository was the
 same wrapper, the same pipeline registration, the same policy.
 
@@ -270,12 +270,12 @@ the system quieter and more believable rather than more thorough. A reviewer tha
 everything and cries wolf is strictly worse than one that catches less and is right.
 
 The corollary is that the interesting engineering is not in the prompting. It is in the boundaries:
-what the system is allowed to do, whose identity it acts under, what it can write to, and what it
+what the system is allowed to do, whose identity it acts under, what it can write to and what it
 must ask a human for. Those are the decisions that determine whether people are still reading its
 comments six months in.
 
 [^1]: The core review architecture — parallel specialized reviewer agents, a falsification pass, a
-  confidence threshold, and severity-ranked output — is Anthropic's own design, described in
+  confidence threshold and severity-ranked output — is Anthropic's own design, described in
   Anthropic's [Code Review announcement](https://claude.com/blog/code-review) and implemented as an
   open-source reference in the
   [`code-review` plugin](https://github.com/anthropics/claude-code/tree/main/plugins/code-review) in

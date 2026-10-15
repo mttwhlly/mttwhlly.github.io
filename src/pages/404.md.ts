@@ -9,11 +9,11 @@ canonical: https://mattwhalley.com/404
 
 # 404 — Page not found
 
-That page doesn't exist — it may have moved, been renamed, or never existed at this URL.
+That page doesn't exist — it may have moved, been renamed or never existed at this URL.
 
 ## Where to look next
 
-- [Home](https://mattwhalley.com/) — profile, projects, and case studies
+- [Home](https://mattwhalley.com/) — profile, projects and case studies
 - [Case studies](https://mattwhalley.com/case-studies) — deep dives on shipped AI/product work
 - [Contact](mailto:matt@mattwhalley.com) — reach out directly
 - [sitemap.xml](https://mattwhalley.com/sitemap.xml) — full list of indexable URLs
