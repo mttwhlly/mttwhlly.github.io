@@ -36,6 +36,7 @@ Section components and what they own:
 - `Testimonials.tsx`, `SelectedClients.tsx`, `Newsletter.tsx` — additional sections
 - `Footer.tsx` — Spotify now-playing widget + social links
 - `SpotifyNowPlaying.tsx` — polls an external Vercel proxy (`spotify-api-silk-nine.vercel.app`) every 30s; credentials live in `.env`
+- `SurfStatus.tsx` — appends ", where the waves are {status}" to the About line from `swells.surf/api/now` (browser fetch, 3s timeout, renders nothing on null/error). The API's CORS allows only `mattwhalley.com` and `http://localhost:<port>` / `http://127.0.0.1:<port>`, so other origins (e.g. a LAN IP) will never show the clause
 
 ## Styling
 
