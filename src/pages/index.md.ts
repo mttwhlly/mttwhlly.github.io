@@ -21,8 +21,9 @@ Design · Engineering · AI
 I solve complex product problems and build systems that last — bringing design, engineering
 and AI together to turn ambitious ideas and tangled systems into products people can trust.
 
-I led frontend engineering and design systems at DataSpring (formerly CAQH), built digital
-services for Broward County and spend my free time bouldering.
+I'm a Senior Product Engineer at [Help Scout](https://www.helpscout.com). Before that I led
+frontend engineering and design systems at DataSpring (formerly CAQH), built digital services for
+Broward County, and spend my free time bouldering.
 
 I'm based in Saint Augustine, Florida.
 

@@ -8,10 +8,10 @@ export default function Footer() {
       <div id="contact" className="grid grid-cols-1 sm:grid-cols-[120px_1fr] gap-x-6 gap-y-2 sm:gap-y-1 pb-12">
         <h2 className="self-start font-mono text-sm text-gray-500 dark:text-gray-400 pt-0.5">Contact</h2>
         <div className="flex flex-col gap-2 text-gray-600 dark:text-gray-400">
-          <p className="text-gray-900 dark:text-gray-100">Have an interesting problem to solve?</p>
+          <p className="text-gray-900 dark:text-gray-100">Want to talk shop?</p>
           <p className="leading-relaxed pb-2">
-            I'm always interested in thoughtful conversations about product engineering, design
-            systems and building AI experiences that people can trust.
+            I'm always up for thoughtful conversations about product engineering, design systems and
+            building AI experiences that people can trust.
           </p>
           <a
             href="mailto:&#109;&#97;&#116;&#116;&#64;&#109;&#97;&#116;&#116;&#119;&#104;&#97;&#108;&#108;&#101;&#121;&#46;&#99;&#111;&#109;"

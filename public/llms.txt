@@ -2,7 +2,7 @@
 
 > Senior Product Engineer bridging AI, product, design and engineering to turn emerging technology into products people can actually use.
 
-Matt Whalley is a Senior Product Engineer based in St. Augustine, Florida, working at the intersection of product design, frontend engineering, design systems and AI. He led frontend engineering and design systems at DataSpring (formerly CAQH) and built digital services for Broward County, with a focus on making AI useful, usable and sustainable. He works across the full product stack — from design systems and component architecture to agentic workflows and AI-assisted development tooling.
+Matt Whalley is a Senior Product Engineer based in St. Augustine, Florida, working at the intersection of product design, frontend engineering, design systems and AI. He is currently a Senior Product Engineer at Help Scout. Previously he led frontend engineering and design systems at DataSpring (formerly CAQH) and built digital services for Broward County, with a focus on making AI useful, usable and sustainable. He works across the full product stack — from design systems and component architecture to agentic workflows and AI-assisted development tooling.
 
 ## When to Use This
 
@@ -30,6 +30,7 @@ services outside product/UX engineering.
 
 ## Selected Work
 
+- [Senior Product Engineer at Help Scout](https://www.helpscout.com), 2026–present — Product engineering across design, frontend and AI on customer support software.
 - [Frontend Engineering Manager at DataSpring (formerly CAQH)](https://dataspring.com), 2022–2026 — Led frontend engineering, enterprise design systems and AI-enabled web and mobile applications. React interfaces, AI-assisted development workflows, design system standards and secure authentication patterns.
 - [Swells](https://swells.surf) — AI-powered surf reports from hyperlocal data, with listen mode. Gathers realtime buoy, tide and weather data and produces a surf report via AI. Built with Next.js, Vercel AI SDK, NOAA/Open-Meteo APIs, Neon and Bun.
 - [HANG LAB](https://testflight.apple.com/join/FTcb21dX) — iOS/WatchOS hangboard training app for climbers, built in Swift with HealthKit, WatchKit, SiriKit and haptics.

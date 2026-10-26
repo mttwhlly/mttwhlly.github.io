@@ -23,7 +23,15 @@ const graph = {
         addressCountry: 'US',
       },
       sameAs: ['https://linkedin.com/in/mttwhlly', 'https://github.com/mttwhlly'],
-      worksFor: { '@id': `${siteUrl}/#organization` },
+      worksFor: {
+        '@type': 'Organization',
+        name: 'Help Scout',
+        url: 'https://www.helpscout.com',
+      },
+      alumniOf: [
+        { '@type': 'Organization', name: 'DataSpring', url: 'https://dataspring.com' },
+        { '@type': 'GovernmentOrganization', name: 'Broward County' },
+      ],
     },
     {
       '@type': 'Organization',
