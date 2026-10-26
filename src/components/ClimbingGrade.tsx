@@ -6,9 +6,10 @@ interface ClimbingRow {
   climbing_style: string | null;
 }
 
-// Renders " (currently projecting a crimpy V6)" from the same now_status row NowDb reads.
-// climbing_style is optional. Renders nothing until the row loads, so the surrounding
-// sentence stands on its own.
+// Renders " and in my free time I'm projecting a crimpy V6 boulder problem" from the same
+// now_status row NowDb reads. Sits after SurfStatus at the end of the location line.
+// climbing_style is optional. Renders nothing until the row loads, so the surrounding sentence
+// stands on its own.
 const ClimbingGrade: React.FC = () => {
   const [phrase, setPhrase] = useState<string | null>(null);
 
@@ -31,7 +32,7 @@ const ClimbingGrade: React.FC = () => {
 
   if (!phrase) return null;
 
-  return <span> (currently projecting {phrase})</span>;
+  return <span> and in my free time I'm projecting {phrase} boulder problem</span>;
 };
 
 export default ClimbingGrade;
